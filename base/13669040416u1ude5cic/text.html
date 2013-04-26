@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:DejaVu Serif;">CRITICAL OVOSError.OVOSError {} 35484142 Offline Video Optimization Server has encountered a problem : No config data for content at:  : UseMFC</span></p>
+<p>Oct 24 11:58:33 bfs-dl360g7-55-xm1 : [TrafficServerElement][1002][332077][47486665757056] CRITICAL TransactionLogger.InitializationError {} 35395540 Initialization error :  Unable to connect to Aggregator end points[0]</p>
+<p>Oct 24 11:58:33 bfs-dl360g7-55-xm1 : [TrafficServerElement][1002][332077][47486665757056] CRITICAL TransactionLogger.InitializationError {} 35395540 Initialization error :  Unable to connect to Aggregator end points[0]</p>
+<p><span style="color:#ff0000;">не обезательно во время работы</span></p>
+<p>&nbsp;<p>&nbsp;<p>To veryfy that OOS returns appropriate HTTP responce status on different 'lock' requests:</p>
+<p>if the Cache key does not exist in the Popular list - the 404 status code will be returned</p>
+<p>if the Cache key has been locked succesfully - the 200 code will be returned</p>
+<p>if the Cache key has been already locked by another transaction - the 403 code will be returned</p>
+<p>Arctic: MO-INLINECACHE-OOS-130</p>
+<p>&nbsp;<p>Как кеш можно почистить, мне на будущее. If required clear the cache and restart the sca process to remove the video from the popular list.</p>
+<p>[15:13:48] Yury Staniulenis: Просто удалить ?</p>
+<p>[15:14:08] Aliaksandr Zabrodski: ага</p>
+<p>[15:14:08] Aliaksandr Zabrodski: rm -rf /var/opt/opwv/webdav/cache/*</p>
+<p>&nbsp;<p>&nbsp;<p>http_proxy=http://`hostname -f`:3128 wget -S --user-agent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.11) Gecko/20101012 Firefox/3.6.11' --output-document=/dev/null 'http://suzuki.bfs.openwave.com/VDO/video09.mp4?param1=v1&amp;param2=v2&amp;param3=v3'</p>
+<p>&nbsp;<p><strong><u>ANDES-CC-INLINECACHING-FUNC-110</u></strong></p>
+<p>&nbsp;<p>http_proxy=http://`hostname -f`:3128 wget -S --user-agent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.11) Gecko/20101012 Firefox/3.6.11' --output-document=/dev/null 'http://suzuki.bfs.openwave.com/VDO/video3gpStreamable02.3gp'</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>GET /OfflineServer?fingerprint=c3996e7ab6eaa72362b74a970da94cdc&amp;profile=laptop&amp;optLevel=medium&amp;contentType=video/3gpp&amp;url=http://suzuki.bfs.openwave.com/VDO/video3gpStreamable02.3gp HTTP/1.1</p>
+<p>Host: localhost</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>HTTP/1.1 200 OK</p>
+<p>c3996e7ab6eaa72362b74a970da94cdc,c3996e7ab6eaa72362b74a970da94cdc-laptop-medium</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>GET /lock?key=c3996e7ab6eaa72362b74a970da94cdc-laptop-medium HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HEAD /webdav/c3/99/6e7ab6eaa72362b74a970da94cdc.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>GET /lock?key=c3996e7ab6eaa72362b74a970da94cdc-laptop-medium HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p><span style="color:#0000ff;">HTTP/1.1 403 Forbidden</span></p>
+<p>&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</p>
+<p>&nbsp;<p><strong><u>ANDES-CC-INLINECACHING-FUNC-130</u></strong></p>
+<p>&nbsp;<p>http_proxy=http://`hostname -f`:3128 wget -S --user-agent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.11) Gecko/20101012 Firefox/3.6.11' 'http://suzuki.bfs.openwave.com/VDO/BadRomance.flv'</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>GET /OfflineServer?fingerprint=<span style="color:#ff0000;">df6ab6c50e49021e188547f8ec0edda8</span>&amp;profile=laptop&amp;optLevel=medium&amp;contentType=video/x-flv&amp;url=http://suzuki.bfs.openwave.com/VDO/BadRomance.flv HTTP/1.1</p>
+<p>Host: localhost</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>GET /lock?key=df6ab6c50e49021e188547f8ec0edda8-laptop-medium HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>MKCOL /webdav/df HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 201 Created</p>
+<p>&nbsp;<p>MKCOL /webdav/df/6a HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>1.1 201 Created</p>
+<p>&nbsp;<p>PUT /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 201 Created</p>
+<p>&nbsp;<p>GET /popular?complete=df6ab6c50e49021e188547f8ec0edda8-laptop-medium HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>GET /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>PUT http://bfs-dl360g7-55-xm1.bfs.openwave.com:180/webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>Content-Type: video/x-flv</p>
+<p>HTTP/1.1 201 Created</p>
+<p>Location: http://bfs-dl360g7-55-xm1.bfs.openwave.com:180/webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data</p>
+<p>&lt;p&gt;Resource /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data has been created.&lt;/p&gt;</p>
+<p>&nbsp;<p>PUT http://bfs-dl360g7-55-xm1.bfs.openwave.com:180/webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.header HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>HTTP/1.1 201 Created</p>
+<p>Location: http://bfs-dl360g7-55-xm1.bfs.openwave.com:180/webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.header</p>
+<p>&lt;p&gt;Resource /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.header has been created.&lt;/p&gt;</p>
+<p>&nbsp;<p>GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>-rw-rw-rw- 1 daemon daemon 66K Oct 24 09:57 b6c50e49021e188547f8ec0edda8.data</p>
+<p>-rw-rw-rw- 1 daemon daemon 31K Oct 24 09:57 b6c50e49021e188547f8ec0edda8-laptop-medium.data</p>
+<p>-rw-rw-rw- 1 daemon daemon 882 Oct 24 09:57 b6c50e49021e188547f8ec0edda8-laptop-medium.header</p>
+<p>&nbsp;<p><strong><u>ANDES-CC-INLINECACHING-FUNC-131</u></strong></p>
+<p>&nbsp;<p>..[...[.GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..[...[.HTTP/1.1 200 OK</p>
+<p>...	HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>..E...E.GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..E...E.HTTP/1.1 200 OK</p>
+<p>..0Q..0QGET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..0R..0QHTTP/1.1 200 OK</p>
+<p>........GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>........GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>...q...qGET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>...s...qHTTP/1.1 200 OK</p>
+<p>........GET /OfflineServer?fingerprint=df6ab6c50e49021e188547f8ec0edda8&amp;profile=laptop&amp;optLevel=medium&amp;contentType=video/x-flv&amp;url=http://suzuki.bfs.openwave.com/VDO/BadRomance.flv HTTP/1.1</p>
+<p>Host: localhost</p>
+<p>.......tHEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:180</p>
+<p>........HTTP/1.1 404 Not Found</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>........GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>...1...1GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>...3...1HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>........GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>........GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>........HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>...Q...QGET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>...S...QHTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>..m...m.GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..m...m.HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>..X...X.GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..X...X.HTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>..Bq..BqGET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..Br..BqHTTP/1.1 200 OK</p>
+<p>df6ab6c50e49021e188547f8ec0edda8,df6ab6c50e49021e188547f8ec0edda8-laptop-medium</p>
+<p>...;...;HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8-laptop-medium.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>...&lt;...;HTTP/1.1 404 Not Found</p>
+<p>...&lt;...&lt;HEAD /webdav/df/6a/b6c50e49021e188547f8ec0edda8.data HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>...&lt;...&lt;HTTP/1.1 404 Not Found</p>
+<p>...=...=GET /lock?key=df6ab6c50e49021e188547f8ec0edda8-laptop-medium HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com</p>
+<p>...B...=HTTP/1.1 200 OK</p>
+<p>..,...,.GET /popular HTTP/1.1</p>
+<p>Host: bfs-dl360g7-55-xm1.bfs.openwave.com:29080</p>
+<p>x-opwv-vdo-vr-poll: vr-call</p>
+<p>..,...,.HTTP/1.1 200 OK</p>
+<p>&nbsp;<p>&nbsp;<p><strong><u>ANDES-CC-INLINECACHING-FUNC-140</u></strong></p>
+<p>&nbsp;<p>&nbsp;<p><strong><u>1) Add to pop list +</u></strong></p>
+<p><strong><u>2) lock video with wget +</u></strong></p>
+<p><strong><u>3) Wait for Max Popular Video Age +</u></strong></p>
+<p><strong><u>4) try to add to pop list again</u></strong></p>
+<p>&nbsp;
+</p></body></html>

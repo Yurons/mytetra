@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>How to tar.gz</strong></span></span></p>
+<p>by <a href="http://www.nish.com/author/nish/">Nish Vamadevan</a> on 08/07/2006 · <a href="http://www.nish.com/2006/07/how-to-targz/#comments">0 comments</a></p>
+<p>If you are in the same directory as where your files / folders are placed, then you dont have to specify the file location. i.e. <span style="font-family:Courier New,courier;">/usr/home/bleh/bleh</span></p>
+<p><span style="font-family:Sans Serif;">This is how to make a .tar.gz from a Folder</span></p>
+<p><span style="font-family:Courier New,courier;">tar czf /path/to/output/folder/filename.tar.gz /path/to/folder</span></p>
+<p><span style="font-family:Sans Serif;">i.e if you are in</span></p>
+<p><span style="font-family:Courier New,courier;">/path/to/output/</span></p>
+<p><span style="font-family:Sans Serif;">and you want to put the file in /path/to/output/ you can use the following command.</span></p>
+<p><span style="font-family:Courier New,courier;">tar czf filename.tar.gz folder</span></p>
+<p><span style="font-family:Sans Serif;">This is how to extract a .tar.gz file</span></p>
+<p><span style="font-family:Courier New,courier;">gunzip -c /path/to/folder/filename.tar.gz</span></p>
+<p><span style="font-family:Sans Serif;">or like i do…</span></p>
+<p><span style="font-family:Courier New,courier;">tar -zxvf /path/to/folder/filename.tar.gz</span></p>
+<p><span style="font-family:Sans Serif;">i.e if you are in</span></p>
+<p><span style="font-family:Courier New,courier;">/path/to/folder/</span></p>
+<p><span style="font-family:Sans Serif;">You can do the following…</span></p>
+<p><span style="font-family:Courier New,courier;">tar -zxvf filename.tar.gz</span></p>
+<p><span style="font-family:Sans Serif;">View a list of all files in a .tar.gz archive</span></p>
+<p><span style="font-family:Courier New,courier;">gunzip -c /path/to/folder/filename.tar.gz | tar -tvf -</span></p>
+<p><span style="font-family:Sans Serif;">i.e if you are in</span></p>
+<p><span style="font-family:Courier New,courier;">/path/to/folder/</span></p>
+<p><span style="font-family:Sans Serif;">You can do the following…</span></p>
+<p><span style="font-family:Courier New,courier;">gunzip -c filename.tar.gz | tar -tvf -</span></p>
+<p><span style="font-family:Sans Serif;">Extract a single file from a .tar.gz file</span></p>
+<p><span style="font-family:Courier New,courier;">gunzip -c /path/to/folder/filename.tar.gz | tar -xvf - path/within/archive/filename.php</span></p>
+<p><span style="font-family:Sans Serif;">i.e if you are in</span></p>
+<p><span style="font-family:Courier New,courier;">/path/to/folder/</span></p>
+<p><span style="font-family:Sans Serif;">You can do the following…</span></p>
+<p><span style="font-family:Courier New,courier;">gunzip -c filename.tar.gz | tar -xvf - path/within/archive/filename.php</span></p>
+<p><span style="font-family:Sans Serif;">You can also add a date stamp to the tarball by using the following example below…</span></p>
+<p><span style="font-family:Courier New,courier;">tar -czf public_html-`date +%d%m%y`.tar.gz public_html </span></p>
+
+</p></body></html>

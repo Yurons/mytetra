@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>Re: Монтирование образа шифрованного раздела</strong> </span></span></p>
+<p><span style="font-family:Courier New,courier;">1. Смонтировать файд-образ через loop устройство</span></p>
+<p>  losetup /dev/loop0 /полный_путь_к_файлу_образа</p>
+<p>2. Если внутри образа единственный раздел, установить защищенное отображение</p>
+<p>  cryptsetup luksOpen /dev/loop0 loop0</p>
+<p>2а. если внутри образа шифрованный раздел начинается не с самого</p>
+<p> начала, выяснить смещение нужного раздела с помощью fdisk</p>
+<p>  fdisk /dev/loop0</p>
+<p>  u (смена единиц измерения на сектора)</p>
+<p>  p (печать таблицы разделов)</p>
+<p>(записать смещение шифрованного раздела от начала)</p>
+<p>  установить отображение с опцией --offset</p>
+<p>  cryptsetup luksOpen --offset записанное_смещение_от_начала_образа /dev/loop0 loop0</p>
+<p>3. Смонтировать ФС на чтение:</p>
+<p>mount -t auto /dev/mapper/loop0 /mnt/Мой_образ</p>
+<p>&nbsp;<p>Примечания: если в действительности внутри образа есть еще тома LVM,</p>
+<p> то ситуация более трудная (описывать не буду)</p>
+<p>&nbsp;<p>Полезное чтиво:</p>
+<p>man losetup</p>
+<p>man fdisk</p>
+<p>man cryptsetup </p>
+
+</p></body></html>

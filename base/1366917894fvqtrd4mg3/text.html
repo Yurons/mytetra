@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:16pt;"><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script">Writing A SlackBuild Script</a> </span></span></p>
+<p><span style="font-size:9pt;">Jump to: <a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#column-one">navigation</a>, <a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#searchInput">search</a> </span></p>
+<p><p>&nbsp;</p>
+<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong>Contents</strong></p>
+<p> [</p>
+<p><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#" name="togglelink">h</a><span style="color:#0000ff;"><u>ide</u></span>] </p>
+<ul type="disc">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Introduction">1 Introduction</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#The_Slackware_package_structure">2 The Slackware package structure</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Setting_up_your_build_environment">3 Setting up your build environment</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Getting_Started">4 Getting Started</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Writing_the_slack-desc_file">5 Writing the slack-desc file</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Writing_the_SlackBuild_script">6 Writing the SlackBuild script</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Initial_Setup">6.1 Initial Setup</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Extract_Sources">6.2 Extract Sources</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Configure_and_Compile_Sources">6.3 Configure and Compile Sources</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Install_Documentation">6.4 Install Documentation</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Final_Touches">6.5 Final Touches</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Build_the_Package">6.6 Build the Package</a></li>
+<ul type="disc">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Other_Concerns">7 Other Concerns</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#DESTDIR_Option_Not_Available">7.1 DESTDIR Option Not Available</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Example_1:">7.1.1 Example 1:</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Example_2:">7.1.2 Example 2:</a></li>
+
+<ul type="circle">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Patching_the_Sources">7.2 Patching the Sources</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Obtaining_the_Patch">7.2.1 Obtaining the Patch</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#Applying_the_Patch">7.2.2 Applying the Patch</a></li>
+<ul type="disc">
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#See_Also">8 See Also</a></li>
+<li><a href="http://www.slackwiki.com/Writing_A_SlackBuild_Script#SlackBuild_Script_Repositories">9 SlackBuild Script Repositories</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</td></tr></table><p>&nbsp;<p><strong>Introduction </strong></p>
+<p><span style="font-family:Courier New,courier;">Originally written by Florian Mueller jjdm@jjdm.org</span></p>
+<p>Substantial cleanup and enhancement by Robby Workman (rworkman)</p>
+<p><span style="font-family:Sans Serif;">If you use slackware as your main operating system, you have probably wanted to install quite a few applications which are not available in the official slackware.com or even third-party repositories like linuxpackages.net, or perhaps you just don't like using third-party packages. In this situation, you have several options on how to install the application: </span></p>
+<p><span style="font-family:Courier New,courier;">* ./configure &amp;&amp; make &amp;&amp; make install</span></p>
+<p>* use checkinstall</p>
+<p>* use installwatch</p>
+<p>* compile and use makepkg by hand</p>
+<p>* write a SlackBuild script</p>
+<p><span style="font-family:Sans Serif;">I will go through the last option: writing <a href="http://www.slackwiki.com/SlackBuild_Scripts">SlackBuild Scripts</a> (which combines the best qualities of all the other aforementioned methods). With a SlackBuild script, you have the build process automated, which will allow you to easily do later upgrades or patches to the package. SlackBuild scripts are also the method by which Patrick Volkerding builds all of the official packages for Slackware. If you look at the various scripts from different sources, you will notice that there is generally an application-independent portion of a script and an application-specific portion of the script. </span></p>
+<p>I cannot teach you how to build the &quot;perfect&quot; package, as reaching that goal requires fairly in-depth knowledge of the Slackware operating system. You must consider the interactions of your proposed package with all of the other packages within the distribution; they must be integrated seamlessly. What I can teach you is how to build a package that works and which stays true to the &quot;Slackware Way.&quot; </p>
+<p>&quot;But it takes so much time!&quot; </p>
+<p>It will take approximately thirty minutes to go through this tutorial and about fifteen minutes to create each package (actual compile process not included), but the time you save in the future (you want to create a newer version of the package) makes the initial time expenditure worth it. </p>
+<p><strong>The Slackware package structure </strong></p>
+<p>See <a href="http://www.slackwiki.com/Packages#Slackware_Package_Layout">Packages#Slackware Package Layout</a> </p>
+<p><strong>Setting up your build environment </strong></p>
+<p>See <a href="http://www.slackwiki.com/Build_Environment">Build_Environment</a> for examples of how various users do this. </p>
+<p><strong>Getting Started </strong></p>
+<p>Hopefully, everything is now clear about Slackware package structure, and you have set up a clean build environment, so we'll begin the process of building a package with a SlackBuild script. </p>
+<p>For this example, we'll create a package of latex2html - I made my homepage with that tool. </p>
+<p>First, you have to create a directory named &lt;build_environment&gt;/latex2html/. Get the most recent source code release of latex2html place it in this directory. Note that use of wget below to obtain the most recent source code is optional - you can just as well use your favorite web browser to download it, and then move it into the correct directory. </p>
+<p><span style="font-family:Courier New,courier;">$ cd &lt;build_environment&gt;</span></p>
+<p>$ mkdir latex2html</p>
+<p>$ cd latex2html</p>
+<p>$ wget <a href="http://www.latex2html.org/%7Elatex2ht/current/latex2html-2002-2-1.tar.gz">http://www.latex2html.org/~latex2ht/current/latex2html-2002-2-1.tar.gz</a> # 03.27.2012</p>
+<p><span style="font-family:Sans Serif;">Next, we'll create some other needed files with touch. If you're not familiar with touch, see: </span></p>
+<p><span style="font-family:Courier New,courier;">man touch</span></p>
+<p><span style="font-family:Sans Serif;">Note that the *.SlackBuild file will always contain the name of the application for which it's written; for example, gaim would have gaim.SlackBuild. </span></p>
+<p><span style="font-family:Courier New,courier;">$ touch latex2html.SlackBuild</span></p>
+<p>$ touch slack-desc</p>
+<p><span style="font-family:Sans Serif;">Extract the source code of the application, because we'll need to look at the configure script later on to determine what options we need to pass to it. </span></p>
+<p><span style="font-family:Courier New,courier;">$ tar -xzf latex2html-2002-2-1.tar.gz || exit 1</span></p>
+<p><strong><span style="font-family:Sans Serif;">Writing the slack-desc file </span></strong></p>
+<p>See this <a href="http://www.slackwiki.com/Slack-desc">Slack-desc</a> page on SlackWiki.org for instructions on how to write a proper slack-desc file. </p>
+<p><strong>Writing the SlackBuild script </strong></p>
+<p>This is the section which takes the most time, and I'll go through it with you step by step. When you build more packages, you'll probably be able to just copy an existing SlackBuild script and customize it. First, you need to understand that you can write your SlackBuild script in any manner you choose so long as it creates a working package; the method described here is more or less the way Pat Volkerding [<a href="http://slackware.com/%7Evolkerdi">[1]</a>] does it, but even Pat has several different styles for writing the official SlackBuild scripts. Therefore, if you see something you would do a different way, feel free to do it that way - it's okay. </p>
+<p><strong>Initial Setup</strong></p>
+<p>Open the file latex2html.SlackBuild with your favourite editor. What follows below is a piece by piece walk-through of a working SlackBuild script. You may certainly paste the exact contents of those pieces, but in the author's opinion, you have a better chance of understanding it if you write everything yourself. </p>
+<p>First, you'll need to set your shell interpreter. This should be /bin/sh, as *every* Slackware system is guaranteed to have this shell installed, and you want maximum portability. For this same reason, be careful not to use any extensions and/or syntax that is customized for your particular shell (bash, zsh, or whatever), as it won't be interpreted correctly. The '-e' flag tells the shell to exit on any error; this helps with both debugging your script as well as ensuring your script does not proceed in an unknown state. </p>
+<p><span style="font-family:Courier New,courier;">#!/bin/sh -e</span></p>
+<p><span style="font-family:Sans Serif;">You might want to include a license of some sort with your SlackBuild script (preferably a GPL or BSD-style license), but at a minimum, you'll want something like this: </span></p>
+<p><span style="font-family:Courier New,courier;">#&lt;your name&gt; revision date yyyy/mm/dd</span></p>
+<p><span style="font-family:Sans Serif;">With the next few lines, we set some variables that will be used throughout the script. First is the &quot;CWD&quot; variable; in our case, CWD will be &lt;build_environment&gt;/latex2html/. We also test if the TMP variable is set, and if not, we set it to /tmp. </span></p>
+<p><span style="font-family:Courier New,courier;">#Set initial variables:	</span></p>
+<p>&nbsp;<p>CWD=$(pwd)</p>
+<p>if [ &quot;$TMP&quot; = &quot;&quot; ]; then</p>
+<p>  TMP=/tmp</p>
+<p>fi</p>
+<p><span style="font-family:Sans Serif;">Some people like to build in a subdirectory of /tmp (such as /tmp/build), but that's up to you. </span></p>
+<p><span style="font-family:Courier New,courier;"># The version which appears in the application's filename</span></p>
+<p>VERSION=2002-2-1 	</p>
+<p>&nbsp;<p># If the version conflicts with the Slackware package standard</p>
+<p># The dash character (&quot;-&quot;) is not allowed in the VERSION string</p>
+<p># You can set the PKG_VERSION to something else than VERSION</p>
+<p>PKG_VERSION=2002.2.1 # the version which appears in the package name. </p>
+<p>&nbsp;<p>ARCH=${ARCH:-i486} # the architecture on which you want to build your package	</p>
+<p>&nbsp;<p># First digit is the build number, which specifies how many times it has been built.	</p>
+<p># Second string is the short form of the authors name, typical three initials:w</p>
+<p>BUILD=${BUILD:-1_rlw}</p>
+<p>&nbsp;<p># The application's name</p>
+<p>APP=latex2html</p>
+<p>&nbsp;<p># The installation directory of the package (where its actual directory</p>
+<p># structure will be created) </p>
+<p>PKG=$TMP/package-$APP</p>
+<p><span style="font-family:Sans Serif;">Set SLKCFLAGS (which will be used for both CFLAGS and CXXFLAGS). If you are building on a system with an earlier version of gcc than 3.4.x, then you'll need to use &quot;-mcpu&quot; instead of &quot;-mtune&quot; below. </span></p>
+<p><span style="font-family:Courier New,courier;">if [ &quot;$ARCH&quot; = &quot;i486&quot; ]; then</span></p>
+<p>  SLKCFLAGS=&quot;-O2 -march=i486 -mtune=i686&quot;</p>
+<p> elif [ &quot;$ARCH&quot; = &quot;x86_64&quot; ]; then</p>
+<p>  SLKCFLAGS=&quot;-O2 -fPIC&quot;</p>
+<p>fi</p>
+<p><span style="font-family:Sans Serif;">The section just finished sets up a few application-specific variables. When you want to create a package of some other application, you can usually just change the variables, and most of the further steps will work automatically. </span></p>
+<p><strong>Extract Sources </strong></p>
+<p><span style="font-family:Courier New,courier;"># Delete the leftover directories if they exist (due to a previous build)</span></p>
+<p># and (re)create the packaging directory</p>
+<p>rm -rf $PKG </p>
+<p>mkdir -p $TMP $PKG</p>
+<p>rm -rf $TMP/$APP-$VERSION</p>
+<p>&nbsp;<p># Change to the TMP directory</p>
+<p>cd $TMP || exit 1</p>
+<p> </p>
+<p># Extract the application source in TMP</p>
+<p># Note: if your application comes as a tar.bz2, you need tar -jxvf</p>
+<p>tar -zxvf $CWD/$APP-$VERSION.tar.gz || exit 1</p>
+<p>&nbsp;<p># Change to the application source directory</p>
+<p>cd $APP-$VERSION || exit 1</p>
+<p> </p>
+<p># Change ownership and permissions if necessary</p>
+<p># This may not be needed in some source tarballs, but it never hurts</p>
+<p>chown -R root:root .</p>
+<p>chmod -R u+w,go+r-w,a-s .</p>
+<p><strong><span style="font-family:Sans Serif;">Configure and Compile Sources</span></strong></p>
+<p><span style="font-family:Courier New,courier;"># Set configure options</span></p>
+<p># If your app is written in C++, you'll also need to add a line for CXXFLAGS</p>
+<p>CFLAGS=&quot;$SLKCFLAGS&quot; \</p>
+<p>  ./configure \</p>
+<p>  --prefix=/usr \</p>
+<p>  --sysconfdir=/etc \</p>
+<p>  --localstatedir=/var \</p>
+<p>  --with-perl=/usr/bin/perl \</p>
+<p>  --enable-eps \</p>
+<p>  --enable-gif \</p>
+<p>  --enable-png \</p>
+<p>  --build=$ARCH-slackware-linux \</p>
+<p>  --host=$ARCH-slackware-linux </p>
+<p>&nbsp;<p># compile the source, but exit if anything goes wrong</p>
+<p>make || exit</p>
+<p> </p>
+<p># Install everything into the package directory, but exit if anything goes wrong</p>
+<p>make install DESTDIR=$PKG || exit</p>
+<p><span style="font-family:Sans Serif;">There are three configure options I always set: </span></p>
+<ul type="disc">
+<li>--prefix=/usr </li>
+<li>--sysconfdir=/etc </li>
+<li>--localstatedir=/var </li>
+</ul>
+<p>This makes configuration files go to /etc, state files (such as log files) go to /var, and the rest goes to /usr. That's the usual Slackware way, but it's your system, so you can certainly install everything in /usr/local or some other location. See the Unix Filesystem Hierarchy Standard [<a href="http://www.pathname.com/fhs/">[2]</a>] for more information on &quot;correct&quot; locations of various filetypes. </p>
+<p>You notice that there were several other options passed to the configure script, and for each application you compile, you have to figure those out for yourself - that's why you were told to extract the sources earlier in this process. You simply cd into the source directory and run: </p>
+<p><span style="font-family:Courier New,courier;">./configure --help</span></p>
+<p><span style="font-family:Sans Serif;">This will produce a page or two (sometimes more, though) of information about various options that are specific to the application. Read through this information and figure out what you need (I like to pipe that command through lpr to get a printed copy, but you can certainly use some sort of pager as well: </span></p>
+<p><span style="font-family:Courier New,courier;">./configure --help | lpr</span></p>
+<p>./configure --help | less</p>
+<p><span style="font-family:Sans Serif;">The DESTDIR variable is very important in this script because it specifies the directory in which the files should be installed. This should always be our package directory ($PKG). Unfortunately, some applications' Makefiles will not support the DESTDIR variable, so you can't use it for those apps. A simple line like this: </span></p>
+<p><span style="font-family:Courier New,courier;">grep DESTDIR Makefile*</span></p>
+<p><span style="font-family:Sans Serif;">while inside the source directory should tell you whether it supports DESTDIR or not. If you get some lines of output with $DESTDIR in them, you're in good shape. If the command returns no output, then the Makefile does not support the DESTDIR variable. </span></p>
+<p>Here's a piece of advice: ALWAYS go through the ./configure &amp;&amp; make &amp;&amp; make install DESTDIR=/somedir process manually and as a NORMAL USER account BEFORE you run your SlackBuild script. There are quite a few applications out there which try to do &quot;funny stuff&quot; during the installation phase. </p>
+<p><span style="font-family:Courier New,courier;">For example, apcupsd will attempt to patch your /etc/rc.d/rc.6 init script</span></p>
+<p>Yes, it's possible to avoid this with a configure option, but it's not obvious that you would need</p>
+<p>to do so until you look at all of the Makefiles for apcupsd (or watch the install process)</p>
+<p><span style="font-family:Sans Serif;">Anyway, if you go through the process as a normal user, you will get &quot;Permission Denied&quot; errors and such if the install process tries to write anywhere it's not allowed to do so. </span></p>
+<p><strong>Install Documentation </strong></p>
+<p><span style="font-family:Courier New,courier;"># Create a directory for documentation</span></p>
+<p>mkdir -p $PKG/usr/doc/$APP-$VERSION</p>
+<p>&nbsp;<p># Copy documentation to the docs directory and fix permissions</p>
+<p>cp -a BUGS Changes FAQ INSTALL LICENSE MANIFEST README TODO docs/ $PKG/usr/doc/$APP-$VERSION</p>
+<p>find $PKG/usr/doc/$APP-$VERSION -type f -exec chmod 644 {} \;</p>
+<p><span style="font-family:Sans Serif;">I (rworkman) also like to place a copy of my SlackBuild script in this directory </span></p>
+<p><span style="font-family:Courier New,courier;">cat $CWD/$APP.SlackBuild &gt; $PKG/usr/doc/$APP-$VERSION/$APP.SlackBuild</span></p>
+<p><span style="font-family:Sans Serif;">Make sure you look inside the actual source archive of the application, because some applications won't have all of the documentation files specified above, and some applications will have additional files. In other words, don't just copy/paste what you see above into your SlackBuild script - you *must* customize this section for each individual application. </span></p>
+<p><strong>Final Touches </strong></p>
+<p><span style="font-family:Courier New,courier;"># Create the ./install directory and copy the slack-desc into it</span></p>
+<p>mkdir -p $PKG/install</p>
+<p>cat $CWD/slack-desc &gt; $PKG/install/slack-desc</p>
+<p><span style="font-family:Sans Serif;">NOTE: In some cases, you will have some sort of command or setup that needs to run after the package contents are installed - for this, you would add a file to $CWD called &quot;doinst.sh&quot; which contains the needed commands, and then compress that file with gzip. The SlackBuild script will zcat (which means to gunzip and cat its contents) that file and write the output to a doinst.sh file in the $PKG/install directory. </span></p>
+<p><span style="font-family:Courier New,courier;"># Add doinst.sh to package (if it exists)</span></p>
+<p>if [ -e $CWD/doinst.sh.gz ]; then</p>
+<p>  zcat $CWD/doinst.sh.gz &gt; $PKG/install/doinst.sh</p>
+<p>fi</p>
+<p><span style="font-family:Sans Serif;">Let's conserve space if we can; strip libraries and binaries and compress man pages with gzip Note that you might be able to use &quot;make install-strip&quot; instead of &quot;make install&quot; above instead to accomplish the same purpose </span></p>
+<p><span style="font-family:Courier New,courier;"># Strip some libraries and binaries</span></p>
+<p>( cd $PKG</p>
+<p>   find . | xargs file | grep &quot;executable&quot; | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2&gt; /dev/null</p>
+<p>   find . | xargs file | grep &quot;shared object&quot; | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2&gt; /dev/null</p>
+<p>)</p>
+<p>&nbsp;<p># Compress man pages if they exist</p>
+<p>if [ -d $PKG/usr/man ]; then</p>
+<p>  ( cd $PKG/usr/man</p>
+<p>  find . -type f -exec gzip -9 {} \;</p>
+<p>  for i in $(find . -type l) ; do ln -s $(readlink $i).gz $i.gz ; rm $i ; done</p>
+<p>  ) </p>
+<p>fi</p>
+<p>&nbsp;<p># Compress info pages if they exist (and remove the dir file)</p>
+<p>if [ -d $PKG/usr/info ]; then</p>
+<p>  gzip -9 $PKG/usr/info/*.info</p>
+<p>  rm -f $PKG/usr/info/dir</p>
+<p>fi</p>
+<p><strong><span style="font-family:Sans Serif;">Build the Package </span></strong></p>
+<p><span style="font-family:Courier New,courier;"># Build the package</span></p>
+<p>cd $PKG</p>
+<p>/sbin/makepkg -l y -c n $TMP/$APP-$PKG_VERSION-$ARCH-$BUILD.tgz</p>
+<p><strong><span style="font-family:Sans Serif;">Other Concerns </span></strong></p>
+<p><strong>DESTDIR Option Not Available </strong></p>
+<p>As mentioned above, there are quite a few applications whose Makefiles do not support the DESTDIR option for make install. On some applications the DESTDIR Makefile variable has another name. For example, some Qt applications use the variable INSTALL_ROOT for the same purpose. If you can understand Makefiles, it is probably worth your time to take a look at its contents and try to find out which actions are performed in the install rule. Sometimes there will be no DESTDIR equivalent at all. The <strong>best</strong> thing you can do in this situation is write a patch for the Makefile.in or equivalent, and submit it to the developer(s) for inclusion in the source, but I realize that everyone doesn't have the ability to do that. The second best thing you can do it write to the developer(s) and ask them to include that functionality in future releases. In the meantime, here are some thoughts on the subject... </p>
+<p><strong>Example 1: </strong></p>
+<p>Configure the build with: </p>
+<p><span style="font-family:Courier New,courier;">./configure --prefix=$PKG/usr</span></p>
+<p><span style="font-family:Sans Serif;">along with your other configure options. This will install *all* of the package contents in that directory. If the package creates $PKG/usr/etc and $PKG/usr/var directories (or any other directories that should be elsewhere), you can probably just move them to their correct location within the package directory tree and everything will be fine. You might also try this along with your other configure options. </span></p>
+<p><span style="font-family:Courier New,courier;">./configure --prefix=$PKG/usr \</span></p>
+<p>   --sysconfdir=$PKG/etc \</p>
+<p>   --localstatedir=$PKG/var </p>
+<p><span style="font-family:Sans Serif;">There are some applications, however, which &quot;hard-code&quot; configuration files based on configure/Makefile parameters. In those cases, you'll have to figure out a way to patch the config file prior to packaging it, or in worst-case scenario, include instructions for the end user on how to make the necessary changes. </span></p>
+<p><strong>Example 2: </strong></p>
+<p>This example makes use of the ability to override any Makefile variable, which is called a <strong>macro</strong> in the Makefile terminology, on the command line and not have to worry about patching the Makefile to include a <strong>DESTDIR</strong> macro in the Makefile. This approach makes it a bit easier for those not familiar with Makefiles. </p>
+<p>If the Makefile does not honor <strong>DESTDIR</strong> for the 'make install' command, you can change the prefix macro, instead: </p>
+<p><span style="font-family:Courier New,courier;">make prefix=$PKG/usr install</span></p>
+<p><span style="font-family:Sans Serif;">This will override the $(prefix) variable inside the Makefile and install to the location you supplied on the command line. Therefore, you can configure with the standard <em>./configure --prefix=/usr</em> (or <em>./configure --prefix=/usr/local</em>) syntax, yet install to a different location as if you supplied a <em>DESTDIR=$PKG/usr</em> for the 'make install' command. </span></p>
+<p>IMPORTANT NOTE: Macro names are case-sensitive (at least for GNU make). Some Makefiles may use a &quot;<strong>PREFIX =</strong>&quot; macro instead of the usual &quot;<strong>prefix =</strong>&quot;, so the 'make install' command would look like this: </p>
+<p><span style="font-family:Courier New,courier;">make PREFIX=$PKG/usr install</span></p>
+<p><span style="font-family:Sans Serif;">Therefore, it's necessary to look inside the Makefile to be sure which form was used for the prefix. For large, complex makefiles, the easiest way is to 'grep' the Makefile, like so: </span></p>
+<p><span style="font-family:Courier New,courier;">grep -i '^prefix \?=' Makefile{,.in}</span></p>
+<p><span style="font-family:Sans Serif;">The <em>-i</em> option makes the search case-insensitive and the <em>{,.in}</em> part at the end will search &quot;Makefile&quot; or &quot;Makefile.in&quot; files, the second one being a template for the &quot;configure&quot; script. Grep's search term is a basic regular expression, so the escaped question mark after the space (\?) means there may or may not be a space in between when searching. </span></p>
+<p>Once in a while, there may be a &quot;<strong>PREFIX =</strong>&quot; in a Makefile that is not defined which you are to edit and supply the location. Use the usual <em>/usr</em> (or <em>/usr/local</em>), in this case, and then use 'make PREFIX=$PKG/usr install' to install to the package's build location. </p>
+<p><strong>Patching the Sources </strong></p>
+<p>Sooner or later, there will be some reason to patch the source code prior to building a package, and you'll want to be able to do this automatically. </p>
+<p><strong>Obtaining the Patch </strong></p>
+<p>In most cases, the patch will be provided by the author of the source code, so we're not going to discuss patch *creation* here. Download the patch and place it in the same directory as the SlackBuild script, slack-desc file, and other related files (in $CWD from above). </p>
+<p><span style="font-family:Courier New,courier;">$ wget <a href="http://someapplication.org/files/patches/bigsecuritypatch.diff">http://someapplication.org/files/patches/bigsecuritypatch.diff</a></span></p>
+<p><span style="font-family:Sans Serif;">It's not necessary to do the next step, but because developers generally want to conserve space if possible, it's conventional to do this: </span></p>
+<p><span style="font-family:Courier New,courier;">$ gzip -9 bigsecuritypatch.diff</span></p>
+<p><span style="font-family:Sans Serif;">This will result in a new file called bigsecuritypatch.diff.gz -- we'll use that in the SlackBuild script in just a moment. </span></p>
+<p><strong>Applying the Patch </strong></p>
+<p>You will now need to edit your &lt;application&gt;.SlackBuild script so that it applies the patch before it runs configure, make, and make install. To do this, you'll want something like this to run before the configure script, but after extracting the sources: </p>
+<p><span style="font-family:Courier New,courier;">zcat $CWD/bigsecuritypatch.diff.gz | patch -p1 || exit</span></p>
+<p><span style="font-family:Sans Serif;">Depending on how the patch was created, you might use a different patchlevel on that line, as in: </span></p>
+<p><span style="font-family:Courier New,courier;">zcat $CWD/bigsecuritypatch.diff.gz | patch -p0 || exit</span></p>
+<p><span style="font-family:Sans Serif;">It's a bit beyond the scope of this HOWTO, but essentially, the -p# specifies the number of trailing directories to skip when looking for the file to patch. You'll often need to skip the top-level directory, but not always (hence the -p0). </span></p>
+<p><strong>See Also </strong></p>
+<ul type="disc">
+<li><a href="http://www.slackwiki.com/SlackBuild_Scripts">SlackBuild_Scripts</a> </li>
+<li><a href="http://www.slackwiki.com/Different_Approach_To_Buildscripts">Different_Approach_To_Buildscripts</a> </li>
+<li><a href="http://www.slackwiki.com/Building_A_Package">Building_A_Package</a> </li>
+<li><a href="http://www.slackwiki.com/Slack-desc">Slack-desc</a> </li>
+<li><a href="http://www.slackwiki.com/Checkinstall">Checkinstall</a> </li>
+<li><a href="http://www.slackwiki.com/Compiling">Compiling</a> </li>
+</ul>
+<p><strong>SlackBuild Script Repositories </strong></p>
+<ul type="disc">
+<li><a href="http://slackbuilds.org">http://slackbuilds.org</a> </li>
+<li><a href="http://www.slackware.com/%7Ealien/slackbuilds/">http://www.slackware.com/~alien/slackbuilds/</a> </li>
+<li><a href="http://slackbuilds.slackadelic.com/">http://slackbuilds.slackadelic.com/</a> </li>
+<li><a href="http://slackbuilds.rlworkman.net/">http://slackbuilds.rlworkman.net/</a> </li>
+</ul>
+<p> </p>
+
+</p></body></html>

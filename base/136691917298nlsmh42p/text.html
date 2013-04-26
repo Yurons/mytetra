@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml">Как в Linux привязать процесс к CPU и установить атрибуты планирования</a> </span></span></strong></p>
+</td><td width="" colspan="1" rowspan="1"><p align="right" >[<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#top">исправить</a>]</p>
+</td></tr><tr><td width="" colspan="2" rowspan="1"><p><span style="font-family:Courier New,courier;">При необходимости увеличить производительность определенного процесса в системе, </span></p>
+<p>можно жестко привязать его к определенному CPU (CPU affinity), исключив </p>
+<p>ситуацию мигрирования между процессорами, а также изменить для него алгоритм работы </p>
+<p>планировщика задач и увеличить приоритет.</p>
+<p>&nbsp;<p>Привязка к CPU осуществляется командой taskset, а изменение параметров  real-time </p>
+<p>планирования командой chrt. Обе команды можно использовать каскадно, вызывая </p>
+<p>одну в качестве аргумента другой. </p>
+<p>&nbsp;<p>Например:</p>
+<p>&nbsp;<p><span style="color:#461b7e;">   taskset -c 2-3 chrt -f 1 &lt;command&gt;</span></p>
+<p>&nbsp;<p>привяжет выполнение команды к CPU со 2 по 3 (&quot;-c 2-3&quot;, можно перечислять </p>
+<p>процессоры через запятую, например, &quot;-c 2,3&quot;), а также задействует политику </p>
+<p>планирования SCHED_FIFO (&quot;-f&quot;) и установит приоритет 1 уровня. </p>
+<p>&nbsp;<p>Политики планирования (описание - man sched_setscheduler):</p>
+<p>   -b SCHED_BATCH</p>
+<p>   -f SCHED_FIFO </p>
+<p>   -o SCHED_OTHER</p>
+<p>   -r SCHED_RR </p>
+<p>&nbsp;<p>Изменение параметров для уже запущенного процесса производится при помощи опции &quot;-p&quot;. </p>
+<p>Например, изменение параметров процесса с PID 123:</p>
+<p>   taskset -c 2-3 -p 123</p>
+<p>   chrt -f 1 -p 123</p>
+<p>&nbsp;</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;">как такое замутить в FreeBSD? </p>
+<p>&nbsp;</span></p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#3" name="3">2</a><span style="color:#606060;"><u>.3</u></span>, <a href="http://www.opennet.ru/%7Egrayich">grayich</a>, 03:48, 14/03/2008 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#1">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=3">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#3">смотреть все</a>] </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_3">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>man rtprio  для приоритета </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#9" name="9">3</a><span style="color:#00a000;"><u>.9</u></span></strong>, <a href="http://www.opennet.ru/%7E%E1%CE%CF%CE%C9%CD">Аноним</a>, 00:52, 17/03/2008 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#3">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=9">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#9">смотреть все</a>] </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_9">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p><span style="color:#606060;">неа, man cpuset DESCRIPTION The cpuset command can be used to assign proces... </span><span style="color:#a07070;">весь текст скрыт</span><span style="color:#606060;"> [</span><a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=show_thread&om=40639&forum=vsluhforumID3&omm=9">показать</a>]</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;</td></tr></table><p>&nbsp;</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#2" name="2">1</a><u>.2</u>, <a href="http://www.opennet.ru/%7Eeee">eee</a>, 00:27, 14/03/2008 [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=2">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#2">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_2">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>Может такое подойдет для serial портов? Информация теряется, нехватает реал-тайма. Я уже rtlinux хотел ставить. </p>
+<p>&nbsp;</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#4" name="actshow_0_2">1</a><span style="color:#606060;"><u>.4</u></span>, <a href="http://www.opennet.ru/%7Ei">i</a>, 08:54, 14/03/2008 [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=4">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#4">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_4">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>у меня от этих манипуляций некоторые процессы перешли в состояние uninterrapt sleep :( </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#5" name="actshow_0_3">1</a><span style="color:#606060;"><u>.5</u></span>, <a href="http://www.opennet.ru/%7Epavlinux">pavlinux</a>, 13:35, 14/03/2008 [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=5">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#5">смотреть все</a>]  </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_5">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p><span style="color:#606060;">bin bash DEV_IRQ ps -eL 124 grep IRQ 124 awk printf 1 ... </span><span style="color:#a07070;">весь текст скрыт</span><span style="color:#606060;"> [</span><a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=show_thread&om=40639&forum=vsluhforumID3&omm=5">показать</a>]</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.gravatar.com/avatar/98c017725cab784c97fc195663fd18e7?size=40&d=http%3A%2F%2Fwww.opennet.ru%2Fp.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#6" name="6">2</a><u>.6</u>, <a href="http://www.opennet.ru/%7Epavlinux">pavlinux</a>, 13:52, 14/03/2008 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#5">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=6">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#6">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_6">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>1. Установить патчик <a href="http://www.kernel.org/pub/linux/kernel/projects/rt/patch-2.6.24.3-rt3.bz2">http://www.kernel.org/pub/linux/kernel/projects/rt/patch-2.6.24.3-rt3.bz2</a> 2. Смотреть мануал на своб материнку, чипсет, и т.п. на предмет кто на каком CPU работает. (этот пример для вот этой матери - <a href="http://tyan.com/product_board_detail.aspx?pid=151">http://tyan.com/product_board_detail.aspx?pid=151</a>) 3. User-space приложения лучше не chrt_аймить, ну если надо, то не более -f  -p 2 'pidof foo', смотреть на nice level, демоны не связанные с железом тоже не надо, artsd - можно. </p>
+<p><p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.gravatar.com/avatar/98c017725cab784c97fc195663fd18e7?size=40&d=http%3A%2F%2Fwww.opennet.ru%2Fp.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#7" name="7">2</a><span style="color:#606060;"><u>.7</u></span>, <a href="http://www.opennet.ru/%7Epavlinux">pavlinux</a>, 13:54, 14/03/2008 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#5">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=7">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#7">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_7">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>Чуть не забыл, утиль irq-balance тоже не забываем. </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.gravatar.com/avatar/98c017725cab784c97fc195663fd18e7?size=40&d=http%3A%2F%2Fwww.opennet.ru%2Fp.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#10" name="10">2</a><span style="color:#00a000;"><u>.10</u></span></strong>, <a href="http://www.opennet.ru/%7ERush">Rush</a>, 08:59, 02/03/2010 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#5">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=10">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#10">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p>+1 <a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p><span style="color:#606060;">&gt;CPU_1_CORE_1=1 </span><p>&nbsp;&gt;CPU_1_CORE_2=2 <p>&nbsp;&gt;CPU_2_CORE_1=3 <p>&nbsp;&gt;CPU_2_CORE_2=4 </p>
+<p>Я, конечно, дико извиняюсь, но ИМХО должно быть что то вроде CPU_1_CORE_1=1 CPU_1_CORE_2=2 CPU_2_CORE_1=4 CPU_2_CORE_2=8 </p>
+<p>Соответственно, чтобы привязать прерывания, например, к 1-му процессору (невзирая на ядро) CPU_1=3 и, соответственно CPU2=12 </p>
+<p>Я ещё раз прошу прощения, информация чисто только что практически выдумана мной, ибо тысячу лет назад, на заре появления SMP я видел код планировщика, который стопудов по маске смотрел, а не по порядковому номеру. Возможно сейчас всё изменилось (но вряд ли). </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.gravatar.com/avatar/ed05a913e1543db9981e0f599d4a194f?size=40&d=http%3A%2F%2Fwww.opennet.ru%2Fp.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#11" name="11">3</a><span style="color:#00a000;"><u>.11</u></span></strong>, <a href="http://www.opennet.ru/%7Epavlinux">pavlinux</a>, 14:09, 02/03/2010 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#10">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=11">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#11">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_11">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p><span style="color:#606060;">&gt;Я, конечно, дико извиняюсь, но ИМХО должно быть что то вроде </span><p>&nbsp;&gt;CPU_1_CORE_1=1 <p>&nbsp;&gt;CPU_1_CORE_2=2 <p>&nbsp;&gt;CPU_2_CORE_1=4 <p>&nbsp;&gt;CPU_2_CORE_2=8 <p>&nbsp;&gt; </p>
+<p>&nbsp;&gt;Соответственно, чтобы привязать прерывания, например, к 1-му процессору (невзирая на ядро) <p>&nbsp;&gt;CPU_1=3 <p>&nbsp;&gt;и, соответственно <p>&nbsp;&gt;CPU2=12 </p>
+<p>Я взирал на ядра :) </p>
+<p>У меня например, на 2-х процессорной матери стоят двух ядерные процы... </p>
+<p>2 сетевушки, EHCI_USB и OHCI_USB, 1 сетевуха конектится на 1 проц, 2 на второй, тоже самое  с USB, так почему бы не разогнать прерывания от USB и Ethernet по разным ядрам... </p>
+<p>CPU_1_CORE_1 = eth0 CPU_1_CORE_2 = uhci_usb CPU_2_CORE_1 = eth1 CPU_2_CORE_2 = ehci_usb </p>
+<p>P.S. Клаву и часы лучше оставить на 0 ядре </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.opennet.ru/p.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#12" name="12">4</a><span style="color:#00a000;"><u>.12</u></span></strong>, <a href="http://www.opennet.ru/%7ERush">Rush</a>, 15:46, 02/03/2010 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#11">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=12">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#12">смотреть все</a>]   </p>
+</td><td width="55" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_12">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p>Вообще наши админы тоже затрахали с этими процессорами и ядрами - ну какая разница сколько там микросхем стоит  - ведь, когда объём памяти спрашивают, имеют ввиду совсем не количество планок :) Главное - ядра(чистыйизумруд) ! </p>
+<p><span style="color:#606060;">&gt;CPU_1_CORE_1=1</span> </p>
+<p>&nbsp;&gt;CPU_1_CORE_2=2 </p>
+<p>&nbsp;&gt;CPU_2_CORE_1=3 </p>
+<p>&nbsp;&gt;CPU_2_CORE_2=4 </p>
+<p>&nbsp;&gt;Я взирал на ядра :) </p>
+<p>Ядра(чистыйизумруд), и это бесспорно, но я имел ввиду ошибку в скрипте: не 1,2,3,4 а 1,2,4,8 ибо это маска, а не номер процессора/ядра :) </p>
+<p>П.С.: читать &quot;изумруд&quot; как &quot;кремний&quot; :) </p>
+<p>&nbsp;</p>
+</td><td width="55" colspan="1" rowspan="2"><p align="right" ><img src="http://www.gravatar.com/avatar/ed05a913e1543db9981e0f599d4a194f?size=40&d=http%3A%2F%2Fwww.opennet.ru%2Fp.gif" width="40" height="40" /></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p> </p>
+</td></tr></table><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="3%" colspan="1" rowspan="1"><p> </p>
+</td><td width="97%" colspan="1" rowspan="1"><p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#13" name="13">5</a><span style="color:#00a000;"><u>.13</u></span></strong>, <a href="http://www.opennet.ru/%7Epavlinux">pavlinux</a>, 17:56, 02/03/2010 [<a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#12">^</a>] [<a href="http://www.opennet.ru/cgi-bin/openforum/vsluhboard.cgi?az=post&om=40639&forum=vsluhforumID3&omm=13">ответить</a>] [<a href="http://www.opennet.ru/openforum/vsluhforumID3/40639.html#13">смотреть все</a>]   </p>
+</td><td width="" colspan="1" rowspan="1"><p><a href="http://www.opennet.ru/tips/1620_schedule_nice_cpu_realtime_proccess.shtml#" name="vt_2_3_40639_13">+</a>/<span style="color:#0000ff;"><u>–</u></span></p>
+</td></tr><tr><td width="" colspan="1" rowspan="1"><p><span style="color:#606060;">&gt;[оверквотинг удален]</span> </p>
+<p>&nbsp;&gt;ядра(чистыйизумруд) ! <p>&nbsp;&gt; </p>
+<p>&nbsp;&gt;&gt;CPU_1_CORE_1=1 </p>
+<p>&nbsp;&gt;&gt;CPU_1_CORE_2=2 </p>
+<p>&nbsp;&gt;&gt;CPU_2_CORE_1=3 </p>
+<p>&nbsp;&gt;&gt;CPU_2_CORE_2=4 </p>
+<p>&nbsp;&gt;&gt;Я взирал на ядра :) </p>
+<p>&nbsp;&gt; </p>
+<p>&nbsp;&gt;Ядра(чистыйизумруд), и это бесспорно, но я имел ввиду ошибку в скрипте: не <p>&nbsp;&gt;1,2,3,4 а 1,2,4,8 ибо это маска, а не номер процессора/ядра :) </p>
+<p>А,... ну да, я их вечно пустаю с утилью taskset </p>
+</td><td width="" colspan="1" rowspan="1"><p>&nbsp;</td></tr></table><p>&nbsp;</td></tr></table><p>&nbsp;</td></tr></table><p>&nbsp;</td></tr></table><p>&nbsp;</td></tr></table><p> </p>
+
+</p></body></html>

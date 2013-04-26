@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"> </span><strong><span style="font-size:22pt;">How to reduce power consumption</span></strong><span style="font-size:9pt;"> </span></span></p>
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p>&nbsp;</td><td width="" colspan="1" rowspan="1"><p>&nbsp;</td></tr></table><p>Reducing system power consumption will extend battery life, reduce system temperature and (on some models) reduce system fan noise. Power consumption can be greatly improved from a stock distribution configuration to a fine tuned system. The general rules are : </p>
+<ul type="disc">
+<li>Unload drivers for unused devices (ie. USB 1.1, Yenta/PCMCIA, Wireless, IRDA, Bluetooth, ...) </li>
+<li>Reduce polling on devices (drives, USB subsystem, nvram, use SATA AN, ...) </li>
+<li>Reduce hard drive activity </li>
+<li>Reduce LCD brightness to the minimum you can stand </li>
+<li>Reduce CPU wakeups, so it can stay longer in deep power saving c-states </li>
+<li>Make use of every hardware devices availables power saving features (AHCI ALPM, USB autosuspend, Alsa and Wireless powersaving modes, HPET timers, ...) </li>
+</ul>
+<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong><span style="font-size:17pt;">Contents</span></strong></p>
+<p><span style="font-size:9pt;"> [</span></p>
+<p><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#" name="togglelink">h</a><span style="color:#0000ff;"><u>ide</u></span>] </p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Tools">1 Tools</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#BIOS_settings">2 BIOS settings</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Enabling_Power_Management">2.1 Enabling Power Management</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Disabling_I.2FO_Ports">2.2 Disabling I/O Ports</a></li>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#CPU">3 CPU</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Kernel_settings_and_patches">4 Kernel settings and patches</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#General_settings">4.1 General settings</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Kernel_boot_and_module_loading_options">4.2 Kernel boot and module loading options</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Useful_Patches">4.3 Useful Patches</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Useful_sysctls">4.4 Useful sysctls</a></li>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#ATA_drives">5 ATA drives</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Hard_Drives">5.1 Hard Drives</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#SATA_Link_Power_Management">5.1.1 SATA Link Power Management</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Laptop_Mode_Tools">5.1.2 Laptop Mode Tools</a></li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Optical_drive">5.2 Optical drive</a></li>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#LCD_Backlight.2FBrightness">6 LCD Backlight/Brightness</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Graphic_controllers">7 Graphic controllers</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#USB_Subsystem">8 USB Subsystem</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#PCMCIA.2FCardBus">9 PCMCIA/CardBus</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Sound">10 Sound</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Intel_HD_Audio">10.1 Intel HD Audio</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Additional_Tweaks">10.2 Additional Tweaks</a></li>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Wireless_Interface">11 Wireless Interface</a> </li>
+
+<ul type="circle">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#intel_wireless">11.1 intel wireless</a></li>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Ethernet_Controler">12 Ethernet Controler</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Bluetooth">13 Bluetooth</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Modem">14 Modem</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#System_Fans">15 System Fans</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Misbehaving_Userland">16 Misbehaving Userland</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#See_Also">17 See Also</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#External_resources">18 External resources</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</td></tr></table><p>&nbsp;<p><strong><span style="font-size:17pt;">Tools</span></strong></p>
+<p><span style="font-size:9pt;">Arjan van de Ven's <a href="http://www.thinkwiki.org/wiki/PowerTOP">PowerTOP</a> utility is a gold mine to improve energy efficiency, but is almost only CPU-oriented. This tool helps to easily detect the top power offenders, both userland and kernel modules, which prevent the use of CPU power saving mechanisms and sometime suggest fixes accordingly. PowerTOP users collected some <a href="http://www.lesswatts.org/projects/powertop/known.php">tips &amp; tricks</a> and an informative <a href="http://www.lesswatts.org/projects/powertop/faq.php">faq</a>. </span></p>
+<p>Alternatively (or complementary) to PowerTOP, running <span style="font-family:Courier New,courier;">strace -p $(pidof yourapp)</span><span style="font-family:Sans Serif;"> for all your favorite or background running applications while they are expected to be idle, will show the misbehaviors. </span></p>
+<p>Beside CPU wakeups, disks spins are also power hungry. To detect what make your disk spinning, </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">sysctl vm.block_dump=1</span></p>
+<p><span style="font-family:Sans Serif;">will list all applications causing disks wakeups on the kernel's dmesg. Other useful tools for this purpose are blktrace, iostat and lm-profiler (from laptop-mode-tools suite). </span></p>
+<p>See also <a href="http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption#Misbehaving_Userland">#Misbehaving Userland</a>. </p>
+<p><strong><span style="font-size:17pt;">BIOS settings</span></strong></p>
+<p><strong><span style="font-size:13pt;">Enabling Power Management</span></strong></p>
+<p><span style="font-size:9pt;">Some Thinkpad BIOS (like 2.08 BIOS on <a href="http://www.thinkwiki.org/wiki/Category:X40">X40</a>) offer two very lame options, with a very misleading online help (saying &quot;Usually not needed&quot;). That's </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">CPU power management: (default disabled)</span></p>
+<p>PCI bus power management: (default disabled)</p>
+<p><span style="font-family:Sans Serif;">You should indeed <em>enable</em> them, else the deepest C3 and C4 ACPI C-states are disabled. </span></p>
+<p><strong><span style="font-size:13pt;">Disabling I/O Ports</span></strong></p>
+<p><span style="font-size:9pt;">The BIOS (at least version 3.11 on <a href="http://www.thinkwiki.org/wiki/Category:X200">X200</a>) can also be used to disable I/O ports, like PCMCIA/CardBus. Although this requires a reboot to change settings, using the BIOS rather than a configuration file will survive distribution changes and may make it easier to remember how to re-enable a port. Disabling these devices can reduce power consumption by several watts. </span></p>
+<p><strong><span style="font-size:17pt;">CPU</span></strong></p>
+<p><span style="font-size:9pt;">Look at: </span></p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_make_use_of_Dynamic_Frequency_Scaling">How to make use of Dynamic Frequency Scaling</a> </li>
+<li><a href="http://www.thinkwiki.org/wiki/Pentium_M_undervolting_and_underclocking">Pentium M undervolting and underclocking</a> </li>
+</ul>
+<p>A good thing to keep in mind is that every CPU wakeup, even if it's for a trivial light job, reduce the time the CPU stays on a deep power saving C-state (like C3 or C4). Therefore you should ensure your applications stay really idle when they meant to be idle (track shorts select timeouts in loop, etc. with <a href="http://www.thinkwiki.org/wiki/PowerTOP">PowerTOP</a>). </p>
+<p>Also note that manually locking the CPU in the lowest P-state (frequency) available is <strong>not</strong> an efficient way to improve battery lifetime. This will cause the CPU to stay longer in C0 (power hungry C-state) doing hard work when there is something to do, while it could have done this work faster by augmenting the CPU freq, and returned back faster to a deeper, economic, C-state and to a lower frequency (P-state). The best is to let the kernel select the appropriates CPU frequencies by itself with the help of in kernel CPU governors. Have a look at <a href="http://www.bughost.org/pipermail/power/2007-May/000166.html">this explanation</a> from Intel's kernel developer Arjan van de Ven. </p>
+<p><strong><span style="font-size:17pt;">Kernel settings and patches</span></strong></p>
+<p><strong><span style="font-size:13pt;">General settings</span></strong></p>
+<p><span style="font-size:9pt;">The 2.6.21 kernel brought some very effective changes (like <a href="http://www.thinkwiki.org/wiki/Dynticks">dynticks</a>). Later, 2.6.24-rc2 brought a lot of other power efficiency improvements. If it's not already on your distribution and you value power efficiency, you may think about compiling a recent kernel yourself. </span></p>
+<p>Here are a few options (beside the ACPI and APM related one) that matter to reduce power consumption or to help diagnosing consumers: </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;"># From PowerTOP's FAQ:</span></p>
+<p>CONFIG_NO_HZ</p>
+<p>CONFIG_HIGH_RES_TIMERS</p>
+<p>CONFIG_HPET</p>
+<p>CONFIG_HPET_TIMER</p>
+<p>CONFIG_CPU_FREQ_GOV_ONDEMAND</p>
+<p>CONFIG_USB_SUSPEND</p>
+<p>CONFIG_SND_AC97_POWER_SAVE</p>
+<p>CONFIG_SND_HDA_POWER_SAVE</p>
+<p>CONFIG_SND_HDA_POWER_SAVE_DEFAULT=3</p>
+<p>CONFIG_TIMER_STATS</p>
+<p>CONFIG_ACPI_BATTERY</p>
+<p>CONFIG_CPU_FREQ_STAT</p>
+<p>CONFIG_INOTIFY</p>
+<p># Not from the PowerTOP FAQ:</p>
+<p>CONFIG_BLK_DEV_IO_TRACE</p>
+<p>CONFIG_X86_ACPI_CPUFREQ</p>
+<p>CONFIG_X86_SPEEDSTEP_CENTRINO depreciated as of kernel 2.6.24, use CONFIG_X86_ACPI_CPUFREQ</p>
+<p>CONFIG_X86_SPEEDSTEP_ICH</p>
+<p>CONFIG_X86_SPEEDSTEP_SMI</p>
+<p>CONFIG_CPU_IDLE</p>
+<p>CONFIG_CPU_IDLE_GOV_LADDER</p>
+<p>CONFIG_CPU_IDLE_GOV_MENU</p>
+<p><span style="font-family:Sans Serif;">Those options are already in Fedora Core 7 and Ubuntu Gutsy (not Feisty) default i686 kernels. PowerTOP FAQ also suggest to <strong>disable</strong> CONFIG_IRQBALANCE and CONFIG_ACPI_DEBUG. </span></p>
+<p>Also, you need to properly set APM and ACPI. Look at: </p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/Power_Management">Power Management</a> </li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_make_use_of_Power_Management_features">How to make use of Power Management features</a> </li>
+</ul>
+<p><strong><span style="font-size:13pt;">Kernel boot and module loading options </span></strong></p>
+<p><span style="font-size:9pt;">If you have an Intel chipset ICH5 or later (cf. lspci output), as in most modern Thinkpads, you should be using the integrated HPET timer (saves about 30 CPU wake ups per second). To see if hpet is enabled on your laptop: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">grep hpet /proc/timer_list</span></p>
+<p><span style="font-family:Sans Serif;">If this does not display &quot;Clock Event Device: hpet&quot;, then add </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">hpet=force</span></p>
+<p><span style="font-family:Sans Serif;"><strong>ATTENTION!</strong></span></p>
+<p>The ICH4 does have an HPET, but it is disabled for a good reason: Intel didn't test/validade it! Use of the ICH4 HPET is <strong>not</strong> recommended</p>
+<p>to your kernel boot options (usualy in /boot/grub/menu.lst or lilo.conf). Note that &quot;hpet=force&quot; is only available by default in 2.6.24-rc2 and above (or as a separated patch for 2.6.22 and 2.6.23, see below). </p>
+<p>On modern ThinkPads the HPET timer is automatically detected and enabled. On certain older machines hpet=force is required such as on the following machines: </p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/Category:T30">T30</a>, <a href="http://www.thinkwiki.org/wiki/Category:T40">T40</a>, <a href="http://www.thinkwiki.org/wiki/Category:T40p">T40p</a>, <a href="http://www.thinkwiki.org/wiki/Category:T41">T41</a>, <a href="http://www.thinkwiki.org/wiki/Category:T41p">T41p</a>, <a href="http://www.thinkwiki.org/wiki/Category:T42">T42</a> </li>
+<li><a href="http://www.thinkwiki.org/wiki/Category:X22">X22</a>, <a href="http://www.thinkwiki.org/wiki/Category:X23">X23</a>, <a href="http://www.thinkwiki.org/wiki/Category:X24">X24</a>, <a href="http://www.thinkwiki.org/wiki/Category:X30">X30</a>, <a href="http://www.thinkwiki.org/wiki/Category:X31">X31</a>, <a href="http://www.thinkwiki.org/wiki/Category:X40">X40</a> </li>
+<li><a href="http://www.thinkwiki.org/wiki/Category:A31">A31</a> </li>
+<li><a href="http://www.thinkwiki.org/wiki/Category:SL500">SL500</a> </li>
+</ul>
+<p><strong>Help needed</strong></p>
+<p>please add your ThinkPad to the above list, if hpet=force was required</p>
+<p><strong><span style="font-size:13pt;">Useful Patches</span></strong></p>
+<p><span style="font-size:9pt;">Thomas Gleixner High Resolution Timers (hrt) patchset brings many improvements, like the cpuidle work and Udo A. Steinberg and Venki Pallipadi &quot;force enable HPET&quot; patches (non HPET timers causes about 20-40 CPU wakeups/second, but HPET is often hidden by the BIOS due to Windows XP deficiencies). Those are fully merged in 2.6.24-rc1 vanilla kernel. See <a href="http://www.tglx.de/projects/hrtimers/">http://www.tglx.de/projects/hrtimers/</a> </span></p>
+<p>Kristen Carlson Accardi from Intel has a patchset to turn on &quot;Aggressive Link Power Management&quot; (ALPM) for the AHCI driver (for SATA bus). Also from Accardi, SATA Asynchronous Notification (SATA AN), alows SATA link to notify media insertions (thus avoid hal polling the cdrom). Those patches were merged in 2.6.24-rc2 kernel (AN needs also support in hal to be used). See: <a href="http://www.kernel.org/pub/linux/kernel/people/kristen/patches/SATA/alpm/">http://www.kernel.org/pub/linux/kernel/people/kristen/patches/SATA/alpm/</a> </p>
+<p>As of now (2.6.24-rc8), the linux kernel doesn't support PCI Express power management (aka PCIe ASPM, aka PCIe LPM). Shaohua Li from Intel submited a patch on LKML (<a href="http://lkml.org/lkml/2008/1/17/544">http://lkml.org/lkml/2008/1/17/544</a> ) though, and reported it to reduce power consumption by 1.3 watts for a system with three PCIe links. </p>
+<p>The <a href="http://www.thinkwiki.org/wiki/HDAPS">HDAPS</a> disk protection systems can reduce battery life. Matthew Garrett provides <a href="http://www.linuxpowertop.org/patches/hdaps.patch">a patch</a> that prevents hdaps kernel module to generate interrupts when this feature isn't used. </p>
+<p><strong><span style="font-size:13pt;">Useful sysctls</span></strong></p>
+<p><span style="font-size:9pt;">The meaning of those settings is explained case by case on the relevant sections of this document. But for convenience sake, we group them here too. </span></p>
+<p>Note that the &quot;ondemand&quot; scaling governor is recommended by Intel developers for energy efficiency: it's expected to be more efficient than the &quot;powersave&quot; governor, or than userspace daemons (like cpufreq-utils, cpufreqd, powernowd...). Look <a href="http://www.bughost.org/pipermail/power/2007-May/000071.html">here</a>, <a href="http://www.bughost.org/pipermail/power/2007-May/000073.html">here</a>, or <a href="http://www.bughost.org/pipermail/power/2007-May/000166.html">here</a> for a kernel developer explanation about &quot;ondemand&quot; being better on modern Intel CPUs. </p>
+<p>The &quot;link_power_management_policy&quot; tunable won't be available unless you run a 2.6.24-rc2 or more kernel, or applied Kirsten patchset, have an Intel AHCI compatible chipset, and use SATA drives. </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo 5 &gt; /proc/sys/vm/laptop_mode</span></p>
+<p>echo 0 &gt; /proc/sys/kernel/nmi_watchdog</p>
+<p>echo Y &gt; /sys/module/snd_ac97_codec/parameters/power_save</p>
+<p>echo 1 &gt; /sys/devices/system/cpu/sched_mc_power_savings</p>
+<p>echo ondemand &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</p>
+<p>echo 1500 &gt; /proc/sys/vm/dirty_writeback_centisecs</p>
+<p>for i in /sys/bus/usb/devices/*/power/autosuspend; do echo 1 &gt; $i; done</p>
+<p># those sysctl's are only available if you have an AHCI compatible SATA </p>
+<p># controler and use kernel &gt; 2.6.24-rc2 (or use Kristen ALPM patchset) : </p>
+<p>echo min_power &gt; /sys/class/scsi_host/host0/link_power_management_policy</p>
+<p>echo min_power &gt; /sys/class/scsi_host/host1/link_power_management_policy</p>
+<p><span style="font-family:Sans Serif;">If you're running a kernel older than 2.6.22 do this. Not needed for kernels 2.6.22 onward: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">cd /sys/devices/system/cpu/cpu0/cpufreq</span></p>
+<p>cat ondemand/sampling_rate_max &gt; ondemand/sampling_rate</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">ATA drives</span></span></strong></p>
+<p><span style="font-size:9pt;">Hard drives and CDRom drives spinning is very costly. To improve battery lifetime, you should reduce disks access (or devices polling) the more you can. </span></p>
+<p><strong><span style="font-size:13pt;">Hard Drives</span></strong></p>
+<p><span style="font-size:9pt;">The files access time update, while mandated by POSIX, is causing lots of disk write access; even accessing files on disk cache may wake the ATA or USB bus. If you don't use this feature, disable it by adding the <span style="font-family:Courier New,courier;">relatime</span><span style="font-family:Sans Serif;"> option to all relevant lines in the /etc/fstab, for example: </span></span></p>
+<p><span style="font-family:Courier New,courier;">/dev/sda1 / ext3 relatime,errors=remount-ro 0 1</span></p>
+<p><span style="font-family:Sans Serif;">(On older kernels you may need to use </span><span style="font-family:Courier New,courier;">noatime</span><span style="font-family:Sans Serif;"> instead of </span><span style="font-family:Courier New,courier;">relatime</span><span style="font-family:Sans Serif;">.) </span></p>
+<p>Also consider merely using a larger value for the <span style="font-family:Courier New,courier;">commit</span><span style="font-family:Sans Serif;"> option. This defines how often changed data is written to the disk (it is cached until then). The default value is 5 seconds. </span></p>
+<p>See man mount(8) for details on how the <span style="font-family:Courier New,courier;">rel/noatime</span><span style="font-family:Sans Serif;"> and </span><span style="font-family:Courier New,courier;">commit</span><span style="font-family:Sans Serif;"> options work. </span></p>
+<p>Use laptop_mode to reduce disk usage by delaying and grouping writes. You should enable it, at least while on battery. See <a href="http://www.thinkwiki.org/wiki/Laptop-mode">Laptop-mode</a> for more details: </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo 5 &gt; /proc/sys/vm/laptop_mode</span></p>
+<p><span style="font-family:Sans Serif;">The default kernel dirty page writeback frequency is very conservative. On a laptop running on battery, one might find more appropriate to reduce it: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo 1500 &gt; /proc/sys/vm/dirty_writeback_centisecs</span></p>
+<p><span style="font-family:Sans Serif;">Some power saving hard drives features can be activated with hdparm (beware that &quot;-B 1&quot; may reduce your drive lifetime, if you have lot of intermittent disk activity causing lots of heads load/unloads: so reduce I/O activity first, as explained above, in order to get longer disks idling periods). For more details look at <a href="http://www.thinkwiki.org/wiki/How_to_make_use_of_Power_Management_features">How to make use of Power Management features</a> : </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">hdparm -B 1 -S 12 /dev/sda # and/or any other disk device</span></p>
+<p><strong><span style="font-family:Sans Serif;">SATA Link Power Management</span></strong></p>
+<p>On kernels 2.6.24 and new this enables SATA Link Power Management: </p>
+<p><span style="font-family:Courier New,courier;">echo min_power &gt; /sys/class/scsi_host/host0/link_power_management_policy</span></p>
+<p>echo min_power &gt; /sys/class/scsi_host/host1/link_power_management_policy</p>
+<p><span style="font-family:Sans Serif;">Disable it by replacing </span><span style="font-family:Courier New,courier;">min_power</span><span style="font-family:Sans Serif;"> with </span><span style="font-family:Courier New,courier;">max_performance</span><span style="font-family:Sans Serif;">. </span></p>
+<p>On Ubuntu Hardy Heron with a 2.6.24-16 kernel, a suspend/resume cycle is much quicker if you disable SATA Link Power Management before initiating the suspend. As of Intrepid Ibex and kernel 2.6.27, this should be fixed. (<a href="https://bugs.launchpad.net/linux/+bug/234047">Launchpad bug 234047</a>, <a href="http://bugzilla.kernel.org/show_bug.cgi?id=10817">Kernel bug 10817</a>) </p>
+<p><strong>Laptop Mode Tools</strong></p>
+<p>The <a href="http://samwel.tk/laptop_mode/">Laptop Mode Tools</a> utility implements many of the above power-saving measures from disks, and some others. </p>
+<p><strong><span style="font-size:13pt;">Optical drive</span></strong></p>
+<p><span style="font-size:9pt;">The optical drive is reported to consume power even when not accessed. See </span></p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_hotswap_UltraBay_devices">Eject the UltraBay optical drive</a>, or just turn off its power supply (i.e., run the appropriate eject script but leave the drive inserted). </li>
+<li><a href="http://www.thinkwiki.org/wiki/How_to_set_optical_drive_speed">Reduce the spinning speed of the optical drive</a>. </li>
+</ul>
+<p>The hald daemon polling tends to maintain the ATA buses out of power saving modes, and to wakeup CDROM drive (except if you have a kernel &gt;= 2.6.24, hal &gt;= 0.5.10, and SATA AN compatible devices). If you have a recent hald version, you can stop this polling when on battery: </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">hal-disable-polling --device /dev/scd0 # or whatever your CD drive is</span></p>
+<p><span style="font-family:Sans Serif;">start polling again when on ac: </span></p>
+<p><span style="font-family:Courier New,courier;">hal-disable-polling --enable-polling --device /dev/scd0 # or whatever your CD drive is</span></p>
+<p><p>&nbsp;</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">LCD Backlight/Brightness</span></span></strong></p>
+<p><span style="font-size:9pt;">The LCD backlight is one of the very major power drain. Reducing brightness to the lowest readable level will save a lot of battery lifetime. Also, don't forget to configure your screen saver to shutdown the screen backlight (rather than displaying some eye candy), when no activity for a few minutes. </span></p>
+<p>You can also let the system <a href="http://www.thinkwiki.org/wiki/Automatically_reduce_brightness">automatically reduce brightness</a> after a period of inactivity. </p>
+<p>If you're choosing your Thinkpad laptop model, keep in mind that the screen size affect the battery time greatly: more power needed for larger screens. </p>
+<p>The very recent, but xorg standard way to control backlight from CLI is using xbacklight. ie. to set backlight at half the brightness: </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">xbacklight -set 50</span></p>
+<p><span style="font-family:Sans Serif;">You should configure the DPMS to shutdown the screen when idle (rather than displaying a fancy but power consuming screensaver). ie. to turn off the display after 5 minutes of idling: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">xset +dpms</span></p>
+<p>xset dpms 0 0 300</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">Graphic controllers</span></span></strong></p>
+<p><span style="font-size:9pt;">All xorg Thinkpad graphics chipsets drivers (ati, radeon, fglrx, i810) have the same bug causing very frequent CPU wakeups when DRI is activated, even when you don't use any 3D application. This problem is partly fixed on xorg git tree but not released as of xorg 7.2. If you value more battery than 3D, you should disable DRI: put this on the /etc/X11/xorg.conf &quot;Device&quot; of you graphic controller: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">Option          &quot;NoDRI&quot;</span></p>
+<p><span style="font-family:Sans Serif;">Also be sure that DPMS is working: </span><span style="font-family:Courier New,courier;">grep DPMS /var/log/Xorg.0.log</span><span style="font-family:Sans Serif;"> should output &quot;DPMS enabled&quot;. If not, put </span><span style="font-family:Courier New,courier;">Option &quot;DPMS&quot;</span><span style="font-family:Sans Serif;"> in your config. See the section above about how to enable dpms driven display power saving. </span></p>
+<p>On recent xrandr/xorg versions, you can disable the TV output (or any other detected as connected but not used outputs) when you're not using it: it's known to consume power. </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">xrandr # see all displays listed here, but that you don't actually use and disable them. </span></p>
+<p>xrandr --output TV --off # for instance (if &quot;xrandr&quot; above listed a connected output named &quot;TV&quot; that you don't use)</p>
+<p><span style="font-family:Sans Serif;">When you don't have an external monitor plugged, disable CRT and DVI output (for some, this can make a difference in power usage) : </span></p>
+<p><span style="font-family:Courier New,courier;">echo crt_disable &gt; /proc/acpi/ibm/video</span></p>
+<p>echo dvi_disable &gt; /proc/acpi/ibm/video</p>
+<p><span style="font-family:Sans Serif;">Some drivers have specials power saving mode, and/or allows underclocking the GPU. See also: </span></p>
+<ul type="disc">
+<li><a href="http://www.thinkwiki.org/wiki/How_to_make_use_of_Graphics_Chips_Power_Management_features">How to make use of Graphics Chips Power Management features</a>, or with <a href="http://www.thinkwiki.org/wiki/Rovclock">Rovclock</a> on ATI. </li>
+<li><a href="http://www.thinkwiki.org/wiki/Problem_with_high_power_drain_in_ACPI_sleep">Problem with high power drain in ACPI sleep</a> </li>
+</ul>
+<p><strong><span style="font-size:17pt;">USB Subsystem</span></strong></p>
+<p><span style="font-size:9pt;">The kernel support an efficient USB 2.0 power saving feature if you enabled CONFIG_USB_SUSPEND. This may not trigger in when you have an USB device plugged (and beside, USB devices tends to suck power on their own), so avoid using such devices when on battery. To enable it by default, you must add the line </span></p>
+<p><span style="font-family:Courier New,courier;">options usbcore autosuspend=1</span></p>
+<p><span style="font-family:Sans Serif;">to your </span><span style="font-family:Courier New,courier;">/etc/modprobe.conf</span><span style="font-family:Sans Serif;"> or add it to (and create if necessary) the file </span><span style="font-family:Courier New,courier;">/etc/modprobe.d/usbcore</span><span style="font-family:Sans Serif;"> depending on how your distribution organises modprobe configuration. </span></p>
+<p>If on the other hand, you have <span style="font-family:Courier New,courier;">usbcore</span><span style="font-family:Sans Serif;"> built into your kernel, you can add this in the kernel boot options (ie. in grub's menu.lst): </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">usbcore.autosuspend=1</span></p>
+<p><span style="font-family:Sans Serif;">or at runtime, per device, with: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">for i in /sys/bus/usb/devices/*/power/autosuspend; do echo 1 &gt; $i; done </span></p>
+<p>for i in /sys/bus/usb/devices/*/power/level; do echo auto &gt; $i; done</p>
+<p><span style="font-family:Sans Serif;">USB 1.1 is worst. It needs polling the bus frequently, hence can't really go in a low power mode when you enabled it, even if you don't have any device plugged. You'd better remove it when you don't use a 1.1 device: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">rmmod uhci_hcd</span></p>
+<p><span style="font-family:Sans Serif;">If you don't intend to use any device needing USB 1.1 (unfortunately, the built-in bluetooth and fingerprint-reader are USB 1.1 devices), the USB 1.1 support can also be totally avoided. On Debian and derivatives, just do: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo &quot;blacklist uhci_hcd&quot; &gt;&gt; /etc/modprobe.d/blacklist</span></p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">PCMCIA/CardBus</span></span></strong></p>
+<p><span style="font-size:9pt;">Same for PCMCIA/CardBus. Some users experiences interrupts clouds (sometime up to several thousands interrupts/second) causing CPU wakeups, thus totally preventing the CPU to reach lower C-states. If you don't use PCMCIA, you may disable it the same way (unloading seems insufficient to restore the system properly, you have to boot without it): </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo &quot;blacklist pcmcia&quot; &gt;&gt; /etc/modprobe.d/blacklist</span></p>
+<p>echo &quot;blacklist yenta_socket&quot; &gt;&gt; /etc/modprobe.d/blacklist</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">Sound</span></span></strong></p>
+<p><span style="font-size:9pt;">ALSA has a power saving feature that should be enabled on your kernel (CONFIG_SND_AC97_POWER_SAVE). Note that this low power mode won't trigger in unless you muted all sound inputs (micro, line in etc.). This feature has to be activated with: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">amixer set Line mute nocap</span></p>
+<p>amixer set Mic mute nocap</p>
+<p>echo Y &gt; /sys/module/snd_ac97_codec/parameters/power_save</p>
+<p><p>&nbsp;</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:13pt;">Intel HD Audio</span></span></strong></p>
+<p><span style="font-size:9pt;">If you have Intel HD audio as your onboard sound controller, substitute the following for the last line in the above sequence: </span></p>
+<p><span style="font-family:Courier New,courier;">echo Y &gt; /sys/module/snd_hda_intel/parameters/power_save_controller </span></p>
+<p><span style="font-family:Sans Serif;">You also may wish to decrease the sound poweroff timeout to something shorter, like 1 second after last playback: </span></p>
+<p><span style="font-family:Courier New,courier;">echo 1 &gt; /sys/module/snd_hda_intel/parameters/power_save </span></p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:13pt;">Additional Tweaks</span></span></strong></p>
+<p><span style="font-size:9pt;">You can unload all sound related modules when you are on battery, or mute the sound system (echo mute &gt; /proc/acpi/ibm/volume). </span></p>
+<p>See also <a href="http://www.thinkwiki.org/wiki/How_to_enable_audio_codec_power_saving">How to enable audio codec power saving</a>. </p>
+<p><strong><span style="font-size:17pt;">Wireless Interface</span></strong></p>
+<p><strong><span style="font-size:13pt;">intel wireless</span></strong></p>
+<p><span style="font-size:9pt;">Wireless network consume a lot of power. To save power, you can kill the Wi-Fi radio when it's not in use: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">echo 1 &gt; /sys/bus/pci/devices/*/rf_kill</span></p>
+<p><span style="font-family:Sans Serif;">If you need Wi-Fi, you can also reduce power consumption (at the price of performances) by activating the power saving modes: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">iwpriv eth1 set_power 5</span></p>
+<p><span style="font-family:Sans Serif;">For drivers using the new Wi-Fi kernel framework (mac80211/cfg80211), the canonical way to do this is now: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">for i in /sys/bus/pci/devices/*/power_level ; do echo 5 &gt; $i ; done</span></p>
+<p><span style="font-family:Sans Serif;">Most drivers, like ipw2200, that don't use the new mac80211 framework place the interfaces in aggressive scanning mode when they are not associated with any Access Point, even when the interface is down (more info about this on Intel's <a href="http://www.lesswatts.org/tips/wireless.php">LessWatts</a> website). This behavior consumes a lot of power, even more than when the interface is plain active and in use. But this can disabled at module's load time : </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">rmmod ipw2200</span></p>
+<p>modprobe ipw2200 associate=0</p>
+<p><span style="font-family:Sans Serif;">You can fix this setting by placing the following in /etc/modprobe.d/options (Debian/Ubuntu) or in /etc/modprobe.conf (Red Hat/Fedora): </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">options ipw2200 associate=0</span></p>
+<p><span style="font-family:Sans Serif;">Reducing beacon intervals on your Access Point to 1 per second will also reduce network card interrupts, therefore power savings. This shouldn't have negatives side effects. </span></p>
+<p>In recent kernels, the powersaving on the intel ipw3945 has been disabled, as for some it is unstable. For others it worked just fine. </p>
+<p>See <a href="http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.33.y.git;a=blobdiff;f=drivers/net/wireless/iwlwifi/iwl-3945.c;h=e413bd35bc411a1113177f1576538eb0ac26f00c;hp=4609323d8436dc9e22c74be2f1f3cf5e97785cb2;hb=bc45a67079c916a9bd0a95b0b879cc0f259bac6e;hpb=b7bb1756cb6a610cdbac8cfdad9e79bb5670b63b">this patch</a>. You may wish to try changing '.broken_powersave=true' to false, in /usr/src/linux/drivers/net/wireless/iwlwifi/iwl-3945.c if you wish to enable powersave. </p>
+<p>See also, to activate power saving on the wireless network card: </p>
+<ul type="disc">
+<li>For <a href="http://www.thinkwiki.org/wiki/Intel_PRO/Wireless_2200BG_Mini-PCI_Adapter">Intel PRO/Wireless 2200BG Mini-PCI Adapter</a> and <a href="http://www.thinkwiki.org/wiki/Intel_PRO/Wireless_2915ABG_Mini-PCI_Adapter">Intel PRO/Wireless 2915ABG Mini-PCI Adapter</a>, see instructions for the <a href="http://www.thinkwiki.org/wiki/Ipw2200">ipw2200</a> driver. </li>
+<li>For <a href="http://www.thinkwiki.org/wiki/Intel_PRO/Wireless_3945ABG_Mini-PCI_Express_Adapter">Intel PRO/Wireless 3945ABG Mini-PCI Express Adapter</a>, see the <a href="http://ipw3945.sourceforge.net/README.ipw3945">ipw3945 driver README</a> </li>
+</ul>
+<p><strong><span style="font-size:17pt;">Ethernet Controler</span></strong></p>
+<p><span style="font-size:9pt;">If you don't use Wake-on-LAN, you should disable it for your network card, because it sucks a lot of power: </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">ethtool -s eth0 wol d</span></p>
+<p><span style="font-family:Sans Serif;">If you can, try to reduce useless network activity on your ethernet segment, coming to your NIC (ie. uneeded broadcasts), those cause interrupts and CPU wakeups. </span></p>
+<p>Forcing 100Mbps full-duplex speed on a gigabit ethernet NIC can also save a lot of power (~1W) on most network workloads. This also reduces components temperature (e.g., <a href="http://www.thinkwiki.org/wiki/Thermal_Sensors">thermal sensor</a> 0xC0 on the <a href="http://www.thinkwiki.org/wiki/Category:T43">T43</a> cools down by 5 degree between 1000Mbps and 100Mbps, and another 1 degree for 10Mbps). </p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;"> ethtool -s eth0 autoneg off speed 100</span></p>
+<p><span style="font-family:Sans Serif;">Note, however, that if the network device on the other side has auto-negotiation enabled (which is very common) and you turn auto-negotiation off, the other side will assume half-duplex mode and you will experience a significant loss of performance. </span></p>
+<p><strong><span style="font-size:17pt;">Bluetooth</span></strong></p>
+<p><span style="font-size:9pt;">When you don't need bluetooth, disable it. Because of its radio, bluetooth is not power friendly. </span></p>
+<p>&nbsp;<p><span style="font-family:Courier New,courier;">hciconfig hci0 down ; rmmod hci_usb</span></p>
+<p>echo disable &gt; /proc/acpi/ibm/bluetooth</p>
+<p><strong><span style="font-family:Sans Serif;"><span style="font-size:17pt;">Modem</span></span></strong></p>
+<p><span style="font-size:9pt;">When was the last time you used your analog modem? If you can't remember, you probably just don't need it. If it is on a separate module in your laptop, simply remove it. Store it in a ESD safe place (like the bag in which your last addon card or hard drive was packed), in case you should need it again. This won't save you a lot of power and weight, but why carry something around you never use. </span></p>
+<p><strong><span style="font-size:17pt;">System Fans</span></strong></p>
+<p><span style="font-size:9pt;">Fans consumes power when running, so you may look at the <a href="http://www.thinkwiki.org/wiki/ACPI_fan_control_script">ACPI fan control script</a>. </span></p>
+<p><strong><span style="font-size:17pt;">Misbehaving Userland</span></strong></p>
+<p><span style="font-size:9pt;">You should avoid using Beagle, Compiz, Beryl, XMMS, gnome-power-manager and Evolution while on battery. Look at the PowerTOP's <a href="http://www.linuxpowertop.org/known.php">known problems</a> list. </span></p>
+<p>Deactivate desktop animations (blinking cursor on the terms, animated wallpapers, ...): they cause regular X (therefore kernel and CPU) wakeups. </p>
+<p>In short, while on battery, you should stop all applications that don't really stay idle when you're not using them. This means applications that: </p>
+<ul type="disc">
+<li>Wakes up the CPU too often (by polling something, because of too short select() timeouts, ...) </li>
+<li>Access the disks at regular intervals </li>
+<li>Access an hardware bus (USB, ATA, ...) at regular intervals </li>
+</ul>
+<p>To find those offenders run: </p>
+<ul type="disc">
+<li><span style="font-family:Courier New,courier;">strace -p $(pidof yourapp)</span><span style="font-family:Sans Serif;"> # for all your running applications </span></li>
+<li><span style="font-family:Courier New,courier;">powertop</span><span style="font-family:Sans Serif;"> </span></li>
+<li><span style="font-family:Courier New,courier;">dstat -t -c --power --top-cpu --top-io --top-bio --top-latency --top-cputime</span><span style="font-family:Sans Serif;"> </span></li>
+<li><span style="font-family:Courier New,courier;">sysctl vm.block_dump=1</span><span style="font-family:Sans Serif;"> # and look at dmesg </span></li>
+<li><span style="font-family:Courier New,courier;">ps aux | awk '{print$10,$11}' | sort -n</span><span style="font-family:Sans Serif;"> # will list all running softs sorted by used cpu time </span></li>
+</ul>
+<p>Please, don't forget to fill a bug when you find such a misbehaving software. </p>
+<p><strong>NOTE!</strong></p>
+<p>Not all software is evil, buggy or badly written. Some produce regular activity because they have to, in order to provide their intented functionality. Think twice before filling bugs about this.</p>
+<p><strong><span style="font-size:17pt;">See Also</span></strong></p>
+<ul type="disc">
+<li><span style="font-size:9pt;"><a href="http://www.thinkwiki.org/wiki/How_to_measure_power_consumption">How to measure power consumption</a> </span></li>
+<li><a href="http://www.thinkwiki.org/wiki/Script_for_monitoring_power_consumption">Script for monitoring power consumption</a> </li>
+<li>Battery <a href="http://www.thinkwiki.org/wiki/Maintenance">maintenance</a> </li>
+</ul>
+<p><strong><span style="font-size:17pt;">External resources</span></strong></p>
+<ul type="disc">
+<li><span style="font-size:9pt;"><a href="http://www.free-it.de/archiv/talks_2005/paper-11017/paper-11017.html"><em>Current trends in Linux Kernel Power Management</em></a>, Dominik Brodowski, 2005 </span></li>
+<li><a href="http://www.linuxpowertop.org">PowerTOP</a> website </li>
+<li><a href="http://www.gentoo.org/doc/en/power-management-guide.xml">Power Management Guide</a> from the Gentoo Linux documentation </li>
+<li><a href="http://mailman.linux-thinkpad.org/pipermail/linux-thinkpad/2005-November/030478.html">When/where/what for low power consumption?</a> (thread on Linux-Thinkpad) </li>
+<li>Intel's <a href="http://www.lesswatts.org/">LessWatts</a> &quot;<em>Saving power on Linux</em>&quot; website </li>
+<li><em>8 hours of battery life on your lap(top)</em> (<a href="http://atrey.karlin.mff.cuni.cz/%7Epavel/swsusp/8hours.odp">ODP</a>/<a href="http://atrey.karlin.mff.cuni.cz/%7Epavel/swsusp/8hours.pdf">PDF</a>), a presentation by Pavel Machek </li>
+</ul>
+
+</p></body></html>

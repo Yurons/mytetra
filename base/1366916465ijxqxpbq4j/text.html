@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>конфигурационном файле для выполнения внешних скриптов </strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;"><a href="http://forum.lissyara.su/viewtopic.php?f=8&t=14001">link</a> </span></p>
+<p><strong>начиная с какой-то версии snmpd, в конфигурационном файле для выполнения внешних скриптов надо писать не &quot;exec&quot; или &quot;pass&quot;, а &quot;extend&quot;</strong></p>
+<p>&nbsp;<p>Хочу заметить, что таким образом в SNMP вывод идёт только первой строчки скрипта и она ограничена размером в 4096 Байт. Практика показала, что если информации больше, чем 4 Кб не будет, то ради скорости лучше использовать однострочный вывод информации, дабы единым snmpget`ом её вытащить.</p>
+<p>&nbsp;<p>как пример - скрипт для top</p>
+<p>1. Сторона сервера</p>
+<p>Код: Выделить всё</p>
+<p>snmpd.conf :</p>
+<p>exec topproc /tmp/topproc </p>
+<p>&nbsp;<p>Код: Выделить всё</p>
+<p>#!/bin/sh</p>
+<p>#topproc</p>
+<p>top -b | sed -e '1,7d' -e '23,$d' -e 's/B //' | echo -n `awk '{print $12,$9,$10,$2&quot;:&quot;}'` | sed 's/: /:/g'</p>
+<p>&nbsp;<p>2. Сторона клиента</p>
+<p>Код: Выделить всё</p>
+<p>#!/bin/sh</p>
+<p>#snmp_top</p>
+<p>snmpget -v2c -c $SNMPCOMMUNITY -Oqv $HOSTNAME .1.3.6.1.4.1.2021.8.1.101.2 | sed 's/:/\</p>
+<p>/g'</p>
+<p>&nbsp;<p>Сервер snmpd.conf(вырезка):</p>
+<p>extend .1.3.6.1.4.1.2021.8 openvz /usr/share/snmp/openvz.sh</p>
+<p>&nbsp;<p>openvz.sh:</p>
+<p>Text=`cat /proc/user_beancounters`</p>
+<p>&nbsp;<p># Kmemsize</p>
+<p>echo $Text | cut -d' ' -f12</p>
+<p>echo $Text | cut -d' ' -f13</p>
+<p>echo $Text | cut -d' ' -f14</p>
+<p>echo $Text | cut -d' ' -f16</p>
+
+</p></body></html>

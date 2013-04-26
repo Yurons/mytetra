@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>Оптимизируем сетевую подсистему</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p>Не так давно пришлось мне поднимать сервер на основе любимого Debian Lenny, и в ходе этого всплыли некоторые нюансы по настройке сети под высокие нагрузки. По горячим следам - сегодняшняя заметка.</p>
+<p>Итак, имеем систему с Debian Lenny 5.0.4, с тремя сетевыми картами на борту: встроенной <em>Realtek Semiconductor Co., Ltd. RTL8111/8168B PCI Express Gigabit Ethernet controller (rev 02)</em>, и двумя <em>Intel Corporation 82541PI Gigabit Ethernet Controller (rev 05)</em>. Сервер является шлюзом для сети с нагрузкой примерно 50Мбит/с для множества клиентов, внутренняя сеть - eth1, внешняя - eth2. eth0 - упомянутая встроенная сетевая, почти не используется.</p>
+<p>Начнём с настроек параметров сетевых карт. Для гигабитных сетевых рекомендуется установить размер очереди отправки txqueuelen как минимум в 1000. По умолчанию для Realtek система поступает именно так, а вот для основных Intel почему-то ставит этот параметр в 100. Может, ей и лучше знать, но сетевой народ рекомендует именно 1000 и больше, прислушаемся к рекомендациям</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">/sbin/ifconfig eth1 txqueuelen 1000/sbin/ifconfig eth2 txqueuelen 1000</span></p>
+<p><p>&nbsp;<span style="font-family:Sans Serif;"><em>/etc/rc.local</em> для автоматической загрузки при включении системы.</span></p>
+<p>Размер очереди получения регулируется через <em>net.core.netdev_max_backlog</em>. В <em>/etc/sysctl.conf</em> добавляем</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">net.core.netdev_max_backlog = 8192</span></p>
+<p><span style="font-family:Sans Serif;">Поддержку flow-control для сетевых рекомендуют выключить (тут ничего умного - почему и для чего - не скажу), поддержку NAPI (polling в терминологии FreeBSD), включить. И то, и другое стоит по умолчанию, так что эти моменты я пропускаю.</span></p>
+<p>Теперь разберёмся с механизмом CPU affinity. Данный механизм позволяет равномерно распределять irq между процессорами в SMP-системах, что весьма и весьма полезно. По умолчанию Debian справляется с этим достаточно успешно, но в случае двух сетевых на шлюзе есть смысл жёстко приписать обработку прерываний от конкретной сетевой конкретному процессору. Делается это следующим образом:</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">echo [cpu_bitmask] &gt;  /proc/irq/[eth_irq]/smp_affinity</span></p>
+<p><p>&nbsp;</p>
+
+<ul type="circle">
+<li><span style="font-family:Sans Serif;">cpu_bitmask - битовая маска cpu ( 1 - первый cpu, 10 - второй, 100 - третий, 101 - третий и первый, и т.д.; переводим двоичную маску в <s>десятичное</s> шестнадцетиричное значение и используем в команде);</p>
+<p>&nbsp;</span></li>
+<li>eth_irq - номер прерывания для нужной сетевой карты, узнать который можно из <em>/proc/interrupts</em></li>
+</ul>
+<p>В моём случае команды для привязки двух сетевых карт</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">echo 1 &gt;  /proc/irq/20/smp_affinityecho 2 &gt;  /proc/irq/18/smp_affinity</span></p>
+<p><p>&nbsp;<span style="font-family:Sans Serif;"><em>/etc/rc.local</em>)</span></p>
+<p>Для проверки, сработали ли указанные манипуляции, периодически выводим <em>/proc/interrupts</em>:</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">ns:~# watch -n 3 cat /proc/interrupts           CPU0       CPU1         0:         33          1   IO-APIC-edge      timer  1:          1          1   IO-APIC-edge      i8042  7:          0          0   IO-APIC-edge      parport0  8:          1          0   IO-APIC-edge      rtc0  9:          0          0   IO-APIC-fasteoi   acpi14:    7120791    7802969   IO-APIC-edge      ata_piix15:          0          0   IO-APIC-edge      ata_piix16:         55         55   IO-APIC-fasteoi   uhci_hcd:usb4, HDA Intel17:          8          8   IO-APIC-fasteoi   HDA Intel18:         28 <span style="color:#ff0000;">1315936560</span>   IO-APIC-fasteoi   uhci_hcd:usb3, eth219:          0          0   IO-APIC-fasteoi   uhci_hcd:usb220: 1390434990       2329   IO-APIC-fasteoi   eth123:          0          0   IO-APIC-fasteoi   uhci_hcd:usb1, ehci_hcd:usb51276:    5529851    6200894   PCI-MSI-edge      eth0NMI:          0          0   Non-maskable interruptsLOC:  489299683 1752920893   Local timer interruptsRES:    4642455    6796305   Rescheduling interruptsCAL:      22526      19892   function call interruptsTLB:     513168     561022   TLB shootdownsTRM:          0          0   Thermal event interruptsTHR:          0          0   Threshold APIC interruptsSPU:          0          0   Spurious interruptsERR:          0</span></p>
+<p><p>&nbsp;</p>
+<p><span style="font-family:Sans Serif;">Теперь о параметрах ядра, задаваемых через <em>/etc/sysctl.conf</em>. В моём случае часть параметров задаётся также при выполнении скрипта <a href="http://notes.ghost.dn.ua/node/46">arno-iptables-firewall</a>, если Вы его тоже используете - имейте ввиду, что скрипт этот выполняется позже подгрузки значений из sysctl.conf и, следовательно, его параметры имеют более высокий приоритет.</span></p>
+<p><span style="font-family:Courier New,courier;">ns:~# cat /etc/sysctl.conf...# Мои параметры ядра# См. также параметры arno-iptables-firewall</p>
+<p>&nbsp;<p># Если Ваш сегмент сети содержит множество хостов и Вы получаете в логах сообщение# &quot;Neighbour table overflow.&quot;, необходимо увеличить следующие параметрыnet.ipv4.neigh.default.gc_thresh1 = 2048net.ipv4.neigh.default.gc_thresh2 = 4096net.ipv4.neigh.default.gc_thresh3 = 8192</p>
+<p>&nbsp;<p>net.ipv4.tcp_mtu_probing = 1</p>
+<p>&nbsp;<p># Максимельное число одновременных подключений к сокетуnet.core.somaxconn = 4096</p>
+<p>&nbsp;<p># Таймауты для протокола TCP. Первый в arno-iptables-firewall устанавливается в 1800, подправьте скрипт.net.ipv4.tcp_keepalive_time = 180net.ipv4.tcp_keepalive_probes = 5net.ipv4.tcp_keepalive_intvl = 30</p>
+<p>&nbsp;<p># Таймаут для сброса соединения в таблице ip_conntrack, в секундах. По умолчанию равен 5 дням, это как-то слишком.net.netfilter.nf_conntrack_tcp_timeout_established = 28800</p>
+<p>&nbsp;<p># Устанавливаем в 256 Кб размер буферов по умолчанию для приема и отправки данных через сокетыnet.core.rmem_default = 262144net.core.wmem_default = 262144</p>
+<p>&nbsp;<p># Устанавливаем в 8Мб максимальный размер буфера сокетовnet.core.rmem_max = 8388608net.core.wmem_max = 8388608</p>
+<p>&nbsp;<p># Максимальный размер очереди пакетовnet.core.netdev_max_backlog = 8192</p>
+<p>&nbsp;<p># Тюнинг буферов для TCP и UDP соединенийnet.ipv4.tcp_rmem = 8192 87380 8388608net.ipv4.tcp_wmem = 8192 65536 8388608</p>
+<p>&nbsp;<p>net.ipv4.udp_rmem_min = 16384net.ipv4.udp_wmem_min = 16384</p>
+<p>&nbsp;<p>net.ipv4.tcp_mem = 8388608 12582912 16777216net.ipv4.udp_mem = 8388608 12582912 16777216</p>
+<p>&nbsp;<p># Приоритет начала своппинга. Значение от 0 до 100: 0 -  не свопим вообще, 100 - свопим всё что возможно.vm.swappiness = 70</span></p>
+<p><span style="font-family:Sans Serif;">Очень важный параметр - <em>net.ipv4.netfilter.ip_conntrack_max</em>, он указывает максимальное число записей в таблице соединений. У меня установлен в 262144 (через arno-iptables-firewall). Если параметр слишком мал, вы будете получать в логах сообщение &quot;kernel: ip_conntrack: table full, dropping packet.&quot;. Слишком большим его ставить тоже нет смысла, это будет только отъедать оперативную память. Лучше всего выставить параметр побольше, пару-тройку дней помониторить значение <em>/proc/sys/net/netfilter/nf_conntrack_count</em>, найти максимальное, увеличить его вдвое на перспективу, и уже полученный результат установить для <em>net.ipv4.netfilter.ip_conntrack_max</em>.Также можно увеличить размерность хэша через параметр <em>hashsize</em> модуля ip_conntrack, но я этого не делал, так что на Ваше усмотрение; почитать об этом можно <a href="http://www.wallfire.org/misc/netfilter_conntrack_perf.txt">здесь</a>.</span></p>
+<p>Пока это всё. Добавления/исправления/пожелания и ссылки на полезную информацию по теме горячо приветствуются. </p>
+
+</p></body></html>

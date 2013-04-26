@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:DejaVu Serif;">.asoundrc</span></p>
+<p>&nbsp;<hr />
+<p>&nbsp;<p> cat /etc/asound.conf</p>
+<p>pcm.usb</p>
+<p>{</p>
+<p>    type hw</p>
+<p>    card C170</p>
+<p>}</p>
+<p>&nbsp;<p>pcm.!default</p>
+<p>{</p>
+<p>    type asym</p>
+<p>    playback.pcm</p>
+<p>    {</p>
+<p>        type plug</p>
+<p>        slave.pcm &quot;dmix&quot;</p>
+<p>    }</p>
+<p>    capture.pcm</p>
+<p>    {</p>
+<p>        type plug</p>
+<p>        slave.pcm &quot;usb&quot;</p>
+<p>    }</p>
+<p>}</p>
+<hr />
+<p>&nbsp;<p>Sometime a need comes to test microphone for use with VOIP applications such us Skype. The simplest and easiest way to test microphone ( MIC ) on your linux system is to use default alsa tools which come with alsa sound system package. First we need to check if alsa had recognized and our sound device.</p>
+<p>&nbsp;<p>1. List of sound devices</p>
+<p>$ cat /proc/asound/cards</p>
+<p> 0 [NVidia         ]: HDA-Intel - HDA NVidia</p>
+<p> HDA NVidia at 0xefff0000 irq 20</p>
+<p>&nbsp;<p>you may get bunch of devices but we are interested in the one which seems to familiar to you or the one which has IRQ. Another command to use to check which sound devices are recognized by your alsa system is arecord -l:</p>
+<p>$ arecord -l</p>
+<p>**** List of CAPTURE Hardware Devices ****</p>
+<p>card 0: NVidia [HDA NVidia], device 0: AD198x Analog </p>
+<p>[AD198x Analog]</p>
+<p> Subdevices: 3/3</p>
+<p> Subdevice #0: subdevice #0</p>
+<p> Subdevice #1: subdevice #1</p>
+<p> Subdevice #2: subdevice #2</p>
+<p>2. Test MIC</p>
+<p>&nbsp;<p>to test microphone we would used arecord on the command line. This small utility will record sound from your default alsa default sound device. No special arguments as device name are not required since we I have only one sound card.</p>
+<p>$ arecord -d 10 /tmp/test-mic.wav</p>
+<p>&nbsp;<p>this will record 10 seconds.</p>
+<p>3. Play test-mic.wav</p>
+<p>&nbsp;<p>Now it is easy to play your wav file with another simple alsa utility a play:</p>
+<p>$ aplay /tmp/test-mic.wav</p>
+<p>&nbsp;<p>NOTE:</p>
+<p>If you have a more sound devices on your system and you need to use the non default sound card you can specify it to arecord with -D option. For example:</p>
+<p>$ arecord  hw:1,0 -d 10  /tmp/test-mic.wav</p>
+<p>&nbsp;<p>will use second sound card where 1 refers to card and 0 refers to device as returned by arecord -l command. If you want to change your default alsa sound device globally on the system here is a link to unofficial alsa wiki which you might find helpful:</p>
+<p>http://alsa.opensrc.org/index.php/FAQ026</p>
+<p>&nbsp;<p>&nbsp;<hr />
+<p>&nbsp;<p><a href="http://slack4dummies.blogspot.com/2012/02/alsa-multiple-output-multiple-sound.html">Alsa: multiple output, multiple sound cards, multiple users</a> </p>
+<p> I had some difficulties setting up alsa as I wanted, because I encountered some troubles:</p>
+<p>when more than one application was playing sound, the first one played nicely but the others wasn't playing at all, complaining about a &quot;busy resource&quot;</p>
+<p>solved this one, I had to setup the whole thing to work with two sound cards at the same time</p>
+<p>eventually, I wanted to enable concurrent sound for multiple users</p>
+<p>Alsa Wiki's guides were useful only for a few things, but none of them gave me the whole solution. So after a deep digging, I ended up with this config:</p>
+<p>pcm.USBmic {</p>
+<p>     type hw</p>
+<p>     card CNF8215</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.USBmic {</p>
+<p>     type hw</p>
+<p>     card CNF8215</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.internal {</p>
+<p>     type hw</p>
+<p>     card SB</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.internal {</p>
+<p>     type hw</p>
+<p>     card SB</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.wireless {</p>
+<p>     type hw</p>
+<p>     card Transceiver</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.wireless {</p>
+<p>     type hw</p>
+<p>     card Transceiver</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.internalDmixed {</p>
+<p>    type dmix</p>
+<p>    ipc_key 1024</p>
+<p>    ipc_key_add_uid false</p>
+<p>    ipc_perm 0666</p>
+<p>    slave {</p>
+<p>        pcm &quot;internal&quot;</p>
+<p>        period_time 0</p>
+<p>        period_size 2048</p>
+<p>        channels 4</p>
+<p>     }</p>
+<p>     bindings {</p>
+<p>        0 0</p>
+<p>        1 1</p>
+<p>        2 2</p>
+<p>        3 3</p>
+<p>     }</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.wirelessDmixed {</p>
+<p>    type dmix</p>
+<p>    ipc_key 2048</p>
+<p>    ipc_key_add_uid false</p>
+<p>    ipc_perm 0666</p>
+<p>    slave {</p>
+<p>        pcm &quot;wireless&quot;</p>
+<p>        period_time 0</p>
+<p>        period_size 2048</p>
+<p>        channels 2</p>
+<p>     }</p>
+<p>     bindings {</p>
+<p>        0 0</p>
+<p>        1 1</p>
+<p>     }</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.both {</p>
+<p>     type route;</p>
+<p>     slave.pcm {</p>
+<p>         type multi;</p>
+<p>         slaves.a.pcm &quot;wirelessDmixed&quot;;</p>
+<p>         slaves.b.pcm &quot;internalDmixed&quot;;</p>
+<p>         slaves.a.channels 2;</p>
+<p>         slaves.b.channels 4;</p>
+<p>         bindings.0.slave a;</p>
+<p>         bindings.0.channel 0;</p>
+<p>         bindings.1.slave a;</p>
+<p>         bindings.1.channel 1;</p>
+<p>        </p>
+<p>         bindings.2.slave b;</p>
+<p>         bindings.2.channel 0;</p>
+<p>         bindings.3.slave b;</p>
+<p>         bindings.3.channel 1;</p>
+<p>         bindings.4.slave b;</p>
+<p>         bindings.4.channel 2;</p>
+<p>         bindings.5.slave b;</p>
+<p>         bindings.5.channel 3;</p>
+<p>     }</p>
+<p>    </p>
+<p>     ttable.0.0 1;</p>
+<p>     ttable.1.1 1;</p>
+<p>    </p>
+<p>     ttable.0.2 1; </p>
+<p>     ttable.1.3 1; </p>
+<p>     ttable.2.4 1; </p>
+<p>     ttable.3.5 1; </p>
+<p> }</p>
+<p>&nbsp;<p> pcm.!default {</p>
+<p>         type plug</p>
+<p>         slave {</p>
+<p>                 pcm both</p>
+<p>         }</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.!default {</p>
+<p>         type hw</p>
+<p>         card SB</p>
+<p> }</p>
+<p>&nbsp;<p> How does this strange thing work? Let's look at it step by step:</p>
+<p>&nbsp;<p>&nbsp;<p>Understanding which cards you want to use </p>
+<p>&nbsp;<p> To get your cards names, the easiest way is to use aplay -l command. When I execute it I get this output:</p>
+<p>:~$ aplay -l   </p>
+<p> **** List of PLAYBACK Hardware Devices ****</p>
+<p> card 0: Transceiver [2.4G Wireless Transceiver], device 0: USB Audio [USB Audio]</p>
+<p>   Subdevices: 0/1</p>
+<p>   Subdevice #0: subdevice #0</p>
+<p> card 2: SB [HDA ATI SB], device 0: ALC662 rev1 Analog [ALC662 rev1 Analog]</p>
+<p>   Subdevices: 0/1</p>
+<p>   Subdevice #0: subdevice #0</p>
+<p> card 2: SB [HDA ATI SB], device 1: ALC662 rev1 Digital [ALC662 rev1 Digital]</p>
+<p>   Subdevices: 1/1</p>
+<p>   Subdevice #0: subdevice #0</p>
+<p> card 3: HDMI [HDA ATI HDMI], device 3: HDMI 0 [HDMI 0]</p>
+<p>   Subdevices: 1/1</p>
+<p>   Subdevice #0: subdevice #0</p>
+<p>If you use your card's name as reference for alsa is better, because it will always connect to the right card no matter what the cards' order is. Above the card names are the ones I bolded (yours will be different).</p>
+<p>&nbsp;<p> As you can see, I have  a lot of devices here, but the ones I care about are the first two, Transceiver and SB. SB is the internal card, with four speakers plugged, and Transceiver is a USB wireless sound card, transmitting to two speakers in another room.</p>
+<p>&nbsp;<p>Setup basic pcms</p>
+<p>&nbsp;<p> Once you know your card's names, you have to setup basic hardware pcms and ctls. A pcm is an input/output device, and a ctl is a control for a device. So I wrote this:</p>
+<p>pcm.USBmic {</p>
+<p>     type hw</p>
+<p>     card CNF8215</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.USBmic {</p>
+<p>     type hw</p>
+<p>     card CNF8215</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.internal {</p>
+<p>     type hw</p>
+<p>     card SB</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.internal {</p>
+<p>     type hw</p>
+<p>     card SB</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.wireless {</p>
+<p>     type hw</p>
+<p>     card Transceiver</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.wireless {</p>
+<p>     type hw</p>
+<p>     card Transceiver</p>
+<p> }</p>
+<p>As you can see there are one pcm and one ctl for each card I want to use, defined by type.devicename. So now if I want to output sound on my internal card I can use aplay -Dinternal sound.wav (thanks to pcm), and alsamixer -Dinternal to manage the volume only for that card (thanks to ctl).</p>
+<p>&nbsp;<p>Dmix: concurrent sound from more than one application</p>
+<p>&nbsp;<p> Now we have all this pcms, but we still have that resource busy error hanging around. How do we solve it? We setup a few more pcms:</p>
+<p>pcm.internalDmixed {</p>
+<p>    type dmix</p>
+<p>    ipc_key 1024</p>
+<p>    ipc_key_add_uid false</p>
+<p>    ipc_perm 0666</p>
+<p>    slave {</p>
+<p>        pcm &quot;internal&quot;</p>
+<p>        period_time 0</p>
+<p>        period_size 2048</p>
+<p>        channels 4</p>
+<p>     }</p>
+<p>     bindings {</p>
+<p>        0 0</p>
+<p>        1 1</p>
+<p>        2 2</p>
+<p>        3 3</p>
+<p>     }</p>
+<p> }</p>
+<p>&nbsp;<p> pcm.wirelessDmixed {</p>
+<p>    type dmix</p>
+<p>    ipc_key 2048</p>
+<p>    ipc_key_add_uid false</p>
+<p>    ipc_perm 0666</p>
+<p>    slave {</p>
+<p>        pcm &quot;wireless&quot;</p>
+<p>        period_time 0</p>
+<p>        period_size 2048</p>
+<p>        channels 2</p>
+<p>     }</p>
+<p>     bindings {</p>
+<p>        0 0</p>
+<p>        1 1</p>
+<p>     }</p>
+<p> }</p>
+<p>Here I define two more pcms, using the previously defined ones as slaves. In this way I can use dmix to mix various outputs channels and get rid of that awful resource busy error.</p>
+<p>&nbsp;<p>More than one user?</p>
+<p>&nbsp;<p> This one was hard to find but easy to apply. If you look at the two dmixed pcms you will see two lines, &quot;ipc_key_add_uid false&quot; and &quot;ipc_perm 0666&quot;. The first one disables user id for the device (or so I suppose) and the second one sets permissions for the device. The two combined makes the device usable for more than one user at the same time.</p>
+<p>&nbsp;<p>Multiple outputs on multiple cards</p>
+<p>&nbsp;<p> And here comes the difficult part: getting these two cards to output concurrent sound. How to do it? Luckily I found a good article about it, and after trying and trying again I ended up merging everything together. The trick here is creating another pcm device, named &quot;both&quot;, to merge the two dmixed devices:</p>
+<p>&nbsp;<p>pcm.both {</p>
+<p>     type route;</p>
+<p>     slave.pcm {</p>
+<p>         type multi;</p>
+<p>         slaves.a.pcm &quot;wirelessDmixed&quot;;</p>
+<p>         slaves.b.pcm &quot;internalDmixed&quot;;</p>
+<p>         slaves.a.channels 2;</p>
+<p>         slaves.b.channels 4;</p>
+<p>         bindings.0.slave a;</p>
+<p>         bindings.0.channel 0;</p>
+<p>         bindings.1.slave a;</p>
+<p>         bindings.1.channel 1;</p>
+<p>        </p>
+<p>         bindings.2.slave b;</p>
+<p>         bindings.2.channel 0;</p>
+<p>         bindings.3.slave b;</p>
+<p>         bindings.3.channel 1;</p>
+<p>         bindings.4.slave b;</p>
+<p>         bindings.4.channel 2;</p>
+<p>         bindings.5.slave b;</p>
+<p>         bindings.5.channel 3;</p>
+<p>     }</p>
+<p>    </p>
+<p>     ttable.0.0 1;</p>
+<p>     ttable.1.1 1;</p>
+<p>    </p>
+<p>     ttable.0.2 1; </p>
+<p>     ttable.1.3 1; </p>
+<p>     ttable.2.4 1; </p>
+<p>     ttable.3.5 1; </p>
+<p> }</p>
+<p>Aaaand... it has surround too! You can try it using the command &quot;speaker-test -c6 -D both -t wav&quot;. Here you define a 6-channel device, using the two channels of the first sound card as the first two channels (0-1) and the four channels of the second sound card as the last four channels (2-5). Then using ttable the four channels of the second sound card are copied to the first four channels, so we will have the same otput on the first card and at the same time on the two front speakers of the second card. The last two channels, front center and rear center, will not output sound ad all, but I didn't understand how to change this pcm into a 4-channel one (comments are welcome).</p>
+<p>&nbsp;<p> If all the 6 speakers were in the same room, I would have done something like this:</p>
+<p>pcm.both {</p>
+<p>     type route;</p>
+<p>     slave.pcm {</p>
+<p>         type multi;</p>
+<p>         slaves.a.pcm &quot;wirelessDmixed&quot;;</p>
+<p>         slaves.b.pcm &quot;internalDmixed&quot;;</p>
+<p>         slaves.a.channels 2;</p>
+<p>         slaves.b.channels 4;</p>
+<p>         bindings.0.slave a;</p>
+<p>         bindings.0.channel 0;</p>
+<p>         bindings.1.slave a;</p>
+<p>         bindings.1.channel 1;</p>
+<p>        </p>
+<p>         bindings.2.slave b;</p>
+<p>         bindings.2.channel 0;</p>
+<p>         bindings.3.slave b;</p>
+<p>         bindings.3.channel 1;</p>
+<p>         bindings.4.slave b;</p>
+<p>         bindings.4.channel 2;</p>
+<p>         bindings.5.slave b;</p>
+<p>         bindings.5.channel 3;</p>
+<p>     }</p>
+<p>    </p>
+<p>     ttable.0.0 1;</p>
+<p>     ttable.1.1 1;</p>
+<p>    </p>
+<p>     ttable.2.2 1; </p>
+<p>     ttable.3.3 1; </p>
+<p>     ttable.4.4 1; </p>
+<p>     ttable.5.5 1; </p>
+<p> }</p>
+<p>&nbsp;<p> merging the 2 speakers on one card and 4 speakers on the other into an unique 6-channel setting.</p>
+<p>&nbsp;<p>Set the default output device</p>
+<p>&nbsp;<p> Ok, now that this monstrous multichannel stream-mixing device is ready, the last thing to do is set it as the default output device. Here it is:</p>
+<p>pcm.!default {</p>
+<p>         type plug</p>
+<p>         slave {</p>
+<p>                 pcm both</p>
+<p>         }</p>
+<p> }</p>
+<p>&nbsp;<p> ctl.!default {</p>
+<p>         type hw</p>
+<p>         card SB</p>
+<p> }</p>
+<p>So simple that doesn't need explanation at all. The ctl here is a bit picky, so it is set to control the main hardware card. Now if you try &quot;speaker-test -c4 -D default -t wav&quot; you will be amazed by the result.</p>
+<p>&nbsp;<p>Making it work with Skype and Amarok 1.4</p>
+<p>&nbsp;<p> Skype is easy: just set your mic pcm as the input device (in my case, USBMic), and the default pcm as the output device.</p>
+<p>&nbsp;<p> Amarok doesn't like the default alsa device, but it's not so hard to fix. Just go in Settings &gt; Configure Amarok &gt; Engine, select xine-engine, select alsa as output plugin, select your speaker arrangment and then set all the fields in &quot;ALSA Devices Configuration&quot; to plug:both.</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p> Here, done! :) </p>
+<p>&nbsp;<p> If you want one application to output sound only to one card, remember to use always the dmixed pcm and not the basic one, otherwise you will be stuck again with the resource busy error. </p>
+<p>&nbsp;<p>System-wide or single user config</p>
+<p>&nbsp;<p> To make this setting available for all users, just copy it into /etc/asound.conf (as root), otherwise you can write it into .asoundrc (in the home dir of one or more users), but I fear that the multiuser setting will result useless in this case.</p>
+<p>&nbsp;<p> To have the system-wide settings work, just restart alsa with /etc/rc.d/rc.alsa restart (as root). If you edited .asoundrc you have to logout and login again.</p>
+<p>&nbsp;<hr />
+<p><a href="http://alsa.opensrc.org/.asoundrc">.asoundrc</a> </p>
+<p><a href="http://www.alsa-project.org/main/index.php/Asoundrc">Asoundrc</a> </p>
+<p>&nbsp;<p>&nbsp;
+</p></body></html>

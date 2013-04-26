@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:22pt;"><strong>Улучшаем энергосбережение на мобильных устройствах с OS Linux.</strong></span><span style="font-size:9pt;"> </span></span></p>
+<p>Давненько собирался написать данную статью.</p>
+<p>Не буду приводить информацию о том, как подключить общеизвестные костыли. Расскажу о малоизвестных способах тюнинга энергосбережения.</p>
+<p>Приступим.</p>
+<p>Управление энергосбережением на мобильных чипах Broadcom с STA модулем:iwconfig eth1 txpower 19dBmiwconfig eth1 power period 1iwconfig eth1 power timeout 300u alliwconfig eth1 power 500m unicastiwconfig eth1 power min period 1 power max period 2iwconfig eth1 power saving 5iwconfig eth1 commit</p>
+<p>Изменяем процент с которого начинается использование свопа:echo 10 &gt; /proc/sys/vm/swappiness</p>
+<p>Включаем отслеживание состояния питания:echo “1″ &gt; /sys/power/pm_trace</p>
+<p>Управление вентилятором процессора:echo “1″ &gt; /sys/class/thermal/cooling_device0/cur_state</p>
+<p>Управление энергосбережением контроллеров для подключаемых носителей:echo min_power &gt; /sys/class/scsi_host/host2/link_power_management_policyecho min_power &gt; /sys/class/scsi_host/host3/link_power_management_policyecho min_power &gt; /sys/class/scsi_host/host4/link_power_management_policy</p>
+<p>Включаем энергосбережение для шины PCIe:echo powersave &gt; /sys/module/pcie_aspm/parameters/policy</p>
+<p>Включаем энергосбережение для шины USB:[ -L /sys/bus/usb/devices/1-5/power/level ] &amp;&amp; echo auto &gt; /sys/bus/usb/devices/1-5/power/level[ -L /sys/bus/usb/devices/1-5/power/level ] &amp;&amp; echo auto &gt; /sys/bus/usb/devices/1-5/power/level</p>
+<p>for i in /sys/bus/usb/devices/*/power/autosuspend; do echo 1 &gt; $i; donefor i in /sys/bus/usb/devices/*/power/level; do echo auto &gt; $i; doneПоследнее используйте с осторожностью, т. к. могут быть проблемы с мышью. <img src="https://s1.wp.com/wp-includes/images/smilies/icon_wink.gif" /> или options usbcore autosuspend=1 в /etc/modprobe.conf или /etc/modules</p>
+<p>Включаем режим для портативных устройств:echo “5″ &gt; /proc/sys/vm/laptop_mode</p>
+<p>Настраиваем энергосбережение для подключаемых носителей информации:hdparm -B 128 -S 200 /dev/sdahdparm -B 128 -S 200 /dev/sg1</p>
+<p>Параметры, специфичные для платформ на основе Intel-овской логики:echo 1 &gt; /sys/module/i915/parameters/i915_enable_rc6echo 1 &gt; /sys/module/snd_hda_intel/parameters/power_saveecho 1 &gt; /sys/module/longhaul/parameters/scale_voltage</p>
+<p>Более подробно и более познавательно об этом можно прочитать и найти более интресную информацию по следующей ссылке:</p>
+<p>http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption </p>
+
+</p></body></html>

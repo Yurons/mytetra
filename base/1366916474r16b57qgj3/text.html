@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Установка и настройка SNMP на Linux Debian/Ubuntu</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;"><a href="http://mannix.ru/prilozhenia/ustanovka-i-nastrojka-snmp-na-linux-debianubuntu.html">Установка и настройка SNMP на Linux Debian/Ubuntu</a> </span></p>
+<p>28 Dec 2011</p>
+<p>&nbsp;<p>Для снятия статистики с серверов на linux Debian/Ubuntu по snmp мы будем пользоваться snmpd.</p>
+<p>&nbsp;<p>1. Ставим пакет snmpd</p>
+<p>&nbsp;<p>apt-get install snmpd</p>
+<p>&nbsp;<p>2. Правим файл /etc/default/snmp</p>
+<p>По умолчанию демон snmpd «слушает» обращения только с localhost: 127.0.0.1</p>
+<p>&nbsp;<p>SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid 127.0.0.1'</p>
+<p>&nbsp;<p>&nbsp;<p>3. Для того, чтобы «слушал» все направления – изменяем эту строку до такого состояния:</p>
+<p>&nbsp;<p>SNMPDOPTS='-Lsd -Lf /dev/null -p /var/run/snmpd.pid'</p>
+<p>&nbsp;<p>4. Правим файл /etc/snmp/snmpd.conf</p>
+<p>&nbsp;<p>com2sec local localhost private # для подключения с localhost используем «пароль — комьюнити» private</p>
+<p>com2sec localnet 192.168.0.0/24 public # для подключения с адресов 192.168.0.* используем «пароль — комьюнити» public</p>
+<p># не забудьте поменять «пароли» на свои</p>
+<p>&nbsp;<p>group MyROSystem v1 local</p>
+<p>group MyROSystem v2c local</p>
+<p>group MyROSystem usm local</p>
+<p>group MyROGroup v1 localnet</p>
+<p>group MyROGroup v2c localnet</p>
+<p>group MyROGroup usm localnet</p>
+<p>group MyRWGroup v1 local</p>
+<p>group MyRWGroup v2c local</p>
+<p>group MyRWGroup usm local</p>
+<p>&nbsp;<p>view all included .1 80</p>
+<p>view system included .iso.org.dod.internet.mgmt.mib-2.system</p>
+<p>&nbsp;<p>access MyROSystem &quot;&quot; any noauth exact system none none</p>
+<p>access MyROGroup &quot;&quot; any noauth exact all none none</p>
+<p>access MyRWGroup &quot;&quot; any noauth exact all all none</p>
+<p>&nbsp;<p>syslocation MainDatacenter # кто мы?</p>
+<p>syscontact admin@mannix.ru # как с нами звязаться?</p>
+<p>&nbsp;<p>5. Перезапускаем snmpd</p>
+<p>&nbsp;<p>/etc/init.d/snmpd restart</p>
+<p>&nbsp;<p>6. Тестируем</p>
+<p>&nbsp;<p>С локальной машины:</p>
+<p>&nbsp;<p>snmpwalk -v 2c -c private localhost | less</p>
+<p>&nbsp;<p>Или с удаленного хоста:</p>
+<p>snmpwalk -v 2c -c public ip_сервера | less </p>
+
+</p></body></html>

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">These instructions are mostly distro-independent, the only exception is the location and name of the rc.local file (it's a script that runs last at boot).</p>
+<p>&nbsp;<p>Edit your </span></span><span style="font-family:Courier New,courier;">/etc/rc.d/rc.local</span><span style="font-family:Sans Serif;"> file. Add this to it:</p>
+<p>&nbsp;</span></p>
+<p><span style="font-family:Courier New,courier;">echo -n &quot;Turning NumLock ON... &quot;</span></p>
+<p>for tty in /dev/tty[1-9]*; do</p>
+<p>setleds -D +num &lt; $tty</p>
+<p>done</p>
+<p>echo &quot;done.&quot;</p>
+<p>&nbsp;<p>Как включить numlock при входе в систему?</p>
+<p>&nbsp;<p><span style="font-family:Sans Serif;"> Этого можно добиться двумя способами. Либо используйте менеджер входа в систему, который включает numlock (например, gdm, проверьте настройки), либо используйте маленькую программку под названием numlockx, добавьте numlockx в ваш .xinitrc и наслаждайтесь. </span></p>
+
+</p></body></html>

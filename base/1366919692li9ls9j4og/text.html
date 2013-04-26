@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">Basics of telnet and HTTP</span></span></p>
+<p>&nbsp;<p>January 23, 2009 by Jason Garber </p>
+<p>&nbsp;<p>Say you want to request a webpage…  Normally, one would use a web browser, right?  But sometimes you just need to see what is really going on…  In this blog post I will show the basics of using the telnet command to work with the HTTP protocol.</p>
+<p>&nbsp;<p>For reference: http://www.w3.org/Protocols/rfc2616/rfc2616.html</p>
+<p>&nbsp;<p>Most of these commands were run on Linux, but telnet on Windows should work too.</p>
+<p>telnet &lt;ip-or-host&gt; &lt;port&gt;</p>
+<p>Background…</p>
+<p>&nbsp;<p>If you are using the HTTP protocol, which is port 80, then you must follow the HTTP protocol conventions (which are simple).  HTTP has two primary versions at this point: 1.0 and 1.1.</p>
+<p>&nbsp;<p>In the HTTP 1.0 days, a single website was bound to a single IP address.  What this means is that an HTTP request sent to a given IP address would return content from only one site.  This is quite limiting and inconvenient.  To have to assign a new IP for every different domain name… What a bother.  Not to mention that the current internet protocol standard, IPv4, is limited to several billion addresses and quickly running out.</p>
+<p>&nbsp;<p>More recently, HTTP 1.1 has become the standard.  This enables something called Name Based Virtual Hosting.  By requiring a “Host” header to be sent along with the request, HTTP servers can in turn “look up” the correct website and return it based on the name.  Hundreds or even thousands of different domains can now be hosted on a single IP address.</p>
+<p>&nbsp;<p>(keep in mind that SSL certificates each require a seperate IP address.  Due to encryption issues, the IP address is needed to determine which SSL certificate to use…)</p>
+<p>&nbsp;<p>So with that introduction, allow me to show you the basics of HTTP…</p>
+<p>Using HTTP over Telnet</p>
+<p>&nbsp;<p>The telnet utility is a simple (but useful) utility that allows one to establish connections to a remote server.  From my perspective, it is most useful with plain text protocols (like HTTP), but my knowledge of telnet is not very deep…</p>
+<p>&nbsp;<p>Here is an example (commands you would type are in red):</p>
+<p>[jason@neon ~]$ telnet gahooa.com 80</p>
+<p>Trying 74.220.208.72…</p>
+<p>Connected to gahooa.com (74.220.208.72).</p>
+<p>Escape character is ‘^]’.</p>
+<p>GET /       &lt;press enter&gt;</p>
+<p>&lt;html&gt;</p>
+<p>   &lt;body&gt;</p>
+<p>      Hi, you have reached Gahooa!</p>
+<p>   &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>Connection closed by foreign host.</p>
+<p>&nbsp;<p>Because it was an HTTP 1.0 request, the server DID NOT wait for additional headers.  Again, quite limiting – only sending one header line.</p>
+<p>And… HTTP 1.1</p>
+<p>&nbsp;<p>Here is an example of an Apache Virtual Host configuration directive.</p>
+<p>&lt;VirtualHost 74.220.208.72:80&gt;</p>
+<p>   # Defines the main name by which this VirtualHost responds to</p>
+<p>   ServerName gahooa.com</p>
+<p>&nbsp;<p>   # Additional names (space delimited) which this VirtualHost will respond to.</p>
+<p>   ServerAlias www.gahooa.com </p>
+<p>&nbsp;<p>   # Apache will append the requested URI to this path in order to find the resource to serve.</p>
+<p>   DocumentRoot /home/gahooa/sites/gahooa.com/docroot</p>
+<p>&nbsp;<p>&lt;/VirtualHost&gt;</p>
+<p>&nbsp;<p>When we issue the following HTTP 1.1 request, we are in effect asking for the file at:</p>
+<p>/home/gahooa/sites/gahooa.com/docroot/index.html</p>
+<p>&nbsp;<p>Keep in mind that because this is HTTP 1.1, the web server will continue to accept header lines until it encounters a blank line:</p>
+<p> A blank line…</p>
+<p>[jason@neon ~]$ telnet gahooa.com 80</p>
+<p>Trying 74.220.208.72…</p>
+<p>Connected to gahooa.com (74.220.208.72).</p>
+<p>Escape character is ‘^]’.</p>
+<p>GET /index.html HTTP/1.1       &lt;press enter&gt;</p>
+<p>Host: www.gahooa.com           &lt;press enter&gt;</p>
+<p>                               &lt;press enter again&gt;</p>
+<p>HTTP/1.1 200 OK</p>
+<p>Date: Wed, 03 Sep 2008 21:00:46 GMT</p>
+<p>Server: Apache/2.2.9 (Unix)</p>
+<p>Transfer-Encoding: chunked</p>
+<p>Content-Type: text/html</p>
+<p>                               &lt;take note of blank line here&gt;</p>
+<p>&lt;html&gt;</p>
+<p>   &lt;body&gt;</p>
+<p>      Hi, you have reached Gahooa!</p>
+<p>   &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>Connection closed by foreign host.</p>
+<p>&nbsp;<p>A couple notes:</p>
+<p>HTTP 1.1 continues to accept header lines until it recieves a blank line</p>
+<p>HTTP 1.1 sends a number of header lines in the response.  Then a blank line.  Then the response content.</p>
+<p>Redirects</p>
+<p>&nbsp;<p>One of the main points of writing this article was to describe how to debug strange redirect problems.   Redirects are done by sending a “Location” header in the response.  For more information on the Location header, please see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30</p>
+<p>[jason@neon ~]$ telnet gahooa.com 80</p>
+<p>Trying 74.220.208.72…</p>
+<p>Connected to gahooa.com (74.220.208.72).</p>
+<p>Escape character is ‘^]’.</p>
+<p>GET /test-redirect.php HTTP/1.1 &lt;press enter&gt;</p>
+<p>Host: www.gahooa.com            &lt;press enter&gt;</p>
+<p>                                &lt;press enter again&gt;</p>
+<p>HTTP/1.1 200 OK</p>
+<p>Date: Wed, 03 Sep 2008 21:00:46 GMT</p>
+<p>Server: Apache/2.2.9 (Unix)</p>
+<p>Transfer-Encoding: chunked</p>
+<p>Content-Type: text/html</p>
+<p>Location: http://www.google.com &lt;take note of this line&gt;</p>
+<p>&nbsp;<p>The Location header in the response instructs the requestor to re-request the resource, but from the URI specified in the Location header.  In the above example, if you were debugging redirect issues, you would simply initiate another HTTP request to  http://www.google.com</p>
+<p>Python instead of telnet</p>
+<p>&nbsp;<p>Finally, I’d like to illustrate a really simple python program that would facilitate playing around with the same:</p>
+<p>import socket</p>
+<p>S = socket.socket(socket.AF_INET)</p>
+<p>S.connect((&quot;www.gahooa.com&quot;, 80))</p>
+<p>&nbsp;<p>S.send(&quot;GET / HTTP/1.1\r\n&quot;)</p>
+<p>S.send(&quot;Host: www.gahooa.com\r\n&quot;)</p>
+<p>S.send(&quot;\r\n&quot;)</p>
+<p>&nbsp;<p>print S.recv(1000)</p>
+<p>&nbsp;<p>S.close()</p>
+<p>Conclusion</p>
+<p>&nbsp;<p>When you are not familiar with protocols such as HTTP, understanding “how things work” can be daunting.  But like many technologies out there, they really are simple (once understood).</p>
+<p>&nbsp;<p>The more truth and understanding you can fit into your perspective, the better you will be able to make informed decisions. </p>
+<p>&nbsp;<p><span style="font-size:17pt;"><strong><a href="http://blog.tonycode.com/tech-stuff/http-notes/making-http-requests-via-telnet">Making HTTP requests via telnet</a></strong></span><span style="font-size:9pt;"> </span></p>
+<p><span style="font-size:17pt;"><strong>Simple telnet HTTP requests</strong></span></p>
+<p><span style="font-size:9pt;">Using Telnet is a great way to learn about HTTP requests.</span></p>
+<p>For example.. back in the 90s microsoft was running their sites on apache. Nowadays they are eating their own dog food.  ;-)</p>
+<p>Here is a simple HEAD request to microsoft.com via telnet.</p>
+<p><span style="font-family:Courier New,courier;">$ telnet microsoft.com 80</span></p>
+<p>Trying 207.46.232.182...</p>
+<p>Connected to microsoft.com.</p>
+<p>Escape character is '^]'.</p>
+<p>HEAD / HTTP/1.0</p>
+<p>&nbsp;<p>HTTP/1.1 301 Moved Permanently</p>
+<p>Connection: close</p>
+<p>Date: Thu, 12 Jul 2007 15:25:37 GMT</p>
+<p>Server: Microsoft-IIS/6.0</p>
+<p>X-Powered-By: ASP.NET</p>
+<p>Location: http://www.microsoft.com</p>
+<p>Content-Length: 31</p>
+<p>Content-Type: text/html</p>
+<p>Set-Cookie: ASPSESSIONIDSCAQCSBR=FMPJMMPAMGNBFELIPABIHHMN; path=/</p>
+<p>Cache-control: private</p>
+<p>&nbsp;<p>Connection closed by foreign host.</p>
+<p><span style="font-family:Sans Serif;">The command above was simple. <strong>HEAD / HTTP/1.0</strong> followed by 2 line feeds.</span></p>
+<p>The 80 specified in the telnet command is the port that you are hitting when you type <a href="http://microsoft.com/">http://microsoft.com/</a> in a browser. If another port is used you will see it after a colon. ex: <a href="http://tonycode.com:8080/">http://tonycode.com:8080/</a> hits the server running on port 8080. If there was one. :-)</p>
+<p>When doing GET commands you usually end up sending headers with your command. You should always send the Host header (this isn’t required for HTTP/1.0 but many servers are running multiple sites so you’ll want to send this.)</p>
+<p>Here’s an example of a GET against my home page.</p>
+<p><span style="font-family:Courier New,courier;">$ telnet tonycode.com 80</span></p>
+<p>Trying 208.97.136.171...</p>
+<p>Connected to tonycode.com.</p>
+<p>Escape character is '^]'.</p>
+<p>GET / HTTP/1.1</p>
+<p>Host: tonycode.com</p>
+<p>&nbsp;<p>HTTP/1.1 200 OK</p>
+<p>Date: Thu, 12 Jul 2007 16:10:02 GMT</p>
+<p>Server: Apache/1.3.37 (Unix) mod_throttle/3.1.2 DAV/1.0.3 mod_fastcgi/2.4.2 mod_gzip/1.3.26.1a PHP/4.4.7 mod_ssl/2.8.22 OpenSSL/0.9.7e</p>
+<p>MS-Author-Via: DAV</p>
+<p>Last-Modified: Wed, 11 Jul 2007 14:10:28 GMT</p>
+<p>ETag: &quot;19cf7aa-68d-4694e4d4&quot;</p>
+<p>Accept-Ranges: bytes</p>
+<p>Content-Length: 1677</p>
+<p>Content-Type: text/html</p>
+<p>&nbsp;<p>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD</p>
+<p><span style="font-family:Sans Serif;">I spared you the full contents of my home page. Why did it return the entire page? Because we did a GET instead of HEAD.</span></p>
+<p>Remembering all the headers you need can get tricky so I usually use [<a href="http://livehttpheaders.mozdev.org/">LiveHttpHeaders</a> to get what I need and then I can make modifications for testing or scripting purposes.</p>
+<p> </p>
+<p><span style="font-size:17pt;"><strong>Scripting telnet HTTP requests</strong></span></p>
+<p><span style="font-size:9pt;">I recently needed to hit several production servers that lived behind a VIP. I had access to the servers directly but their behavior was controlled by the host that they were called with so if I used the machine name I was out of luck. Also, port numbers in the request would throw it off. So I needed to send http requests directly to the server and lie about the hostname I was using to access them.</span></p>
+<p>Here is a script file that I run and pipe into telnet.</p>
+<p><span style="font-family:Courier New,courier;">echo &quot;open $1 $2&quot;</span></p>
+<p>sleep 2</p>
+<p>echo &quot;GET $4 HTTP/1.0&quot;</p>
+<p>echo &quot;User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.4) Gecko/20070515 Firefox/2.0.0.4&quot;</p>
+<p>echo &quot;Host: $3&quot;</p>
+<p>echo</p>
+<p>echo</p>
+<p>sleep 2</p>
+<p><span style="font-family:Sans Serif;">lets put this in a file called getpage and then we run the following</span></p>
+<p>./getpage tonycode.com 80 tonycode.com /| telnet</p>
+<p>ok. what did we just do?</p>
+<ul type="disc">
+<li>getpage is sending commands on stdout and telnet is getting them via the pipe </li>
+
+<ul type="circle">
+<li>getpage 1st tells telnet to open a connection to tonycode.com ($1) port 80 ($2).</li>
+<li>getpage waits 2 seconds for the connection. Adjust as necessary.</li>
+<li>getpage sends the request. GET / HTTP/1.0 and sets the host ($3) to tonycode.com. </li>
+
+<ul type="circle">
+<li>Note $4 is the resource to fetch and we set it to /.</li>
+<li>I even threw in the user agent header for fun.</li>
+<li>Those 2 empty echo statements are necessary to tell the server this is the end of the request.</li>
+
+<ul type="circle">
+<li>Finally getpage sleeps for 2 seconds to allow time for the response to come back. Leave out this line and you’ll get nada.</li>
+</ul>
+</ul>
+</ul>
+</ul>
+
+</p></body></html>

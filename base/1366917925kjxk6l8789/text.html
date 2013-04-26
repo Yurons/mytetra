@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"> <a href="http://openwiki.ru/wiki/CentOS#.D0.9E.D0.B1.D0.BD.D0.BE.D0.B2.D0.BB.D0.B5.D0.BD.D0.B8.D1.8F_.D1.81.D0.B8.D1.81.D1.82.D0.B5.D0.BC.D1.8B">CentOS</a> </span></span></p>
+<p>&nbsp;<p>&nbsp;<p>CentOS — дистрибьютив Linux, совместимый с RedHat Linux. По сути CentOS Linux это RedHat Enterprise Linux, из которого удалены только коммерческие закрытые программы. Мы постарались протестировать все приводимые примеры и собрать документацию, необходимую для практического применения системными администраторами. Все сказанное в этом разделе относится к CentOS Linux 4.4 и выше, так же с лёгкостью может быть отнесено к RedHat Linux, и возможно будет актуально для других основанных на RedHat или совместимых с ним дистрибьютивов. </p>
+<p>&nbsp;<p>Оффициальная документация по Centos Содержание [убрать]</p>
+<p>1 Установка и настройка</p>
+<p>2 Управление пакетами</p>
+<p>3 Система сервисов</p>
+<p>4 Дисковая подсистема</p>
+<p>5 Сетевая подсистема</p>
+<p>6 Диагностика проблем</p>
+<p>7 Если CentOS не грузится</p>
+<p>8 Обновления системы</p>
+<p>9 уровни запуска CentOS</p>
+<p>10 Сервисы</p>
+<p>11 управление разделами диска</p>
+<p>12 дисковые квоты</p>
+<p>13 информация о происходящем в системе</p>
+<p>14 инсталляция ПО, управление пакетами</p>
+<p>15 поиск ПО</p>
+<p>16 ручная установка пакетов из RPM</p>
+<p>17 конфигурации Centos</p>
+<p>18 Управление пользователями</p>
+<p>19 Установка нового ядра</p>
+<p>20 конфигурация модулей ядра</p>
+<p>21 названия жёстких дисков и логических устройств</p>
+<p>22 альтернативные версии программ</p>
+<p>23 SELinux</p>
+<p>24 не забыть дополнить про</p>
+<p>25 Внешние ссылки</p>
+<p>&nbsp;<p> Установка и настройка </p>
+<p>&nbsp;<p>Консольные команды UNIX </p>
+<p> Управление пакетами </p>
+<p>&nbsp;<p>Обновление релиза CentOS </p>
+<p>&nbsp;<p>Работа с репозиториями CentOS </p>
+<p>&nbsp;<p>Сборка RPM пакетов </p>
+<p> Система сервисов </p>
+<p>&nbsp;<p>Скрипты запуска CentOS </p>
+<p>&nbsp;<p>Управление сервисами CentOS </p>
+<p> Дисковая подсистема </p>
+<p>&nbsp;<p> CentOS Hardware RAID  — работа с аппаратным RAID </p>
+<p>&nbsp;<p> CentOS Software RAID  — работа с программным RAID </p>
+<p>&nbsp;<p> перенос CentOS  — перенос системы на другой компьютер </p>
+<p>&nbsp;<p> LVM  — работа с LVM </p>
+<p> Сетевая подсистема </p>
+<p>&nbsp;<p> iptables  — встроенный Брандмауэр </p>
+<p>&nbsp;<p> centos-netdriver  — установка драйверов сетевой платы </p>
+<p> Диагностика проблем </p>
+<p>&nbsp;<p> программы для диагностики CentOS </p>
+<p>&nbsp;<p> tcpdump  — перехват сетевого трафика </p>
+<p>&nbsp;<p> действия после взлома CentOS </p>
+<p>&nbsp;<p> tail  — просмотр логов в реальном времени </p>
+<p> Если CentOS не грузится </p>
+<p>&nbsp;<p> Grub  механизм работы загрузчика </p>
+<p> Обновления системы </p>
+<p>&nbsp;<p>зарегистрироваться для доступа к обновлениям </p>
+<p>up2date --register</p>
+<p>&nbsp;<p>обновление ПО </p>
+<p>su -c 'yum update' (all)</p>
+<p>&nbsp;<p>автоматическое обновление ПО </p>
+<p>su -c '/sbin/chkconfig --level 345 yum on; /sbin/service yum start'</p>
+<p> уровни запуска CentOS </p>
+<p>&nbsp;<p>CentOS runlevels: </p>
+<p>0 - halt</p>
+<p>1 - single user</p>
+<p>2 - not used</p>
+<p>3 - full multi user</p>
+<p>4 - not used</p>
+<p>5 - full multi user (with X-login)</p>
+<p>6 - reboot</p>
+<p> Сервисы </p>
+<p>&nbsp;<p>[stop start restart] </p>
+<p>service httpd restart</p>
+<p>&nbsp;<p>добавление сервиса iptables в автозапуск </p>
+<p>/sbin/service iptables restart</p>
+<p>/sbin/chkconfig --level 345 iptables on</p>
+<p>&nbsp;<p>services </p>
+<p>ntsysv</p>
+<p>chkconfig --list</p>
+<p>/sbin/service crond status</p>
+<p>/sbin/service iptables restart</p>
+<p>/sbin/chkconfig --level 345 iptables on</p>
+<p> управление разделами диска </p>
+<p>fdisk -l</p>
+<p>parted</p>
+<p>parted print</p>
+<p>parted cp /dev/hda1 to /dev/hdb1</p>
+<p>lvdisplay</p>
+<p>vgdisplay</p>
+<p>pvdisplay</p>
+<p>mkfs</p>
+<p>e2label</p>
+<p>tune2fs</p>
+<p>e2fsck -y</p>
+<p>cat /proc/swaps</p>
+<p>swapoff -v /dev/VolGroup00/LogVol01</p>
+<p>lvm lvresize /dev/VolGroup00/LogVol01 -L +256M</p>
+<p>lvm lvreduce /dev/VolGroup00/LogVol01 -L -256M</p>
+<p>lvm lvremove /dev/VolGroup00/LogVol01</p>
+<p>mkswap /dev/VolGroup00/LogVol01</p>
+<p>swapon -va</p>
+<p>dd if=/dev/zero of=/swapfile bs=1024 count=65536</p>
+<p>mkswap /swapfile</p>
+<p>swapon /swapfile</p>
+<p> дисковые квоты </p>
+<p>repquota -a</p>
+<p>mount -t ext3 -o acl &lt;device&gt; &lt;partition&gt;</p>
+<p>setfacl -m &lt;rules&gt; &lt;files&gt;</p>
+<p>setfacl -m u:andrius:rw /project/file</p>
+<p>setfacl -x u:500 /project/file</p>
+<p>getfacl /project/file</p>
+<p> информация о происходящем в системе </p>
+<p>free</p>
+<p>ps aux | less</p>
+<p>ps ax</p>
+<p>top</p>
+<p>df</p>
+<p>du -sh</p>
+<p>lsof</p>
+<p>lspci</p>
+<p>lsusb</p>
+<p>netstat</p>
+<p>tcpdump</p>
+<p> инсталляция ПО, управление пакетами </p>
+<p>(as root) yum install mc</p>
+<p>su -c 'yum install tsclient'</p>
+<p>su -c 'yum groupinstall &quot;MySQL Database&quot;'</p>
+<p>su -c 'yum update tsclient'</p>
+<p>su -c 'yum groupupdate &quot;MySQL Database&quot;'</p>
+<p>su -c 'yum remove tsclient'</p>
+<p>su -c 'yum groupremove &quot;MySQL Database&quot;'</p>
+<p> поиск ПО </p>
+<p>su -c 'yum list tsclient' (поиск по имени пакета)</p>
+<p>su -c 'yum search PalmPilot' (поиск по описанию пакета)</p>
+<p>su -c 'yum provides libneon' (поиск по файлу, содержащемуся в пакете)</p>
+<p>su -c 'yum list tsc\*' (regexp)</p>
+<p>rpm -q -f /usr/bin/telnet  #какому пакету принадлежит файл /usr/bin/telnet</p>
+<p>yum list 'perl*'   #посмотреть полный список пакетов в репозиториях со словом Perl</p>
+<p> ручная установка пакетов из RPM </p>
+<p>rpm -qd lvm # describe lvm</p>
+<p>rpm -Uvh foo-1.0-1.i386.rpm</p>
+<p>rpm -ivh kernel-some.rpm</p>
+<p>rpm -ivh --replacepkgs foo-1.0-1.i386.rpm</p>
+<p>rpm -ivh --replacefiles foo-1.0-1.i386.rpm</p>
+<p>(опасная установка без зависимостей) --nodeps</p>
+<p>&nbsp;<p>деинсталляция </p>
+<p>rpm -e foo.rpm</p>
+<p>&nbsp;<p>обновление </p>
+<p>rpm -Uvh foo-2.rpm</p>
+<p>(force) rpm -Uvh --oldpackage foo.rpm</p>
+<p>&nbsp;<p>fresh </p>
+<p>rpm -Fvh foo.rpm</p>
+<p>rpm -Fvh *.rpm</p>
+<p>&nbsp;<p>поиск </p>
+<p>rpm -q foo</p>
+<p>rpm -q --redhatprovides bar.so.2</p>
+<p>rpm -q -a (все)</p>
+<p>rpm -q -f file (пакет, содержащий файл)</p>
+<p>rpm -q -l (список файлов в пакете)</p>
+<p>&nbsp;<p>verify </p>
+<p>rpm -Vf /usr/bin/vim</p>
+<p>rpm -Va</p>
+<p>rpm -Vp foo-1.0-i386.rpm</p>
+<p>rpm -K nosignature &lt;rpmfile&gt; (check md5)</p>
+<p>&nbsp;<p>keys </p>
+<p>rpm --import /usr/share/rhn/RPM-GPG-KEY</p>
+<p>rpm -qa gpg-pubkey*</p>
+<p>rpm -R file.rpm (check sign)</p>
+<p> конфигурации Centos </p>
+<p>&nbsp;<p>network </p>
+<p>netconfig</p>
+<p>system-config-network-cmd -e &gt; /tmp/network-config</p>
+<p>system-config-network-cmd -i -c -f /tmp/network-config</p>
+<p>&nbsp;<p>network profile </p>
+<p>system-config-network-cmd --profile &lt;name&gt; --activate</p>
+<p>/etc/sysconfig/</p>
+<p># net.ipv4.ip_forward 1</p>
+<p>/sbin/sysctl -p /etc/sysctl.conf</p>
+<p>&nbsp;<p>system-config </p>
+<p>system-config-authentication</p>
+<p>system-config-network-druid</p>
+<p>system-config-samba</p>
+<p>system-config-date</p>
+<p>system-config-network-gui</p>
+<p>system-config-securitylevel</p>
+<p>system-config-httpd</p>
+<p>system-config-network-tui</p>
+<p>system-config-securitylevel-tui</p>
+<p>system-config-keyboard</p>
+<p>system-config-nfs</p>
+<p>system-config-services</p>
+<p>system-config-language</p>
+<p>system-config-packages</p>
+<p>system-config-soundcard</p>
+<p>system-config-lvm</p>
+<p>system-config-printer</p>
+<p>system-config-time</p>
+<p>system-config-mouse</p>
+<p>system-config-printer-gui</p>
+<p>system-config-users</p>
+<p>system-config-network</p>
+<p>system-config-printer-tui</p>
+<p>system-control-network</p>
+<p>system-config-network-cmd</p>
+<p>system-config-rootpassword</p>
+<p> Управление пользователями </p>
+<p>useradd &lt;name&gt; -d /home/user -g users -m</p>
+<p>passwd &lt;user&gt;</p>
+<p>groupadd -g &lt;gid&gt;</p>
+<p>groupadd -r (gid less 499)</p>
+<p>chage -d 0 user (expire now)</p>
+<p>usermod -L user (lock)</p>
+<p> Установка нового ядра </p>
+<p>/sbin/mkbootdisk `uname -r`</p>
+<p>rpm -qa | grep kernel</p>
+<p>rpm -ivh newkernel-i686.rpm</p>
+<p>ls -l /boot (sure initrd-newkernel.img exist)</p>
+<p>/boot/grub/grub.conf (exist title section for new)</p>
+<p> конфигурация модулей ядра </p>
+<p>/etc/rc.modules (force boottime load)</p>
+<p>/etc/modprobe.conf (all available)</p>
+<p>/sbin/lsmod</p>
+<p>/sbin/modprobe e100</p>
+<p>/sbin/modprobe -v e100</p>
+<p>/sbin/modinfo</p>
+<p>(warning, force) insmod, rmmod</p>
+<p> названия жёстких дисков и логических устройств </p>
+<p>/dev/mapper/VolGroup00-LogVol02</p>
+<p>/dev/sda /dev/sdb</p>
+<p>/dev/hda /dev/hdb</p>
+<p> альтернативные версии программ </p>
+<p>(в одну строчку)</p>
+<p>/usr/sbin/alternatives --install /usr/bin/java java</p>
+<p>/usr/lib/jvm/jre-1.4.2-gcj/bin/java 1</p>
+<p>(в одну строчку)</p>
+<p>/usr/sbin/alternatives --install /usr/bin/java java </p>
+<p>/usr/java/j2re1.5.0_06/bin/java 2</p>
+<p>/usr/sbin/alternatives --config java</p>
+<p>/usr/sbin/alternatives --display java</p>
+<p> SELinux </p>
+<p>/var/log/audit/audit.log</p>
+<p>/usr/bin/id - показывает Context</p>
+<p>setsebool -P httpd_enable_cgi 1</p>
+<p>man httpd_selinux</p>
+<p>man chcon</p>
+<p> не забыть дополнить про </p>
+<p>parted &amp; lvm options</p>
+<p>quotas</p>
+<p>at</p>
+<p>cron</p>
+<p> Внешние ссылки </p>
+<p>&nbsp;<p>Домашняя страница CentOS</p>
+
+</p></body></html>

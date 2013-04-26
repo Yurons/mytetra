@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">[<p><span style="font-family:DejaVu Serif;"> <span style="font-size:13pt;"><strong>Enabling DNS proxy in NAT mode</strong></span></span></p>
+<p>The NAT engine by default offers the same DNS servers to the guest that are configured on the host. In some scenarios, it can be desirable to hide the DNS server IPs from the guest, for example when this information can change on the host due to expiring DHCP leases. In this case, you can tell the NAT engine to act as DNS proxy using the following command: </p>
+<p><span style="font-family:Courier New,courier;"><span style="color:#0000ff;">VBoxManage modifyvm &quot;VM name&quot; --natdnsproxy1 on</span></span></p>
+<p><span style="font-family:DejaVu Serif;"><strong>Configuring aliasing of the NAT engine</strong></span></p>
+<p>By default, the NAT core uses aliasing and uses random ports when generating an alias for a connection. This works well for the most protocols like SSH, FTP and so on. Though some protocols might need a more transparent behavior or may depend on the real port number the packet was sent from. It is possible to change the NAT mode via the VBoxManage frontend with the following commands: </p>
+<p><span style="font-family:Courier New,courier;">VBoxManage modifyvm &quot;VM name&quot; --nataliasmode1 proxyonly</span></p>
+<p><span style="font-family:DejaVu Serif;">and </span></p>
+<p><span style="font-family:Courier New,courier;">VBoxManage modifyvm &quot;Linux Guest&quot; --nataliasmode1 sameports</span></p>
+<p><span style="font-family:DejaVu Serif;">The first example disables aliasing and switches NAT into transparent mode, the second example enforces preserving of port values. These modes can be combined if necessary. </span></p>
+<p>&nbsp;<p>Я включил все</p>
+<p>&nbsp;</span></p></body></html>

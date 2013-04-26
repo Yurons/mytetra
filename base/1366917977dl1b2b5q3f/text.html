@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>Grub</strong></span></span></p>
+<p> </p>
+<p>&nbsp;<p>un 25 23:39:52 localhost kernel: [   19.420830] NVRM: Your system is not currently configured to drive a VGA consoleJun 25 23:39:52 localhost kernel: [   19.420832] NVRM: on the primary VGA device. The NVIDIA Linux graphics driverJun 25 23:39:52 localhost kernel: [   19.420834] NVRM: requires the use of a text-mode VGA console. Use of other consoleJun 25 23:39:52 localhost kernel: [   19.420835] NVRM: drivers including, but not limited to, vesafb, may result inJun 25 23:39:52 localhost kernel: [   19.420836] NVRM: corruption and stability problems, and is not supported.</p>
+<p>&nbsp;<p><span style="color:#ff0000;">Вместо VGA в grub необходимо использовать <span style="font-family:Courier New,courier;">gfxpayload</span></span></p>
+<p>&nbsp;<p><span style="font-family:Sans Serif;">Command: <strong>linux</strong><em> file ...</em><p>&nbsp;</p>
+<p>Load a Linux kernel image from <em>file</em>. The rest of the line is passed verbatim as the <em>kernel command-line</em>. Any initrd must be reloaded after using this command (see <a href="http://www.gnu.org/software/grub/manual/html_node/initrd.html#initrd">initrd</a>). </span></p>
+<p>On x86 systems, the kernel will be booted using the 32-bit boot protocol. Note that this means that the ‘<span style="font-family:Courier New,courier;">vga=</span><span style="font-family:Sans Serif;">’ boot option will not work; if you want to set a special video mode, you will need to use GRUB commands such as ‘</span><span style="font-family:Courier New,courier;">set gfxpayload=1024x768</span><span style="font-family:Sans Serif;">’ or ‘</span><span style="font-family:Courier New,courier;">set gfxpayload=keep</span><span style="font-family:Sans Serif;">’ (to keep the same mode as used in GRUB) instead. GRUB can automatically detect some uses of ‘</span><span style="font-family:Courier New,courier;">vga=</span><span style="font-family:Sans Serif;">’ and translate them to appropriate settings of ‘</span><span style="font-family:Courier New,courier;">gfxpayload</span><span style="font-family:Sans Serif;">’. The </span><span style="font-family:Courier New,courier;">linux16</span><span style="font-family:Sans Serif;"> command (see <a href="http://www.gnu.org/software/grub/manual/html_node/linux16.html#linux16">linux16</a>) avoids this restriction. </span></p>
+<p>&nbsp;<p><strong>pm-utils </strong></p>
+<p><strong>Hibernation (suspend2disk) </strong></p>
+<p><span style="font-family:Courier New,courier;">linux /vmlinuz-linux root=/dev/sda3 <strong>resume=/dev/sda2</strong> ro</span></p>
+<p>&nbsp;
+</p></body></html>

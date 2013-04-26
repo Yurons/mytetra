@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>Small videos don't going to the cache </p>
+<p>&nbsp;<p> [New Test] Small videos from youtube.com arn't added to cache</p>
+<p>&nbsp;<p>Smalll videos (size about 1 Mb) arn't added</p>
+<p>&nbsp;<p>&nbsp;<p>1. Первый запрос </p>
+<p>curl -v --proxy bfs-x4150-20-xm4:3128 --output ~/tmp/HO53/video.test.1 --user-agent 'AppleCoreMedia/1.0.0.9B206 (iPhone; U; CPU OS 5_1_1 like Mac OS X; en_us)' http://bfs-hs20-01s3.bfs.openwave.com/CongestionControl/Caching/21sec_1.mp4 -w '\nResponseCode=%{http_code}\n' -L</p>
+<p>видео в папулярите листе 9f87b3dec3c1b550b0203e00c1f33fb7,9f87b3dec3c1b550b0203e00c1f33fb7-iPhone-medium</p>
+<p>&nbsp;<p>2. Второй запрос, без перезапуска TS</p>
+<p>UGET http://bfs-hs20-01s3.bfs.openwave.com/CongestionControl/Caching/21sec_1.mp4 HTTP/1.1</p>
+<p>Host: bfs-hs20-01s3.bfs.openwave.com</p>
+<p>GET /webdav/a6/d9/bd25fea1cc90ffb592b4c22d5249-iPhone-medium.header HTTP/1.1</p>
+<p>Host: bfs-x4150-20-xm4.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>Ожидалось: такой же фингерпринт </p>
+<p>Получилось: a6d9bd25fea1cc90ffb592b4c22d5249 не равно 9f87b3dec3c1b550b0203e00c1f33fb7</p>
+<p>&nbsp;<p>3. перезапускаем TS, запрашиваем третий раз</p>
+<p>GET http://bfs-hs20-01s3.bfs.openwave.com/CongestionControl/Caching/21sec_1.mp4 HTTP/1.1</p>
+<p>Host: bfs-hs20-01s3.bfs.openwave.com</p>
+<p>GET /webdav/9f/87/b3dec3c1b550b0203e00c1f33fb7-iPhone-medium.header HTTP/1.1</p>
+<p>Host: bfs-x4150-20-xm4.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>Content-Length: 260</p>
+<p>URL /webdav/9f/87/b3dec3c1b550b0203e00c1f33fb7-iPhone-medium.header was not found on this server.&lt;/p&gt;</p>
+<p>GET /lock?key=9f87b3dec3c1b550b0203e00c1f33fb7-iPhone-medium HTTP/1.1</p>
+<p>Все залочилось попало в кеш и было оптимизировано</p>
+<p>&nbsp;<p>4. Четвертый раз запрашивем, без перезапуска TS</p>
+<p>GET http://bfs-hs20-01s3.bfs.openwave.com/CongestionControl/Caching/21sec_1.mp4 HTTP/1.1</p>
+<p>Host: bfs-hs20-01s3.bfs.openwave.com</p>
+<p>GET /webdav/a6/d9/bd25fea1cc90ffb592b4c22d5249-iPhone-medium.header HTTP/1.1</p>
+<p>Host: bfs-x4150-20-xm4.bfs.openwave.com</p>
+<p>HTTP/1.1 404 Not Found</p>
+<p>Ожидалось: такой же фингерпринт </p>
+<p>Получилось: a6d9bd25fea1cc90ffb592b4c22d5249 не равно 9f87b3dec3c1b550b0203e00c1f33fb7</p>
+<p>5. перезапускаем TS, запрашиваем пятый раз</p>
+<p>GET http://bfs-hs20-01s3.bfs.openwave.com/CongestionControl/Caching/21sec_1.mp4 HTTP/1.1</p>
+<p>Host: bfs-hs20-01s3.bfs.openwave.com</p>
+<p>GET /webdav/9f/87/b3dec3c1b550b0203e00c1f33fb7-iPhone-medium.header HTTP/1.1</p>
+<p>Host: bfs-x4150-20-xm4.bfs.openwave.com</p>
+<p>HTTP/1.1 200 OK</p>
+<p>Берется из кеша</p>
+<p>&nbsp;<p>ls -lh 9f/87/</p>
+<p>total 1.9M</p>
+<p>-rw-rw-rw- 1 daemon daemon 1.2M Mar 14 14:15 b3dec3c1b550b0203e00c1f33fb7.data</p>
+<p>-rw-rw-rw- 1 daemon daemon  461 Mar 14 14:15 b3dec3c1b550b0203e00c1f33fb7.header</p>
+<p>-rw-rw-rw- 1 daemon daemon 761K Mar 14 14:15 b3dec3c1b550b0203e00c1f33fb7-iPhone-medium.data</p>
+<p>-rw-rw-rw- 1 daemon daemon 1001 Mar 14 14:15 b3dec3c1b550b0203e00c1f33fb7-iPhone-medium.header</p>
+<p>&nbsp;<p>Issue another request to this URL: 'http://bfs-hs20-01s3.bfs.openwave.com:80/CongestionControl/Caching/21sec_1.mp4?opwvc=1'</p>
+<p>a6d9bd25fea1cc90ffb592b4c22d5249,a6d9bd25fea1cc90ffb592b4c22d5249-iPhone-medium</p>
+<p>&nbsp;
+</p></body></html>

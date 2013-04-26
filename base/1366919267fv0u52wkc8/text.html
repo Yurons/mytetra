@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><a href="http://leolik.blogspot.com/2008/11/sshfs.html">Монтирование удаленной папки с помощью sshfs</a> </span></span></p>
+<p>Недавно возникла необходимость использовать удаленный сервер, чтобы удаленно работать там с проектами из svn. Доступ к серверу, только через ssh. Конечно работать с svn можно прям на удаленной машине, но вот с файлами мне проще работать на своей машине. Поэтому я и решил подключить себе нужную папку с удаленного сервера, как примонтированный диск, чтобы проводимые мною изменения сразу писались удаленно на сервер, без лишних, в дальнейшем, телодвижений.</p>
+<p>Так как у меня, есть только подключение через ssh, поэтому для монтирования удаленной папки я использовал файловую систему SSHFS (Secure SHell FileSystem).</p>
+<p>&nbsp;<p>Установка и использование</p>
+<p>&nbsp;<p>1. Устанавливаем sshfs:</p>
+<p>$</p>
+<p>sudo apt-get install sshfs</p>
+<p>&nbsp;<p>2. Теперь монтируем удаленную папку (примерно так):</p>
+<p>$</p>
+<p>&nbsp;<p>sshfs user@remote.host:/somedir /somemydir -o uid=1000,gid=1000</p>
+<p>&nbsp;<p>где</p>
+<p>user - имя пользователя на удаленном сервере;</p>
+<p>remote.host - адрес удаленного сервера;</p>
+<p>/somedir - папка на удаленном сервере, которая будет монтироваться;</p>
+<p>/somemydir - папка на вашем компьютере, куда будет монтироваться удаленная папка;</p>
+<p>-o uid=1000,gid=1000 - различные параметры монтирования (подробнее смотрите в man).</p>
+<p>Понятное дело, все приведенные выше значения вы меняете под себя.</p>
+<p>3. Отмонтируется все это дело, следующей командой </p>
+<p>$</p>
+<p>fusermount -u /somemydir</p>
+<p>&nbsp;<p>4. Добавляем автомонтирование при загрузке системы через /etc/fstab. Для этого редактируем его:</p>
+<p>$</p>
+<p>sudo nano /etc/fstab</p>
+<p>&nbsp;<p>и добавляем туда строку (пример):</p>
+<p>sshfs#user@remote.host:/somedir /somemydir fuse uid=1000,gid=1000 0 0</p>
+<p>&nbsp;<p>Монтирование, если просит пароль</p>
+<p>&nbsp;<p>1. В большинстве случаев, автомонтирование не прокатит, так как запрашивается пароль при монтировании, а такие опции, как password и credentials для sshfs - не катят. поэтому есть, как минимум, два варианта это поправить.</p>
+<p>1.1. Первый - это использование RSA или DSA ключей для ssh соединения (про это я уже раньше упоминал в другой статье).</p>
+<p>1.2. Второй - просто не парится всякими fstab, а просто добавить в автозагрузку 'Система'-&gt;'Параметры'-&gt;'Сеансы' запуск следующей команды</p>
+<p>echo 'password' | sshfs user@remote.host:/somedir /somemydir -o password_stdin</p>
+<p>где</p>
+<p>password - тот самый пароль для удаленного сервера;</p>
+<p>password_stdin - опция которая принимает пароль передаваемый, в данном случае, через echo.</p>
+<p>Конечно, в этом случае пароль передается в открытом виде, но никто не мешает запихнуть эту команду в скрипт, которому присвоить нужные права, а потом этот скрипт добавить в автозагрузку.</p>
+<p>&nbsp;<p>Проблема при монтировании. И ее решение.</p>
+<p>&nbsp;<p>1. Бывает, что при монтировании выскакивает ошибка</p>
+<p>read: Connection reset by peer</p>
+<p>в этом случае надо послать на адрес, к которому коннектимся, какой-нить текст</p>
+<p>$</p>
+<p>ssh user@remote.host echo text</p>
+<p>&nbsp;<p>в ответ вы получите сообщение, из которого вас интересуют строки похожие на эти:</p>
+<p>Add correct host key in /home/user/.ssh/known_hosts to get rid of this message.</p>
+<p>Offending key in /home/user/.ssh/known_hosts:2</p>
+<p>нас интересует именно последняя цифра, это номер строки, которую нам надо удалить, в данном случае - 2.</p>
+<p>2. Удаляем в файле known_hosts найденную строку:</p>
+<p>$</p>
+<p>sed -i -e '2d' /home/user/.ssh/known_hosts</p>
+<p>&nbsp;<p>3. Снова отправляем на адрес, к которому коннектимся, строку</p>
+<p>$</p>
+<p>ssh user@remote.host echo text</p>
+<p>&nbsp;<p>только в этот раз - появится предложение на ввод пароля для добавления ключа этого адреса в ваш список.</p>
+<p>Все теперь ошибка не должна появляться снова.</p>
+<p>&nbsp;<p>Проблема: sshfs и svn. И ее решение.</p>
+<p>&nbsp;<p>1. При работе с sshfs столкнулся с такой проблемой, что когда пытаешься работать с svn на примонтированной папке, например делать checkout, то получаешь следующую ошибку:</p>
+<p>svn: Can't move '.svn/tmp/entries' to '.svn/entries': Operation not permitted</p>
+<p>2. Лечится это, добавлением опции workaround=rename при монтировании. Пример:</p>
+<p>$</p>
+<p>&nbsp;<p>sshfs user@remote.host:/somedir /somemydir -o workaround=rename,uid=1000,gid=1000 </p>
+
+</p></body></html>

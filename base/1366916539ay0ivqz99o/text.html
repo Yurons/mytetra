@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>MultiBoot USB with Grub2</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><strong><a href="http://www.panticz.de/MultiBootUSB">MultiBoot USB with Grub2 (boot directly from iso files)</a></strong> </p>
+<p>Thu, 07/16/2009 - 13:22 — panticz </p>
+<p><span style="color:#007800;"><span style="font-family:monospace;">DEVICE</span></span>=<strong><span style="color:#000000;">/</span></strong>dev<strong>/</strong>sdb</p>
+<p><span style="color:#007800;">VOLUME</span>=MultiBootUSB</p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># create filesystem on usb pen</em></span></p>
+<p><strong><span style="color:#c20cb9;">sudo</span></strong> mkfs.vfat <span style="color:#660033;">-n</span> <span style="color:#800000;">${VOLUME}</span> ${DEVICE}<span style="color:#000000;">1</span></p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># mount usb</em></span></p>
+<p><strong><span style="color:#c20cb9;">mount</span></strong> <span style="color:#800000;">${DEVICE}</span><span style="color:#000000;">1</span> <strong>/</strong>mnt<strong>/</strong></p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># install grub2 on usb pen</em></span></p>
+<p>grub-install <span style="color:#660033;">--no-floppy</span> --root-directory=<strong><span style="color:#000000;">/</span></strong>mnt <span style="color:#800000;">${DEVICE}</span></p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># create grub config</em></span></p>
+<p><strong><span style="color:#c20cb9;">cat</span></strong> <strong><span style="color:#000000;">&lt;&lt;</span></strong>EOF<strong>&gt;</strong> <strong>/</strong>mnt<strong>/</strong>boot<strong>/</strong>grub<strong>/</strong>grub.cfg</p>
+<p>menuentry <span style="color:#ff0000;">&quot;Ubuntu Live 11.04 64bit&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-11.04-desktop-amd64.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>vmlinuz <span style="color:#007800;">boot</span>=casper iso-scan<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">filename</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-11.04-desktop-amd64.iso noeject noprompt <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>initrd.lz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Ubuntu Live 9.10 32bit&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-9.10-desktop-i386.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>vmlinuz <span style="color:#007800;">boot</span>=casper iso-scan<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">filename</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-9.10-desktop-i386.iso noeject noprompt <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>initrd.lz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Ubuntu Live 9.10 64bit&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-9.10-desktop-amd64.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>vmlinuz <span style="color:#007800;">boot</span>=casper iso-scan<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">filename</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>ubuntu-9.10-desktop-amd64.iso noeject noprompt <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>initrd.lz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Grml small 2009.10&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>grml-small_2009.10.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>grmlsmall<strong>/</strong>linux26 <span style="color:#007800;">findiso</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>grml-small_2009.10.iso <span style="color:#007800;">apm</span>=power-off lang=us vga=<span style="color:#000000;">791</span> <span style="color:#007800;">boot</span>=live nomce noeject noprompt <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>grmlsmall<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;tinycore&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>tinycore_2.3.1.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>bzImage <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>tinycore.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Netinstall 32 preseed&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>mini.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>linux auto <span style="color:#007800;">url</span>=http:<strong><span style="color:#000000;">//</span></strong>www.panticz.de<strong>/</strong>pxe<strong>/</strong>preseed<strong>/</strong>preseed.seed <span style="color:#007800;">locale</span>=en_US console-setup<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">layoutcode</span>=de netcfg<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">choose_interface</span>=eth0 debconf<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">priority</span>=critical <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;debian-installer-amd64.iso&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>debian-installer-amd64.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>linux <span style="color:#007800;">vga</span>=normal <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;BackTrack 4&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>linux <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>bt4<strong>/</strong>boot<strong>/</strong>vmlinuz <span style="color:#007800;">BOOT</span>=casper boot=casper nopersistent rw vga=0x317 <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>bt4<strong>/</strong>boot<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Memory test (memtest86+)&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>linux16 <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>img<strong>/</strong>memtest86+.bin</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;BackTrack ERR&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>bt4-pre-final.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>vmlinuz find_iso<strong>/</strong><span style="color:#007800;">filename</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>bt4-pre-final.iso <span style="color:#007800;">BOOT</span>=casper boot=casper nopersistent rw vga=0x317--</p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>boot<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong> </p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;XBMC ERR&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>XBMCLive.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>vmlinuz <span style="color:#007800;">boot</span>=<strong><span style="color:#7a0874;">cd</span></strong> <span style="color:#007800;">isofrom</span>=<strong><span style="color:#000000;">/</span></strong>dev<strong>/</strong>sda1<strong>/</strong>boot<strong>/</strong>iso<strong>/</strong>XBMCLive.iso <span style="color:#007800;">xbmc</span>=nvidia,nodiskmount,tempfs,setvolume loglevel=<span style="color:#000000;">0</span> <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>initrd0.img</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;netboot.me&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>netbootme.iso</p>
+<p>linux16 <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>GPXE.KRN</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;debian installer amd64 netboot XEN pressed&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>linux <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>debian<strong>/</strong>linux auto preseed<strong>/</strong><span style="color:#007800;">url</span>=http:<strong><span style="color:#000000;">//</span></strong>www.panticz.de<strong>/</strong>pxe<strong>/</strong>preseed<strong>/</strong>xen.seed <span style="color:#007800;">locale</span>=en_US console-setup<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">layoutcode</span>=de netcfg<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">choose_interface</span>=eth0 debconf<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">priority</span>=critical <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>debian<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p>EOF</p>
+<p> </p>
+<p><span style="color:#666666;"><em># create iso directory</em></span></p>
+<p><strong><span style="color:#c20cb9;">mkdir</span></strong> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em>#</em></span></p>
+<p><em># download images</em></p>
+<p><em>#</em></p>
+<p><em># maverick test</em></p>
+<p><strong><span style="color:#c20cb9;">sudo</span></strong> <strong>wget</strong> http:<strong><span style="color:#000000;">//</span></strong>releases.ubuntu.com<strong>/</strong>10.10<strong>/</strong>ubuntu-10.10-desktop-i386.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>ubuntu-10.10-desktop-i386.iso</p>
+<p><strong><span style="color:#c20cb9;">sudo</span></strong> <strong>ln</strong> <span style="color:#660033;">-s</span> <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>ubuntu-10.10-desktop-i386.iso <strong>/</strong>boot<strong>/</strong>ubuntu-live-desktop-i386.iso</p>
+<p> </p>
+<p><strong><span style="color:#c20cb9;">cat</span></strong> <strong><span style="color:#000000;">&lt;&lt;</span></strong>EOF<strong>&gt;&gt;</strong> <strong>/</strong>etc<strong>/</strong>grub.d<strong>/</strong>custom.cfg </p>
+<p>menuentry <span style="color:#ff0000;">&quot;Ubuntu Live 32bit&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>ubuntu-live-desktop-i386.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>vmlinuz <span style="color:#007800;">boot</span>=casper iso-scan<strong><span style="color:#000000;">/</span></strong><span style="color:#007800;">filename</span>=<strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>ubuntu-live-desktop-i386.iso noeject noprompt <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>casper<strong>/</strong>initrd.lz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p>EOF</p>
+<p> </p>
+<p><span style="color:#666666;"><em>#?# sudo update-grub</em></span></p>
+<p> </p>
+<p> </p>
+<p><em># Ubuntu Live 9.10 32bit</em></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>ftp.uni-kl.de<strong>/</strong>pub<strong>/</strong>linux<strong>/</strong>ubuntu.iso<strong>/</strong>9.10<strong>/</strong>ubuntu-9.10-desktop-i386.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># Ubuntu Live 9.10 64bit</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>ftp.uni-kl.de<strong>/</strong>pub<strong>/</strong>linux<strong>/</strong>ubuntu.iso<strong>/</strong>9.10<strong>/</strong>ubuntu-9.10-desktop-amd64.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># grml</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>grml.deb.at<strong>/</strong>grml-small_2009.10.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># tinycore</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>distro.ibiblio.org<strong>/</strong>pub<strong>/</strong>linux<strong>/</strong>distributions<strong>/</strong>tinycorelinux<strong>/</strong>2.x<strong>/</strong>release<strong>/</strong>tinycore_2.3.1.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># netinstall</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>archive.ubuntu.com<strong>/</strong>ubuntu<strong>/</strong>dists<strong>/</strong>jaunty<strong>/</strong>main<strong>/</strong>installer-i386<strong>/</strong>current<strong>/</strong>images<strong>/</strong>netboot<strong>/</strong>mini.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># xbmc</em></span></p>
+<p><em># unzip http://downloads.sourceforge.net/sourceforge/xbmc/XBMC_Live-9.04.1.zip</em></p>
+<p> </p>
+<p><em># debian</em></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>ftp.debian.org<strong>/</strong>debian<strong>/</strong>dists<strong>/</strong>etch<strong>/</strong>main<strong>/</strong>installer-amd64<strong>/</strong>current<strong>/</strong>images<strong>/</strong>netboot<strong>/</strong>mini.iso <span style="color:#660033;">-O</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso<strong>/</strong>debian-installer-amd64.iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># netboot.me</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>static.netboot.me<strong>/</strong>gpxe<strong>/</strong>netbootme.iso <span style="color:#660033;">-P</span> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong>boot<strong>/</strong>iso</p>
+<p> </p>
+<p><span style="color:#666666;"><em># umount</em></span></p>
+<p><strong><span style="color:#c20cb9;">sync</span></strong></p>
+<p><strong>umount</strong> <strong><span style="color:#000000;">/</span></strong>mnt<strong>/</strong></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># test</em></span></p>
+<p><em># debian</em></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>cdimage.debian.org<strong>/</strong>debian-cd<strong>/</strong>5.0.2<strong>/</strong>amd64<strong>/</strong>iso-cd<strong>/</strong>debian-502-amd64-netinst.iso</p>
+<p> </p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;debian-502-amd64-netinst.iso&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>loopback loop <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>iso<strong>/</strong>debian-502-amd64-netinst.iso</p>
+<p>linux <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>install.amd<strong>/</strong>vmlinuz <span style="color:#007800;">vga</span>=normal <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#7a0874;">(</span></strong>loop<strong>)<span style="color:#000000;">/</span></strong>install.amd<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p>menuentry <span style="color:#ff0000;">&quot;debian installer amd64 netboot&quot;</span> <strong><span style="color:#7a0874;">{</span></strong></p>
+<p>linux <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>debian<strong>/</strong>linux <span style="color:#007800;">auto</span>=<strong><span style="color:#c20cb9;">true</span></strong> <span style="color:#007800;">priority</span>=critical vga=normal <span style="color:#660033;">--</span></p>
+<p>initrd <strong><span style="color:#000000;">/</span></strong>boot<strong>/</strong>debian<strong>/</strong>initrd.gz</p>
+<p><strong><span style="color:#7a0874;">}</span></strong></p>
+<p> </p>
+<p><span style="color:#666666;"><em># update debian installation files (/mnt/boot/debian/update.sh)</em></span></p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>ftp.de.debian.org<strong>/</strong>debian<strong>/</strong>dists<strong>/</strong>stable<strong>/</strong>main<strong>/</strong>installer-amd64<strong>/</strong>current<strong>/</strong>images<strong>/</strong>netboot<strong>/</strong>debian-installer<strong>/</strong>amd64<strong>/</strong>initrd.gz <span style="color:#660033;">-O</span> initrd.gz</p>
+<p><strong><span style="color:#c20cb9;">wget</span></strong> http:<strong><span style="color:#000000;">//</span></strong>ftp.de.debian.org<strong>/</strong>debian<strong>/</strong>dists<strong>/</strong>stable<strong>/</strong>main<strong>/</strong>installer-amd64<strong>/</strong>current<strong>/</strong>images<strong>/</strong>netboot<strong>/</strong>debian-installer<strong>/</strong>amd64<strong>/</strong>linux <span style="color:#660033;">-O</span> linux</p>
+<p> </p>
+<p> </p>
+<p><span style="color:#666666;"><em># links</em></span></p>
+<p>https:<strong><span style="color:#000000;">//</span></strong>bugs.launchpad.net<strong>/</strong>ubuntu<strong>/</strong>+bug<strong>/</strong>94204</p>
+<p>http:<strong>//</strong>debianforum.de<strong>/</strong>forum<strong>/</strong>viewtopic.php?<span style="color:#007800;">f</span>=<span style="color:#000000;">32<strong>&amp;</strong></span><span style="color:#007800;">t</span>=<span style="color:#000000;">111249</span></p>
+<p>http:<strong>//</strong>michael-prokop.at<strong>/</strong>blog<strong>/</strong>2009<strong>/</strong>05<strong>/</strong>25<strong>/</strong>boot-an-iso-via-grub2<strong>/</strong></p>
+<p>https:<strong>//</strong>wiki.edubuntu.org<strong>/</strong>Grub2</p>
+<p>http:<strong>//</strong>wiki.ubuntuusers.de<strong>/</strong>GRUB_2<strong>/</strong>Konfiguration?<span style="color:#007800;">highlight</span>=<strong><span style="color:#7a0874;">cd</span></strong><span style="font-family:Sans Serif;"> </span></p>
+
+</p></body></html>

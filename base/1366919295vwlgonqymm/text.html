@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Courier New,courier;"><span style="font-size:9pt;">total: вся доступная память, за вычетом съеденной ядром.</span></span></p>
+<p>&nbsp;<p>  used: память, как-то используемая. Обычно очень близко к total. </p>
+<p>&nbsp;<p>  free: память, никак не испольщуемая. Обычно очень близко к нулю. </p>
+<p>&nbsp;<p>  shared: странная цифра. Кажется, суммарный объем разделяемой памяти</p>
+<p>  по всем использующим ее программам. Hепонятно что значит.</p>
+<p>&nbsp;<p>  buffers: дисковые буфера (кэш). Используются при I/O помимо VM.</p>
+<p>&nbsp;<p>  cached: VM кэш.</p>
+<p>&nbsp;<p>  Кэш динамический, то есть для выполения программ без свопа доступно</p>
+<p>  free + buffers + cached, что отражается во второй строке вывода</p>
+<p>  free. </p>
+
+</p></body></html>

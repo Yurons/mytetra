@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">Following the suggestion in the last post at this link <a href="http://www.linux-archive.org/gentoo-user/566518-ff-chromium-trapped-deafness-how-configure-alsa-correctly.html">http://www.linux-archive.org/gentoo-...correctly.html</a> I would try with this line in /etc/modprobe.d/sound.conf</p>
+<p>&nbsp;</span></span></p>
+<p>Code: </p>
+<p><span style="font-family:Courier New,courier;">options snd-intel-hda model=auto,auto enable_msi=1,0 index=0,1 id=Intel,NVidia</span></p>
+<p><span style="font-family:Sans Serif;">It may pay to delete /var/lib/alsa/asound.state, reboot and rerun alsaconf after making the change.</span></p>
+<p>&nbsp;<p>You may need to supply a model option to the snd-hda-intel kernel module.Create a file /etc/modprobe.d/snd-hda-intel.conf with a line like this.</p>
+<p>&nbsp;</p>
+<p>Code: </p>
+<p><span style="font-family:Courier New,courier;">options snd-hda-intel model=auto</span></p>
+<p><span style="font-family:Sans Serif;">Possible models for the ALC662 can be found in /usr/src/linux/Documentation/sound/alsa/HD-Audio-Models.txt</p>
+<p>&nbsp;</span></p>
+<p>Quote: </p>
+<table cellpadding="3" cellspacing="0" width="100%" border="1"><tr><td width="" colspan="1" rowspan="1"><p>ALC662/663/272==============3stack-dig 3-stack (2-channel) with SPDIF3stack-6ch 3-stack (6-channel)3stack-6ch-dig 3-stack (6-channel) with SPDIF6stack-dig 6-stack with SPDIFlenovo-101e Lenovo laptopeeepc-p701 ASUS Eeepc P701eeepc-ep20 ASUS Eeepc EP20ecs ECS/Foxconn mobom51va ASUS M51VAg71v ASUS G71Vh13 ASUS H13g50v ASUS G50Vasus-mode1 ASUSasus-mode2 ASUSasus-mode3 ASUSasus-mode4 ASUSasus-mode5 ASUSasus-mode6 ASUSasus-mode7 ASUSasus-mode8 ASUSdell Dell with ALC272dell-zm1 Dell ZM1 with ALC272samsung-nc10 Samsung NC10 mini notebookauto auto-config reading BIOS (default) </p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<p><span style="color:#ff0000;">Вывод команд на моей машине, когда есть звук</span></p>
+<p>&nbsp;<p>lspci -k | grep -iA3 audio</p>
+<p>&nbsp;<p>00:14.2 Audio device: ATI Technologies Inc SBx00 Azalia (Intel HDA) (rev 40)</p>
+<p>	Subsystem: ASRock Incorporation Device 0887</p>
+<p>	Kernel driver in use: snd_hda_intel</p>
+<p>	Kernel modules: snd-hda-intel</p>
+<p>--</p>
+<p>01:00.1 Audio device: nVidia Corporation GF108 High Definition Audio Controller (rev a1)</p>
+<p>	Kernel driver in use: snd_hda_intel</p>
+<p>	Kernel modules: snd-hda-intel</p>
+<p>&nbsp;<p>&nbsp;<p>lsmod | grep snd</p>
+<p>snd_seq_dummy           1455  0 </p>
+<p>snd_seq_oss            29048  0 </p>
+<p>snd_seq_midi_event      5620  1 snd_seq_oss</p>
+<p>snd_seq                51265  5 snd_seq_midi_event,snd_seq_oss,snd_seq_dummy</p>
+<p>snd_seq_device          5228  3 snd_seq,snd_seq_oss,snd_seq_dummy</p>
+<p>snd_pcm_oss            39183  1 </p>
+<p>snd_mixer_oss          15404  1 snd_pcm_oss</p>
+<p>snd_hda_codec_hdmi     24025  4 </p>
+<p>snd_hda_codec_realtek   195157  1 </p>
+<p>snd_hda_intel          23267  7 </p>
+<p>snd_hda_codec          81925  3 snd_hda_intel,snd_hda_codec_realtek,snd_hda_codec_hdmi</p>
+<p>snd_hwdep               6324  1 snd_hda_codec</p>
+<p>snd_pcm                72864  6 snd_hda_codec,snd_hda_intel,snd_hda_codec_hdmi,snd_pcm_oss</p>
+<p>snd_page_alloc          7081  2 snd_pcm,snd_hda_intel</p>
+<p>snd_timer              18798  4 snd_pcm,snd_seq</p>
+<p>snd                    57796  20 snd_timer,snd_pcm,snd_hwdep,snd_hda_codec,snd_hda_intel,snd_hda_codec_realtek,snd_hda_codec_hdmi,snd_mixer_oss,snd_pcm_oss,snd_seq_device,snd_seq,snd_seq_oss</p>
+<p>soundcore               5474  2 snd</p>
+<p>&nbsp;<p>cat /proc/asound/modules</p>
+<p> 0 snd_hda_intel</p>
+<p> 1 snd_hda_intel</p>
+<p>&nbsp;<p>aplay -l</p>
+<p>**** List of PLAYBACK Hardware Devices ****</p>
+<p>card 0: SB [HDA ATI SB], device 0: ALC887-VD Analog [ALC887-VD Analog]</p>
+<p>  Subdevices: 0/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 0: SB [HDA ATI SB], device 1: ALC887-VD Digital [ALC887-VD Digital]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 3: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 7: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 8: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 9: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>&nbsp;<p>cat /etc/modprobe.d/sound.conf </p>
+<p>&nbsp;<p># --- BEGIN: Generated by ALSACONF, do not edit. ---</p>
+<p># --- ALSACONF version 1.0.25 ---</p>
+<p>alias char-major-116 snd</p>
+<p>alias char-major-14 soundcore</p>
+<p>alias sound-service-0-0 snd-mixer-oss</p>
+<p>alias sound-service-0-1 snd-seq-oss</p>
+<p>alias sound-service-0-3 snd-pcm-oss</p>
+<p>alias sound-service-0-8 snd-seq-oss</p>
+<p>alias sound-service-0-12 snd-pcm-oss</p>
+<p>alias snd-card-0 snd-hda-intel</p>
+<p>alias sound-slot-0 snd-hda-intel</p>
+<p>options snd-intel-hda model=auto,auto enable_msi=1,0 index=0,1 id=Intel,NVidia</p>
+<p># --- END: Generated by ALSACONF, do not edit. ---</p>
+<p>&nbsp;<p> <span style="font-family:DejaVu Serif;">Вывод команд на моей машине, когда нет звука</span></p>
+<p>&nbsp;<p><span style="font-family:Sans Serif;">lspci -k | grep -iA3 audio</span></p>
+<p>&nbsp;<p><span style="font-family:DejaVu Serif;"><span style="color:#000000;">00:14.2 Audio device: Advanced Micro Devices [AMD] nee ATI SBx00 Azalia (Intel HDA) (rev 40)</span></span></p>
+<p>        Subsystem: ASRock Incorporation Device 0887</p>
+<p>        Kernel driver in use: snd_hda_intel</p>
+<p>01:00.1 Audio device: nVidia Corporation GF108 High Definition Audio Controller (rev a1)</p>
+<p>        Kernel driver in use: snd_hda_intel</p>
+<p>&nbsp;<p><span style="font-family:Sans Serif;">lsmod | grep snd</span></p>
+<p><span style="font-family:DejaVu Serif;">snd_seq_dummy           1455  0 </span></p>
+<p>snd_seq_oss            29048  0 </p>
+<p>snd_seq_midi_event      5620  1 snd_seq_oss</p>
+<p>snd_seq                51265  5 snd_seq_midi_event,snd_seq_oss,snd_seq_dummy</p>
+<p>snd_seq_device          5228  3 snd_seq,snd_seq_oss,snd_seq_dummy</p>
+<p>snd_pcm_oss            39183  2 </p>
+<p>snd_mixer_oss          15404  3 snd_pcm_oss</p>
+<p>snd_hda_codec_hdmi     24025  4 </p>
+<p>snd_hda_codec_realtek   195189  1 </p>
+<p>snd_hda_intel          23267  8 </p>
+<p>snd_hda_codec          81925  3 snd_hda_intel,snd_hda_codec_realtek,snd_hda_codec_hdmi</p>
+<p>snd_hwdep               6324  1 snd_hda_codec</p>
+<p>snd_pcm                72864  4 snd_hda_codec,snd_hda_intel,snd_hda_codec_hdmi,snd_pcm_oss</p>
+<p>snd_page_alloc          7081  2 snd_pcm,snd_hda_intel</p>
+<p>snd_timer              18798  2 snd_pcm,snd_seq</p>
+<p>snd                    57796  20 snd_timer,snd_pcm,snd_hwdep,snd_hda_codec,snd_hda_intel,snd_hda_codec_realtek,snd_hda_codec_hdmi,snd_mixer_oss,snd_pcm_oss,snd_seq_device,snd_seq,snd_seq_oss</p>
+<p>soundcore               5474  5 snd</p>
+<p>&nbsp;<p>cat /proc/asound/modules</p>
+<p> 0 snd_hda_intel</p>
+<p> 1 snd_hda_intel</p>
+<p>&nbsp;<p>aplay -l</p>
+<p>**** List of PLAYBACK Hardware Devices ****</p>
+<p>card 0: SB [HDA ATI SB], device 0: ALC887-VD Analog [ALC887-VD Analog]</p>
+<p>  Subdevices: 0/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 0: SB [HDA ATI SB], device 1: ALC887-VD Digital [ALC887-VD Digital]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 3: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 7: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 8: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>card 1: NVidia [HDA NVidia], device 9: HDMI 0 [HDMI 0]</p>
+<p>  Subdevices: 1/1</p>
+<p>  Subdevice #0: subdevice #0</p>
+<p>&nbsp;<p>cat /etc/modprobe.d/sound.conf</p>
+<p>&nbsp;<p># --- BEGIN: Generated by ALSACONF, do not edit. ---</p>
+<p># --- ALSACONF version 1.0.25 ---</p>
+<p>alias char-major-116 snd</p>
+<p>alias char-major-14 soundcore</p>
+<p>alias sound-service-0-0 snd-mixer-oss</p>
+<p>alias sound-service-0-1 snd-seq-oss</p>
+<p>alias sound-service-0-3 snd-pcm-oss</p>
+<p>alias sound-service-0-8 snd-seq-oss</p>
+<p>alias sound-service-0-12 snd-pcm-oss</p>
+<p>alias snd-card-0 snd-hda-intel</p>
+<p>alias sound-slot-0 snd-hda-intel</p>
+<p>options snd-intel-hda model=auto,auto enable_msi=1,0 index=0,1 id=Intel,NVidia</p>
+<p># --- END: Generated by ALSACONF, do not edit. ---</p>
+<p>&nbsp;<p>&nbsp;<p>Последнее, был звук на входе и выходе</p>
+<p>&nbsp;<p>lspci -v | grep -i -A7 audio</p>
+<p>&nbsp;<p>00:14.2 Audio device: Advanced Micro Devices [AMD] nee ATI SBx00 Azalia (Intel HDA) (rev 40)</p>
+<p>        Subsystem: ASRock Incorporation Device 0887</p>
+<p>        Flags: bus master, slow devsel, latency 32, IRQ 16</p>
+<p>        Memory at fe100000 (64-bit, non-prefetchable) [size=16K]</p>
+<p>        Capabilities: [50] Power Management version 2</p>
+<p>        Kernel driver in use: snd_hda_intel</p>
+<p>&nbsp;<p>00:14.3 ISA bridge: Advanced Micro Devices [AMD] nee ATI SB7x0/SB8x0/SB9x0 LPC host controller (rev 40)</p>
+<p>--</p>
+<p>01:00.1 Audio device: nVidia Corporation GF108 High Definition Audio Controller (rev a1)</p>
+<p>        Flags: bus master, fast devsel, latency 0, IRQ 19</p>
+<p>        Memory at fe080000 (32-bit, non-prefetchable) [size=16K]</p>
+<p>        Capabilities: [60] Power Management version 3</p>
+<p>        Capabilities: [68] MSI: Enable- Count=1/1 Maskable- 64bit+</p>
+<p>        Capabilities: [78] Express Endpoint, MSI 00</p>
+<p>        Kernel driver in use: snd_hda_intel</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;
+</p></body></html>

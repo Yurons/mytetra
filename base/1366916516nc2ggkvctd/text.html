@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Debian / Ubuntu Linux: Install and Configure snmpd Service</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;"><a href="http://www.cyberciti.biz/faq/debain-ubuntu-install-net-snmpd-server/">Debian / Ubuntu Linux: Install and Configure snmpd Service</a> </span></p>
+<p>&nbsp;<p>SNMP (Simple Network Management Protocol) is a protocol used for network management. How do I install SNMP server under Debian or Ubuntu Linux to configure various monitoring service?</p>
+<p>&nbsp;<p>The NET-SNMP project provides various SNMP tools: an extensible agent, an SNMP library, tools for requesting or setting information from SNMP agents, tools for generating and handling SNMP traps, a version of the netstat command which uses SNMP, and a Tk/Perl mib browser. The snmpd package contains the snmpd and snmptrapd daemons, documentation, etc.</p>
+<p>Install snmpd</p>
+<p>&nbsp;<p>Type the following command as root, enter:</p>
+<p># apt-get update &amp;&amp; apt-get install snmpd</p>
+<p>Snmpd Configuration Files</p>
+<p>&nbsp;<p>The default configuration for snmpd is rather paranoid for security reasons. Edit /etc/snmp/snmpd.conf or run snmpconf to allow greater access. You can individually control whether or not snmpd and snmpdtrap are run by editing /etc/default/snmpd.</p>
+<p>Configure SNMPD</p>
+<p>&nbsp;<p>Edit /etc/snmp/snmpd.conf, enter:</p>
+<p># vi /etc/snmp/snmpd.conf </p>
+<p>&nbsp;<p>Edit or update file as follows:</p>
+<p>smuxsocket 127.0.0.1</p>
+<p>rocommunity setMeHere</p>
+<p>com2sec local localhost public</p>
+<p>group MyRWGroup v1 local</p>
+<p>group MyRWGroup v2c local</p>
+<p>group MyRWGroup usm local</p>
+<p>view all included .1 80</p>
+<p>access MyRWGroup &quot;&quot; any noauth exact all all none</p>
+<p>com2sec notConfigUser default mrtg</p>
+<p>group notConfigGroup v1 notConfigUser</p>
+<p>group notConfigGroup v2c notConfigUser</p>
+<p>view systemview included .1.3.6.1.2.1.1</p>
+<p>view systemview included .1.3.6.1.2.1.25.1.1</p>
+<p>view systemview included .1 80</p>
+<p>access notConfigGroup &quot;&quot; any noauth exact systemview none none</p>
+<p>syslocation Mumbai, IN (VSNL LB3)</p>
+<p>syscontact Vivek Gite &lt;alert.client22@route.nixcraft.in&gt;</p>
+<p>&nbsp;<p>See snmpd.conf(5) man page for details. Edit /etc/default/snmpd, enter:</p>
+<p># /etc/default/snmpd</p>
+<p>&nbsp;<p>Update it as follows:</p>
+<p># This file controls the activity of snmpd and snmptrapd</p>
+<p># MIB directories. /usr/share/snmp/mibs is the default, but</p>
+<p># including it here avoids some strange problems.</p>
+<p>export MIBDIRS=/usr/share/snmp/mibs</p>
+<p># snmpd control (yes means start daemon).</p>
+<p>SNMPDRUN=yes</p>
+<p># snmpd options (use syslog, close stdin/out/err).</p>
+<p># replace 204.x.y.z with your public IP</p>
+<p>SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid 127.0.0.1 204.x.y.z'</p>
+<p># snmptrapd control (yes means start daemon). As of net-snmp version</p>
+<p># 5.0, master agentx support must be enabled in snmpd before snmptrapd</p>
+<p># can be run. See snmpd.conf(5) for how to do this.</p>
+<p>TRAPDRUN=no</p>
+<p># snmptrapd options (use syslog).</p>
+<p>TRAPDOPTS='-Lsd -p /var/run/snmptrapd.pid'</p>
+<p># create symlink on Debian legacy location to official RFC path</p>
+<p>SNMPDCOMPAT=yes</p>
+<p>Restart Snmpd Service</p>
+<p>&nbsp;<p>Type the following command:</p>
+<p># /etc/init.d/snmpd restart</p>
+<p>&nbsp;<p>Sample outputs:</p>
+<p>Restarting network management services: snmpd.</p>
+<p>Firewall Configuration</p>
+<p>&nbsp;<p>Here is a sample firewall config file:</p>
+<p>#!/bin/sh</p>
+<p># set shell vars</p>
+<p>PUB_IF=&quot;eth0&quot;</p>
+<p>SNMPD_CLIENT=&quot;85.x.y.z&quot;</p>
+<p>SNMPD_SERVER=&quot;203.a.b.c&quot;</p>
+<p>IPT=&quot;/sbin/iptables&quot;</p>
+<p>LO_IF=&quot;lo0&quot;</p>
+<p># DROP and close everything all incoming traffic</p>
+<p>$IPT -P INPUT DROP</p>
+<p>$IPT -P OUTPUT DROP</p>
+<p>$IPT -P FORWARD DROP</p>
+<p># Allow Full Outgoing connection but no incoming stuff by default</p>
+<p>$IPT -A INPUT -i ${PUB_IF} -m state --state ESTABLISHED,RELATED -j ACCEPT</p>
+<p>$IPT -A OUTPUT -o ${PUB_IF} -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT</p>
+<p># Unlimited lo access</p>
+<p>$IPT -A INPUT -i ${LO_IF} -j ACCEPT</p>
+<p>$IPT -A OUTPUT -o ${LO_IF} -j ACCEPT</p>
+<p>### Open port 161 ###</p>
+<p>$IPT<span style="color:#ff0000;"> -A INPUT -i ${PUB_IF} -s ${SNMPD_CLIENT} -d ${SNMPD_SERVER} -p udp --dport 161 -j ACCEPT</span></p>
+<p>### rest of iptables goes here ###</p>
+<p>Test It</p>
+<p>&nbsp;<p>From local or remote system type the following command:</p>
+<p># snmpwalk -v 1 -c mrtg 204.x.y.z IP-MIB::ipAdEntIfIndex</p>
+<p>&nbsp;<p>Sample outputs:</p>
+<p>IP-MIB::ipAdEntIfIndex.10.20.110.2 = INTEGER: 2</p>
+<p>IP-MIB::ipAdEntIfIndex.127.0.0.1 = INTEGER: 1</p>
+<p>IP-MIB::ipAdEntIfIndex.204.xx.yy.zz = INTEGER: 3 </p>
+
+</p></body></html>

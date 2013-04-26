@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Linux Configuration for SNMP and OMSA</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;">Linux Configuration for SNMP and OMSA</span></p>
+<p>&nbsp;<p>Overview</p>
+<p>This tutorial will guide you through the steps required to install Dell OpenManage Server Administrator (OMSA) and configure SNMP on Linux servers. These components are required for OpenManage Essentials to properly discover, inventory, and receive alerts from your Linux servers.</p>
+<p>&nbsp;<p>You will need to complete the following steps for all your Linux servers:</p>
+<p>&nbsp;<p>1. Install Net-SNMP for your specific version of Linux</p>
+<p>2. Install OMSA dependencies</p>
+<p>3. Install OMSA</p>
+<p>4. Verify OMSA SNMP settings</p>
+<p>5. Install Inventory Collector on 64-bit servers</p>
+<p>6. Configure the SNMP Community string</p>
+<p>7. Configure trap destinations</p>
+<p>8. Enable SNMP Access for remote hosts (SUSE Linux only)</p>
+<p>9. Configure Linux firewall settings</p>
+<p>&nbsp;<p>Install Net-SNMP</p>
+<p>You must install the Net-SNMP agent that is provided with your Linux distribution prior to installing OMSA. Otherwise, you will need to manually update the snmpd.conf file or reinstall OMSA after the SNMP install.</p>
+<p>&nbsp;<p>Make sure the SNMP service is started:</p>
+<p>/etc/init.d/snmpd &lt;start | status | restart&gt;</p>
+<p>&nbsp;<p>Install OMSA Dependencies</p>
+<p>Note: OMSA is supported only on Red Hat Enterprise Linux and SUSE Linux Enterprise. Please review the latest Dell OpenManage Software Support Matrix for supported Linux operating systems. You can install OMSA on all Linux systems even if the server is not supported, however complete functionality is not guaranteed.</p>
+<p>OMSA requires several dependency RPMs for remote enablement support. Ensure these RPMs are installed prior to installing OMSA. The RPMs are available in the following directory:</p>
+<p>linux\RPMS\supportRPMS\opensourcecomponents\&lt;OS&gt;\&lt;architecture&gt;</p>
+<p>Follow the sequence below to install the required RPMs:</p>
+<p>rpm -ivh libcmpiCppImpl0-x.x.x.rpm</p>
+<p>rpm –ivh libwsman1-x.x.x.rpm</p>
+<p>rpm -ivh sblim-sfcb-x.x.x.rpm</p>
+<p>rpm -ivh sblim-sfcb-x.x.x.rpm</p>
+<p>NOTE: Install the libwsman and openwsman client RPMs simultaneously as they have cyclic dependency:</p>
+<p>rpm -ivh libwsman1-x.x.x.rpm openwsman-clientx.x.x.rpm</p>
+<p>rpm -ivh openwsman-server-x.x.x.rpm</p>
+<p>NOTE: You might be required to install the following RPM from your Linux distribution media:</p>
+<p>rpm –ivh libxslt-1.x.x.x.rpm</p>
+<p>&nbsp;<p>Install OMSA from the Internet</p>
+<p>The following steps require internet access on each Linux server:</p>
+<p>&nbsp;<p>Yum Setup (RHEL5, RHEL 6)</p>
+<p>1. Set up the Dell OpenManage Repository:</p>
+<p>wget -q -O - http://linux.dell.com/repo/hardware/latest/bootstrap.cgi | bash</p>
+<p>2. Install OpenManage Server Administrator:</p>
+<p>yum install srvadmin-all</p>
+<p>&nbsp;<p>Zypper Setup (SLES 11 or greater)</p>
+<p>1. Set up the Dell OpenManage Repository:</p>
+<p>wget -q -O - http://linux.dell.com/repo/hardware/latest/bootstrap.cgi | bash</p>
+<p>2. Install OpenManage Server Administrator:</p>
+<p>zypper install srvadmin-all </p>
+<p>&nbsp;<p>Rug Setup (SLES 10)</p>
+<p>1. Set up the Dell OpenManage Repository:</p>
+<p>wget -q -O - http://linux.dell.com/repo/hardware/latest/bootstrap.cgi | bash</p>
+<p>2. Install OpenManage Server Administrator:</p>
+<p>rug install srvadmin-base</p>
+<p>rug install srvadmin-webserver</p>
+<p>rug install srvadmin-storageservices</p>
+<p>NOTE: If you want to install srvadmin-all, 'setserial' must be installed.</p>
+<p>&nbsp;<p>After installation, make sure to start the applicable services by running the following command:</p>
+<p>sh linux/supportscripts/srvadmin-services.sh start</p>
+<p>&nbsp;<p>Install OMSA Locally (Alternative)</p>
+<p>The following steps require internet access from one server on your network only.</p>
+<p>First, download the install package using the following steps:</p>
+<p>&nbsp;<p>1. Go to support.dell.com.</p>
+<p>2. Choose your server model and Linux OS.</p>
+<p>3. Scroll down to Systems Management and select OpenManage Server Administrator Managed Node.</p>
+<p>4. Click the 'Download Now' link to download the file that is for your specific Linux distribution.</p>
+<p>5. Download the file to a directory on your hard drive.</p>
+<p>6. Copy over the file to your Linux server using WinSCP or similar utilty.</p>
+<p>7. Browse to the location where you copied the file and unzip the package using the following command:</p>
+<p>gunzip xxxx.tar.gz</p>
+<p>8. Untar the package using the following command:</p>
+<p>tar –xvf xxxx.tar</p>
+<p>&nbsp;<p>Next Install OMSA using the following steps:</p>
+<p>&nbsp;<p>1. Change the current directory to the location where the files were extracted.</p>
+<p>2. Run the following command to perform an express install:</p>
+<p>sh linux/supportscripts/srvadmin-install.sh –express</p>
+<p>&nbsp;<p>After installation, make sure to start the applicable services by running the following command:</p>
+<p>sh linux/supportscripts/srvadmin-services.sh start</p>
+<p>&nbsp;<p>Verify OMSA SNMP Settings</p>
+<p>If OMSA was installed after SNMP, these changes should have already been made by the OMSA installer. The changes setup OMSA communication with the SNMP agent and give read-only access to the entire MIB tree to the public community. This is required for OMSA and OME to work properly.</p>
+<p>1. Open the file for editing:</p>
+<p>/etc/snmp/snmpd.conf</p>
+<p>2. Verify the following 3 lines exist or add/modify them to the below if they do not:</p>
+<p>view all included .1</p>
+<p>access notConfigGroup &quot;&quot; any noauth exact all none none</p>
+<p>smuxpeer .1.3.6.1.4.1.674.10892.1 </p>
+<p>&nbsp;<p>Install Inventory Collector on 64-bit Servers</p>
+<p>Inventory Collector is required for systems update on Linux servers. Currently it is available only as a 32-bit version and must be installed separately for 64-bit systems.</p>
+<p>For all 64-bit supported Linux operating systems you must complete the following steps:</p>
+<p>&nbsp;<p>1. Install the 32-bit version of zlib and compat-libstdc++ libraries.</p>
+<p>2. Install the srvadmin-cm package from:</p>
+<p>/linux/RPMS/supportRPMS/srvadmin</p>
+<p>&nbsp;<p>Configure the SNMP Community String</p>
+<p>The community string is a password which must match for the querying server and all devices which it queries.</p>
+<p>&nbsp;<p>To modify the community string:</p>
+<p>1. Open the file for editing:</p>
+<p>/etc/snmp/snmpd.conf</p>
+<p>2. Copy the line that reads:</p>
+<p>com2sec publicsec default public</p>
+<p>or</p>
+<p>com2sec notConfigUser default public</p>
+<p>3. Edit the copied line to replace ‘public’ with the new community string:</p>
+<p>com2sec publicsec default &lt;new_community_name&gt;</p>
+<p>or</p>
+<p>com2sec notConfigUser default &lt;new_community_name&gt;</p>
+<p>4. To enable the changes, restart the SNMP agent:</p>
+<p>/etc/init.d/snmpd restart</p>
+<p>Note – this step is only needed once after all configuration changes are completed.</p>
+<p>&nbsp;<p>Configure SNMP Trap Destinations</p>
+<p>For OpenManage Essentials to display alerts for a device, you must configure the device to send traps to the OpenManage Essentials server.</p>
+<p>&nbsp;<p>To configure a trap destination:</p>
+<p>1. Open the file for editing:</p>
+<p>/etc/snmp/snmpd.conf</p>
+<p>2. Add the following line to the file:</p>
+<p>Trapsink &lt;OME IP Address&gt; &lt;community name&gt;</p>
+<p>3. To enable the changes, restart the SNMP agent:</p>
+<p>/etc/init.d/snmpd restart</p>
+<p>Note – this step is only needed once after all configuration changes are completed.</p>
+<p>&nbsp;<p>Enabling SNMP Access for Remote Hosts (SUSE Linux only)</p>
+<p>The default SNMP configuration on SUSE Linux versions does not allow remote access. You must enable remote access for the OpenManage Essentials server to manage the system.</p>
+<p>&nbsp;<p>To enable SNMP access for the OpenManage Essentials server:</p>
+<p>1. Open the file for editing:</p>
+<p>/etc/snmp/snmpd.conf</p>
+<p>2. Copy the line that reads:</p>
+<p>rocommunity public 127.0.0.1</p>
+<p>3. Edit the copied line to replace the IP address with the OME server’s IP address:</p>
+<p>rocommunity public &lt;OME IP Address&gt;</p>
+<p>Alternatively, to enable SNMP access for all remote hosts, the new line should read:</p>
+<p>rocommunity public</p>
+<p>Note – this is not recommended for security purposes.</p>
+<p>&nbsp;<p>4. To enable the changes, restart the SNMP agent:</p>
+<p>/etc/init.d/snmpd restart</p>
+<p>Note – this step is only needed once after all configuration changes are completed.</p>
+<p>&nbsp;<p>Firewall Configuration</p>
+<p>If the firewall was enabled during the Linux installation, it will close the SNMP port blocking all external connections by default. Server Administrator will detect this and log a warning message to the system event log.</p>
+<p>&nbsp;<p>You must open the SNMP port on the server for OpenManage Essentials to communicate with it or else this will block OME from discovering, inventorying, and receiving alerts for the server.</p>
+<p>&nbsp;<p>Please refer to your specific Linux distribution for configuring firewall settings. You will need to configure your IPTABLES to allow access to UDP Port 161 and 162 for SNMP communication and TCP Port 1311 for OMSA. </p>
+
+</p></body></html>

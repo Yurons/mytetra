@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Tahoma, sans-serif;">tcpdump -U -i any -s 0 -w - 'tcp port 28080 or 29080 or 180 or 3128'| tee /root/out.tcpdump |tcpdump -vvv -A -lr - |egrep --color=auto '(GET[[:space:]]\/|HTTP\/1\.[[:digit:]]|[^&lt;\/]HEAD[^&gt;]|Job|opwv|\/x\-flv|\/mp4|\/3gp|Host\:|\-low|\-medium|\-high|lock\?|unlock|\?fingerprint|Range|Content-Length)'</span></p>
+<p>&nbsp;<p><span style="font-family:DejaVu Serif;">tcpdump -i any -s 0 -S -x -X port 80 or port 28080 or port 180 -w /tmp/snoop.fe.os.br0To1.pcap</span></p>
+<p>&nbsp;<p> tcpdump -U -i any -s 0 -w - 'src port 3128 and dst host 10.20.106.179 and (((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)'| tee /root/out.tcpdump |tcpdump -vvv -A -lr - |strings</p>
+<p>&nbsp;<p>for &quot;*Download-Stops-Browser&quot; test cases</p>
+<p>&nbsp;<p>/opt/opwv/oam/2.0/tools/bin/LogDecoder.sh -mlo -t /var/opt/opwv/logs/`ls /var/opt/opwv/logs |grep TrafficServerElement|tail -n 1` | grep 'videoplayback'|awk -F &quot;\&quot;,\&quot;&quot; '{print $26&quot;,&quot;$42&quot;,&quot;$68&quot;,&quot;$60}'</p>
+<p>&nbsp;<p>/opt/opwv/oam/2.0/tools/bin/LogDecoder.sh -mlo -t `ls /var/opt/opwv/logs/*TrafficServerElement*|tail -n1`|awk -F &quot;\&quot;,\&quot;&quot; '{print $1&quot;,&quot;$29&quot;,&quot;$74&quot;,&quot;$35&quot;,&quot;$26&quot;,&quot;$42&quot;,&quot;$68&quot;,&quot;$60}'</p>
+<p>&nbsp;<p>tcpdump -U -i any -s 0 -SxX -w - 'tcp port 28080 or 29080 or 180 or 3128'| tee /root/out.tcpdump |tcpdump -vvv -A -lr - |egrep --color=auto '(GET[[:space:]]\/|HTTP\/1\.[[:digit:]]|[^&lt;\/]HEAD[^&gt;]|^Job|opwv|\/x\-flv|\/mp4|\/3gp|Host\:|\-low|\-medium|\-high|lock\?|unlock|\?fingerprint|Range|Content-Length|\#EXT)'</p>
+<p>&nbsp;<p>netstat -n |grep 10.20.39.129:3128|awk '{print $5}'</p>
+<p>&nbsp;<p>/opt/opwv/oam/2.0/tools/bin/LogDecoder.sh -mlo -t `ls /var/opt/opwv/logs/*TrafficServerElement*|tail -n1`|awk -F &quot;\&quot;,\&quot;&quot; '{print $1&quot;,&quot;$29&quot;,&quot;$71&quot;,&quot;$35&quot;,&quot;$26&quot;,&quot;$42&quot;,&quot;$65&quot;,&quot;$57}'</p>
+<p>&nbsp;<hr />
+<p>&nbsp;<p>HO56</p>
+<p>&nbsp;<p>tcpdump -U -i any -s 0 -SxX -w - 'tcp port 7210 or 180 or 3128 or 7220'| tee /root/out.tcpdump |tcpdump -vvv -A -lr - |egrep --color=auto '(GET[[:space:]]\/|HTTP\/1\.[[:digit:]]|[^&lt;\/]HEAD[^&gt;]|^Job|opwv|\/x\-flv|\/mp4|\/3gp|Host\:|\-low|\-medium|\-high|lock\?|unlock|\?fingerprint|Range|Content-Length|\#EXT)'</p>
+<p>&nbsp;<p>/opt/opwv/oam/2.0/tools/bin/LogDecoder.sh -mlo -t `ls /var/opt/opwv/logs/*TrafficServerElement*|tail -n1`|awk -F &quot;\&quot;,\&quot;&quot; '{print $1&quot;,&quot;$71&quot;,&quot;$35&quot;,&quot;$42&quot;,&quot;$65&quot;,&quot;$57}'</p>
+<p>&nbsp;
+</p></body></html>

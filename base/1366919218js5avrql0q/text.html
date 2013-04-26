@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:DejaVu Serif;">  <img src="http://www.gravatar.com/avatar/ec8f41a11304f1b1e38a9ea45b63d8c2?rating=PG&size=24&default=" width="24" height="24" /><strong><span style="font-size:17pt;">Делаем Midnight Commander красивым(256 цветов и прозрачный скин)</span></strong> </span></p>
+<p>Разукрашиваем наш mc:</p>
+<p>Устанавливаем переменную среды <strong>TERM=xterm-256color</strong><p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">$&gt; env | grep TERM=</span></p>
+<p><p>&nbsp;<span style="font-family:DejaVu Serif;"><strong>.bashrc</strong> или <strong>.profile</strong> в домашнем каталоге пользователя:</p>
+<p>&nbsp;</span></p>
+<p><span style="font-family:Courier New,courier;">export TERM=xterm-256color</span></p>
+<p><p>&nbsp;<span style="font-family:DejaVu Serif;"><span style="font-size:14pt;"><strong><sub>/.config/mc/skins</sub></strong></span><p>&nbsp;</p>
+<p>$&gt; mkdir -p ~/.config/mc/skins</span></p>
+<p><p>&nbsp;<strong>xoria256.ini</strong> в этот каталог:</p>
+<p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">$&gt; cd ~/.config/mc/skins</span></p>
+<p>$&gt; wget &quot;http://dl.dropbox.com/u/4663634/mc-xoria256-skin/xoria256.ini&quot; </p>
+<p><p>&nbsp;</p>
+<p>$&gt; mc -S xoria256</p>
+<p><p>&nbsp;<span style="font-family:DejaVu Serif;"><strong>/.mc/ini</strong><p>&nbsp;</p>
+<p>$&gt; vim ~/.config/mc/ini</span></p>
+<p><p>&nbsp;<strong>«skin=default»</strong> и замените на <strong>«skin=xoria256»</strong><p>&nbsp;</p>
+<p><span style="font-family:Courier New,courier;">$&gt; mc </span></p>
+
+</p></body></html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>Step one: Configure ALSA</p>
+<p>&nbsp;<p>On a fresh Slackware installation, ALSA — the default sound engine for Slackware — isn’t usually configured.</p>
+<p>&nbsp;<p>So our first step is to open up a terminal and type su, enter your root password, and then type the following arcane command:</p>
+<p>&nbsp;<p>alsaconf</p>
+<p>&nbsp;<p>This will bring up a pretty easy to use, menu-driven configuration program that looks like this:</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Follow the bouncing ball in the alsaconf program, let it figure things out, select your sound card, and you should be good. I’ve run this on a wide variety of hardware, and I’ve never had problems with this part, assuming there’s actually a sound device on the actual machine, of course.</p>
+<p>Step two: Unmute your sound channels and set volumes</p>
+<p>&nbsp;<p>The next step is to undo the defaults of things in the sound world. For some reason, the default position for the master volume and the PCM volume is 0%, and by default both of those channels are muted in my experience.</p>
+<p>&nbsp;<p>This has led to numerous people banging their heads on their desks while screaming, “I got everything configured, it sees my sound card BUT I STILL HAVE NO SOUND!”. This is understandable, I was burned by this when I first started using Slackware too.</p>
+<p>&nbsp;<p>To remedy this, in that terminal again, type exit so that you’re no longer typing commands as root, and then type the following command (as your regular user):</p>
+<p>&nbsp;<p>alsamixer</p>
+<p>&nbsp;<p>This should bring up a screen that lets you use the arrow keys to set the volume levels on the various channels your sound device has built into it.</p>
+<p>&nbsp;<p>If you hit the “up” arrow, you’ll find that you can raise your master volume channel (which should be the first one) to the desired level, and by hitting the “right” arrow, you can switch to the next channels and do the same for each of them.</p>
+<p>&nbsp;<p>Now, one thing you’ll notice is that you may have “MM” at the bottom of some channels, like this:</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Any channel that has this “MM” designation is muted. To unmute a channel, arrow over to it and simply hit the “m” key, and the “MM” should go away and you’ll have sound on that channel.</p>
+<p>&nbsp;<p>Once you’re done unmuting things and setting volume levels, simply escape out of this screen and you’re back to the command line, ready for the next step.</p>
+<p>Step three: Save what you’ve done</p>
+<p>&nbsp;<p>In our final step, we need to tell ALSA that you’re not kidding about the volume settings, and that you want it to remember this.</p>
+<p>&nbsp;<p>To accomplish this task, still in your terminal, type su and then your root password again. Then type the following command:</p>
+<p>&nbsp;<p>alsactrl store</p>
+<p>&nbsp;<p>And that’s it. This tells ALSA to save the current state, and the system should remember this state every time you reboot. If you’re running KDE, you can adjust volume levels with Kmix, which is a standard KDE applet that can live in your tray in KDE. I say this just so you don’t think that you have to open a terminal and run alsamixer every time you want to adjust your volume (though you can if you really want to, or if you’re not running X, for some reason).</p>
+<p>&nbsp;<p>An additional step is sometimes necessary if you’re running Fluxbox; if you want your settings restored every time you boot, you may have to edit your /~/.fluxbox/startup file and add the following line to it:</p>
+<p>&nbsp;<p>alsactl restore</p>
+<p>&nbsp;<p>This isn’t always necessary, but I’ve found that sometimes it is, so your mileage may vary as well. As a rule of thumb, if you don’t like what is happening with your sound levels when you get into Fluxbox every time, adding that line to startup at least puts it in a state that you want right off the bat.</p>
+<p>&nbsp;<p>Do let me know if you have any questions regarding this simple procedure. As always, there is of course lots of variation from machine to machine out there, but I’ve never had sound problems (on working hardware) that this couldn’t cure on a fresh setup. In some cases, when sound has mysteriously stopped working, going through this three step process can get it working again, so don’t be afraid to run through this on a machine that has already been working for a while.</p>
+
+</p></body></html>

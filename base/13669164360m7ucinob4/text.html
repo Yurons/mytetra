@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Squid Proxy WARNING! Your cache is running out of filedescriptors error and solution</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;"><a href="http://www.cyberciti.biz/faq/squid-proxy-server-running-out-filedescriptors/">Squid Proxy WARNING! Your cache is running out of filedescriptors error and solution</a> </span></p>
+<p>&nbsp;<p>by Vivek Gite on June 16, 2008 · 6 comments· last updated at June 18, 2009</p>
+<p>&nbsp;<p>&nbsp;<p>I</p>
+<p>'ve Squid Proxy server with over 100 Windows workstation. I see following error message in my cache.log file:</p>
+<p>&nbsp;<p>WARNING! Your cache is running out of filedescriptors</p>
+<p>&nbsp;<p>Do I need to filter proxy server requests to avoid this problem? How do I fix this problem under CentOS / Fedora / RHEL / Debian Linux?</p>
+<p>&nbsp;<p>If you see this message in your /var/log/squid/cache.log file, it means Squid proxy server is running out of file descriptors and cannot handle the extra requests sent by your client computers.</p>
+<p>Task: Find out current file descriptors limits</p>
+<p>&nbsp;<p>Login to your Squid proxy server and type the following command at shell prompt:</p>
+<p># squidclient mgr:info | grep 'file descri'</p>
+<p># squidclient -p {port} -u {proxy-user} -w '{proxy-password}' mgr:info | grep 'file descri'</p>
+<p># squidclient -p 8080 -u admin -w 'secretePassword' mgr:info | grep 'file descri'</p>
+<p>&nbsp;<p>Sample output:</p>
+<p>Maximum number of file descriptors: 1024</p>
+<p>Available number of file descriptors: 1008</p>
+<p>Reserved number of file descriptors: 100</p>
+<p>Squid increase the maximum file descriptors</p>
+<p>&nbsp;<p>First, update /etc/security/limits.conf file:</p>
+<p># vi /etc/security/limits.conf</p>
+<p>&nbsp;<p>Append following line to increase current limit from 1024 to 4096:</p>
+<p>* - nofile 4096</p>
+<p>&nbsp;<p>Save and close the file. You must re-login to check new limits:</p>
+<p># ulimit -a | grep 'open files'</p>
+<p>Sample output:</p>
+<p>open files (-n) 4096</p>
+<p>&nbsp;<p>Next you need to set the maximum number of open file descriptors by modifying squid proxy server configuration as per your Linux distribution.</p>
+<p>Set max_filedesc under RHEL / Red Hat / CentOS / Fedora Linux</p>
+<p>&nbsp;<p>&nbsp;<p>Stop the Squid as changes of this value isn't respected by reconfigure command. This value should be changed only if there isn't any active squid process.</p>
+<p># service squid stop</p>
+<p>&nbsp;<p>Open /etc/squid/squid.conf file</p>
+<p># vi /etc/squid/squid.conf</p>
+<p>&nbsp;<p>Append / add / modify max_filedesc directive:</p>
+<p>max_filedesc 4096</p>
+<p>&nbsp;<p>Save and close the file. Start the squid proxy server:</p>
+<p># service squid start</p>
+<p>&nbsp;<p>Now again run squidclient command or check log files for messages:</p>
+<p># squidclient mgr:info</p>
+<p>Set max_filedesc under Ubuntu / Debian Linux</p>
+<p>&nbsp;<p>&nbsp;<p>First, stop squid proxy server, enter:</p>
+<p># /etc/init.d/squid stop</p>
+<p>&nbsp;<p>OR</p>
+<p>$ sudo /etc/init.d/squid stop</p>
+<p>&nbsp;<p>Open /etc/default/squid to set max. number of filedescriptors to use. You can increase this on a busy</p>
+<p>cache to a maximum of (currently) 4096 filedescriptors. Default is 1024.</p>
+<p>$ sudo vi /etc/default/squid</p>
+<p>&nbsp;<p>OR</p>
+<p># vi /etc/default/squid</p>
+<p>&nbsp;<p>Now set SQUID_MAXFD:</p>
+<p>SQUID_MAXFD=4096</p>
+<p>&nbsp;<p>Save and close the file. Start the squid proxy server:</p>
+<p>$ sudo /etc/init.d/squid start</p>
+<p>&nbsp;<p>Verify that it is working with new limits:</p>
+<p># squidclient mgr:info | grep 'file descri'</p>
+
+</p></body></html>

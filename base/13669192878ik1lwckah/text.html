@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>  Проверка зависимостей от библиотек</p>
+<p>&nbsp;<p>По просьбе anest'a.</p>
+<p>Перевод статьи Checking library dependencies (http://www.astrecipes.net/index.php?n=76).</p>
+<p>Публикуется на условиях оригинала: Creative Commons License (Attribution-ShareAlike 2.0).</p>
+<p>Оригинал перевода: http://romik-g.livejournal.com/20941.html</p>
+<p>&nbsp;<p>Строго говоря, это относится не только к Asterisk, но я помещаю это</p>
+<p>здесь, так как это довольно распространенная задача при установке, после</p>
+<p>сборки его с разделяемыми библиотеками (например OH323).</p>
+<p>&nbsp;<p>Вот типичный пример ошибки, которая говорит о том, что вам необходимо</p>
+<p>проверить зависимости библиотек:</p>
+<p>&nbsp;<p>        [chan_oh323.so] May 2 15:41:29 WARNING [-1218537120]: loader.c:242 ast_load_resource: liboh323wrap.so: </p>
+<p>            cannot open shared object file: No such file or directory</p>
+<p>        May 2 15:41:29 WARNING[-1218537120]: loader.c:423 load_modules: Loading module chan_oh323.so failed!</p>
+<p>&nbsp;<p>&nbsp;<p>В данном случае Asterisk ругается, что не смотря на то, что модуль</p>
+<p>chan_oh323 существует и подлежит загрузке, он не может полностью</p>
+<p>загрузиться, ввиду отсутствия некоторых разделяемых библиотек.</p>
+<p>&nbsp;<p>&nbsp;<p>Что такое разделяемая библиотека?</p>
+<p>&nbsp;<p>Разделяемая библиотека - это часть скомпилированного программного кода,</p>
+<p>который может использоваться несколькими программами в вашей системе.</p>
+<p>Таким образом, отпадает необходимость включения одного и того же кода</p>
+<p>подпрограмм в каждый исполняемый файл на вашем жестком диске.</p>
+<p>Отрицательные стороны такого подхода состоят в том, что она просто</p>
+<p>отказывается работать, если вы копируете программу в другую систему и</p>
+<p>она не находит необходимых ей библиотек в определенных системных</p>
+<p>директориях.</p>
+<p>&nbsp;<p>&nbsp;<p>Как определить, какие разделяемые библиотеки требуются для работы модуля?</p>
+<p>&nbsp;<p>В этом вам поможет программа ldd. Она выведет вам примерно</p>
+<p>следующее:</p>
+<p>&nbsp;<p>        [root@vm lib]# ldd /usr/lib/asterisk/modules/chan_oh323.so</p>
+<p>                liboh323wrap.so =&gt; /lib/liboh323wrap.so (0x00bf2000)</p>
+<p>            libh323_linux_x86_r.so.1.13.5 =&gt; not found</p>
+<p>                libpt_linux_x86_r.so.1.6.6 =&gt; not found</p>
+<p>                libstdc++.so.5 =&gt; /usr/lib/libstdc++.so.5 (0x008fc000)</p>
+<p>                libpthread.so.0 =&gt; /lib/tls/libpthread.so.0 (0x009ff000)</p>
+<p>                libdl.so.2 =&gt; /lib/libdl.so.2 (0x00add000)</p>
+<p>                libc.so.6 =&gt; /lib/tls/libc.so.6 (0x00111000)</p>
+<p>                libm.so.6 =&gt; /lib/tls/libm.so.6 (0x0025c000)</p>
+<p>                libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x0034b000)</p>
+<p>                /lib/ld-linux.so.2 =&gt; /lib/ld-linux.so.2 (0x00b98000)</p>
+<p>&nbsp;<p>&nbsp;<p>Как видите, некоторые разделяемые библиотеки не найдены и не могут быть</p>
+<p>загружены. </p>
+<p>&nbsp;<p>&nbsp;<p>Как можно добавить необходимые разделяемые библиотеки?</p>
+<p>&nbsp;<p>Если вы собирали программу сами, то скорее всего необходимые разделяемые</p>
+<p>библиотеки есть в вашей системе, но они находятся не там, где их ищет</p>
+<p>исполняемый файл.</p>
+<p>&nbsp;<p>Чтобы понять, на самом ли деле это так, выполните команду</p>
+<p>locate, как показано ниже:</p>
+<p>&nbsp;<p>        [root@vm lib]# locate libh323_linux_x86_r.so.1.13.5</p>
+<p>        /root/asterisk/openh323/lib/libh323_linux_x86_r.so.1.13.5</p>
+<p>&nbsp;<p>&nbsp;<p>Очень важно, чтобы вы искали фалы с именно такими именами, которые</p>
+<p>ищутся вашим модулем.</p>
+<p>&nbsp;<p>В нашем случае достаточно будет просто скопировать библиотеку в</p>
+<p>/lib и снова запустить ldd, чтобы проверить, может</p>
+<p>ли она загружаться теперь.</p>
+<p>&nbsp;<p>По необходимости повторите выше описанные шаги.</p>
+
+</p></body></html>

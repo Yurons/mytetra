@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>Как изменить User Agent в Firefox, Opera и Chrome </p>
+<p>&nbsp;<p>Замечу сразу, что способы изменения User Agent-ов для описанных браузеров одинаковы, как в Linux так и в Windows.</p>
+<p>&nbsp;<p>Начнём, пожалуй, с Mozilla Firefox (текущая версия 3.5.5).</p>
+<p>&nbsp;<p> В адресной строке набираем about:config и после предупреждения попадаем в настроеки фаерфокса. Набираем в фильтре (сверху) слово general.useragent и видим, что мозиллистые (или мозолистые?  товарищи особо не балуют трудящихся широтой выбора, и полностью изменить UserAgent с помощью появившихся полей не получится. К счастью, для этого предусмотрена одна хитрая настройка, которая по дефолту в Firefox отсутствует, называется она general.useragent.override, и если создать настройку с таким названием (правой кнопкой мыши &gt; создать &gt; строка) и запихнуть в неё, например, строку «Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5″, то проверив мозилку на мой самодельной чекалке user agent-ов (она, так же есть, наверху страницы), увидим наш новый фейковый юзерагент.</p>
+<p>&nbsp;<p>На будущее, если понадобится настоящий UserAgent, то для этого достаточно очистить строку в general.useragent.override</p>
+<p>&nbsp;<p>То же самое можно сделать и плагинами, например, User Agent Switcher-ом, который добавляет пункт в меню «Инструменты», для переключения юзерагентов на ходу.</p>
+<p>&nbsp;<p>Теперь, на очереди Opera (текущая версия 10.10).</p>
+<p>&nbsp;<p>Опера еще беднее, в плане настроек User Agent-а, чем FireFox, в чём легко можно убедиться, набрав в панели адреса opera:config и открыв пункт «User Agent», поле «Spoof UserAgent ID», где цифрами обозначаются разные варианты UserAgent-ов:</p>
+<p>&nbsp;<p>1) представляться как Opera (по умолчанию)</p>
+<p> 2) представляться как Mozilla</p>
+<p> 3) представляться как Internet Explorer</p>
+<p> 4) маскироваться под Mozilla (Opera не упоминается)</p>
+<p> 5) маскироваться под Internet Explorer (кроме отсутствия упоминания Оперы, в качестве операционной системы показывается Windows)</p>
+<p>&nbsp;<p>Однако, в порядке облома, сразу скажу, что пункт «Spoof UserAgent ID» не ра-бо-та-ет и глобального действия не имеет, по крайней мере, в текущей версии. Opera позволяет менять юзерагент, лишь для конкретных сайтов, через меню «Инструменты» &gt; «Быстрые настройки» &gt; «Настройки для сайтов» &gt; закладка «Сеть» &gt; пункт «Идентификация браузера» либо щелкнув правой кнопкой по странице нужного сайта &gt; «Настройки для сайтов» и далее, так же, как и в первом случае.</p>
+<p>&nbsp;<p>На всякий пожарный, приведу мои юзерагенты для всех пяти вариантов:</p>
+<p>&nbsp;<p>1) Представляться как Opera = Opera/9.80 (X11; Linux x86_64; U; ru) Presto/2.2.15 Version/10.10</p>
+<p>&nbsp;<p>2) Представляться как Mozilla = Mozilla/5.0 (X11; Linux x86_64; U; ru; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 10.10</p>
+<p>&nbsp;<p>3) Представляться как Internet Explorer = Mozilla/4.0 (compatible; MSIE 6.0; X11; Linux x86_64; ru) Opera 10.10</p>
+<p>&nbsp;<p>4) Маскироваться под Mozilla = Mozilla/5.0 (X11; Linux x86_64; U; ru; rv:1.8.1) Gecko/20061208 Firefox/2.0.0</p>
+<p>&nbsp;<p>5) маскироваться под Internet Explorer (единственный виндовый user agent) = Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; ru)</p>
+<p>&nbsp;<p>Пожалуй, кроме четвертого и пятого, рабочих вариантов нет, зато третий получился самый весёлый  </p>
+<p>&nbsp;<p>Для добавления нужных данных к существующим UserAgent-ам Оперы, в opera:config можно использовать поле «Id» пункта «ISP» и поле «Allow Components In UA String Comment» пункта «User Agent». Они понадобятся, если нужно зайти на сайт, требующий наличия в User Agent-е определенной строки, например, операционной системы мобильника, при заходе на сайт для мобильных телефонов.</p>
+<p>&nbsp;<p>И напоследок, проедемся по Google Chrome, благо недавно, наконец, вышли версии и для Linux.</p>
+<p>&nbsp;<p>Для Хрома, мне известен только один нормальный способ (без ковыряния в потрохах Chrome) изменить User Agent — это запуск с опцией ‘-user-agent’.</p>
+<p>&nbsp;<p>Для Windows, для этого можно модифицировать ярлык Google Chrome, чтобы в поле «Объект», где указывается полный путь до программы, было следующее:</p>
+<p>&nbsp;<p>«C:\Documents and Settings\ВашПользователь\Local Settings\Application Data\Google\Chrome\Application\chrome.exe» ‘-user-agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en)’</p>
+<p>&nbsp;<p>Аналогично и в Linux, в консоль либо в ярлык запуска Google Chrome на используемой рабочей среде, вставляем следующее:</p>
+<p>&nbsp;<p>/opt/google/chrome/google-chrome ‘-user-agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)’</p>
+<p>&nbsp;<p>В обоих примерах, опция -user-agent с параметром, обрамлена обычными одинарными или двойными кавычками, а не фигурными, вордпресс, мать его, всё время калечит кавычки…</p>
+<p>&nbsp;<p>Теперь проверить User Agent в Chrome можно, если набрать в адресной строке браузера команду about:version</p>
+<p>&nbsp;<p>Вот и всё, что можно сказать по этой теме </p>
+
+</p></body></html>

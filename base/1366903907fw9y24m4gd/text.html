@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:DejaVu Serif;">949  service autofs stop</span></p>
+<p>950  service bluetooth stop</p>
+<p>951  service cups stop</p>
+<p>952  service sendmail stop</p>
+<p>&nbsp;<p>&nbsp;<p>Host: 10.20.56.168</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/de902744a0f8ada6/18</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-request-range: bytes=12692005-</p>
+<p>HTTP/1.1 200 OK</p>
+<p>x-opwv-vdo-opt-range: 12538881-25133635</p>
+<p>x-opwv-vdo-new-range: bytes=15457106-</p>
+<p>x-opwv-vdo-new-content-length: 25133635</p>
+<p>x-opwv-vdo-lower-transcode-limit: 12599694</p>
+<p>x-opwv-vdo-frameno: 7413</p>
+<p>POST / HTTP/1.1</p>
+<p>Host: 10.20.56.168:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-watermark: 0</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/de902744a0f8ada6/18</p>
+<p>x-opwv-correlationId: 1048734</p>
+<p>x-opwv-vdo-frameno: 7413</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=12692005-</p>
+<p>x-opwv-vdo-intermediatebyterange: 15457106</p>
+<p>HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-response-reason: VOS is busy Max CPU Breached</p>
+<p>&nbsp;<p>&nbsp;<p>HTTP/1.1 415 Unsupported Media Type</p>
+<p>x-opwv-vdo-response-reason: unsupported mime type</p>
+<p>&nbsp;<p>HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 333556546</p>
+<p>x-opwv-vdo-sessionId: 10061360003910439163121449</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>&nbsp;<hr />
+<p>&nbsp;<p>cd /opt/opwv/oam/2.0/mysql/bin</p>
+<p>./mysql -u root -h bfs-x4150-20-xm4.bfs.openwave.com -p</p>
+<p>Enter password: ch4ngeme</p>
+<p>mysql&gt; source /users/jstanule/trunc_mediaopt.sql</p>
+<p>mysql&gt; \q</p>
+<p>&nbsp;<hr />
+<p>&nbsp;<p>ps -eo pcpu,pid,cutime,cstime,user,args | sort -k 1 -r | head -10</p>
+<p>&nbsp;<p>cutime,cstime</p>
+<p>&nbsp;<p>&nbsp;<p><strong> tcpdump -U -i any -s 0 -w - 'src port 3128 and dst host 10.20.107.170  and (((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)'| tee /root/out.tcpdump |tcpdump -vvv -A -lr - |strings</strong></p>
+<p>&nbsp;<p>http://www.youtube.com/watch?v=FzRH3iTQPrk&amp;feature=youtube_gdata_player</p>
+<p>http://www.youtube.com/watch?v=IgFwiCApH7E&amp;feature=youtube_gdata_player</p>
+<p>&nbsp;<p>1. http://www.youtube.com/watch?v=3VVuMIB2hC0 - FLO Rida feat. T.Pain Music from the Movie Step Up 2 'Low' dd556e308076842d</p>
+<p>2. http://www.youtube.com/watch?v=3EVzoolYugA - Caught Red (Sprinkle) Faced. <span style="color:#ff0000;">OK</span></p>
+<p>dc4573a28958ba00</p>
+<p>3. http://www.youtube.com/watch?v=dMH0bHeiRNg - Evolution of Dance - By Judson Laipply</p>
+<p>74c1f46c77a244d8</p>
+<p>4. http://www.youtube.com/watch?v=1uwOL4rB-go - Jeff Dunham - Achmed the Dead Terrorist</p>
+<p>d6ec0e2f8ac1fa0a</p>
+<p>5. ok http://www.youtube.com/watch?v=Tx1XIm6q4r4 - Potter Puppet Pals: The Mysterious Ticking Noise</p>
+<p>49c5cb1e03dc66e7</p>
+<p>6. http://www.youtube.com/watch?v=ScXLHgPcZuc - Jonas Brothers - Burnin' Up - Official Music Video (HQ)</p>
+<p>f0952f6c97a433cf</p>
+<p>7. ok http://www.youtube.com/watch?v=8JUvbJekM88 - Jonas Brothers - SOS Music Video - Official (HQ)</p>
+<p>17956fbd5c6e2a4a</p>
+<p>8. http://www.youtube.com/watch?v=F5VvvVxuKko - Vanessa Hudgens Say Ok Music Video (Official with Zac Efron)</p>
+<p>416368895ac90ec1</p>
+<p>9. http://www.youtube.com/watch?v=QWNoiVrJDsE - &quot;Britains Got Talent or Americas Got Talent ♥ Connie Talbot WOWs Simo OK</p>
+<p>&nbsp;<p>http://vidstatsx.com/most-viewed-videos-all-time</p>
+<p>&nbsp;<p>Name: <strong>iPad 3</strong><p>&nbsp;<strong>MD366</strong><p>&nbsp;<strong>iPad</strong><p>&nbsp;<strong>WiFi-GSM</strong><p>&nbsp;<strong>3</strong><p>&nbsp;<strong>iPad3,2</strong><p>&nbsp;<strong>1.0GHz</strong><p>&nbsp;<strong>A1430</strong><p>&nbsp;<strong>9.7 inch</strong><p>&nbsp;<strong>2048x1536 pixels</strong><p>&nbsp;<strong>Black</strong><p>&nbsp;<strong>16GB</strong><p>&nbsp;<strong>DL</strong> (China - Foxconn)</p>
+<p>&nbsp;<p><strong>Big video</strong> </p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: high</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-watermark: 0</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/86f84627d4df46b1/18</p>
+<p>x-opwv-correlationId: 6291613</p>
+<p>...B....HTTP/1.1 500 Internal Server Error</p>
+<p>&nbsp;<p>x-opwv-vdo-new-content-length: 15431208</p>
+<p>x-opwv-vdo-lower-transcode-limit: 6724695</p>
+<p>x-opwv-vdo-frameno: 3375</p>
+<p>&nbsp;<p>&nbsp;<p>http://www.youtube.com/watch?v=8qy8v1ghy38</p>
+<p>Funniest Super Bowl Commercials of 2013! (Top 10 Super Bowl Ads) Best 2013</p>
+<p>&nbsp;<p>x-opwv-vdo-new-content-length: 3383020</p>
+<p>x-opwv-vdo-lower-transcode-limit: 3052208</p>
+<p>&nbsp;<p>&nbsp;<p>POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-watermark: 0</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/25a155aff7092486/22</p>
+<p>x-opwv-correlationId: 9437219</p>
+<p>.HTTP/1.1 500 Internal Server Error</p>
+<p>&nbsp;<p>29:34</p>
+<p>POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-watermark: 0</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/217c7f6ca2ffafbe/18</p>
+<p>x-opwv-correlationId: 9437233</p>
+<p>.......iHTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 159139951</p>
+<p>x-opwv-vdo-sessionId: 100613601392899937784605</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>Go from OS</p>
+<p>&nbsp;<p>POST / HTTP/1.1                                                   </p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: smartPhone</p>
+<p>x-opwv-vdo-watermark: 0</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/d8a8e48b99d6ed33/18</p>
+<p>x-opwv-correlationId: 9437302</p>
+<p>..s...s.HTTP/1.1 500 Internal Server Error</p>
+<p>&nbsp;<p>1:40:22 Kogel Mogel 1988</p>
+<p>&nbsp;<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/98fa06db0f2f7732/18           │                                                   </p>
+<p>x-opwv-correlationId: 9437321                                                     │                                                   </p>
+<p>..q...q.HTTP/1.1 500 Internal Server Error</p>
+<p>&nbsp;<p>1:44:29 Vabank 1</p>
+<p>&nbsp;<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/d0aa9eb03d8953cf/22           │                                                   </p>
+<p>x-opwv-correlationId: 9437400                                                     │                                                   </p>
+<p>........HTTP/1.1 500 Internal Server Error </p>
+<p>&nbsp;<p>the master 1:18:27</p>
+<p>&nbsp;<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/19cfa1fbcc3debeb/18           │                                                   </p>
+<p>x-opwv-correlationId: 9437411                                                     │                                                   </p>
+<p>.HTTP/1.1 200 OK                                                                  │                                                   </p>
+<p>x-opwv-vdo-orig-content-length: 188807421                                         │                                                   </p>
+<p>x-opwv-vdo-sessionId: 1006136014053955240533582                                   │                                                   </p>
+<p>x-opwv-vdo-out-video-codec: H264                                                  │                                                   </p>
+<p>x-opwv-vdo-out-audio-codec: AAC                                                   │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>..1S..1RGET /byterange HTTP/1.1                                                   │                                                   </p>
+<p>Host: 10.20.39.129                                                                │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/19cfa1fbcc3debeb/18           │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-request-content-length: 1                                              │                                                   </p>
+<p>..1c..1SHTTP/1.1 404 Not Found</p>
+<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/19cfa1fbcc3debeb/18           │                                                   </p>
+<p>x-opwv-correlationId: 9437419                                                     │                                                   </p>
+<p>........HTTP/1.1 503 Service Unavailable                                          │                                                   </p>
+<p>x-opwv-vdo-orig-content-length: 188807421                                         │                                                   </p>
+<p>x-opwv-vdo-sessionId: 1006136014066087647483677                                   │                                                   </p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another        │                                                   </p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>GET /byterange HTTP/1.1                                                   │                                                   </p>
+<p>Host: 10.20.39.129                                                                │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/19cfa1fbcc3debeb/18           │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-request-range: bytes=141839786-                                        │                                                   </p>
+<p>.. ... .HTTP/1.1 404 Not Found</p>
+<p>&nbsp;<p>&nbsp;<p>56:43</p>
+<p>What Women Want</p>
+<p>&nbsp;<p>&nbsp;<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/71c4131af83a9d2a/18           │                                                   </p>
+<p>x-opwv-correlationId: 9437439                                                     │                                                   </p>
+<p>........HTTP/1.1 503 Service Unavailable                                          │                                                   </p>
+<p>x-opwv-vdo-orig-content-length: 193184295                                         │                                                   </p>
+<p>x-opwv-vdo-sessionId: 1006136014077515651556848                                   │                                                   </p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another        │                                                   </p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>58:37</p>
+<p>What Women Want 2</p>
+<p>&nbsp;<p>POST / HTTP/1.1                                                           │                                                   </p>
+<p>Host: 10.20.39.129:28080                                                          │                                                   </p>
+<p>Content-Type: video/mp4                                                           │                                                   </p>
+<p>x-opwv-vdo-policy: medium                                                         │                                                   </p>
+<p>x-opwv-vdo-profile: smartPhone                                                    │                                                   </p>
+<p>x-opwv-vdo-watermark: 0                                                           │                                                   </p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/1e7a4b26be15bab8/18           │                                                   </p>
+<p>x-opwv-correlationId: 9437466                                                     │                                                   </p>
+<p>...=...0HTTP/1.1 500 Internal Server Error</p>
+<p>&nbsp;<p>9:15</p>
+<p>&nbsp;<p>mylanchi - mylanchi ep 36</p>
+<p>&nbsp;<p>http://www.youtube.com/playlist?list=PLoRijBI-kxa9jtnx-ZJ9_tMlWFVptFuS7</p>
+<p>&nbsp;<p>HTTP/1.1 415 Unsupported Media Type</p>
+<p>x-opwv-vdo-response-reason: unsupported mime type</p>
+<p>&nbsp;<p>Trumplet of Death</p>
+<p>&nbsp;<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/bb611a13cd138a24/22</p>
+<p>x-opwv-correlationId: 14682326</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=0-583272203</p>
+<p>.\...\..HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 583272204</p>
+<p>x-opwv-vdo-sessionId: 100613602657654931427894770</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>43:45 Sex, Lies and Julian Assange</p>
+<p>&nbsp;<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/59a712f7c013b483/22</p>
+<p>x-opwv-correlationId: 14682369</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=131072-327679</p>
+<p>x-opwv-vdo-moov-from-cache: 1</p>
+<p>.`L..`J.HTTP/1.1 200 OK</p>
+<p>x-opwv-vdo-orig-content-length: 795553</p>
+<p>x-opwv-vdo-sessionId: 100613602659904491568331664</p>
+<p>x-opwv-vdo-out-video-codec: H264</p>
+<p>x-opwv-vdo-out-audio-codec: AAC</p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>27:31 The Julian Assange Show: Imran Khan (E9)</p>
+<p>&nbsp;<p>&nbsp;<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/3ccd08e64e745ec6/22</p>
+<p>x-opwv-correlationId: 14682377</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=0-267381973</p>
+<p>x-opwv-vdo-moov-from-cache: 1</p>
+<p>.b...b..HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 344696857</p>
+<p>x-opwv-vdo-sessionId: 100613602660975081605528515</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>28:01 Julian Assange's The World Tomorrow</p>
+<p>&nbsp;<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/9b99e2b8a12d10d6/18                                                       [5/4884]</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-request-range: bytes=524288-111486820</p>
+<p>.c...c..HTTP/1.1 404 Not Found</p>
+<p>.c...c..HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 159140159</p>
+<p>x-opwv-vdo-sessionId: 100613602662126491627477805</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>.c...c..POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/217c7f6ca2ffafbe/18</p>
+<p>x-opwv-correlationId: 14682416</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=0-159140158</p>
+<p>&nbsp;<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/9b99e2b8a12d10d6/18                                                       [5/4884]</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-request-range: bytes=524288-111486820</p>
+<p>.c...c..HTTP/1.1 404 Not Found</p>
+<p>.c...c..HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 159140159</p>
+<p>x-opwv-vdo-sessionId: 100613602662126491627477805</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>.c...c..POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/217c7f6ca2ffafbe/18</p>
+<p>x-opwv-correlationId: 14682416</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=0-159140158</p>
+<p>.c...c..HTTP/1.1 503 Service Unavailable                                                                                      [0/4884]</p>
+<p>x-opwv-vdo-orig-content-length: 159140159</p>
+<p>x-opwv-vdo-sessionId: 100613602662126491627477805</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>.c...c..POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/217c7f6ca2ffafbe/18</p>
+<p>x-opwv-correlationId: 14682416</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=0-159140158</p>
+<p>.c...c..HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 159140159</p>
+<p>x-opwv-vdo-sessionId: 100613602662193421629739241</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>29:35 Ujala Asianet Film Award 2013 part1</p>
+<p>&nbsp;<p>x-opwv-vdo-policy: medium                                                                                                     [7/4943]</p>
+<p>x-opwv-vdo-request-content-length: 1</p>
+<p>.g...g..HTTP/1.1 404 Not Found</p>
+<p>.g.Z.g.ZGET /byterange HTTP/1.1</p>
+<p>Host: 10.20.39.129</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/2a95a4e5931ed820/18</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-request-range: bytes=131072-196607</p>
+<p>.g...g.ZHTTP/1.1 200 OK</p>
+<p>x-opwv-vdo-opt-range: 0-0</p>
+<p>x-opwv-vdo-moov-atom-size: 561336</p>
+<p>x-opwv-vdo-new-range: bytes=561336-</p>
+<p>x-opwv-vdo-new-content-length: 0</p>
+<p>x-opwv-vdo-lower-transcode-limit: 0</p>
+<p>.g...g..POST / HTTP/1.1</p>
+<p>Host: 10.20.39.129:28080</p>
+<p>Content-Type: video/mp4</p>
+<p>x-opwv-vdo-policy: medium</p>
+<p>x-opwv-vdo-profile: iPhone</p>
+<p>x-opwv-vdo-watermark: 1</p>
+<p>x-opwv-vdo-id: http://youtube.com:80//videoplayback/2a95a4e5931ed820/18</p>
+<p>x-opwv-correlationId: 14682432</p>
+<p>x-opwv-vdo-orig-range-hdr: bytes=131072-196607</p>
+<p>x-opwv-vdo-moov-from-cache: 1</p>
+<p>.g.[.g./HTTP/1.1 503 Service Unavailable</p>
+<p>x-opwv-vdo-orig-content-length: 161379776</p>
+<p>x-opwv-vdo-sessionId: 100613602664820811650079514</p>
+<p>x-opwv-vdo-response-reason: VOS Initial HTTP Response Timeout, try another</p>
+<p>Content-Type: video/mp4</p>
+<p>&nbsp;<p>30:22 Ujala Asianet Film Award 2013 part6</p>
+<p>&nbsp;<p>&nbsp;<p>404 затем начало играть оптимизированное, может просто не успел отобразиться 200 код</p>
+<p>&nbsp;<p>&nbsp;<p>https://www.youtube.com/playlist?list=PLHdDTBuPyD0Q8Id_5KZ-q1_JFq3VoveZh&amp;feature=view_all</p>
+<p>&nbsp;<p>&nbsp;<p>9fd15a480a4c6fe951b26155b8ed</p>
+<p>&nbsp;<p>5b21da3fd6c5ec4fc1ebe2ae27366379</p>
+<p>&nbsp;<p>5b21da3fd6c5ec4fc1ebe2ae27366379,5b21da3fd6c5ec4fc1ebe2ae27366379-iPhone-medium</p>
+<p>&nbsp;<p>GET /OfflineServer?fingerprint=c6d967f4ddf032faa0f274c5c0e79449&amp;profile=iPhone&amp;optLevel=&amp;contentType=video/3gpp&amp;url=http://you</p>
+<p>tube.com:80//videoplayback/306d873ed6d5fbcd/36&amp;webdav=bfs-x4150-20-xm4.bfs.openwave.com:180 HTTP/1.1</p>
+<p>&nbsp;<p>L /webdav/e7/e6/60b5f4a3c374dbe716e8b6f06084 Вилис 3gp</p>
+<p>&nbsp;<p>/webdav/62/75/ba355d8c7b06c3ce21b584c87ccf-iPhone fuck</p>
+<p>&nbsp;<p>Шаги воспроизведения</p>
+<p>1. VideoCache=ON, JustInTimeVideo=ON, VideoCacheOptimizationLevel=medium, DynamicMP4OptimizationLevel=none, Dynamic3GPPOptimizationLevel=none, DynamicFLVOptimizationLevel=medium. Content Popularity Thresholds все 1, на уровен Core</p>
+<p>2. iPhone 4, iOS 5.1.1, стандартный браузер, HQ-off</p>
+<p>3. tcpdump -U -i any -s 0 -w - 'tcp port 28080 or 29080 or 80 or 180' через grep</p>
+<p>4. Запрашиваю видео, например <span style="font-size:13pt;"><strong><a href="https://www.youtube.com/watch?v=lLA7dQ-uxR0">Flipping the Bird to the Judge </a></strong></span>by <a href="https://www.youtube.com/user/shoeshandyohns">Shoesh McGoesh</a> https://www.youtube.com/watch?v=lLA7dQ-uxR0</p>
+<p>5. Ловлю в снупе, фингерпринт, например  /webdav/62/75/ba355d8c7b06c3ce21b584c87ccf-iPhone для этого файла</p>
+<p>5. Рестарт TS, очистка кеша на девайсе и рестар его на всякий случай</p>
+<p>6. Еще раз то же видео запрашиваю</p>
+<p>Ожидаю: появления ответа на запрос GET /popular HTTP/1.1 с моим фингерпринтом</p>
+<p>В итоге: в популярите листе только старые фингерпринты для mp4 видео</p>
+<p>&nbsp;<p>Дальше просто смотрел подозрительные ответы, в MepApp'е рылся</p>
+<p>&nbsp;<p>&nbsp;<p>/webdav/2b/64/2d982db432f05bee320607221fd6-iPhone-medium</p>
+<p>&nbsp;<p>/webdav/3d/60/a61c0a23cd35daa9fc611591fb81-iPhone-medium.header</p>
+<p>&nbsp;<p>e7e660b5f4a3c374dbe716e8b6f06084-smartPhone-medium</p>
+<p>&nbsp;<p>e7/e6/60b5f4a3c374dbe716e8b6f06084-smartPhone-medium</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;
+</p></body></html>

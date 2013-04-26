@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>Redhat / CentOS / Fedora Linux Open Port</p>
+<p>&nbsp;<p>by Vivek Gite on September 13, 2007 · 38 comments· last updated at September 29, 2007</p>
+<p>&nbsp;<p>&nbsp;<p>Q. I’ve Redhat Enterprise Linux 5 server with Iptabeles firewall enabled. By default it is only allowing port 22. How do I open port 80 / 143 / 110 on Linux? I've started all services but don't know how to open port using iptables.</p>
+<p>&nbsp;<p>A. By default iptables firewall stores its configuration at /etc/sysconfig/iptables file. You need to edit this file and add rules to open port number. This file only avilable under</p>
+<p> Red Hat Enterprise Linux 3 / 4 / 5 and above</p>
+<p> =&gt; Old Red hat Linux version</p>
+<p> =&gt; CentOS 4 and above</p>
+<p> =&gt; Fedora Linux</p>
+<p>Open port 80</p>
+<p>&nbsp;<p>Open flle /etc/sysconfig/iptables:</p>
+<p># vi /etc/sysconfig/iptables</p>
+<p>&nbsp;<p> Append rule as follows:</p>
+<p>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</p>
+<p>&nbsp;<p> Save and close the file. Restart iptables:</p>
+<p># /etc/init.d/iptables restart</p>
+<p>Open port 110</p>
+<p>&nbsp;<p>Append rule as follows:</p>
+<p>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 110 -j ACCEPT</p>
+<p>Open port 143</p>
+<p>&nbsp;<p>Append rule as follows:</p>
+<p>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 143 -j ACCEPT</p>
+<p>Restart iptables service</p>
+<p>&nbsp;<p>Type the following command:</p>
+<p># service iptables restart</p>
+<p>Verify that port is open</p>
+<p>&nbsp;<p>Run following command:</p>
+<p>netstat -tulpn | less</p>
+<p>&nbsp;<p> Make sure iptables is allowing port 80 / 110 / 143 connections:</p>
+<p>iptables -L -n</p>
+<p>&nbsp;<p>Refer to iptables man page for more information about iptables usage and syntax:</p>
+<p>man iptables </p>
+
+</p></body></html>

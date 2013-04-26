@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">7.1. <a href="http://www.opennet.ru/docs/RUS/bash_scripting_guide/c2171.html">Конструкции проверки условий</a> </span></span></p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Оператор if/then проверяет -- является ли код завершения списка команд 0 (поскольку 0 означает &quot;успех&quot;), и если это так, то выполняет одну, или более, команд, следующие за словом then.</p>
+<p>&nbsp;<p>&nbsp;<p>Существует специальная команда -- [ (левая квадратная скобка). Она является синонимом команды test, и является встроенной командой (т.е. более эффективной, в смысле производительности). Эта команда воспринимает свои аргументы как выражение сравнения или как файловую проверку и возвращает код завершения в соответствии с результатами проверки (0 -- истина, 1 -- ложь).</p>
+<p>&nbsp;<p>&nbsp;<p>Начиная с версии 2.02, Bash предоставляет в распоряжение программиста конструкцию [[ ... ]] расширенный вариант команды test, которая выполняет сравнение способом более знакомым программистам, пишущим на других языках программирования. Обратите внимание: [[ -- это зарезервированное слово, а не команда.</p>
+<p>&nbsp;<p>Bash исполняет [[ $a -lt $b ]] как один элемент, который имеет код возврата.</p>
+<p>&nbsp;<p>Круглые скобки (( ... )) и предложение let ... так же возвращают код 0, если результатом арифметического выражения является ненулевое значение. Таким образом, арифметические выражения могут учавствовать в операциях сравнения.</p>
+<p>Предложение let &quot;1&lt;2&quot; возвращает 0 (так как результат сравнения &quot;1&lt;2&quot; -- &quot;1&quot;, или &quot;истина&quot;)</p>
+<p>(( 0 &amp;&amp; 1 )) возвращает 1 (так как результат операции &quot;0 &amp;&amp; 1&quot; -- &quot;0&quot;, или &quot;ложь&quot;)</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Условный оператор if проверяет код завершения любой команды, а не только результат выражения, заключенного в квадратные скобки.</p>
+<p>if cmp a b &amp;&gt; /dev/null  # Подавление вывода.</p>
+<p>then echo &quot;Файлы a и b идентичны.&quot;</p>
+<p>else echo &quot;Файлы a и b имеют различия.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>if grep -q Bash file</p>
+<p>then echo &quot;Файл содержит, как минимум, одно слово Bash.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>if COMMAND_WHOSE_EXIT_STATUS_IS_0_UNLESS_ERROR_OCCURRED</p>
+<p>then echo &quot;Команда выполнена успешно.&quot;</p>
+<p>else echo &quot;Обнаружена ошибка при выполнении команды.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Оператор if/then допускает наличие вложенных проверок.</p>
+<p>if echo &quot;Следующий *if* находится внутри первого *if*.&quot;</p>
+<p>&nbsp;<p>  if [[ $comparison = &quot;integer&quot; ]]</p>
+<p>    then (( a &lt; b ))</p>
+<p>  else</p>
+<p>    [[ $a &lt; $b ]]</p>
+<p>  fi</p>
+<p>&nbsp;<p>then</p>
+<p>  echo '$a меньше $b'</p>
+<p>fi</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Это детальное описание конструкции &quot;if-test&quot; любезно предоставлено Stephane Chazelas.</p>
+<p>&nbsp;<p>Пример 7-1. Что есть &quot;истина&quot;?</p>
+<p>#!/bin/bash</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;0\&quot;&quot;</p>
+<p>if [ 0 ]      # ноль</p>
+<p>then</p>
+<p>  echo &quot;0 -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;0 -- это ложь.&quot;</p>
+<p>fi            # 0 -- это истина.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;1\&quot;&quot;</p>
+<p>if [ 1 ]      # единица</p>
+<p>then</p>
+<p>  echo &quot;1 -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;1 -- это ложь.&quot;</p>
+<p>fi            # 1 -- это ложь.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Testing \&quot;-1\&quot;&quot;</p>
+<p>if [ -1 ]     # минус один</p>
+<p>then</p>
+<p>  echo &quot;-1 -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;-1 -- это ложь.&quot;</p>
+<p>fi            # -1 -- это истина.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;NULL\&quot;&quot;</p>
+<p>if [ ]        # NULL (пустое условие)</p>
+<p>then</p>
+<p>  echo &quot;NULL -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;NULL -- это ложь.&quot;</p>
+<p>fi            # NULL -- это ложь.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;xyz\&quot;&quot;</p>
+<p>if [ xyz ]    # строка</p>
+<p>then</p>
+<p>  echo &quot;Случайная строка -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Случайная строка -- это ложь.&quot;</p>
+<p>fi            # Случайная строка -- это истина.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;\$xyz\&quot;&quot;</p>
+<p>if [ $xyz ]   # Проверка, если $xyz это null, но...</p>
+<p>              # только для неинициализированных переменных.</p>
+<p>then</p>
+<p>  echo &quot;Неинициализированная переменная -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Неинициализированная переменная -- это ложь.&quot;</p>
+<p>fi            # Неинициализированная переменная -- это ложь.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;-n \$xyz\&quot;&quot;</p>
+<p>if [ -n &quot;$xyz&quot; ]            # Более корректный вариант.</p>
+<p>then</p>
+<p>  echo &quot;Неинициализированная переменная -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Неинициализированная переменная -- это ложь.&quot;</p>
+<p>fi            # Неинициализированная переменная -- это ложь.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>&nbsp;<p>xyz=          # Инициализирована пустым значением.</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;-n \$xyz\&quot;&quot;</p>
+<p>if [ -n &quot;$xyz&quot; ]</p>
+<p>then</p>
+<p>  echo &quot;Пустая переменная -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Пустая переменная -- это ложь.&quot;</p>
+<p>fi            # Пустая переменная -- это ложь.</p>
+<p>&nbsp;<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>&nbsp;<p># Кргда &quot;ложь&quot; истинна?</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;false\&quot;&quot;</p>
+<p>if [ &quot;false&quot; ]              #  это обычная строка &quot;false&quot;.</p>
+<p>then</p>
+<p>  echo &quot;\&quot;false\&quot; -- это истина.&quot; #+ и она истинна.</p>
+<p>else</p>
+<p>  echo &quot;\&quot;false\&quot; -- это ложь.&quot;</p>
+<p>fi            # &quot;false&quot; -- это истина.</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>echo &quot;Проверяется \&quot;\$false\&quot;&quot;  # Опять неинициализированная переменная.</p>
+<p>if [ &quot;$false&quot; ]</p>
+<p>then</p>
+<p>  echo &quot;\&quot;\$false\&quot; -- это истина.&quot;</p>
+<p>else</p>
+<p>  echo &quot;\&quot;\$false\&quot; -- это ложь.&quot;</p>
+<p>fi            # &quot;$false&quot; -- это ложь.</p>
+<p>              # Теперь мв получили ожидаемый результат.</p>
+<p>&nbsp;<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>exit 0</p>
+<p>&nbsp;<p>Упражнение. Объясните результаты, полученные в Пример 7-1.</p>
+<p>if [ condition-true ]</p>
+<p>then</p>
+<p>   command 1</p>
+<p>   command 2</p>
+<p>   ...</p>
+<p>else</p>
+<p>   # Необязательная ветка (можно опустить, если в ней нет необходимости).</p>
+<p>   # Дополнительный блок кода,</p>
+<p>   # исполняемый в случае, когда результат проверки -- &quot;ложь&quot;.</p>
+<p>   command 3</p>
+<p>   command 4</p>
+<p>   ...</p>
+<p>fi</p>
+<p>&nbsp;<p>	</p>
+<p>Когда if и then располагаются в одной строке, то конструкция if должна завершаться точкой с запятой. И if, и then -- это зарезервированные слова. Зарезервированные слова начинают инструкцию, которая должна быть завершена прежде, чем в той же строке появится новая инструкция.</p>
+<p>if [ -x &quot;$filename&quot; ]; then</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Else if и elif</p>
+<p>elif</p>
+<p>&nbsp;<p>elif -- это краткая форма записи конструкции else if. Применяется для построения многоярусных инструкций if/then.</p>
+<p>if [ condition1 ]</p>
+<p>then</p>
+<p>   command1</p>
+<p>   command2</p>
+<p>   command3</p>
+<p>elif [ condition2 ]</p>
+<p># То же самое, что и else if</p>
+<p>then</p>
+<p>   command4</p>
+<p>   command5</p>
+<p>else</p>
+<p>   default-command</p>
+<p>fi</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Конструкция if test condition-true является точным эквивалентом конструкции if [ condition-true ], где левая квадратная скобка [ выполняет те же действия, что и команда test. Закрывающая правая квадратная скобка ] не является абсолютно необходимой, однако, более новые версии Bash требуют ее наличие.	</p>
+<p>Команда test -- это встроенная команда Bash, которая выполняет проверки файлов и производит сравнение строк. Таким образом, в Bash-скриптах, команда test не вызывает внешнюю (/usr/bin/test) утилиту, которая является частью пакета sh-utils. Аналогично, [ не производит вызов утилиты /usr/bin/[, которая является символической ссылкой на /usr/bin/test.</p>
+<p>bash$ type test</p>
+<p>test is a shell builtin</p>
+<p>bash$ type '['</p>
+<p>[ is a shell builtin</p>
+<p>bash$ type '[['</p>
+<p>[[ is a shell keyword</p>
+<p>bash$ type ']]'</p>
+<p>]] is a shell keyword</p>
+<p>bash$ type ']'</p>
+<p>bash: type: ]: not found</p>
+<p>             </p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Пример 7-2. Эквиваленты команды test -- /usr/bin/test, [ ], и /usr/bin/[</p>
+<p>#!/bin/bash</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>if test -z &quot;$1&quot;</p>
+<p>then</p>
+<p>  echo &quot;Аргументы командной строки отсутствуют.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Первый аргумент командной строки: $1.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>if /usr/bin/test -z &quot;$1&quot;      # Дает тот же рузультат, что и встроенная команда &quot;test&quot;.</p>
+<p>then</p>
+<p>  echo &quot;Аргументы командной строки отсутствуют.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Первый аргумент командной строки: $1.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>if [ -z &quot;$1&quot; ]                # Функционально идентично вышеприведенному блоку кода.</p>
+<p>#   if [ -z &quot;$1&quot;                эта конструкция должна работать, но...</p>
+<p>#+  Bash выдает сообщение об отсутствующей закрывающей скобке.</p>
+<p>then</p>
+<p>  echo &quot;Аргументы командной строки отсутствуют.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Первый аргумент командной строки: $1.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>if /usr/bin/[ -z &quot;$1&quot;         # Функционально идентично вышеприведенному блоку кода.</p>
+<p># if /usr/bin/[ -z &quot;$1&quot; ]     # Работает, но выдает сообщение об ошибке.</p>
+<p>then</p>
+<p>  echo &quot;Аргументы командной строки отсутствуют.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Первый аргумент командной строки: $1.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>echo</p>
+<p>&nbsp;<p>exit 0</p>
+<p>&nbsp;<p>Конструкция [[ ]] более универсальна, по сравнению с [ ]. Этот расширенный вариант команды test перекочевал в Bash из ksh88.	</p>
+<p>Внутри этой конструкции не производится никакой дополнительной интерпретации имен файлов и не производится разбиение аргументов на отдельные слова, но допускается подстановка параметров и команд.</p>
+<p>&nbsp;<p>file=/etc/passwd</p>
+<p>&nbsp;<p>if [[ -e $file ]]</p>
+<p>then</p>
+<p>  echo &quot;Файл паролей найден.&quot;</p>
+<p>fi</p>
+<p>&nbsp;<p>	</p>
+<p>Конструкция [[ ... ]] более предпочтительна, нежели [ ... ], поскольку поможет избежать некоторых логических ошибок. Например, операторы &amp;&amp;, ||, &lt; и &gt; внутри [[ ]] вполне допустимы, в то время как внутри [ ] порождают сообщения об ошибках.</p>
+<p>	</p>
+<p>Строго говоря, после оператора if, ни команда test, ни квадратные скобки ( [ ] или [[ ]] ) не являются обязательными.</p>
+<p>dir=/home/bozo</p>
+<p>&nbsp;<p>if cd &quot;$dir&quot; 2&gt;/dev/null; then   # &quot;2&gt;/dev/null&quot; подавление вывода сообщений об ошибках.</p>
+<p>  echo &quot;Переход в каталог $dir выполнен.&quot;</p>
+<p>else</p>
+<p>  echo &quot;Невозможно перейти в каталог $dir.&quot;</p>
+<p>fi</p>
+<p> Инструкция &quot;if COMMAND&quot; возвращает код возврата команды COMMAND.</p>
+<p>&nbsp;<p>&nbsp;<p>Точно так же, условие, находящееся внутри квадратных скобок может быть проверено без использования оператора if.</p>
+<p>var1=20</p>
+<p>var2=22</p>
+<p>[ &quot;$var1&quot; -ne &quot;$var2&quot; ] &amp;&amp; echo &quot;$var1 не равно $var2&quot;</p>
+<p>&nbsp;<p>home=/home/bozo</p>
+<p>[ -d &quot;$home&quot; ] || echo &quot;каталог $home не найден.&quot;</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Внутри (( )) производится вычисление арифметического выражения. Если результатом вычислений является ноль, то возвращается 1, или &quot;ложь&quot;. Ненулевой результат дает код возврата 0, или &quot;истина&quot;. То есть полная противоположность инструкциям test и [ ], обсуждавшимся выше.</p>
+<p>&nbsp;<p>Пример 7-3. Арифметические выражения внутри (( ))</p>
+<p>#!/bin/bash</p>
+<p># Проверка арифметических выражений.</p>
+<p>&nbsp;<p># Инструкция (( ... )) вычисляет арифметические выражения.</p>
+<p># Код возврата противоположен коду возврата инструкции [ ... ] !</p>
+<p>&nbsp;<p>(( 0 ))</p>
+<p>echo &quot;Код возврата \&quot;(( 0 ))\&quot;:  $?.&quot;         # 1</p>
+<p>&nbsp;<p>(( 1 ))</p>
+<p>echo &quot;Код возврата \&quot;(( 1 ))\&quot;:  $?.&quot;         # 0</p>
+<p>&nbsp;<p>(( 5 &gt; 4 ))                                   # true</p>
+<p>echo &quot;Код возврата \&quot;(( 5 &gt; 4 ))\&quot;:  $?.&quot;     # 0</p>
+<p>&nbsp;<p>(( 5 &gt; 9 ))                                   # false</p>
+<p>echo &quot;Код возврата \&quot;(( 5 &gt; 9 ))\&quot;:  $?.&quot;     # 1</p>
+<p>&nbsp;<p>(( 5 - 5 ))                                   # 0</p>
+<p>echo &quot;Код возврата \&quot;(( 5 - 5 ))\&quot;:  $?.&quot;     # 1</p>
+<p>&nbsp;<p>(( 5 / 4 ))                                   # Деление, все в порядке</p>
+<p>echo &quot;Код возврата \&quot;(( 5 / 4 ))\&quot;:  $?.&quot;     # 0</p>
+<p>&nbsp;<p>(( 1 / 2 ))                                   # Результат деления &lt; 1.</p>
+<p>echo &quot;Код возврата \&quot;(( 1 / 2 ))\&quot;:  $?.&quot;     # Округляется до 0.</p>
+<p>                                              # 1</p>
+<p>&nbsp;<p>(( 1 / 0 )) 2&gt;/dev/null                       # Деление на 0.</p>
+<p>echo &quot;Код возврата \&quot;(( 1 / 0 ))\&quot;:  $?.&quot;     # 1</p>
+<p>&nbsp;<p># Для чего нужна инструкция &quot;2&gt;/dev/null&quot; ?</p>
+<p># Что произойдет, если ее убрать?</p>
+<p># Попробуйте убрать ее и выполнить сценарий.</p>
+<p>&nbsp;<p>exit 0 </p>
+
+</p></body></html>

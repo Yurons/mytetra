@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>4 Ways to Kill a Process – kill, killall, pkill, xkill</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p>Kill command is use to send signal to a process or to kill a process. We typically use kill -SIGNAL PID, where you know the PID of the process. </p>
+<p>There are other ways to effectively <strong>kill a process</strong> — killing a process by name, killing a process by specifying part of the name, killing a process by pointing out the process with cursor etc.,</p>
+<p>In this article, let us review 4 ways to kill a process.</p>
+<p><strong>1. Kill Command – Kill the process by specifying its PID</strong></p>
+<p>All the below kill conventions will send the TERM signal to the specified process. For the signals, either the signal name or signal number can be used. You need to lookup the pid for the process and give it as an argument to kill.</p>
+<p><span style="font-family:Courier New,courier;">$ kill -TERM pid</span></p>
+<p>&nbsp;<p>$ kill -SIGTERM pid</p>
+<p>&nbsp;<p>$ kill -15 pid</p>
+<p><span style="font-family:Sans Serif;">Example: Kill the firefox process. </span></p>
+<p><span style="font-family:Courier New,courier;">$ ps -ef | grep firefox</span></p>
+<p><span style="color:#ff0000;">1986</span> ? Sl 7:22 /usr/lib/firefox-3.5.3/firefox</p>
+<p>&nbsp;<p>$ kill -9 1986</p>
+<p><span style="font-family:Sans Serif;"><strong>2. Killall Command – Kill processes by name</strong></span></p>
+<p>Instead of specifying a process by its PID, you can specify the name of the process. If more than one process runs with that name, all of them will be killed.Example: Kill all the firefox processes</p>
+<p><span style="font-family:Courier New,courier;">$ killall -9 firefox</span></p>
+<p><span style="font-family:Sans Serif;"><strong>3. Pkill Command – Send signal to the process based on its name</strong></span></p>
+<p>You can send signal to any process by specifying the full name or partial name. So there is no need for you to find out the PID of the process to send the signal.</p>
+<p>Example: Send SIGTERM to all the process which has sample in its name.</p>
+<p><span style="font-family:Courier New,courier;">$ pkill sample</span></p>
+<p><span style="font-family:Sans Serif;"><strong>Pkill Example:</strong></span></p>
+<p>Before sending signal, you can verify which are all the process is matching the criteria using “pgrep -l”, which displays the process ID and process name of the matching processes.</p>
+<p>In this example, all the processes are designed to log the signal to signal-log, along with its PID.</p>
+<p><span style="font-family:Courier New,courier;">$ pgrep -l sample</span></p>
+<p>12406 sample-server.p</p>
+<p>12425 sample-server.p</p>
+<p>12430 sample-garbagec</p>
+<p>&nbsp;<p>$ pkill -USR1 sample</p>
+<p>&nbsp;<p>$ cat signal-log</p>
+<p>Name: ./sample-server.pl Pid: 12406 Signal Received: USR1</p>
+<p>Name: ./sample-server.pl Pid: 12425 Signal Received: USR1</p>
+<p>Name: ./sample-garbagecollector.pl Pid: 12430 Signal Received: USR1</p>
+<p><span style="font-family:Sans Serif;"><strong>Note:</strong> The part of name which you specify should be in the character within the first 15 character of the process name.</span></p>
+<p><strong>4. Xkill Command – kill a client by X resource</strong></p>
+<p>xkill is the simplest way to kill a malfunctioning program. When you want to kill a process, initiate xkill which will offer an cross-hair cursor. Click on the window with left cursor which will kill that process.</p>
+<p><span style="font-family:Courier New,courier;">$ xkill</span></p>
+<p>Select the window whose client you wish to kill with button 1....</p>
+<p>xkill: killing creator of resource 0x1200003</p>
+<p><span style="font-family:Sans Serif;"><strong>Note:</strong> Actually, xkill instructs XServer to terminate the client. </span></p>
+
+</p></body></html>

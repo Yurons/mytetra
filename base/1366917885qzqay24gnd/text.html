@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"> <strong>Русификация Slackware 13 c utf8 </strong></span></span></p>
+<p><strong>Консоль</strong></p>
+<ul type="disc">
+<li>Раскладка по Ctrl+Shift</li>
+</ul>
+<p>/etc/rc.d/rc.keymap</p>
+<p><span style="font-family:Courier New,courier;">#!/bin/sh</span></p>
+<p># Load the keyboard map.  More maps are in /usr/share/kbd/keymaps.</p>
+<p>if [ -x /usr/bin/loadkeys ]; then</p>
+<p> /usr/bin/loadkeys /usr/share/kbd/keymaps/i386/qwerty/ruwin_ct_sh-UTF-8.map.gz</p>
+<p>fi</p>
+<ul type="disc">
+<li><span style="font-family:Sans Serif;">Шрифт, отображающий кириллицу</span></li>
+</ul>
+<p>/etc/rc.d/rc.font</p>
+<p><span style="font-family:Courier New,courier;">#!/bin/sh</span></p>
+<p>setfont Cyr_a8x16.psfu.gz</p>
+<ul type="disc">
+<li><span style="font-family:Sans Serif;">Локаль</span></li>
+</ul>
+<p>/etc/profile.d/lang.sh</p>
+<p><span style="font-family:Courier New,courier;">#!/bin/sh</span></p>
+<p> </p>
+<p># en_US is the Slackware default locale:</p>
+<p>#export LANG=en_US</p>
+<p>&nbsp;<p># There is also support for UTF-8 locales, but be aware that</p>
+<p># some programs are not yet able to handle UTF-8 and will fail to</p>
+<p># run properly.  In those cases, you can set LANG=C before</p>
+<p># starting them.  Still, I'd avoid UTF unless you actually need it.</p>
+<p>#export LANG=en_US.UTF-8</p>
+<p>export LANG=ru_RU.UTF-8</p>
+<p> </p>
+<p># One side effect of the newer locales is that the sort order</p>
+<p># is no longer according to ASCII values, so the sort order will</p>
+<p># change in many places.  Since this isn't usually expected and</p>
+<p># can break scripts, we'll stick with traditional ASCII sorting.</p>
+<p># If you'd prefer the sort algorithm that goes with your $LANG</p>
+<p># setting, comment this out.</p>
+<p>export LC_COLLATE=C</p>
+<p>&nbsp;<p># End of /etc/profile.d/lang.sh</p>
+<p><p>&nbsp;</p>
+<p><span style="font-family:Sans Serif;">Поставить же его можно следующей командой:</span></p>
+<p><span style="font-family:Courier New,courier;">chmod +x полный_путь_к_файлу</span></p>
+<p><span style="font-family:Sans Serif;">Или же, разом все файлы:</span></p>
+<p><span style="font-family:Courier New,courier;">chmod +x /etc/rc.d/rc.keymap /etc/rc.d/rc.font /etc/profile.d/lang.sh</span></p>
+<ul type="disc">
+<li><span style="font-family:Sans Serif;">Lilo</span></li>
+</ul>
+<p>В /etc/lilo.conf нужно исправить строчку:</p>
+<p><span style="font-family:Courier New,courier;">append=&quot; vt.default_utf8=0&quot;</span></p>
+<p><span style="font-family:Sans Serif;">на: </span></p>
+<p><span style="font-family:Courier New,courier;">append=&quot; vt.default_utf8=1&quot;</span></p>
+<p><span style="font-family:Sans Serif;">и выполнить команду: </span></p>
+<p><span style="font-family:Courier New,courier;">lilo </span></p>
+<p><strong><span style="font-family:Sans Serif;">HAL, udev и X'ы</span></strong></p>
+<ul type="disc">
+<li>Раскладка через HAL (Slackware 13.0, 13.1)</li>
+</ul>
+<p><span style="font-family:Courier New,courier;">cp /usr/share/hal/fdi/policy/10osvendor/10-keymap.fdi /etc/hal/fdi/policy/10-keymap.fdi</span></p>
+<p><span style="font-family:Sans Serif;">Правим строки файла /etc/hal/fdi/policy/10-keymap.fdi с input.xkb, а именно options, layout, variant, задаем в них примерно следующее:</span></p>
+<p><span style="font-family:Courier New,courier;">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span></p>
+<p>&lt;deviceinfo version=&quot;0.2&quot;&gt;</p>
+<p>  &lt;device&gt;</p>
+<p>    &lt;match key=&quot;info.capabilities&quot; contains=&quot;input.keymap&quot;&gt;</p>
+<p>      &lt;append key=&quot;info.callouts.add&quot; type=&quot;strlist&quot;&gt;hal-setup-keymap&lt;/append&gt;</p>
+<p>    &lt;/match&gt;</p>
+<p>&nbsp;<p>    &lt;match key=&quot;info.capabilities&quot; contains=&quot;input.keys&quot;&gt;</p>
+<p>      &lt;merge key=&quot;input.xkb.rules&quot;   type=&quot;string&quot;&gt;base&lt;/merge&gt;</p>
+<p>      &lt;merge key=&quot;input.xkb.model&quot;   type=&quot;string&quot;&gt;evdev&lt;/merge&gt;</p>
+<p>      &lt;merge key=&quot;input.xkb.layout&quot;  type=&quot;string&quot;&gt;us,ru&lt;/merge&gt;</p>
+<p>      &lt;merge key=&quot;input.xkb.variant&quot; type=&quot;string&quot;&gt;,winkeys&lt;/merge&gt;</p>
+<p>      &lt;merge key=&quot;input.xkb.options&quot; type=&quot;string&quot;&gt;terminate:ctrl_alt_bksp,grp:ctrl_shift_toggle,grp_led:scroll&lt;/merge&gt;</p>
+<p>    &lt;/match&gt;</p>
+<p>  &lt;/device&gt;</p>
+<p>&lt;/deviceinfo&gt;</p>
+<ul type="disc">
+<li><span style="font-family:Sans Serif;">Раскладка через udev (Slackware 13.37 и Current)</span></li>
+</ul>
+<p>в Slackware Current используется более новая версия xorg-server в которой наконец то избавились от поддержки HAL, поэтому переключение раскладок снова настраивается как и раньше, только с небольшим отличием</p>
+<p>Правим файл /etc/X11/xorg.conf.d/90-keyboard-layout.conf, (если этого файла нет, то создаём) так, как нам нужно. Конечный результат должен выглядеть примерно так:</p>
+<p><span style="font-family:Courier New,courier;">Section &quot;InputClass&quot;</span></p>
+<p>	Identifier &quot;keyboard-all&quot;</p>
+<p>	MatchIsKeyboard &quot;on&quot;</p>
+<p>	Driver &quot;evdev&quot;</p>
+<p>	Option &quot;XkbLayout&quot; &quot;us,ru(winkeys)&quot;</p>
+<p>	Option &quot;XkbOptions&quot; &quot;terminate:ctrl_alt_bksp,grp:alt_shift_toggle,grp_led:scroll&quot;</p>
+<p>EndSection</p>
+<p><span style="font-family:Sans Serif;">Перезапускаем иксы, и переключаем раскладку по Alt+Shift, с подсветкой лампочки &quot;Scroll Lock&quot; на клаве.</span></p>
+<ul type="disc">
+<li>Типографская раскладка</li>
+</ul>
+<p>Если вы часто-часто готовите тексты, в, упаси боже OpenOffice и он тупит с автозаменой — то вам пригодится «типографская раскладка», такая как <a href="http://sapegin.ru/typolayout">тут</a>(раскладка Артёма Сапегина) или вот <a href="http://ilyabirman.ru/typography-layout/">здесь</a>(раскладка Ильи Бирмана), например.</p>
+<p>Тогда файл /etc/X11/xorg.conf.d/90-keyboard-layout.conf должен выглядить следующим образом:</p>
+<p><span style="font-family:Courier New,courier;">Section &quot;InputClass&quot;</span></p>
+<p>	Identifier &quot;keyboard-all&quot;</p>
+<p>	MatchIsKeyboard &quot;on&quot;</p>
+<p>	Driver &quot;evdev&quot;</p>
+<p>	Option &quot;XkbLayout&quot; &quot;us+typo,ru(winkeys):2+typo&quot;	</p>
+<p>	Option &quot;XkbOptions&quot; &quot;lv3:ralt_switch,terminate:ctrl_alt_bksp,grp:alt_shift_toggle,grp_led:scroll&quot;</p>
+<p>EndSection</p>
+<p><span style="font-family:Sans Serif;">Перезапускаем иксы, и радуемся, «типографские» символы набираются через правый Alt, и правый Alt+Shift.</span></p>
+<p>Раскладка немного отличается от двух приведенныйх выше, но поэкспериметировать и выяснить чо-как не составит труда в том же OpenOffice’е. Да и во всяких жабберах можно выпендрится.</p>
+<p><strong>Русские man-страницы</strong></p>
+<p><a href="http://www.slackware.ru/forum/viewtopic.php?f=8&t=234">[1]</a></p>
+<p>Если кратко, то в /usr/lib/man.conf заменить строку</p>
+<p><span style="font-family:Courier New,courier;">NROFF /usr/bin/nroff -Tlatin1 -mandoc</span></p>
+<p><span style="font-family:Sans Serif;">на</span></p>
+<p><span style="font-family:Courier New,courier;">NROFF iconv -f utf8 -t koi8r -c | /usr/bin/nroff -Tlatin1 -mandoc -c | iconv -f koi8r -t utf8 -c </span></p>
+
+</p></body></html>

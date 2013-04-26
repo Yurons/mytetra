@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:DejaVu Serif;">VDO-OFFLINE-ENG-035</span></p>
+<p>Verify successfully optimized video is placed in cache, with opt level used as the variant identifier</p>
+<p>&nbsp;<p>${VideoFLV1} VideoFLV1=http://suzuki.bfs.openwave.com/VDO/InlineCaching/video01.flv</p>
+<p>${gProductString} gProductString=CongestionControl_3.0</p>
+<p>${gNewConfig} gNewConfig=OfflineOptimizationConfig</p>
+<p>${gSystemPlanAttributes} gSystemPlanAttributes=PlanManagement/PlanGroups/System/PlanList/System/AttributeList</p>
+<p>${gTestOSHost} gTestOSHost=bfs-hs20-01s3.bfs.openwave.com</p>
+<p>${lWebDavDir} lWebDavDir=/var/opt/opwv/webdav/cache/</p>
+<p>${gApplicationLogFile} gApplicationLogFile=/var/opt/opwv/logs/MepApp.log</p>
+<p><span style="color:#ff0000;">${gIntegraHost}  IntegraHost=user.HTTPProxy</span></p>
+<p>${gIntegraPort} gIntegraPort=80</p>
+<p>${lUserAgent} lUserAgent=Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.11) Gecko/20101012 Firefox/3.6.11</p>
+<p>${VideoForTest} vars.put(&quot;VideoForTest&quot;,&quot;${VideoFLV1}&quot;);</p>
+<p>&nbsp;<p>curl -v --proxy bfs-dl360g7-44-xm6.bfs.openwave.com:3128 --output /spare/video.test. --user-agent 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.11) Gecko/20101012 Firefox/3.6.11' http://suzuki.bfs.openwave.com/VDO/InlineCaching/videoH26303.flv -w '\nResponseCode=%{http_code}\n' -L</p>
+<p>&nbsp;<p>&nbsp;<p>[18:45:04] Aliaksandr Zabrodski: Тест план - Media Optimizer - ViDeO 2.0 - Functional - Offline Optimization</p>
+<p>[18:45:24] Aliaksandr Zabrodski: в тест сете они последний раз гонялись на Медиа оптимайзере</p>
+<p>[18:46:06] Aliaksandr Zabrodski: Тест сет:</p>
+<p>Media Optimizer - Video 2.3.0.5 - Regression - Offline Optimization</p>
+<p>&nbsp;<p>&nbsp;<p><strong>VDO-OFFLINE-ENG-135</strong></p>
+<p>Verify MepApp.log file shows VBR used is the configured percentage of original value:</p>
+<p>&nbsp;<p>&nbsp;<table cellpadding="0" cellspacing="0" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><strong>VDO-OFFLINE-ENG-170</strong></p>
+</td><td width="" colspan="1" rowspan="1"><p><p>&nbsp;</p>
+</td><td width="" colspan="1" rowspan="1"><p align="right" >1</p>
+<p>&nbsp;</td><td width="" colspan="1" rowspan="1"><p>Verify if bit rate of original video is less than the 'ActiveThreshold' the original video bit rate is maintained</p>
+</td><td width="" colspan="1" rowspan="1"><p>Openwave -&gt; Video Delivery Optimizer -&gt; Default Video and Audio Bitrate Limits</p>
+</td><td width="" colspan="1" rowspan="1"><p>Video bitrate to low using input value</p>
+</td></tr></table><p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>AudioBaseOffline</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>AudioBaseDynamic</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>LowOptVorbisBitRateControls</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>MediumOptVorbisBitRateControls</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>HighOptVorbisBitRateControls</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>IphoneAACBitRateControls</strong>/Pass/1/Parameters/ABR</p>
+<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/<strong>3GPAudioRateControls</strong>/Pass/1/Parameters/ABR</p>
+<p>&nbsp;<p>&nbsp;<p>Basically we set the audio bitrate </p>
+<p>to SMART which means if audio bitrate is greater than 64K set to 64K otherwise use </p>
+<p>the same as the input.</p>
+<p>&nbsp;<p>If the input Audio codec is AAC then we output AAC otherwise it goes to MP3.</p>
+<p>link <a href="http://its.openwave.com/ShowSingleIssue.ASP?issid=1297909">http://its.openwave.com/ShowSingleIssue.ASP?issid=1297909</a> </p>
+<p>&nbsp;<p>VDO-OFFLINE-ENG-070</p>
+<p>Когда запускаешь mp3</p>
+<p>&nbsp;<p>loop and delete all intermediate files</p>
+<p>File bloat detected original file size = 2688322 transcoded file size = 2974227</p>
+<p>Delete source</p>
+<p>&nbsp;<p>Записать в требования, чтобы mp3 был с битрейтом больше 64кб</p>
+<p>&nbsp;<p>&nbsp;<p>mediainfo --Inform=file://format.txt *|grep MPEG</p>
+<p>&nbsp;<p>General;%FileName%.%FileExtension% </p>
+<p>Audio;%Format% %BitRate%\n</p>
+<p>format.txt lines 1-2/2 (END)</p>
+<p>&nbsp;<p>&nbsp;<p>${Video3GP1}</p>
+<p>&nbsp;<p>Audio</p>
+<p>ID                                       : 2</p>
+<p>Format                                   : AAC</p>
+<p>Format/Info                              : Advanced Audio Codec</p>
+<p>Format profile                           : LC</p>
+<p>Codec ID                                 : 40</p>
+<p>Duration                                 : 4mn 51s</p>
+<p>Bit rate mode                            : Variable</p>
+<p>Bit rate                                 : 38.0 Kbps</p>
+<p>Maximum bit rate                         : 69.1 Kbps</p>
+<p>Channel(s)                               : 1 channel</p>
+<p>Channel positions                        : Front: C</p>
+<p>Sampling rate                            : 22.05 KHz</p>
+<p>Compression mode                         : Lossy</p>
+<p>Stream size                              : 1.32 MiB (16%)</p>
+<p>Title                                    : IsoMedia File Produced by Google, 5-11-2011</p>
+<p>Encoded date                             : UTC 2011-11-10 14:00:07</p>
+<p>&nbsp;<p>[18:17:08] Aliaksandr Zabrodski: там получается для каждого типа видео оно может быть разным</p>
+<p>[18:17:21] Aliaksandr Zabrodski: а если не указан - берется в дефолтных настройках</p>
+<p>[18:19:25] Aliaksandr Zabrodski: Congestion Control - Video Transcoding - Bit Rate Control - Constant Dynamic Bitrate Controls -&gt; Optimization Parameters - Threshold -&gt; 200000</p>
+<p>[18:19:43] Aliaksandr Zabrodski: для Н264</p>
+<p>[18:20:26] Yury Staniulenis: Ты мой вопрос опередил, спасибо. Теперь все ясно. Надеюсь сегодня все же добью это все</p>
+<p>[18:20:34] Aliaksandr Zabrodski: давай</p>
+<p>[18:21:03] Aliaksandr Zabrodski: дефолтные здесь</p>
+<p>Congestion Control - Video Transcoding - Default Bitrate Limits</p>
+<p>&nbsp;<p>Openwave//CongestionControl/TranscodingConfig/BitRateControl/ConstantDynamicBitRateControls/Pass/1/Parameters/Threshold/ParameterValue</p>
+<p>&nbsp;<p>Openwave//CongestionControl/TranscodingConfig/Thresholds/AudioBitrateThreshold 48 kbps </p>
+<table cellpadding="0" cellspacing="0" width="100%" border="1"><tr><td width="" colspan="1" rowspan="1"><p>AudioBitrateThreshold(kbps)is the lowest limit of audio bit rate for any audio optimization. Even if audio bit rate calculation gives lower value than that of AudioBitrateThreshold then AudioBitrateThreshold is used as abr for audio optimization.</p>
+</td><td width="" colspan="1" rowspan="1"><p>&nbsp;</td></tr><tr><td width="" colspan="1" rowspan="1"><p>&nbsp;</td><td width="" colspan="1" rowspan="1"><p>&nbsp;</td></tr></table><p>Openwave//CongestionControl/TranscodingConfig/Thresholds/VideoBitrateThreshold3gp 50 kbps</p>
+<p>Openwave//CongestionControl/TranscodingConfig/Thresholds/VideoBitrateThreshold 200 kbps</p>
+<p>Openwave//CongestionControl/TranscodingConfig/Thresholds/FilesizeThreshold 600 KB This is the lower threshold value for file compression ie if the file is smaller than this size (KB) it is not optimized.</p>
+<p>&nbsp;<p>&nbsp;<p>Похоже для H.264 поменять FR нельзя, покрайней мере в OOE</p>
+<p>&nbsp;<p>Надо ANDES-CC-OFFLINEENGINE-FUNC-140. Сделать по точнее сравнение ABR</p>
+<p>&nbsp;<p>Неправильная строка, скорее всего во всех тесткейсах тесплана</p>
+<p>&nbsp;<p>3713461696512247bff15cdde6b3-laptop-medium.data, должнобыть 3713461696512247bff15cdde6b3-laptop-high.data</p>
+<p>&nbsp;<p>ANDES-CC-OFFLINEENGINE-FUNC-150 не доделан</p>
+<p>&nbsp;<p>AVC</p>
+<p> 378906</p>
+<p>&nbsp;<p>Integer br_high = 15757;</p>
+<p>Integer br_med = 15757;</p>
+<p>Integer br_low = 15757;</p>
+<p>Integer br_orig = 730293;</p>
+<p>&nbsp;<p>&nbsp;<p>Integer br_high = 64289;</p>
+<p>Integer br_med = 80969;</p>
+<p>Integer br_low = 102957;</p>
+<p>Integer br_orig = 730293;</p>
+<p>&nbsp;<p>ANDES-CC-OFFLINEENGINE-FUNC-100 Verify ASR (Audio Sampling Rate) is supported for all output audio codecs</p>
+<p>ANDES-CC-OFFLINEENGINE-FUNC-110 Verify Channels is supported for all output audio codecs</p>
+<p>&nbsp;<p>&nbsp;<p>ANDES-CC-OFFLINEENGINE-FUNC-180 To verify that header files contain right data</p>
+<p>&nbsp;<p><span style="color:#0000ff;">1) установить 36а</span></p>
+<p>2) залить контент на сервер</p>
+<p><span style="color:#0000c0;">3) добавить в кешинг 31 свои тесты</span></p>
+<p>4)подключить новый юзер пропертис</p>
+<p>5) включить систем сетап + свои тесты</p>
+<p>6) прогнать на НО36а</p>
+<p>[17:19:17] Yury Staniulenis: 2) Закачать файлы на bfs-hs20-01s3.bfs.openwave.com и подправить пути в скриптах</p>
+<p>&nbsp;<p>&nbsp;<p>Football-mp4</p>
+<p>Video3GP1</p>
+<p>Video3GP2</p>
+<p>VideoAAC</p>
+<p>VideoFLV3</p>
+<p>VideoFLV4</p>
+<p>VideoFLVH26301</p>
+<p>VideoFLVH26302</p>
+<p>VideoFLVH26303</p>
+<p>VideoFLVH26401</p>
+<p>VideoFLVH26402</p>
+<p>VideoFLVH26403</p>
+<p>VideoFLVH26404</p>
+<p>VideoFLVVP606</p>
+<p>VideoMP41</p>
+<p>VideoMP42</p>
+<p>VideoMP46</p>
+<p>Videovideo-mp4</p>
+<p>&nbsp;<p>grep -A1 -f file.txt Caching_14.jmx|grep 'Argument.value'| sed 's/\s*&lt;[^&gt;]*&gt;//' |sed 's/&lt;[^&gt;]*&gt;//'</p>
+<p>&nbsp;<p>&nbsp;<p>ANDES-CC-OFFLINEENGINE-FUNC-141</p>
+<p>Float tmp1 = 463965;</p>
+<p>Float tmp2 = 271484;</p>
+<p>&nbsp;<p>if ( Math.abs(tmp2/tmp1 - 0.8) &lt; 0.1) return &quot;true&quot;;</p>
+<p>else return &quot;false&quot; + Math.abs(tmp2/tmp1 -0.8);</p>
+<p>Request Headers:</p>
+<p>false0.21486102342605595</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;
+</p></body></html>

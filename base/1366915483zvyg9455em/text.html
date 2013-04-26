@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>How to Find Files With setuid Permissions</strong></span></span></p>
+<p>&nbsp;<p>Use the following procedure to find files with setuid permissions.</p>
+<p>&nbsp;<p>&nbsp;<p>Become superuser or assume an equivalent role. </p>
+<p>&nbsp;<p>&nbsp;<p>Find files with setuid permissions by using the find command.</p>
+<p># find directory -user root -perm -4000 -exec ls -ldb {} \; &gt;/tmp/filename</p>
+<p>&nbsp;<p>&nbsp;<p>find directory 	</p>
+<p>Checks all mounted paths starting at the specified directory, which can be root (/), sys, bin, or mail.</p>
+<p>&nbsp;<p>-user root 	</p>
+<p>Displays files owned only by root.</p>
+<p>&nbsp;<p>-perm -4000 	</p>
+<p>Displays files only with permissions set to 4000.  </p>
+<p>&nbsp;<p>-exec ls -ldb 	</p>
+<p>Displays the output of the find command in ls -ldb format.</p>
+<p>&nbsp;<p>&gt;/tmp/filename 	</p>
+<p>Writes results to this file. </p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Display the results in /tmp/filename.</p>
+<p># more /tmp/filename</p>
+<p>&nbsp;<p>&nbsp;<p>If you need background information about setuid permissions, see setuid Permission.</p>
+<p>Example—Finding Files With setuid Permissions</p>
+<p># find / -user root -perm -4000 -exec ls -ldb {} \; &gt; /tmp/ckprm</p>
+<p># cat /tmp/ckprm</p>
+<p>-r-sr-xr-x 1 root bin 38836 Aug 10 16:16 /usr/bin/at</p>
+<p>-r-sr-xr-x 1 root bin 19812 Aug 10 16:16 /usr/bin/crontab</p>
+<p>---s--x--x 1 root sys 46040 Aug 10 15:18 /usr/bin/ct</p>
+<p>-r-sr-xr-x 1 root sys 12092 Aug 11 01:29 /usr/lib/mv_dir</p>
+<p>-r-sr-sr-x 1 root bin 33208 Aug 10 15:55 /usr/lib/lpadmin</p>
+<p>-r-sr-sr-x 1 root bin 38696 Aug 10 15:55 /usr/lib/lpsched</p>
+<p>---s--x--- 1 root rar 45376 Aug 18 15:11 /usr/rar/bin/sh</p>
+<p>-r-sr-xr-x 1 root bin 12524 Aug 11 01:27 /usr/bin/df</p>
+<p>-rwsr-xr-x 1 root sys 21780 Aug 11 01:27 /usr/bin/newgrp</p>
+<p>-r-sr-sr-x 1 root sys 23000 Aug 11 01:27 /usr/bin/passwd</p>
+<p>-r-sr-xr-x 1 root sys 23824 Aug 11 01:27 /usr/bin/su</p>
+<p>&nbsp;<p>&nbsp;<p>This output shows that a user named rar has made a personal copy of /usr/bin/sh, and has set the permissions as setuid to root. As a result, rar can execute /usr/rar/bin/sh and become the privileged user. If you want to save this output for future reference, move the file out of the /tmp directory. </p>
+
+</p></body></html>

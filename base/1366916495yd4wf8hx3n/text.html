@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Linux OID's</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;">Linux OID's —- </span></p>
+<p><a href="http://snmp.ru/doku.php/snmp:linux_oid_s">Ссылка ни исходник</a> </p>
+<p>&nbsp;<p>CPU Statistics </p>
+<p>&nbsp;<p><a href="http://www.debianadmin.com/linux-snmp-oids-for-cpumemory-and-disk-statistics.html">Так же отсюда</a> </p>
+<p>MIB stands for Management Information Base and is a collection of information organized hierarchically. These are accessed using a protocol such as SNMP. There are two types of MIBs: scalar and tabular. Scalar objects define a single object instance whereas tabular objects define multiple related object instances grouped in MIB tables.</p>
+<p>MIB files for specific devices or systems can be downloaded from here</p>
+<p>&nbsp;<p>OIDs or Object Identifiers uniquely identify manged objects in a MIB hierarchy. This can be depicted as a tree, the levels of which are assigned by different organizations. Top level MIB object IDs (OIDs) belong to different standard organizations. Vendors define private branches including managed objects for their own products.</p>
+<p>&nbsp;<p>Here is a sample structure of an OID</p>
+<p>&nbsp;<p>Iso (1).org(3).dod(6).internet(1).private(4).transition(868).products(2).chassis(4).card(1).slotCps(2)­</p>
+<p>.cpsSlotSummary(1).cpsModuleTable(1).cpsModuleEntry(1).cpsModuleModel(3).3562.3</p>
+<p>&nbsp;<p>Most of the people may be looking for OID’s for Linux OID’s for CPU,Memory and Disk Statistics for this first you need to install SNMP server and clients. If you want to install SNMP server and client installation in linux check <a href="http://www.debianhelp.co.uk/snmp.htm">here</a> </p>
+<p>&nbsp;<p>Load </p>
+<p>1 minute Load: .1.3.6.1.4.1.2021.10.1.3.1</p>
+<p>5 minute Load: .1.3.6.1.4.1.2021.10.1.3.2</p>
+<p>15 minute Load: .1.3.6.1.4.1.2021.10.1.3.3</p>
+<p>&nbsp;<p>CPU </p>
+<p>percentage of user CPU time: .1.3.6.1.4.1.2021.11.9.0</p>
+<p>raw user cpu time: .1.3.6.1.4.1.2021.11.50.0</p>
+<p>percentages of system CPU time: .1.3.6.1.4.1.2021.11.10.0</p>
+<p>raw system cpu time: .1.3.6.1.4.1.2021.11.52.0</p>
+<p>percentages of idle CPU time: .1.3.6.1.4.1.2021.11.11.0</p>
+<p>raw idle cpu time: .1.3.6.1.4.1.2021.11.53.0</p>
+<p>raw nice cpu time: .1.3.6.1.4.1.2021.11.51.0</p>
+<p>&nbsp;<p>Memory Statistics </p>
+<p>Total Swap Size: .1.3.6.1.4.1.2021.4.3.0</p>
+<p>Available Swap Space: .1.3.6.1.4.1.2021.4.4.0</p>
+<p>Total RAM in machine: .1.3.6.1.4.1.2021.4.5.0</p>
+<p><span style="color:#ff0000;">Total RAM used</span> (memAvailReal.0): .1.3.6.1.4.1.2021.4.6.0</p>
+<p>Total RAM Free: .1.3.6.1.4.1.2021.4.11.0</p>
+<p>Total RAM Shared: .1.3.6.1.4.1.2021.4.13.0</p>
+<p>Total RAM Buffered: .1.3.6.1.4.1.2021.4.14.0</p>
+<p>Total Cached Memory: .1.3.6.1.4.1.2021.4.15.0</p>
+<p>&nbsp;<p>Disk Statistics </p>
+<p>Path where the disk is mounted: .1.3.6.1.4.1.2021.9.1.2.1</p>
+<p>Path of the device for the partition: .1.3.6.1.4.1.2021.9.1.3.1</p>
+<p>Total size of the disk/partion (kBytes): .1.3.6.1.4.1.2021.9.1.6.1</p>
+<p>Available space on the disk: .1.3.6.1.4.1.2021.9.1.7.1</p>
+<p>Used space on the disk: .1.3.6.1.4.1.2021.9.1.8.1</p>
+<p>Percentage of space used on disk: .1.3.6.1.4.1.2021.9.1.9.1</p>
+<p>Percentage of inodes used on disk: .1.3.6.1.4.1.2021.9.1.10.1</p>
+<p>&nbsp;<p>&nbsp;<p>Пример использования. </p>
+<p>&nbsp;<p>Выдать сколько свободного места в корневом катологе / на локальном компьютере . </p>
+<p>#cd /etc/snmp/</p>
+<p>#nano snmpd.conf</p>
+<p>&nbsp;<p>найти строку disk в файле </p>
+<p>disk / 10000 </p>
+<p>&nbsp;<p>10 mb </p>
+<p>#snmpget -v 1 -c public target_name_or_ip .1.3.6.1.4.1.2021.9.1.7.1</p>
+<p>&nbsp;<p>UCD-SNMP-MIB::dskAvail.1 = INTEGER: 6831612 </p>
+<p>&nbsp;<p>проверим </p>
+<p># df</p>
+<p>Filesystem 1K-blocks Used Available Use% Mounted on</p>
+<p>/dev/mapper/ubuntu-root</p>
+<p>9671608 2352576 6831608 26% /</p>
+<p>varrun 231308 128 231180 1% /var/run</p>
+<p>varlock 231308 0 231308 0% /var/lock</p>
+<p>udev 231308 52 231256 1% /dev</p>
+<p>devshm 231308 0 231308 0% /dev/shm</p>
+<p>/dev/sda1 241116 45191 183477 20% /boot</p>
+<p>&nbsp;<p>Для полной картины используем комманду snmpwalk </p>
+<p># snmpwalk -v 1 -c public localhost .1.3.6.1.4.1.2021.9</p>
+<p>UCD-SNMP-MIB::dskIndex.1 = INTEGER: 1</p>
+<p>UCD-SNMP-MIB::dskPath.1 = STRING: /</p>
+<p>UCD-SNMP-MIB::dskDevice.1 = STRING: /dev/mapper/ubuntu-root</p>
+<p>UCD-SNMP-MIB::dskMinimum.1 = INTEGER: 10000</p>
+<p>UCD-SNMP-MIB::dskMinPercent.1 = INTEGER: -1</p>
+<p>UCD-SNMP-MIB::dskTotal.1 = INTEGER: 9671608</p>
+<p>UCD-SNMP-MIB::dskAvail.1 = INTEGER: 6831596</p>
+<p>UCD-SNMP-MIB::dskUsed.1 = INTEGER: 2352588</p>
+<p>UCD-SNMP-MIB::dskPercent.1 = INTEGER: 26</p>
+<p>UCD-SNMP-MIB::dskPercentNode.1 = INTEGER: 28</p>
+<p>UCD-SNMP-MIB::dskErrorFlag.1 = INTEGER: noError(0)</p>
+<p>UCD-SNMP-MIB::dskErrorMsg.1 = STRING:</p>
+<p>#</p>
+<p>&nbsp;<p>Такую же можно повторить и для других OID's </p>
+<p>&nbsp;<p>Возможны проблемы с настройками демона snmpd файл /etc/snmpd.conf </p>
+<p>netstat -an | grep 161</p>
+<p>udp 0 0 127.0.0.1:161 0.0.0.0:*</p>
+<p>&nbsp;<p>snmpd слушет только локальный комьютер на порту 161 и не будет отвечать на запросы с удаленного хоста . Изменить данную ситуацию можно в файле /etc/default/snmpd </p>
+<p># snmpd options (use syslog, close stdin/out/err).</p>
+<p>SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid 127.0.0.1'</p>
+<p>&nbsp;<p>указав вместо 127.0.0.1 ← 0.0.0.0 </p>
+<p>#/etc/init.d/snmpd restart</p>
+<p># netstat -an | grep 161</p>
+<p>udp 0 0 0.0.0.0:161 0.0.0.0:*</p>
+<p>&nbsp;<p>Если snmpd не отвечает на заросы как надо , то проблема возможно в настройках безопастности. /etc/snmpd/snmpd.conf по умолчанию стоит PARANOID </p>
+<p># sec.name source community</p>
+<p>#com2sec paranoid default public</p>
+<p>com2sec readonly default public</p>
+<p>#com2sec readwrite default private</p>
+<p>&nbsp;<p>Disk Statistics</p>
+<p>&nbsp;<p>The snmpd.conf needs to be edited. Add the following (assuming a machine with a single ‘/’ partition):</p>
+<p>&nbsp;<p>disk / 100000 (or)</p>
+<p>&nbsp;<p>includeAllDisks 10% for all partitions and disks</p>
+<p>&nbsp;<p>The OIDs are as follows</p>
+<p>&nbsp;<p>Path where the disk is mounted: .1.3.6.1.4.1.2021.9.1.2.1</p>
+<p>Path of the device for the partition: .1.3.6.1.4.1.2021.9.1.3.1</p>
+<p>Total size of the disk/partion (kBytes): .1.3.6.1.4.1.2021.9.1.6.1</p>
+<p>Available space on the disk: .1.3.6.1.4.1.2021.9.1.7.1</p>
+<p>Used space on the disk: .1.3.6.1.4.1.2021.9.1.8.1</p>
+<p>Percentage of space used on disk: .1.3.6.1.4.1.2021.9.1.9.1</p>
+<p>Percentage of inodes used on disk: .1.3.6.1.4.1.2021.9.1.10.1</p>
+<p>&nbsp;<p>System Uptime: .1.3.6.1.2.1.1.3.0</p>
+<p>&nbsp;<p>Examples</p>
+<p>&nbsp;<p>These Commands you need to run on the SNMP server</p>
+<p>&nbsp;<p>Get available disk space for / on the target host</p>
+<p>&nbsp;<p>#snmpget -v 1 -c “community” target_name_or_ip .1.3.6.1.4.1.2021.9.1.7.1</p>
+<p>&nbsp;<p>this will return available disk space for the first entry in the ‘disk’ section of snmpd.conf; replace 1 with n for the nth entry</p>
+<p>&nbsp;<p>Get the 1-minute system load on the target host</p>
+<p>&nbsp;<p>#snmpget -v 1 -c “community” target_name_or_ip .1.3.6.1.4.1.2021.10.1.3.1</p>
+<p>&nbsp;<p>Get the 5-minute system load on the target host</p>
+<p>&nbsp;<p>#snmpget -v 1 -c “community” target_name_or_ip .1.3.6.1.4.1.2021.10.1.3.2</p>
+<p>&nbsp;<p>Get the 15-minute system load on the target host</p>
+<p>&nbsp;<p>#snmpget -v 1 -c “community” target_name_or_ip .1.3.6.1.4.1.2021.10.1.3.3</p>
+<p>&nbsp;<p>Get amount of available swap space on the target host</p>
+<p>&nbsp;<p>#snmpget -v 1 -c “community” target_name_or_ip .1.3.6.1.4.1.2021.4.4.0</p>
+
+</p></body></html>

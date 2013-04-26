@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>Linux — Виртуальные интерфейсы (дополнительные IP-адреса)</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p>Linux — Виртуальные интерфейсы (дополнительные IP-адреса)</p>
+<p>27.04.2011</p>
+<p>&nbsp;<p>Здесь рассматривается добавление вторичного IP-адреса на физический интерфейс, система в данном случае — Red Hat Linux. Пример добавления интерфейса eth1:0, ассоциированного с физическим интерфейсом eth1:</p>
+<p>&nbsp;<p>ifconfig eth1:0 192.168.5.55 netmask 255.255.255.0 up</p>
+<p>&nbsp;<p>Чтобы интерфейс присутствовал после перезапуска, в /etc/sysconfig/network-scripts нужно создать соответствующий файл, в данном случае ifcfg-eth1:0 (последующие интерфейсы можно нумеровать последовательно, ifcfg-eth1:1, ifcfg-eth1:2 и так далее). Примерное его содержимое:</p>
+<p>&nbsp;<p># 3Com Corporation 3c595 100BaseTX [Vortex]</p>
+<p>DEVICE=eth1:0</p>
+<p>BOOTPROTO=none</p>
+<p>NETMASK=255.255.255.248</p>
+<p>IPADDR=192.168.5.55</p>
+<p>GATEWAY=192.168.5.1</p>
+<p>TYPE=Ethernet</p>
+<p>USERCTL=no</p>
+<p>IPV6INIT=no</p>
+<p>PEERDNS=yes</p>
+<p>&nbsp;<p>Примечание: если нужно, чтобы при запуске интерфейс поднимался или, наоборот, не поднимался, следует воспользоваться параметром ONPARENT:</p>
+<p>&nbsp;<p>ONPARENT=yes|no</p>
+<p>&nbsp;<p>Он определяет, будет ли подниматься виртуальный интерфейс при поднятии родительского устройства (физического интерфейса).</p>
+
+</p></body></html>

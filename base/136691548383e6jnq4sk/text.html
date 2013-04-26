@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p> LiveJournal requires several Perl modules to be installed. Installing these modules requires a fully working perl and C development environment (including a C compiler and make tool). </p>
+<p>Note</p>
+<p>&nbsp;<p> Some modules such as GD and Compress::Zlib require certain system libraries to be pre-installed on your machine. Please read the author-provided README files for each module before proceeding further. </p>
+<p>&nbsp;<p>This may mean particular development packages need to be installed on your system, before a Perl module will install in CPAN. For example, on a Debian system, to install the optional Math::BigInt::GMP module, you should install libgmp3-dev first. Similarly, you may need to install the “development” packages for MySQL and GD on your system, before attempting to install the related Perl modules. The names of these packages varies between Linux distributions, but are often called &lt;packagename&gt;-dev. Installing binary packages of modules provided through your Linux distribution is the easier option.</p>
+<p>&nbsp;<p>Table�6.1.�Required Perl ModulesDateTime	libdatetime-perl</p>
+<p>DBI	libdbi-perl</p>
+<p>DBD::mysql	libdbd-mysql-perl</p>
+<p>Class::Autouse	libclass-autouse-perl</p>
+<p>Digest::MD5	libmd5-perl</p>
+<p>Digest::SHA1	libdigest-sha1-perl</p>
+<p>HTML::Template	libhtml-template-perl</p>
+<p>Image::Size	libimage-size-perl</p>
+<p>MIME::Lite	libmime-lite-perl</p>
+<p>MIME::Words	libmime-perl</p>
+<p>Compress::Zlib	libcompress-zlib-perl</p>
+<p>Net::DNS	libnet-dns-perl</p>
+<p>URI::URL	liburi-perl</p>
+<p>HTML::Tagset	libhtml-tagset-perl</p>
+<p>HTML::Parser	libhtml-parser-perl</p>
+<p>LWP::Simple	libwww-perl</p>
+<p>LWP::UserAgent	libwww-perl</p>
+<p>GD	libgd-gd2-perl</p>
+<p>Mail::Address	libmailtools-perl</p>
+<p>Unicode::MapUTF8	libunicode-maputf8-perl</p>
+<p>XML::Simple	libxml-simple-perl</p>
+<p>IO::WrapTie	libio-stringy-perl</p>
+<p>Unicode::CheckUTF8	�</p>
+<p>Captcha::reCAPTCHA	libcaptcha-recaptcha-perl</p>
+<p>Digest::HMAC_SHA1	libdigest-hmac-perl</p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Optional modules</p>
+<p>GD::Graph, libgd-graph-perl </p>
+<p>Required for making graphs for the statistics page.</p>
+<p>Proc::ProcessTable, libproc-process-perl </p>
+<p>Better reliability for starting daemons necessary for high-traffic installations.</p>
+<p>RPC::XML, librpc-xml-perl </p>
+<p>Required for outgoing XML-RPC support</p>
+<p>SOAP::Lite, libsoap-lite-perl </p>
+<p>Required for XML-RPC support.</p>
+<p>XML::RSS, libxml-rss-perl </p>
+<p>Required for retrieving RSS off of other sites (syndication).</p>
+<p>String::CRC32, libstring-crc32-perl </p>
+<p>Required for palette-altering of PNG files. Only necessary if you plan to make your own S2 styles that use PNGs, not GIFs.</p>
+<p>XML::Atom, libxml-atom-perl </p>
+<p>Required for Atom API support.</p>
+<p>Math::BigInt::GMP, libmath-bigint-gmp-perl </p>
+<p>Aides Crypt::DH so it is not crazy slow.</p>
+<p>URI::Fetch, liburi-fetch-perl </p>
+<p>Required for OpenID support.</p>
+<p>Crypt::DH, libcrypt-dh-perl </p>
+<p>Required for OpenID support.</p>
+<p>Image::Magick, perlmagick </p>
+<p>Required for the userpic factory.</p>
+<p>Class::Accessor, libclass-accessor-perl </p>
+<p>Required for TheSchwartz job submission.</p>
+<p>Class::Trigger, libclass-trigger-perl </p>
+<p>Required for TheSchwartz job submission.</p>
+<p>Class::Data::Inheritable, libclass-data-inheritable-perl </p>
+<p>Required for TheSchwartz job submission.</p>
+<p>GnuPG::Interface, libgnupg-interface-perl </p>
+<p>Required for email posting.</p>
+<p>Mail::GnuPG, libmail-gnupg-perl </p>
+<p>Required for email posting.</p>
+<p>Text::vCard, libtext-vcard-perl </p>
+<p>Used to generate user vCards.</p>
+<p>IP::Country::Fast, </p>
+<p>Required for country lookup with IP address.</p>
+<p>GTop, </p>
+<p>Required for Apache per-request database logging.</p>
+<p>&nbsp;<p>Debian Install.�If you are using Debian the following command should retrieve and build every required module. If there are any modules not yet packaged in Debian, you can use CPAN to install those — Unicode::CheckUTF8 is an example.:</p>
+<p># apt-get install libdatetime-perl libdbi-perl libdbd-mysql-perl \</p>
+<p>libclass-autouse-perl libmd5-perl libdigest-sha1-perl \</p>
+<p>libhtml-template-perl libimage-size-perl libmime-lite-perl \</p>
+<p>libmime-perl libcompress-zlib-perl libnet-dns-perl \</p>
+<p>liburi-perl libhtml-tagset-perl libhtml-parser-perl \</p>
+<p>libwww-perl libwww-perl libgd-gd2-perl \</p>
+<p>libmailtools-perl libunicode-maputf8-perl libxml-simple-perl \</p>
+<p>libio-stringy-perl  libcaptcha-recaptcha-perl \</p>
+<p>libdigest-hmac-perl </p>
+<p>&nbsp;<p>And likewise for the optional modules:</p>
+<p># apt-get install libgd-graph-perl libproc-process-perl librpc-xml-perl \</p>
+<p>libsoap-lite-perl libxml-rss-perl libstring-crc32-perl \</p>
+<p>libxml-atom-perl libmath-bigint-gmp-perl liburi-fetch-perl \</p>
+<p>libcrypt-dh-perl perlmagick libclass-accessor-perl \</p>
+<p>libclass-trigger-perl libclass-data-inheritable-perl libgnupg-interface-perl \</p>
+<p>libmail-gnupg-perl libtext-vcard-perl  \</p>
+<p> </p>
+<p>&nbsp;<p>Using CPAN.� Alternatively, you can use CPAN to install the modules: </p>
+<p>&nbsp;<p>From the root prompt on your server, invoke the CPAN shell:</p>
+<p># perl -MCPAN -e shell</p>
+<p>&nbsp;<p> Once the Perl interpreter has loaded (and been configured), you can install modules with: install MODULENAME. </p>
+<p>&nbsp;<p>The first thing you should do is upgrade your CPAN:</p>
+<p>cpan&gt; install Bundle::CPAN</p>
+<p>&nbsp;<p>Once it is completed, type:</p>
+<p>cpan&gt; reload cpan</p>
+<p>&nbsp;<p>Now, enter the following command to retrieve all of the required modules:</p>
+<p>cpan&gt; install DateTime</p>
+<p>cpan&gt; install DBI</p>
+<p>cpan&gt; install DBD::mysql</p>
+<p>cpan&gt; install Class::Autouse</p>
+<p>cpan&gt; install Digest::MD5</p>
+<p>cpan&gt; install Digest::SHA1</p>
+<p>cpan&gt; install HTML::Template</p>
+<p>cpan&gt; install Image::Size</p>
+<p>cpan&gt; install MIME::Lite</p>
+<p>cpan&gt; install MIME::Words</p>
+<p>cpan&gt; install Compress::Zlib</p>
+<p>cpan&gt; install Net::DNS</p>
+<p>cpan&gt; install URI::URL</p>
+<p>cpan&gt; install HTML::Tagset</p>
+<p>cpan&gt; install HTML::Parser</p>
+<p>cpan&gt; install LWP::Simple</p>
+<p>cpan&gt; install LWP::UserAgent</p>
+<p>cpan&gt; install GD</p>
+<p>cpan&gt; install Mail::Address</p>
+<p>cpan&gt; install Unicode::MapUTF8</p>
+<p>cpan&gt; install XML::Simple</p>
+<p>cpan&gt; install IO::WrapTie</p>
+<p>cpan&gt; install Unicode::CheckUTF8</p>
+<p>cpan&gt; install Captcha::reCAPTCHA</p>
+<p>cpan&gt; install Digest::HMAC_SHA1</p>
+<p>&nbsp;<p>And likewise for the optional modules:</p>
+<p>cpan&gt; install GD::Graph</p>
+<p>cpan&gt; install Proc::ProcessTable</p>
+<p>cpan&gt; install RPC::XML</p>
+<p>cpan&gt; install SOAP::Lite</p>
+<p>cpan&gt; install XML::RSS</p>
+<p>cpan&gt; install String::CRC32</p>
+<p>cpan&gt; install XML::Atom</p>
+<p>cpan&gt; install Math::BigInt::GMP</p>
+<p>cpan&gt; install URI::Fetch</p>
+<p>cpan&gt; install Crypt::DH</p>
+<p>cpan&gt; install Image::Magick</p>
+<p>cpan&gt; install Class::Accessor</p>
+<p>cpan&gt; install Class::Trigger</p>
+<p>cpan&gt; install Class::Data::Inheritable</p>
+<p>cpan&gt; install GnuPG::Interface</p>
+<p>cpan&gt; install Mail::GnuPG</p>
+<p>cpan&gt; install Text::vCard</p>
+<p>cpan&gt; install IP::Country::Fast</p>
+<p>cpan&gt; install GTop</p>
+<p>Note</p>
+<p>&nbsp;<p> Be aware that after freshly installing make / gcc, your perl installation will not necessarily detect it. This means module installation will still fail during the 'make' stage. You may need to invoke the CPAN shell and run the setup routine again, to point to the location of make:</p>
+<p># perl -MCPAN -e shell CPAN</p>
+<p>&nbsp;<p>cpan&gt; o conf make /usr/bin/make</p>
+<p>cpan&gt; o conf commit</p>
+<p>Tip</p>
+<p>&nbsp;<p>You can find out the locations of the various tools the CPAN setup routine (o conf) will ask you about by using the whereis command, at a command prompt. For example: </p>
+<p>$ whereis gzip</p>
+<p>&nbsp;<p> To make sure you have the necessary modules run the included tool: $LJHOME/bin/checkconfig.pl --needed-debs --only=modules</p>
+<p>&nbsp;<p> If checkconfig.pl does not detect all of the required modules, it will tell you which ones you are missing. You should install those.</p>
+
+</p></body></html>

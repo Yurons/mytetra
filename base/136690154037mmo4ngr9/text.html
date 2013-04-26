@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>Callee RC: NS_ERROR_FACTORY_NOT_REGISTERED (0×80040154)</strong></span></span></p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p><strong>Answer :</strong></p>
+<p>&nbsp;<p><strong>You  have  to  make  3  steps  :</strong></p>
+<p>&nbsp;<p><strong>1-Check  if  dkms  installed</strong></p>
+<p><strong>yum  install  dkms</strong></p>
+<p>&nbsp;<p><strong>2-  do  this  command  under  root  :</strong></p>
+<p><strong>find /usr/lib/virtualbox -maxdepth 1 -name '*.so' -exec ln -s {} /usr/lib/virtualbox/components/ ;</strong></p>
+<p>&nbsp;<p><strong>3- changes  some  folders permission</strong></p>
+<p><strong>chown root.root /tmp</strong></p>
+<p><strong>chmod ug-s /tmp</strong></p>
+<p><strong>chmod 1777 /tmp</strong> </p></span></p></body></html>

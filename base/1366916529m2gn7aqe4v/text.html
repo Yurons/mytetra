@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:9pt;"><strong>SCP (от англ. secure copy) — протокол RCP копирования файлов, использующий в качестве транспорта не RSH, а SSH.</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><strong>SCP</strong> (от <a href="http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA">англ.</a> <em>secure copy</em>) — протокол <a href="http://ru.wikipedia.org/w/index.php?title=RCP_%28%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%29&action=edit&redlink=1">RCP</a> копирования файлов, использующий в качестве транспорта не <a href="http://ru.wikipedia.org/w/index.php?title=RSH&action=edit&redlink=1">RSH</a>, а <a href="http://ru.wikipedia.org/wiki/SSH">SSH</a>.</p>
+<p>В UNIX-подобных <a href="http://ru.wikipedia.org/wiki/%D0%9E%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0">операционных системах</a> существует одноимённая (<span style="font-family:Courier New,courier;">scp</span><span style="font-family:Sans Serif;">) утилита удалённого копирования файлов (входит в состав <a href="http://ru.wikipedia.org/wiki/Openssh">openssh</a>).</span></p>
+<p>Копируем локальный SourceFile на удалённый хост командой:</p>
+<p><span style="font-family:Courier New,courier;">scp <em>SourceFile</em> <em>user</em>@<em>host</em>:<em>/</em>directory<em>/</em>TargetFile</span></p>
+<p><span style="font-family:Sans Serif;">Копируем SourceFile с удаленного хоста командой:</span></p>
+<p><span style="font-family:Courier New,courier;">scp <em>user</em>@<em>host</em>:<em>/</em>directory<em>/</em>SourceFile<em> </em>TargetFile</span></p>
+<p><span style="font-family:Sans Serif;">Если ssh работает на другом порту, то тогда указываем :</span></p>
+<p><span style="font-family:Courier New,courier;">scp -P port user@host:/directory/SourceFile /directory/TargetFile </span></p>
+<p><span style="font-family:Sans Serif;">Копируем SourceFolder с удаленного хоста внутрь локального TargetFolder (На локальном хосте получится что SourceFolder будет находиться внутри TargetFolder):</span></p>
+<p><span style="font-family:Courier New,courier;">scp -r <em>user</em>@<em>host</em>:<em>/</em>directory<em>/</em>SourceFolder<em> </em>TargetFolder</span><span style="font-family:Sans Serif;"> </span></p>
+
+</p></body></html>

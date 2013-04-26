@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>&nbsp;<table cellpadding="0" cellspacing="2" width="" border="1"><tr><td width="" colspan="1" rowspan="1"><p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Лаконичный простой howto</strong></span></span></p>
+</td></tr></table><p>&nbsp;<p><p>&nbsp;</p>
+<p><span style="font-size:9pt;"><strong>Squid</strong> - это кэширующий прокси-сервер. </p>
+<p>&nbsp;<strong>Конфигурационные файлы</strong><p>&nbsp;<strong>Официальный сайт: </strong><a href="http://www.squid-cache.org">http://www.squid-cache.org</a><p>&nbsp;<strong>Русскоязычный FAQ:</strong> <a href="http://squid.h12.ru/FAQ/FAQ.html">http://squid.h12.ru</a><p>&nbsp;</p>
+<p><strong>Установка Squid</strong></span></p>
+<p>Устанавливаем пакет squid </p>
+<p><span style="font-family:Courier New,courier;"># yum -y install <strong>squid</strong> </span></p>
+<p><span style="font-family:Sans Serif;">Настраиваем систему для запуска сервиса <strong>squid</strong> при старте операционной системы </span></p>
+<p><span style="font-family:Courier New,courier;"># chkconfig squid on</span></p>
+<p><span style="font-family:Sans Serif;">s </span></p>
+<p>Запускаем сервис <strong>squid</strong></p>
+<p><span style="font-family:Courier New,courier;"># service squid start</span></p>
+<p>Starting squid: .[ OK ] </p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:17pt;"><strong>Настройка SELinux</strong></span></span></p>
+<p><span style="font-size:9pt;">Настройка SELinux не требуется. </span></p>
+<p><span style="font-size:17pt;"><strong>Настройка iptables</strong></span></p>
+<p><span style="font-family:Courier New,courier;"><span style="font-size:9pt;"># nano /etc/sysconfig/iptables</span></span></p>
+<p>-A CLASS-RULES -s 192.168.0.0/24 -p tcp --dport 3128 -j ACCEPT</p>
+<p>Замечание: Новая строка должна быть вставлена после строки ESTABLISHED, RELATED </p>
+<p># service iptables restart </p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:17pt;"><strong>Настройка Squid</strong></span></span></p>
+<p><span style="font-size:9pt;">Все настроечные файлы <strong>Squid</strong> хранятся в каталоге <strong>/etc/squid/</strong>. Их там несколько </span></p>
+<p><span style="font-family:Courier New,courier;"># ls -lah</span></p>
+<p>total 72K</p>
+<p>drwxr-xr-x. 2 root root 4.0K May 6 12:19 .</p>
+<p>drwxr-xr-x. 121 root root 12K May 6 12:19 ..</p>
+<p>-rw-r--r--. 1 root squid 419 Jan 6 15:58 cachemgr.conf</p>
+<p>-rw-r--r--. 1 root root 419 Jan 6 15:58 cachemgr.conf.default</p>
+<p>-rw-r--r--. 1 root root 1.6K Jan 6 15:58 errorpage.css</p>
+<p>-rw-r--r--. 1 root root 1.6K Jan 6 15:58 errorpage.css.default</p>
+<p>-rw-r--r--. 1 root root 12K Jan 6 15:58 mime.conf</p>
+<p>-rw-r--r--. 1 root root 12K Jan 6 15:58 mime.conf.default</p>
+<p>-rw-r--r--. 1 root root 421 Jan 6 15:58 msntauth.conf</p>
+<p>-rw-r--r--. 1 root root 421 Jan 6 15:58 msntauth.conf.default</p>
+<p>-rw-r-----. 1 root squid 2.5K Jan 6 15:58 squid.conf</p>
+<p>-rw-r--r--. 1 root root 2.5K Jan 6 15:58 squid.conf.default </p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Тестирование файла конфигурации</strong></span></span></p>
+<p><span style="font-size:9pt;">После внесения изменений в файл конфигурации <strong>/etc/squid/squid.conf</strong> можно проверить его корректность без перезапуска сервиса. Для этого нужно выполнить команду </span></p>
+<p><span style="font-family:Courier New,courier;"># squid -k parse</span></p>
+<p><span style="font-family:Sans Serif;">Если если в конфигурационном файле будут найдены ошибки - об этом будут выданы соотвествующие сообщения. В противном случае сообщений не будет и можно смело перезапускать прокси. </span></p>
+<p><span style="font-size:13pt;"><strong>Перечитывание файла конфигурации без перезапуска сервиса</strong></span></p>
+<p><span style="font-size:9pt;">В промышленной среде перезапуск сервиса может выполняться довольно длительное время и может приводить к длительным простоям в работе. Чтобы этого не случилось нужно использовать специальную директиву, заставляющую <strong>Squid</strong> перечитывать файл конфигурации и применять новые настройки без перезапуска </span></p>
+<p><span style="font-family:Courier New,courier;"># squid -k reload</span></p>
+<p><span style="font-family:Sans Serif;">В среде <strong>Red Hat</strong>, где <strong>Squid</strong> работает как сервис, можно выполнить другую команду, эквивалентную предыдущей </span></p>
+<p><span style="font-family:Courier New,courier;"># service squid reload </span></p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Параметр visible_hostname</strong></span></span></p>
+<p><span style="font-size:9pt;">Каждый сервер <strong>Squid</strong> в административной зоне должен уникально идентифицироваться именем сервера, которое может быть установлен либо в файле <strong>/etc/hosts</strong>, либо в конфигурационном файле сервера <strong>/etc/squid/squid.conf</strong>. В первом случае файл <strong>/etc/hosts</strong> должен выглядеть примерно так </span></p>
+<p><span style="font-family:Courier New,courier;"># File: /etc/hosts</span></p>
+<p>127.0.0.1 localhost localhost.localdomain rhel01</p>
+<p><span style="font-family:Sans Serif;">Сервер будет иметь публичное имя <strong>rhel01</strong>. Во втором случае мы можем в файле <strong>/etc/squid/squid.conf</strong> перекрыть публичное имя с помощью параметра <strong>visible_hostname</strong> </span></p>
+<p><span style="font-family:Courier New,courier;"># File: /etc/squid/squid.conf</span></p>
+<p>visible_hostname rhel-squid</p>
+<p><span style="font-family:Sans Serif;">Если имя сервера не упомянуто ни в <strong>/etc/hosts</strong>, ни в <strong>/etc/squid/squid.conf</strong>, то мы получим ошибку следующего содержания: </span></p>
+<p><span style="font-family:Courier New,courier;">WARNING: Could not determine this machines public hostname.</span></p>
+<p>Please configure one or set 'visible_hostname' </p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Настройка работы на нескольких портах</strong></span></span></p>
+<p><span style="font-size:9pt;">Обычно Squid слушает клиентов на порту 3128. Это стандартный порт для Squid, и этот факт закреплен в конфигурационном файле по умолчанию директивой http_port </span></p>
+<p><span style="font-family:Courier New,courier;">http_port 3128 </span></p>
+<p><span style="font-family:Sans Serif;">Редко, но бывают случаи, когда нужно, чтобы <strong>Squid</strong> слушал клиентов на нескольких портах. Это, например, может пригодиться для обслуживания клиентов из нескольких отделов, каждый из которых обращается к своему порту <strong>Squid</strong>. И чтобы быстро отключить один из них от Интернета достаточно просто закомментировать строчку с нужным портом и перечитать файл конфигурации. </span></p>
+<p>Для того, чтобы организовать эту схему, достаточно директиву <strong>http_port</strong> повторить несколько раз. Например: </p>
+<p><span style="font-family:Courier New,courier;">http_port 3128</span></p>
+<p>http_port 8080 </p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Прослушивание сети на определенном интерфейсе</strong></span></span></p>
+<p><span style="font-size:9pt;">Часто машина, на которой установлен <strong>Squid</strong>, имеет несколько сетевых интерфейсов. Если вы хотите, чтобы <strong>Squid</strong> слушал сеть только на одном из них, то опять же используем директиву <strong>http_port</strong>, указав перед номером порта адрес, на который будут приниматься запросы клиентов </span></p>
+<p><span style="font-family:Courier New,courier;">http_port 192.168.9.59:3128 </span></p>
+<p><span style="font-family:Sans Serif;"><span style="font-size:13pt;"><strong>Настройка администратора кэша</strong></span></span></p>
+<p><span style="font-size:9pt;">По умолчанию адимнистратором кэша является пользователь <strong>root</strong>. При возникновении ошибки на странице с сообщение о случившемся клиент увидит это имя в качестве почтового адреса, по которому можно отослать письмо с параметрами ошибки. Понятно, что почтовый ящик <strong>root</strong> не существует. Для того, чтобы письмо пришло администратору кэша, нужно в файле <strong>/etc/squid/squid.conf</strong>указать его почтовый адрес директивой <strong>cache_mgr</strong> </span></p>
+<p><span style="font-family:Courier New,courier;">cache_mgr sergey.pronin@bercut.com</span></p>
+<p><span style="font-family:Sans Serif;">Кроме того, явное указание на администратора кэша - простая вежливость по отношению к вашим клиентам. </span></p>
+<p>Не забываем перечитывать файл конфигурации. </p>
+<p><span style="font-size:17pt;"><strong>Настрока кэша</strong></span><span style="font-size:9pt;"> </span></p>
+
+</p></body></html>

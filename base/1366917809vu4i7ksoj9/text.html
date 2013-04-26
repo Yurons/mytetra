@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p>FreeBSD amd64 Double commander</p>
+<p>By cloudsv On 21.02.2011 · 1 Comment · In FreeBSD </p>
+<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>Все мы любим удобно и быстро управляться с нашими файлами. В Windows скорее всего вы используете Total Commander. А в *nix есть всякие Krussader, gnome-commander. Gnome-commander не помню почему ставиться не захотел из портов, а Krusader KDE’шная приблуда.</p>
+<p> Решил попробовать Double commander. Залез на оффициальный сайт и увидел что для его сборки необходим lazarus, бесплатный мультиплатформенный IDE, для того что бы поставить lazarus из svn нужен свежий free pascal compiler.</p>
+<p>&nbsp;<p> Ну так приступим, ставим для начала FPC.</p>
+<p> Качаем файл ( ссылка 1, ссылка 2)</p>
+<p> Распаковываем и компилируем. Из портов я ставил, с ним lazarus собираться не желал. Так же качал готовые пакеты, с ним lazarus тоже не подружился.</p>
+<p> Допустим создаем папку compile. туда распаковываем fpcbuild-2.4.2.tar.gz.</p>
+<p>&nbsp;<p> cd ~/compile/fpcbuild-2.4.2/fpcsrc</p>
+<p> gmake all</p>
+<p> gmake install</p>
+<p>&nbsp;<p> Надеюсь все у вас собралось и поставилось.</p>
+<p>&nbsp;<p>Апосля надо скачать исходные коды lazarus, для этого нам понадобиться svn.</p>
+<p> Если у вас он не стоит, то ставим из портов.</p>
+<p>&nbsp;<p> cd /usr/ports/devel/subversion/</p>
+<p> make install clean</p>
+<p>&nbsp;<p> Главное что бы был выбран NEON.</p>
+<p> Поставили subversion теперь пришло время вытягивать исходники lazarus.</p>
+<p>&nbsp;<p> cd ~/compile/</p>
+<p> svn co http://svn.freepascal.org:8080/svn/lazarus/trunk lazarus</p>
+<p>&nbsp;<p> Если все прошло отлично то мы заполучили исходные коды и остается лишь скомпилировать, с этим проблем возникнуть не должно.</p>
+<p>&nbsp;<p> cd ~/compile/lazarus</p>
+<p> gmake</p>
+<p>&nbsp;<p> И пока компилируется тянем исходник Double Commander.</p>
+<p>&nbsp;<p> cd ~/compile/</p>
+<p> svn co https://doublecmd.svn.sourceforge.net/svnroot/trunk doublecmd</p>
+<p>&nbsp;<p>Если lazarus собрался удачно и у нас выкачались исходники Double Commander то пришло время развлекаться дальше.</p>
+<p>&nbsp;<p>Для этого нам необходимо запустить lazarus.</p>
+<p>~/compile/lazarus/startlazarus</p>
+<p> При запуске он скажет нам, что не нашел исходники FPC, пропускаем эту информацию.</p>
+<p> И вот lazarus у нас запущен.</p>
+<p>&nbsp;<p>Откроем Окружение-&gt;Параметры</p>
+<p> И в окружение указываем.</p>
+<p>&quot;Путь компилятора fpc: /usr/local/bin/fpc/&quot;</p>
+<p> &quot;Каталог исходных кодов fpc: ~/compile/fpcbuild-2.4.2/fpcsrc&quot;</p>
+<p> &quot;Путь к make: /usr/bin/make&quot;</p>
+<p> &quot;Каталог для сборки пробных проектов: /tmp/&quot;</p>
+<p>&nbsp;<p>Теперь необходимо добавить необходимые компоненты для сборки Double Commander.</p>
+<p> Проделываем операции которые описаны в INSTALL.RUS.txt идущем с doublecmd.</p>
+<p>&nbsp;<p>Из среды разработки Lazarus. В первую очередь необходимо установить компоненты из подкаталога components, для этого откройте Lazarus и выберите пункт меню «Компоненты -&gt; Открыть файл пакета *.lpk …», далее выберите файл components\KASToolBar\kascomp.lpk и в появившемся окне нажмите кнопку «Установить».</p>
+<p> Повторите тоже самое для файла пакета components\viewer\viewerpackage.lpk, components\CmdLine\cmdbox.lpk и components\gifanim\pkg_gifanim.lpk. </p>
+<p>&nbsp;<p>После проделанных работ можно закрыть lazarus, и подправить файлих build.sh который находится в ~/compile/doublecmd</p>
+<p> А именно надо подправить 16 строку на:</p>
+<p>export lazbuild=/usr/home/cloudsv/MyFiles/lazarus/lazbuild</p>
+<p> Сохранить build.sh ну и запустить его.</p>
+<p>&nbsp;<p> ./build.sh</p>
+<p>&nbsp;<p> И ждать когда скомпилируется.</p>
+<p>&nbsp;<p>Если как всегда все прошло успешно то запускаем doublecmd.</p>
+<p>&nbsp;<p> ./doublecmd</p>
+<p>&nbsp;<p>И если все хорошо то вы увидите 2х панельный файловый менеджер, к сожалению у меня файловая система zfs и он не может проводить ни какие операции с файлами))) Разработчику сообщил, посмотрим что будет.</p>
+<p> Всем гуд лак как всегда, если что обращайтесь. </p>
+
+</p></body></html>

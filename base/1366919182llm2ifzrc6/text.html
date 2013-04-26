@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">Как оптимизировать подсистемы распределения памяти в Linux.</span></span></p>
+<p><span style="font-family:Courier New,courier;">/usr/src/linux/Documenation/sysctl/vm.txt</span></p>
+<p>/usr/src/linux/Documenation/filesystems/proc.txt</p>
+<p>Параметры для работы демона bdflush (vm.bdflush)</p>
+<p><span style="color:#461b7e;">   echo &quot;100 2000 128 512 500 5000 60 0 0&quot; &gt; /proc/sys/vm/bdflush</span></p>
+<p>Управление объемом ОЗУ (в %) выделенного для системных буфферов (лучше не трогать)</p>
+<p>   echo &quot;70 10 60&quot; &gt; /proc/sys/vm/buffermem</p>
+<p>Максимальный размер сегмента shared memory.</p>
+<p>   echo 167772160 &gt; /proc/sys/kernel/shmmax # (def: 33554432) </p>
+<p>&nbsp;<p>У меня в слаке less /usr/src/linux-3.2.21/Documentation/sysctl/vm.txt</p>
+<p>/usr/src/linux-3.2.21/Documentation/filesystems/proc.txt</p>
+
+</p></body></html>
