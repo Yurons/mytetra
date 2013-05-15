@@ -93,6 +93,7 @@
       <record dir="1366916414fnmsezf0bz" crypt="0" url="" tags="" author="" id="13669164140ybeil21vi" ctime="20130425220014" name="Лаконичный простой howto" file="text.html"/>
       <record dir="1366916425vpnnk582mj" crypt="0" url="" tags="" author="" id="1366916425kaeqbtvs1o" ctime="20130425220025" name="links" file="text.html"/>
       <record dir="13669164360m7ucinob4" crypt="0" url="" tags="" author="" id="1366916436cbi9rd7vqm" ctime="20130425220036" name="Squid Proxy WARNING! Your cache is running out of filedescriptors error and solution" file="text.html"/>
+      <record dir="1368041348a52fi3187y" crypt="0" url="" tags="" author="" id="1368041348oa0noyvs1g" ctime="20130508222908" name="too many 'squid-internal-periodic/store_digest'" file="text.html"/>
      </recordtable>
     </node>
     <node id="13669164536isec4cf83" name="SNMP">
@@ -239,6 +240,7 @@
           <record dir="13669664344nkeyrf1ih" crypt="1" url="" tags="" author="" id="1366966434ozp2y7hdjv" ctime="20130426115354" name="PrtMcZ90l2RmhecC8NFmeKnqkU4cuOcs" file="text.html"/>
           <record dir="1366969763ixrezizshb" crypt="1" url="" tags="" author="" id="1366969763h4yo920qkz" ctime="20130426124923" name="0rrE37WQn8lWjaZnGjKZKmMq69K5Bv3V" file="text.html"/>
           <record dir="13669968295mcevkrh63" crypt="1" url="" tags="" author="" id="1366996829mpzpr9wb81" ctime="20130426202029" name="qtrOvB2Ulcr8k4bkcKm6xzdqJ67oGarD" file="text.html"/>
+          <record dir="1367940354rjnq6z4bm8" crypt="1" url="" tags="" author="" id="1367940354jgehe1pfyz" ctime="20130507182554" name="QV6zmD+0cYUuhlGKAcs2WnashD/L1X6j" file="text.html"/>
          </recordtable>
         </node>
        </node>
