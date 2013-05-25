@@ -147,6 +147,13 @@
       <record dir="1366919193y6xnvleg2v" crypt="0" url="" tags="" author="" id="1366919193l4ojfxvrok" ctime="20130425224633" name="Оптимизация структуры директорий в файловых системах ext2 и ext3" file="text.html"/>
      </recordtable>
     </node>
+    <node id="1369484534fxm8f7upgm" name="Ограничение скорости сетевого соединения">
+     <recordtable>
+      <record dir="1369484544m3aayx5odr" crypt="0" url="" tags="" author="" id="136948454464p5oruji5" ctime="20130525152224" name="wondershaper" file="text.html"/>
+      <record dir="1369484548v6ykrmr15a" crypt="0" url="" tags="" author="" id="13694845487nh2cgy4ll" ctime="20130525152228" name="Управляем скоростью доступа к интернет" file="text.html"/>
+      <record dir="13694845546g2nzejxyl" crypt="0" url="" tags="" author="" id="1369484554yhzoixwwbp" ctime="20130525152234" name="Ограничение скорости в Ubuntu " file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node id="1366919672xprmjs1y1p" name="Internet">
     <recordtable>
@@ -245,6 +252,7 @@
           <record dir="1367940354rjnq6z4bm8" crypt="1" url="" tags="" author="" id="1367940354jgehe1pfyz" ctime="20130507182554" name="QV6zmD+0cYUuhlGKAcs2WnashD/L1X6j" file="text.html"/>
           <record dir="13687930317wucdxnjus" crypt="1" url="" tags="" author="" id="1368793031ebz9x3asfg" ctime="20130517151711" name="tRyXkMnl98Q0Dmt1Zji3abwFTFyiwOWt" file="text.html"/>
           <record dir="13692246870d8zz947fw" crypt="1" url="" tags="" author="" id="1369224687w35trjhofw" ctime="20130522151127" name="KkTyXYUM8JsdwMB6HKZ18zPSy0wi5zoc" file="text.html"/>
+          <record dir="1369484504x6vqopf3tz" crypt="1" url="" tags="" author="" id="1369484504fjkom5jiau" ctime="20130525152144" name="e2FTZlctqdMFJb+pJ6bCYM18neKynj+S" file="text.html"/>
          </recordtable>
         </node>
        </node>
@@ -263,6 +271,7 @@
         <record dir="1366966434vdsejduklk" crypt="1" url="" tags="" author="" id="1366966434sn59lenu1d" ctime="20130426115354" name="10rJXkOfPQZB/3pKa8mcIhvj5L+hg5Iz" file="text.html"/>
         <record dir="1366966434tnhp1fc3ia" crypt="1" url="" tags="" author="" id="1366966434wtno7mi2m3" ctime="20130426115354" name="adwzSWdxfLKn/GwzslLV+YotiK/OTYUTtW+nE0dUWU4=" file="text.html"/>
         <record dir="13669664342uqn3ri72j" crypt="1" url="" tags="" author="" id="13669664340vnh04xd7v" ctime="20130426115354" name="IAENTrHVjhonoym6T0XctvYwSm7KhbWb3QAoaLSWemEbSnXKDclg86FTDifIyTym" file="text.html"/>
+        <record dir="1369313452znfitk84ev" crypt="1" url="" tags="" author="" id="1369313452ptroe17tyo" ctime="20130523155052" name="nvJCqTSYFmDzASUU801Fx6+urp9h9X0T" file="text.html"/>
        </recordtable>
       </node>
      </node>

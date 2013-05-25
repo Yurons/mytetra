@@ -1,0 +1,76 @@
+/* ::::: http://blogeek.ru/wp-content/themes/technoholic/style.css ::::: */
+
+body { background: url('bg.gif') repeat scroll 0% 0% rgb(93, 177, 214); color: rgb(0, 0, 0); font: 70% Verdana,Arial,sans-serif; margin: 0px; padding: 0px; }
+p { margin: 1.8em 0px; line-height: 1.5em; }
+a { color: rgb(53, 106, 160); text-decoration: none; }
+a:hover { color: rgb(255, 85, 0); text-decoration: none; }
+h1 { font-size: 2em; font-family: Arial,sans-serif; letter-spacing: 1px; }
+h3 { font-size: 1.4em; }
+img { border: 0px none; }
+ul, ol { margin: 0px 0px 0px 20px; padding: 0px 0px 0px 10px; }
+li { margin: 0px; padding: 0px; line-height: 1.5em; }
+form { margin: 0px; padding: 0px; }
+input, textarea { border: 1px solid rgb(209, 209, 209); }
+#bodywrapper { background-color: rgb(47, 47, 47); margin: 40px auto 0px; padding: 7px 10px; width: 950px; }
+#header_top { height: 100px; }
+#header_bottom { color: rgb(255, 255, 255); background-color: rgb(68, 68, 68); border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(85, 85, 85) rgb(85, 85, 85) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; height: 28px; padding: 0px 0px 0px 135px; }
+#contentwrapper { background: url('bg_content.gif') repeat-y scroll 0% 0% rgb(255, 255, 255); margin: 0px; padding: 30px 0px 20px 20px; }
+.content { float: left; margin: 0px; width: 550px; }
+#sidebar { margin: 0px 0px 0px 590px; padding: 0px 8px; width: 315px; }
+#sidebar_right { float: right; width: 150px; }
+#sidebar_left { float: left; width: 150px; }
+#bottombar { background: none repeat scroll 0% 0% rgb(68, 68, 68); border: 1px solid rgb(85, 85, 85); margin: 10px 0px 0px; padding: 0px; }
+#footer { color: rgb(255, 255, 255); padding: 10px 0px; width: 950px; }
+#header_logo { float: right; margin-top: 5px; position: absolute; }
+#header_title { font-size: 2em; font-weight: bold; letter-spacing: 0.1em; margin: 0px 0px 0px 135px; padding-top: 30px; }
+#header_title a { color: rgb(255, 85, 0); }
+#header_title a:hover { color: rgb(255, 255, 255); }
+#description { color: rgb(255, 255, 255); font-size: 1.1em; letter-spacing: 1px; margin: 7px 0px 0px 137px; }
+.adtop { padding-top: 17px; }
+#nav { height: 22px; list-style: none outside none; margin: 0px; padding: 6px 0px 0px; overflow: hidden; }
+#nav li { background: url('topmenu.gif') no-repeat scroll left top transparent; display: inline; float: left; height: 22px; list-style: none outside none; margin: 0px 0px 0px 3px; padding: 0px; width: 75px; }
+#nav a { background: none repeat scroll 0% 0% transparent; color: rgb(239, 239, 239); display: block; font-family: Tahoma,"Trebuchet MS",sans-serif; font-size: 10px; font-weight: bold; height: 22px; margin: 0px; padding: 2px 0px 0px; text-align: center; width: 75px; }
+#nav a:hover { color: rgb(255, 85, 0); }
+#nav li:hover, #nav li.sfhover { background: url('topmenu.gif') no-repeat scroll 0px -22px transparent; color: rgb(68, 68, 68); }
+.feednav { text-align: center; }
+.feednav img { margin-top: 3px; }
+.contentbody { font-size: 1.15em; }
+.content h1 { margin: 0px 0px 10px; }
+.content h1 a { color: rgb(0, 0, 0); }
+.content h1 a:hover { color: rgb(255, 85, 0); }
+.content a { color: rgb(255, 85, 0); }
+.content a:hover { color: rgb(53, 106, 160); }
+.dateday { background-color: rgb(47, 47, 47); color: rgb(255, 255, 255); cursor: help; padding: 0px 5px; }
+.datemonth { background-color: rgb(153, 153, 153); color: rgb(255, 255, 255); cursor: help; padding: 0px 5px; }
+.metadata { border-top: 1px solid rgb(220, 220, 220); font-size: 0.85em; margin: 15px 0px 0px; padding: 0px 0px 50px; }
+.metacomments { background: url('comment.gif') no-repeat scroll 3px 3px rgb(250, 250, 250); border-right: 1px solid rgb(220, 220, 220); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(220, 220, 220) rgb(220, 220, 220); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; float: left; padding: 3px 5px 3px 20px; }
+.metacategory { background: url('category.gif') no-repeat scroll 2px 2px rgb(250, 250, 250); border-right: 1px solid rgb(220, 220, 220); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(220, 220, 220) rgb(220, 220, 220); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; float: left; margin-left: 5px; max-width: 425px; padding: 3px 5px 3px 23px; }
+.navigation { display: block; padding: 30px 0px; text-align: center; }
+.alignright { float: right; }
+.alignleft { float: left; }
+#searchbox { background: url('bg_search.gif') repeat-x scroll 0% 0% rgb(239, 239, 239); padding: 10px; border: 1px solid rgb(229, 229, 229); }
+#searchform { margin: 0px; padding: 0px; }
+#searchformfield { background: none repeat scroll 0% 0% rgb(249, 249, 249); border: 1px solid rgb(227, 227, 227); color: rgb(136, 136, 136); font-size: 1.2em; height: 18px; margin: 0px; padding: 0px; width: 270px; }
+#searchsubmit { background: url('search.gif') no-repeat scroll 0px 2px transparent; border: 0px none; cursor: pointer; margin: 0px; padding: 0px; width: 16px; }
+#sidebar h3 { border-top: 2px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); color: rgb(255, 85, 0); font-size: 1em; margin: 0px; padding: 10px 0px; }
+#sidebar ul { margin: 0px; padding: 0px 0px 40px; list-style: none outside none; }
+#sidebar ul li { background: url('bullet.gif') no-repeat scroll 0px 10px transparent; font-size: 0.95em; margin: 0px; padding: 5px 0px 0px 16px; }
+#bottomwrapper { color: rgb(220, 220, 220); margin: 25px auto 0px; padding: 0px ! important; width: 908px; }
+#bottomwrapper #bottommenu_left { padding: 0px; margin: 0px; width: 275px; float: left; }
+#bottomwrapper #bottommenu_center { padding: 0px; margin-left: 20px; width: 275px; float: left; }
+#bottomwrapper #bottommenu_right { padding: 0px; margin-left: 30px; width: 308px; float: left; }
+#bottomwrapper .menu h3 { border-bottom: 2px solid rgb(102, 102, 102); color: rgb(255, 85, 0); font-size: 1.4em; margin: 0px; padding: 5px 0px; }
+#bottomwrapper .menu a { color: rgb(255, 255, 255); text-decoration: none; }
+#bottomwrapper .menu a:hover { color: rgb(255, 85, 0); text-decoration: none; }
+#bottomwrapper .menu ul { padding: 0px; margin: 5px 0px 0px; }
+#bottomwrapper .menu ul li { border-bottom: 1px dashed rgb(102, 102, 102); padding: 5px 15px 5px 2px; line-height: 18px; list-style: none outside none; background-color: rgb(68, 68, 68); }
+#footer_left { padding-left: 5px; }
+#footer_right { float: right; padding-right: 5px; }
+#footer_left img { padding-right: 2px; vertical-align: text-bottom ! important; }
+#footer a { color: rgb(255, 255, 255); padding-right: 3px; }
+#footer a:hover { color: rgb(255, 85, 0); }
+ul#navfooter { margin: 0px; padding: 0px; }
+#navfooter li { display: inline; padding-right: 10px; font-weight: bold; }
+pre { overflow: auto; }
+/* ::::: http://blogeek.ru/wp-content/themes/technoholic/style_blue.css ::::: */
+

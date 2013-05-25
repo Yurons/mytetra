@@ -1,0 +1,22 @@
+/* ::::: https://money.yandex.ru/css/ui/widgets/b-widget-button.css?ver=1 ::::: */
+
+.b-widget-button { text-align: center; }
+.b-widget-button .b-button { background-attachment: scroll; background-clip: border-box; background-color: transparent; background-image: url('b-widget-button__sprite.png'); background-origin: padding-box; background-position: 0px -259px; background-repeat: repeat-x; border-radius: 5px 5px 5px 5px; box-shadow: 0px 1px 3px rgb(153, 153, 153); height: 48px; margin: 2px 3px 4px; }
+.b-widget-button .b-button .b-button__inner { -moz-border-bottom-colors: none; border-image: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; background-attachment: scroll; background-clip: border-box; background-color: transparent; background-image: url('b-widget-button__sprite.png'); background-origin: padding-box; background-position: 0px -36px; background-repeat: repeat-x; border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color rgb(239, 96, 33); border-radius: 0px 5px 5px 0px; border-style: none none none solid; border-width: medium medium medium 1px; color: rgb(255, 255, 255); font-size: 25px; height: 100%; line-height: 47px; margin-left: 60px; padding: 0px 25px; text-shadow: -1px -1px 1px rgb(241, 106, 42); }
+.b-widget-button .b-button:active { box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3) inset; }
+.b-widget-button .b-button:active .b-button__inner { box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3) inset; color: rgb(0, 0, 0) ! important; }
+.b-widget-button .b-button:hover .b-button__inner { background-image: url('b-widget-button__sprite.png'); background-position: 0px -84px; border-left: 1px solid rgb(239, 96, 33); color: rgb(0, 0, 0); }
+.b-widget-button__icon { height: 29px; left: 16px; margin-top: -15px; position: absolute; top: 50%; }
+.b-widget-button_s .b-button { border-radius: 3px 3px 3px 3px; height: 25px; }
+.b-widget-button_s .b-button .b-button__inner { border-radius: 0px 3px 3px 0px; font-size: 13px; line-height: 24px; margin-left: 35px; padding: 0px 15px; }
+.b-widget-button_s .b-button .b-widget-button__icon { height: 16px; left: 10px; margin-top: -8px; }
+html { padding: 0px; margin: 0px; height: 100%; }
+body { font-family: Arial,Geneva CY,Sans-Serif; }
+div, li, span, b, a, ul, ol, p, h1, h2, h3, h4, h5, h6, dl, dd, dt, form, fieldset, i, button, td, th { margin: 0px; padding: 0px; }
+.b-button { background: none repeat scroll 0px 0px transparent; border: medium none; color: rgb(0, 0, 0); cursor: pointer; display: inline-block; height: 25px; margin: 0px 15px 0px 0px; outline: medium none; padding: 0px; position: relative; text-decoration: none; vertical-align: middle; }
+.b-button__input { border: 0px none; cursor: pointer; font-size: 0px; height: 100%; left: 0px; line-height: 0; opacity: 0; padding: 0px; position: absolute; text-indent: -999px; top: 0px; width: 100%; }
+.b-button__inner { border: 1px solid rgb(180, 180, 180); border-radius: 3px 3px 3px 3px; display: block; font-family: Arial,Geneva CY,Sans-Serif; font-size: 13px; height: 23px; line-height: 23px; margin: 0px; outline: medium none; padding: 0px 15px; position: relative; white-space: nowrap; }
+.b-button:hover .b-button__inner { border-color: transparent; color: rgb(0, 0, 0); }
+.b-button:active .b-button__inner { box-shadow: 0px 1px 2px rgb(136, 136, 136) inset; color: rgb(68, 68, 68) ! important; }
+body, html { padding: 0px; margin: 0px; overflow: hidden; }
+body { background-color: transparent; }

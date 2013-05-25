@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ru-RU" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title>  Ограничение скорости в Ubuntu » blogeek</title>
+
+
+
+
+<!--[if lte IE 6]>
+<style type="text/css">
+img.png {
+    background-image: expression(
+        this.runtimeStyle.backgroundImage = "none",
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+        this.src = "http://blogeek.ru/wp-content/themes/technoholic/images/transparent.gif"
+    );
+}
+</style>
+<script src="http://blogeek.ru/wp-content/themes/technoholic/lihover.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="blogeek RSS Feed" href="http://blogeek.ru/feed/">
+<link rel="pingback" href="http://blogeek.ru/xmlrpc.php">
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="alternate" type="application/rss+xml" title="blogeek » Лента комментариев к «Ограничение скорости в Ubuntu»" href="http://blogeek.ru/limit-upload-download-speed-of-firefox-in-ubuntu/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogeek.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogeek.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="blogeek" href="http://blogeek.ru/">
+<link rel="start" title="Восстановление пароля" href="http://blogeek.ru/wordpress-password-recovery/">
+<link rel="prev" title="Удалить все гиперссылки в OpenOffice" href="http://blogeek.ru/openoffice-remove-all-links/">
+<link rel="next" title="Автоматическое переименовывание файла после разархивирования" href="http://blogeek.ru/rename-file-while-unzipping/">
+<meta name="generator" content="WordPress 3.1.1">
+<link rel="canonical" href="http://blogeek.ru/limit-upload-download-speed-of-firefox-in-ubuntu/">
+<link rel="shortlink" href="http://blogeek.ru/?p=498">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="bodywrapper">
+	 	<!-- header_top end -->
+
+	 <!-- header_bottom end -->	<div id="contentwrapper">
+		<div class="content">
+				
+									<h1><span class="dateday" title="Year 2011">13</span><span class="datemonth" title="Year 2011">Апр</span> <a href="http://blogeek.ru/limit-upload-download-speed-of-firefox-in-ubuntu/" title="Permalink to Ограничение скорости в Ubuntu">Ограничение скорости в Ubuntu</a></h1>
+
+			<div class="contentbody" id="post-498">
+				<div>
+					<p>Есть в Ubuntu одна особенность, которая мне не нравится – забивание канала скачивающим/закачивающим приложением. То есть, если Firefox’ом начать скачивание какого-нибудь файла, то сёрфить уже будет проблематично. Такая же проблема и с закачиванием файлов куда-нибудь.</p>
+<p>Здесь буду собирать различные варианты решения данной проблемы. В итоге должны появиться правила для tc, но в данный момент я с ним не разобрался.</p>
+<p>Под Windows для ограничения скорости Firefox есть расширение Firefox Throttle. Чего-либо подобного под Linux мне найти не удалось.<span id="more-498"></span></p>
+<ol>
+<li>
+<h3>wget. Скачивание</h3>
+<p>Когда впервые мне понадобилось срочно скачать большой файл, а времени разбираться с ограничением скорости в ОС не было, я просто использовал wget с ограничением скорости скачивания. Например, если мы хотим, чтобы файл скачивался примерно на скорости в 1 мегабит/с, то нужна такая команда:</p>
+<pre>wget --limit-rate=122k http://example.com/file.ext
+</pre>
+<p>Следует учесть, что скорость задаётся в килобайтах/мегабайтах, а не в килобитах/мегабитах, а также то, что изменить скорость будет нельзя.</p></li>
+<li>
+<h3>tc. Закачивание</h3>
+<p>Но варианта с wget’ом явно не хватало, иногда мне нужно ещё закачивать большие файлы, поэтому я начал потихоньку изучать <a href="http://lug.ivanovo.ru/lartc/">Linux Advanced Routing &amp; Traffic Control HOWTO</a>. Именно там мне и встретилась команда, которая помогла мне ограничить мою исходящую скорость:</p>
+<pre>tc qdisc add dev ppp0 root tbf rate 220kbit latency 50ms burst 1540</pre>
+<p>В ней я лишь заменил ppp0 на eth0, да подобрал подходящие rate и latency.</p></li>
+<li>
+<h3>wondershaper. Скачивание/закачивание</h3>
+<p>Вариант, который я использую в данный момент. Для начала установим wondershaper:</p>
+<pre>sudo apt-get install wondershaper</pre>
+<p>После этого легко можно ограничить входящую и исходящую скорость:</p>
+<pre>sudo wondershaper eth0 1024 512</pre>
+<p>Здесь мы для интерфейса eth0 задаём ограничение входящей скорости в 1024 килобита/с (1 мегабит) и исходящей – 512.</p></li>
+</ol>
+					<p class="tags">
+                                        Метки: <a href="http://blogeek.ru/tag/tc/" rel="tag">tc</a>, <a href="http://blogeek.ru/tag/wget/" rel="tag">wget</a>, <a href="http://blogeek.ru/tag/wondershaper/" rel="tag">wondershaper</a>                                        </p>
+<div class="postauthor">
+<span>Автор: <a href="http://blogeek.ru/author/kartoshin/"> Kartoshin</a></span>
+</div>
+									</div>
+	
+					
+				
+				
+						
+		</div>
+				
+		
+
+		<div class="hide">
+			
+<!-- You can start editing here. -->
+
+
+  		<!-- If comments are open, but there are no comments. -->
+
+	
+
+
+
+
+
+
+		</div>
+
+				</div> <!-- content end -->
+
+		 <!--sidebar end -->
+	<div style="clear: both;"></div>
+
+	</div> <!-- contentwrapper end -->
+
+
+
+ <!-- footer end -->
+
+</div> <!-- bodywrapper end -->
+
+<br><br><br>
+
+
+
+
+</body></html>

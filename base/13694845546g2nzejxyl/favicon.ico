@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>  Страница не найдена &raquo; blogeek</title>
+
+<link rel="stylesheet" href="http://blogeek.ru/wp-content/themes/technoholic/style.css" type="text/css" media="screen" />
+<style type="text/css" media="screen">
+@import url(http://blogeek.ru/wp-content/themes/technoholic/style_blue.css);
+</style>
+<link rel="stylesheet" href="http://blogeek.ru/wp-content/themes/technoholic/print.css" type="text/css" media="print" />
+<!--[if lte IE 6]>
+<style type="text/css">
+img.png {
+    background-image: expression(
+        this.runtimeStyle.backgroundImage = "none",
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+        this.src = "http://blogeek.ru/wp-content/themes/technoholic/images/transparent.gif"
+    );
+}
+</style>
+<script src="http://blogeek.ru/wp-content/themes/technoholic/lihover.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="blogeek RSS Feed" href="http://blogeek.ru/feed/" />
+<link rel="pingback" href="http://blogeek.ru/xmlrpc.php" />
+<link rel="shortcut icon" href="http://blogeek.ru/wp-content/themes/technoholic/images/favicon.ico" />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogeek.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogeek.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='blogeek' href='http://blogeek.ru/' />
+<meta name="generator" content="WordPress 3.1.1" />
+</head>
+
+<body>
+<div id="bodywrapper">
+	<div id="header_top">
+		<div class="alignright adtop">
+					</div>
+		<a href="http://blogeek.ru" title="Home"><img id="header_logo" class="png" src="http://blogeek.ru/wp-content/themes/technoholic/images/logo.png" title="Home" alt="Home" /></a>
+		<div id="header_title"><a href="http://blogeek.ru" title="Home">blogeek</a></div>
+		<div id="description">Технические заметки</div>
+	</div> 	<!-- header_top end -->
+
+	<div id="header_bottom">
+		<ul id="nav">
+			<li ><a href="http://blogeek.ru" title="Home">Home</a></li>
+			<li class="page_item page-item-2"><a href="http://blogeek.ru/about/" title="О блоге">О блоге</a></li>
+			<li class="feednav"><a href="http://blogeek.ru/feed/"><img src="http://blogeek.ru/wp-content/themes/technoholic/images/rss.gif" title="Subscribe to Feed" alt="Subscribe to Feed" /></a></li>
+		</ul>
+	</div> <!-- header_bottom end -->
+	<div id="contentwrapper">
+
+		<div class="content">
+		<h2>Error 404 - Not Found</h2>
+		<p>Sorry, we are unable to find any matching documents.</p>
+		<form method="get" id="searchform" action="http://blogeek.ru/">
+	<input type="text" id="searchformfield" value="" name="s" />
+	<input type="submit" id="searchsubmit" src="http://blogeek.ru/wp-content/themes/technoholic/images/email.gif" value="" />
+</form>
+		</div> <!-- content end -->
+
+		<div id="sidebar">
+
+	<div id="searchbox">
+		<form method="get" id="searchform" action="http://blogeek.ru/">
+		<input type="text" id="searchformfield" value="Search blog..." name="s" onfocus="if (this.value == 'Search blog...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search blog...';}" />
+		<input type="submit" id="searchsubmit" value="" />
+		</form>
+	</div>
+	
+	<div id="sidebarads">
+		<div class="alignleft">
+			
+			
+			<br />
+		
+			
+		</div>
+		
+		<div class="alignright">
+
+				
+			<br />
+	
+					</div>
+
+	</div>
+	
+	<div id="sidebar_full">
+				
+			</div>
+
+	<br />
+	
+		<div id="sidebar_right">
+			
+		<h3>Ссылки</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://en.blogeek.ru/" rel="me">English version</a></li>
+
+	</ul>
+
+		
+					<h3>Popular Tags</h3>
+			<ul>
+				<li><a href='http://blogeek.ru/tag/avtomatizaciya/' class='tag-link-32' title='4 записи' style='font-size: 15.567567567568pt;'>автоматизация</a>
+<a href='http://blogeek.ru/tag/%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c/' class='tag-link-30' title='2 записи' style='font-size: 11.405405405405pt;'>безопасность</a>
+<a href='http://blogeek.ru/tag/bekap/' class='tag-link-57' title='1 запись' style='font-size: 8pt;'>бэкап</a>
+<a href='http://blogeek.ru/tag/%d0%b2%d0%b8%d1%80%d1%83%d1%81%d1%8b/' class='tag-link-31' title='2 записи' style='font-size: 11.405405405405pt;'>вирусы</a>
+<a href='http://blogeek.ru/tag/%d0%b2%d0%be%d1%81%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5/' class='tag-link-21' title='3 записи' style='font-size: 13.675675675676pt;'>восстановление</a>
+<a href='http://blogeek.ru/tag/%d0%ba%d0%be%d0%b4%d0%b8%d1%80%d0%be%d0%b2%d0%ba%d0%b0/' class='tag-link-15' title='1 запись' style='font-size: 8pt;'>кодировка</a>
+<a href='http://blogeek.ru/tag/%d0%ba%d1%8d%d1%88%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5/' class='tag-link-23' title='1 запись' style='font-size: 8pt;'>кэширование</a>
+<a href='http://blogeek.ru/tag/%d0%bf%d0%b0%d1%80%d0%be%d0%bb%d0%b8/' class='tag-link-22' title='2 записи' style='font-size: 11.405405405405pt;'>пароли</a>
+<a href='http://blogeek.ru/tag/pochta/' class='tag-link-44' title='1 запись' style='font-size: 8pt;'>почта</a>
+<a href='http://blogeek.ru/tag/prava/' class='tag-link-38' title='2 записи' style='font-size: 11.405405405405pt;'>права</a>
+<a href='http://blogeek.ru/tag/raskladka/' class='tag-link-36' title='1 запись' style='font-size: 8pt;'>раскладка</a>
+<a href='http://blogeek.ru/tag/reestr/' class='tag-link-37' title='5 записей' style='font-size: 17.081081081081pt;'>реестр</a>
+<a href='http://blogeek.ru/tag/skripty/' class='tag-link-33' title='4 записи' style='font-size: 15.567567567568pt;'>скрипты</a>
+<a href='http://blogeek.ru/tag/subtitry/' class='tag-link-41' title='1 запись' style='font-size: 8pt;'>субтитры</a>
+<a href='http://blogeek.ru/tag/ajax/' class='tag-link-13' title='2 записи' style='font-size: 11.405405405405pt;'>ajax</a>
+<a href='http://blogeek.ru/tag/apache/' class='tag-link-39' title='1 запись' style='font-size: 8pt;'>apache</a>
+<a href='http://blogeek.ru/tag/bash/' class='tag-link-55' title='1 запись' style='font-size: 8pt;'>bash</a>
+<a href='http://blogeek.ru/tag/bat/' class='tag-link-60' title='1 запись' style='font-size: 8pt;'>bat</a>
+<a href='http://blogeek.ru/tag/crm/' class='tag-link-46' title='1 запись' style='font-size: 8pt;'>crm</a>
+<a href='http://blogeek.ru/tag/cron/' class='tag-link-12' title='1 запись' style='font-size: 8pt;'>cron</a>
+<a href='http://blogeek.ru/tag/css/' class='tag-link-48' title='1 запись' style='font-size: 8pt;'>css</a>
+<a href='http://blogeek.ru/tag/cvs/' class='tag-link-26' title='1 запись' style='font-size: 8pt;'>cvs</a>
+<a href='http://blogeek.ru/tag/drupal/' class='tag-link-9' title='10 записей' style='font-size: 22pt;'>drupal</a>
+<a href='http://blogeek.ru/tag/fckeditor/' class='tag-link-11' title='2 записи' style='font-size: 11.405405405405pt;'>fckeditor</a>
+<a href='http://blogeek.ru/tag/firebug/' class='tag-link-49' title='1 запись' style='font-size: 8pt;'>firebug</a>
+<a href='http://blogeek.ru/tag/grub/' class='tag-link-58' title='1 запись' style='font-size: 8pt;'>grub</a>
+<a href='http://blogeek.ru/tag/javascript/' class='tag-link-14' title='3 записи' style='font-size: 13.675675675676pt;'>javascript</a>
+<a href='http://blogeek.ru/tag/lua/' class='tag-link-40' title='1 запись' style='font-size: 8pt;'>lua</a>
+<a href='http://blogeek.ru/tag/nncron/' class='tag-link-28' title='2 записи' style='font-size: 11.405405405405pt;'>nncron</a>
+<a href='http://blogeek.ru/tag/ntfs/' class='tag-link-45' title='1 запись' style='font-size: 8pt;'>ntfs</a>
+<a href='http://blogeek.ru/tag/ooo/' class='tag-link-51' title='1 запись' style='font-size: 8pt;'>OOo</a>
+<a href='http://blogeek.ru/tag/pear/' class='tag-link-7' title='1 запись' style='font-size: 8pt;'>pear</a>
+<a href='http://blogeek.ru/tag/php/' class='tag-link-5' title='5 записей' style='font-size: 17.081081081081pt;'>php</a>
+<a href='http://blogeek.ru/tag/rss/' class='tag-link-6' title='2 записи' style='font-size: 11.405405405405pt;'>rss</a>
+<a href='http://blogeek.ru/tag/tc/' class='tag-link-52' title='1 запись' style='font-size: 8pt;'>tc</a>
+<a href='http://blogeek.ru/tag/thunderbird/' class='tag-link-43' title='1 запись' style='font-size: 8pt;'>thunderbird</a>
+<a href='http://blogeek.ru/tag/ubuntu/' class='tag-link-42' title='3 записи' style='font-size: 13.675675675676pt;'>ubuntu</a>
+<a href='http://blogeek.ru/tag/vi/' class='tag-link-50' title='1 запись' style='font-size: 8pt;'>vi</a>
+<a href='http://blogeek.ru/tag/vtiger/' class='tag-link-47' title='1 запись' style='font-size: 8pt;'>vtiger</a>
+<a href='http://blogeek.ru/tag/wget/' class='tag-link-53' title='1 запись' style='font-size: 8pt;'>wget</a>
+<a href='http://blogeek.ru/tag/windows/' class='tag-link-20' title='7 записей' style='font-size: 19.351351351351pt;'>windows</a>
+<a href='http://blogeek.ru/tag/wondershaper/' class='tag-link-54' title='1 запись' style='font-size: 8pt;'>wondershaper</a>
+<a href='http://blogeek.ru/tag/wordpress/' class='tag-link-3' title='5 записей' style='font-size: 17.081081081081pt;'>wordpress</a>
+<a href='http://blogeek.ru/tag/yahoo-pipes/' class='tag-link-8' title='1 запись' style='font-size: 8pt;'>yahoo pipes</a>
+<a href='http://blogeek.ru/tag/zip/' class='tag-link-56' title='1 запись' style='font-size: 8pt;'>zip</a></li>
+			</ul>
+			
+			</div> <!--sidebar right end -->
+
+	<div id="sidebar_left">
+		
+		<h3>Categories</h3>
+		<ul>
+				<li class="cat-item cat-item-18"><a href="http://blogeek.ru/category/summary/" title="Просмотреть все записи в рубрике &laquo;Конспекты&raquo;">Конспекты</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://blogeek.ru/category/unsolved/" title="Просмотреть все записи в рубрике &laquo;Нерешённое&raquo;">Нерешённое</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://blogeek.ru/category/solutions/" title="Просмотреть все записи в рубрике &laquo;Решения&raquo;">Решения</a>
+</li>
+		</ul>
+	
+		<h3>Recent Comments</h3>
+		<ul>
+			<li class="recentcomments">Александр on <a href="http://blogeek.ru/openoffice-remove-all-links/#comment-13237">Удалить все гиперссылки в OpenOffice</a></li><li class="recentcomments">Родик on <a href="http://blogeek.ru/openoffice-remove-all-links/#comment-12542">Удалить все гиперссылки в OpenOffice</a></li><li class="recentcomments"><a href='http://www.aidwoman.ru/' rel='external nofollow' class='url'>Tania</a> on <a href="http://blogeek.ru/404-after-allowing-multisiting-for-wordpress/#comment-11079">404 после активирования мультисайтинга в WordPress</a></li><li class="recentcomments">kartoshin on <a href="http://blogeek.ru/kodirovka-v-vtiger-crm/#comment-10301">Кодировка в VTiger CRM</a></li><li class="recentcomments"><a href='http://voiplab.by' rel='external nofollow' class='url'>klistrod</a> on <a href="http://blogeek.ru/kodirovka-v-vtiger-crm/#comment-10299">Кодировка в VTiger CRM</a></li><li class="recentcomments">Джонни on <a href="http://blogeek.ru/openoffice-remove-all-links/#comment-7641">Удалить все гиперссылки в OpenOffice</a></li><li class="recentcomments">NEX-5N on <a href="http://blogeek.ru/gparted-v-ubuntu-ne-pozvolyaet-razbit-disk/#comment-7556">GParted в Ubuntu не позволяет разбить диск</a></li><li class="recentcomments">datch on <a href="http://blogeek.ru/openoffice-remove-all-links/#comment-7249">Удалить все гиперссылки в OpenOffice</a></li>		</ul>
+
+			</div> <!--sidebar left end -->
+	
+</div> <!--sidebar end -->
+	<div style="clear:both"></div>
+
+	</div> <!-- contentwrapper end -->
+
+<div id="bottombar">
+	<div id="bottomwrapper">
+		<div id="bottommenu_left" class="menu">
+				<h3>Recent Entries</h3>
+			<ul>
+					<li><a href='http://blogeek.ru/moving-log-files-into-appropriate-folders-depending-on-the-file-name/' title='Распределение логов по папкам и подпапкам, основываясь на имени файла'>Распределение логов по папкам и подпапкам, основываясь на имени файла</a></li>
+	<li><a href='http://blogeek.ru/reinstalling-grub2/' title='Переустановка grub2'>Переустановка grub2</a></li>
+	<li><a href='http://blogeek.ru/rename-file-while-unzipping/' title='Автоматическое переименовывание файла после разархивирования'>Автоматическое переименовывание файла после разархивирования</a></li>
+	<li><a href='http://blogeek.ru/limit-upload-download-speed-of-firefox-in-ubuntu/' title='Ограничение скорости в Ubuntu'>Ограничение скорости в Ubuntu</a></li>
+	<li><a href='http://blogeek.ru/openoffice-remove-all-links/' title='Удалить все гиперссылки в OpenOffice'>Удалить все гиперссылки в OpenOffice</a></li>
+	<li><a href='http://blogeek.ru/changing-wordpress-blog-id/' title='Меняем id блога в WordPress'>Меняем id блога в WordPress</a></li>
+	<li><a href='http://blogeek.ru/wordpress-multisiting-login/' title='Мультисайтинг в WordPress &#8211; чиним логин'>Мультисайтинг в WordPress &#8211; чиним логин</a></li>
+	<li><a href='http://blogeek.ru/404-after-allowing-multisiting-for-wordpress/' title='404 после активирования мультисайтинга в WordPress'>404 после активирования мультисайтинга в WordPress</a></li>
+			</ul>
+				</div>
+
+		<div id="bottommenu_center" class="menu">
+				<h3>Archives</h3>
+		<ul>
+				<li><a href='http://blogeek.ru/2011/07/' title='Июль 2011'>Июль 2011</a></li>
+	<li><a href='http://blogeek.ru/2011/05/' title='Май 2011'>Май 2011</a></li>
+	<li><a href='http://blogeek.ru/2011/04/' title='Апрель 2011'>Апрель 2011</a></li>
+	<li><a href='http://blogeek.ru/2010/11/' title='Ноябрь 2010'>Ноябрь 2010</a></li>
+	<li><a href='http://blogeek.ru/2010/09/' title='Сентябрь 2010'>Сентябрь 2010</a></li>
+	<li><a href='http://blogeek.ru/2010/08/' title='Август 2010'>Август 2010</a></li>
+	<li><a href='http://blogeek.ru/2010/04/' title='Апрель 2010'>Апрель 2010</a></li>
+	<li><a href='http://blogeek.ru/2010/03/' title='Март 2010'>Март 2010</a></li>
+	<li><a href='http://blogeek.ru/2010/02/' title='Февраль 2010'>Февраль 2010</a></li>
+	<li><a href='http://blogeek.ru/2009/12/' title='Декабрь 2009'>Декабрь 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/10/' title='Октябрь 2009'>Октябрь 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/09/' title='Сентябрь 2009'>Сентябрь 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/08/' title='Август 2009'>Август 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/07/' title='Июль 2009'>Июль 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/06/' title='Июнь 2009'>Июнь 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/05/' title='Май 2009'>Май 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/03/' title='Март 2009'>Март 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/02/' title='Февраль 2009'>Февраль 2009</a></li>
+	<li><a href='http://blogeek.ru/2009/01/' title='Январь 2009'>Январь 2009</a></li>
+	<li><a href='http://blogeek.ru/2008/12/' title='Декабрь 2008'>Декабрь 2008</a></li>
+	<li><a href='http://blogeek.ru/2008/10/' title='Октябрь 2008'>Октябрь 2008</a></li>
+		</ul>
+				</div>
+		
+		<div id="bottommenu_right" class="menu">
+				<h3>Meta</h3>
+				<ul>
+										<li><a href="http://blogeek.ru/wp-login.php">Войти</a></li>
+					<li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a></li>
+					<li><a href="http://gmpg.org/xfn/"><abbr title="XHTML Friends Network">XFN</abbr></a></li>
+									</ul>
+				</div>
+		
+		<div style="clear: both">&nbsp;</div>
+	</div>
+</div>
+
+<div id="footer">
+		<div id="footer_right">
+		<a href="http://ericulous.com/2008/05/28/wp-theme-technoholic-free-and-premium/" title="technoholic wp theme">technoholic</a> theme by <a href="http://ericulous.com" title="Wordpress Premium Themes">ericulous</a>
+	</div>
+		<div id="footer_left">
+		<ul id="navfooter">
+			<li>&copy; <a href="http://blogeek.ru" title="Технические заметки">blogeek</a></li>
+			<li><a href="#" title="Return to Top">#Top</a></li>
+			<li class="page_item page-item-2"><a href="http://blogeek.ru/about/" title="О блоге">О блоге</a></li>
+			<li><a href="http://blogeek.ru/feed/"><img src="http://blogeek.ru/wp-content/themes/technoholic/images/rss.gif" title="Subscribe to Feed" alt="Subscribe to Feed" /></a></li>
+		</ul>
+	</div>
+</div> <!-- footer end -->
+
+</div> <!-- bodywrapper end -->
+
+<br /><br /><br />
+
+</body>
+</html>
