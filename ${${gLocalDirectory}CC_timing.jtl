@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<sample t="57" lt="0" ts="1369822886020" s="true" lb="Create Results File" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="236"/>
+<sample t="1604" lt="0" ts="1369822888545" s="true" lb="Copy original config to new config" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="893" lt="0" ts="1369822889449" s="true" lb="Bring new config online" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="1576" lt="0" ts="1369822891028" s="true" lb="CONF: Enable Proxy mode" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="2828" lt="0" ts="1369822893861" s="true" lb="Copy tools on bfs-dl360g7-14-xm1.bfs.openwave.com" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="0"/>
+<sample t="12760" lt="0" ts="1369822916637" s="true" lb="MediaInfo Check" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="127"/>
+<sample t="1269" lt="0" ts="1369822918042" s="true" lb="Offline Video Engine Configuration" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="1137" lt="0" ts="1369822919191" s="true" lb="Offline Video Server Configuration" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="944" lt="0" ts="1369822920147" s="true" lb="Webdav cache Configuration" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="1628" lt="0" ts="1369822921782" s="true" lb="CONF: Reduce Thresholds for Caching" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="750" lt="0" ts="1369822922548" s="true" lb="CONF: Reduce PopularityPollInterval Interval" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="11"/>
+<sample t="179751" lt="0" ts="1369823102315" s="true" lb="Restart CS" rc="200" rm="OK" tn="Caching 1-1" dt="text" by="2799">
+  <assertionResult>
+    <name>Response</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</sample>
+<sample t="2" lt="0" ts="1369823102401" s="true" lb="Debug Sampler (last)" rc="" rm="" tn="Caching 1-1" dt="text" by="12206"/>
+
+</testResults>

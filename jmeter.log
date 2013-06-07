@@ -1,0 +1,455 @@
+2013/05/29 13:20:32 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_GB 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: Copyright (c) 1998-2010 The Apache Software Foundation 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: Version Openwave 2.4 Build 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: java.version=1.7.0_21 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: os.name=Linux 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: os.arch=amd64 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: os.version=3.2.0-44-generic 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: file.encoding=UTF-8 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: Default Locale=English (United Kingdom) 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: JMeter  Locale=English (United Kingdom) 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: JMeterHome=/home/yuron/opt/jakarta-jmeter-2.4 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: user.dir  =/home/yuron/.config/mytetra/data 
+2013/05/29 13:20:32 INFO  - jmeter.JMeter: PWD       =/home/yuron/.config/mytetra/data 
+2013/05/29 13:20:32 ERROR - jmeter.util.JMeterUtils: Unable to get local host IP address. 
+2013/05/29 13:20:33 ERROR - jmeter.util.JMeterUtils: Unable to get local host IP address. 
+2013/05/29 13:20:44 ERROR - jmeter.util.JMeterUtils: Unable to get local host IP address. 
+2013/05/29 13:20:44 INFO  - jmeter.JMeter: IP: null Name: null FullName: null 
+2013/05/29 13:20:44 INFO  - jmeter.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties 
+2013/05/29 13:20:48 INFO  - jmeter.util.BSFTestElement: Registering JMeter version of JavaScript engine as work-round for BSF-22 
+2013/05/29 13:20:49 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: No response parsers defined: text/html only will be scanned for embedded resources 
+2013/05/29 13:20:50 INFO  - jmeter.protocol.http.sampler.HTTPSampler: Maximum connection retries = 10 
+2013/05/29 13:20:53 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are END times 
+2013/05/29 13:20:53 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
+2013/05/29 13:20:56 INFO  - jmeter.services.FileServer: Default base=/home/yuron/.config/mytetra/data 
+2013/05/29 13:20:56 INFO  - jmeter.gui.action.Load: Loading file: /home/yuron/doc/xim/openwave/Andes/VDO/Caching_31.jmx 
+2013/05/29 13:20:56 INFO  - jmeter.services.FileServer: Set new base=/home/yuron/doc/xim/openwave/Andes/VDO 
+2013/05/29 13:20:56 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
+2013/05/29 13:20:56 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
+2013/05/29 13:20:56 INFO  - jmeter.save.SaveService: Using SaveService properties file version 959116 
+2013/05/29 13:20:56 INFO  - jmeter.save.SaveService: Using SaveService properties version 2.1 
+2013/05/29 13:20:56 INFO  - jmeter.save.SaveService: All converter versions present and correct 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (0) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@ba8ef17 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (1) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7fe8d4fb 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (2) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@14502115 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (3) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@18abf41e 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (4) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@59183a41 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (5) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4598af19 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (6) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2b0fb601 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (7) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@147611bd 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (8) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@538699c9 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (9) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@29da85f6 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (10) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4990eef1 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (11) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4a3735f2 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (12) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6a758b15 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (13) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4afe464d 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (14) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7bb98fb1 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (15) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@66dd58de 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (16) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@43d92a01 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (17) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6654ca73 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (18) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@23a4c43a 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (19) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@164ece1e 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (20) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@47eb64ea 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (21) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f2e6389 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (22) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7e820237 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (23) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1e24dc0 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (24) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@48d4b6c4 
+2013/05/29 13:20:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (25) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@25f086d2 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (26) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3f7fd343 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (27) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@18ca1436 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (28) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@33c11a2f 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (29) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7cb0fabc 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (30) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@471d8c98 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (31) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1560dc82 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (32) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@18a8b019 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (33) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6ac145f4 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (34) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@36d7cced 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (35) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@b77552 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (36) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@27fcd475 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (37) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@47e061d5 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (38) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1db205fe 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (39) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6468118a 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (40) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@261edc7f 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (41) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@25cb59dd 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (42) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@211b2d16 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (43) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3e26faf2 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (44) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@12439978 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (45) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3d87a07a 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (46) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@592d10f2 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (47) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1ba2b31c 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (48) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@358432d0 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (49) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5937e178 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (50) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5c588660 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (51) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6eea2c1c 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (52) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7a98ecca 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (53) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1c84b98c 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (54) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4db1a4f4 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (55) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@49c4b705 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (56) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@d5692b8 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (57) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2eba74df 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (58) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@707babb8 
+2013/05/29 13:20:57 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (59) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f0644c9 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (60) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@14d1626e 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (61) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@53fa2614 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (62) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@16306a2d 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (63) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6edf0ce3 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (64) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@38e55b5a 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (65) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@63903190 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (66) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3e684f4a 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (67) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5c1e61ea 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (68) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@259ea4b8 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (69) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3cf8f3e4 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (70) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@714a1708 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (71) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3b1c6581 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (72) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@42f0627a 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (73) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3f755bd2 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (74) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5e4fcf02 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (75) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7d6070c 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (76) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@747c37e1 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (77) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@8081e3e 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (78) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4cf97c90 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (79) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@65528216 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (80) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@71b2f190 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (81) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@424a642a 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (82) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6dd0d81c 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (83) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2d25fe5e 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (84) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6e9de2af 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (85) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5f9b6f9a 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (86) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@24cea754 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (87) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7b4b8eac 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (88) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1d83fd71 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (89) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4eed1516 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (90) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1205eb31 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (91) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5d5b0311 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (92) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@40c55b4d 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (93) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2fed7df5 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (94) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@10e87868 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (95) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7bf2502f 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (96) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@29e2db1b 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (97) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2b5a1cfa 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (98) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3e89dd07 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (99) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1173d053 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (100) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4a720218 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (101) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@47d5ac3 
+2013/05/29 13:20:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (102) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7f873cca 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (103) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2c1d66f7 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (104) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4c6e6341 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (105) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4ad56ed4 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (106) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1079cfc8 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (107) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3a418341 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (108) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@23103e48 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (109) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4533a8de 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (110) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4293aa50 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (111) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6c928c55 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (112) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@93b5823 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (113) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@17176691 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (114) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@20eca2cd 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (115) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3c20d673 
+2013/05/29 13:20:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (116) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1821df11 
+2013/05/29 13:21:04 INFO  - jmeter.services.FileServer: Set new base=/home/yuron/doc/xim/openwave/Andes/VDO 
+2013/05/29 13:21:05 INFO  - jmeter.control.IncludeController: loadIncludedElements -- try to load included module: /home/yuron/opt/jakarta-jmeter-2.4/utilities/CreateResultsFile.jmx 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (117) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3168d01f 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (118) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5837bc90 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (119) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@333cbf2f 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (120) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@592bc0f0 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (121) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@766ad2fe 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (122) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5f425e6e 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (123) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7e45b89d 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (124) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@135b8c2f 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (125) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5f506b96 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (126) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@18c775bd 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (127) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4f02d800 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (128) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@43b31086 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (129) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@63c9ac3 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (130) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@74d47b67 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (131) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@29f1e31d 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (132) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6c0d9a61 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (133) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7914db1c 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (134) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@483d495e 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (135) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f9bdf5f 
+2013/05/29 13:21:05 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (136) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2265ee64 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (137) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5d14dfad 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (138) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5690699 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (139) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@41eaec19 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (140) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6402e1b0 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (141) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@37d5e75e 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (142) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7647df5e 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (143) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1d65250 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (144) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6ce7d6f6 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (145) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4e481c53 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (146) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6ffb8048 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (147) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@68a33067 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (148) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3467ab7f 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (149) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2581e373 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (150) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@727ba641 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (151) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@13e0301f 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (152) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2cb6d4cb 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (153) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1be801f7 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (154) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1cd90d71 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (155) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5a978023 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (156) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1eb83276 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (157) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4a55ddd0 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (158) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6ec517f4 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (159) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7d3fe3aa 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (160) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@718d66a3 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (161) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@22ab38d1 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (162) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4e8bf62 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (163) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@33a1bf22 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (164) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@28e2ea1e 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (165) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6e9701a1 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (166) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4fb5d0ce 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (167) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@47cb3a02 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (168) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@44221cdd 
+2013/05/29 13:21:06 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (169) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7bc40e71 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (170) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4905c32 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (171) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2194d8f5 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (172) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@332fce0c 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (173) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1b84eb2c 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (174) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@336ba3d1 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (175) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@306c3705 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (176) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6f3511de 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (177) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@151a8b 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (178) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1c99c1ba 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (179) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1c70219 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (180) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@46e23b20 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (181) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@159475c7 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (182) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@657971ff 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (183) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@279582a8 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (184) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5b261fd4 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (185) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@15459a10 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (186) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@c859b59 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (187) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2a4d7bb2 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (188) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@412bbda4 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (189) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@30c12b86 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (190) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6c61c2ea 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (191) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@65b34581 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (192) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@19fed8d0 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (193) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@788f4769 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (194) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@56ad57ee 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (195) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@e67f6b7 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (196) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@284dd974 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (197) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2d97191b 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (198) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@53c30f2b 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (199) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@62c78a6f 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (200) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@181f5a07 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (201) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4744f86 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (202) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6d778685 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (203) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7393ec42 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (204) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@747c1c55 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (205) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@284c32 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (206) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@59bd95a1 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (207) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2fdca57b 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (208) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@45035de6 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (209) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6512529b 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (210) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@144ccd40 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (211) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3e372f29 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (212) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@16babd32 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (213) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@387a466a 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (214) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@48c5c12f 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (215) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@69e90b91 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (216) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4a272157 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (217) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4efdfcc9 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (218) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@79f7ec4f 
+2013/05/29 13:21:07 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (219) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1bd5398c 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (220) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@29bbbce6 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (221) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@34d5b174 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (222) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6a01ca3 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (223) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4e7c6180 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (224) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1c81b1c7 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (225) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6be8e70 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (226) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@48795e85 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (227) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@182c92ef 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (228) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1662954f 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (229) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@22388104 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (230) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2b9e3f29 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (231) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@554b3a35 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (232) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6761ba58 
+2013/05/29 13:21:08 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (233) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4a619b21 
+2013/05/29 13:21:09 INFO  - jmeter.control.IncludeController: loadIncludedElements -- try to load included module: /home/yuron/opt/jakarta-jmeter-2.4/utilities/CreateResultsFile.jmx 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (234) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@96aa16d 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (235) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@378bffef 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (236) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@484fc066 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (237) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6be08da0 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (238) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@74161820 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (239) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@568a186a 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (240) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4490389 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (241) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@55871991 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (242) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@189faa75 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (243) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1a6ff3f4 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (244) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2bf925bb 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (245) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@721c2e8a 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (246) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@65719564 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (247) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4070c44 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (248) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6ab6466c 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (249) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@13a81710 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (250) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@606d3f05 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (251) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@244492b8 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (252) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@11fc80a2 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (253) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@586114e7 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (254) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4889ffe6 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (255) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5bff7a3e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (256) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@985e5b9 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (257) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@20c634ae 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (258) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@41a9bb03 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (259) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@197db331 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (260) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@595b1760 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (261) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@53a9240 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (262) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3a372f71 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (263) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@ed19861 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (264) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@626b0fe0 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (265) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4998bfe3 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (266) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5b657f4 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (267) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@648571a 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (268) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@774e6f2e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (269) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4e81d1ed 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (270) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2837f18c 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (271) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@70d332f4 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (272) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4aee6d59 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (273) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7ca7478 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (274) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@24b9bfb7 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (275) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@16948622 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (276) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3b5a173e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (277) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@28be9be 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (278) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@531f73a0 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (279) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7d87608e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (280) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@521c2cb9 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (281) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@161a76cb 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (282) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@aa3170e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (283) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3990930e 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (284) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@22fc4526 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (285) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@77e92eb1 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (286) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@572153d0 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (287) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4d05a960 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (288) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2eb30521 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (289) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6b15d17a 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (290) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@64b8ecac 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (291) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@28ba43dd 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (292) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@389204a 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (293) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7c7c3272 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (294) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@56b133a7 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (295) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5e4d0345 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (296) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@65c7634d 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (297) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@444123f9 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (298) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f057e4f 
+2013/05/29 13:21:09 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (299) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@423e6c6e 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (300) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@22d87c12 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (301) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@eba1bc9 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (302) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@19776f97 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (303) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@703f2f90 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (304) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@17c616bf 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (305) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5c9a747d 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (306) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@796c75b1 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (307) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1d71d851 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (308) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@26efec43 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (309) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@58dce838 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (310) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3bb4c0dd 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (311) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@8e1f84c 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (312) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2b744a22 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (313) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@de6a2fc 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (314) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1cdd34b3 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (315) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@61d43ef6 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (316) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4296d228 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (317) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@320dcfb9 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (318) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@60ba6aae 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (319) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@891cbfb 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (320) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4e6a767d 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (321) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f8930c3 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (322) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@57e06a96 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (323) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@4c3e43c1 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (324) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1e9d1025 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (325) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@73b5b1ed 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (326) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@688cf1bd 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (327) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5013e61 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (328) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@14a654d8 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (329) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@b75e00a 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (330) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@75e0789d 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (331) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@703689b 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (332) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@24648832 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (333) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@81504ee 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (334) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@1bf6a967 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (335) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@70763ff8 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (336) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@3b768524 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (337) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@153b71ba 
+2013/05/29 13:21:10 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (338) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5186ac3f 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (339) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@583d2178 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (340) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@dc27660 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (341) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@78f2869f 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (342) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7a646ec1 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (343) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@57a37fad 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (344) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f1363ce 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (345) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@21fd8187 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (346) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@a42d780 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (347) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2a5219c3 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (348) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@703d6615 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (349) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@256816af 
+2013/05/29 13:21:11 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (350) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@37569ed4 
+2013/05/29 13:21:25 INFO  - jmeter.control.IncludeController: loadIncludedElements -- try to load included module: /home/yuron/opt/jakarta-jmeter-2.4/utilities/CreateResultsFile.jmx 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (351) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@168d3d03 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (352) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@12a09b86 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (353) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@50e605ae 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (354) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@532673c1 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (355) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@179ae8d 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (356) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@5bb2abbc 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (357) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@2f28f2ac 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: AWT-EventQueue-0 (358) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@29541264 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: Listeners will be started after enabling running version 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: To revert to the earlier behaviour, define jmeterengine.startlistenerslater=false 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
+2013/05/29 13:21:25 INFO  - jmeter.gui.util.JMeterMenuBar: setRunning(true,*local*) 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: Starting 1 threads for group Caching. 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
+2013/05/29 13:21:25 INFO  - jmeter.threads.JMeterThread: jmeterthread.startearlier=true (see jmeter.properties) 
+2013/05/29 13:21:25 INFO  - jmeter.threads.JMeterThread: Running PostProcessors in forward order 
+2013/05/29 13:21:25 INFO  - jmeter.control.IncludeController: loadIncludedElements -- try to load included module: /home/yuron/opt/jakarta-jmeter-2.4/utilities/CreateResultsFile.jmx 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (359) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@46b99241 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (360) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@41310dad 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (361) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@43784f9a 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (362) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@52ef3bd9 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (363) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@58424e18 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (364) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@691536ec 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (365) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@6fc8f5d9 
+2013/05/29 13:21:25 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Thread-2 (366) OAMConfigSampler OAMConfigSampler() com.openwave.jmeter.sampler.OAMConfigSampler@7284b2e4 
+2013/05/29 13:21:25 INFO  - jmeter.engine.StandardJMeterEngine: All threads have been started 
+2013/05/29 13:21:25 INFO  - jmeter.threads.JMeterThread: Thread started: Caching 1-1 
+2013/05/29 13:21:26 ERROR - jmeter.samplers.SampleEvent: Cannot obtain local host name java.net.UnknownHostException: ystanyulenis: ystanyulenis: Имя или служба не известны 
+2013/05/29 13:21:26 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@46b99241 
+2013/05/29 13:21:27 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:21:28 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:21:28 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@41310dad 
+2013/05/29 13:21:28 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:21:29 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@43784f9a 
+2013/05/29 13:21:29 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:21:30 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper scopePlus: Cannot scope item in repeating group (1005) 
+2013/05/29 13:21:30 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Transparency] to [none] 
+2013/05/29 13:21:30 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper scopePlus: Cannot scope item in repeating group (1005) 
+2013/05/29 13:21:30 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Transparency] to [none] 
+2013/05/29 13:21:31 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:21:31 INFO  - com.openwave.jmeter.sampler.ssh.SSHInterface: Connecting to bfs-dl360g7-14-xm1.bfs.openwave.com:22 
+2013/05/29 13:21:32 INFO  - com.openwave.jmeter.sampler.ssh.SSHInterface: SSH Server allows password authentication - continuing.. 
+2013/05/29 13:21:56 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@52ef3bd9 
+2013/05/29 13:21:57 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:21:58 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:21:58 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@58424e18 
+2013/05/29 13:21:58 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:21:59 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:21:59 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@691536ec 
+2013/05/29 13:21:59 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:22:00 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:22:00 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@6fc8f5d9 
+2013/05/29 13:22:00 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:22:00 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Threshold] to [3] 
+2013/05/29 13:22:00 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Threshold] to [3] 
+2013/05/29 13:22:01 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Threshold] to [3] 
+2013/05/29 13:22:01 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [Threshold] to [3] 
+2013/05/29 13:22:01 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:22:01 INFO  - com.openwave.jmeter.sampler.OAMConfigSampler: Caching 1-1 (367) OAMConfigSampler sample() com.openwave.jmeter.sampler.OAMConfigSampler@7284b2e4 
+2013/05/29 13:22:01 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Login successful 
+2013/05/29 13:22:02 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully updated parameter [PopularityPollInterval] to [30] 
+2013/05/29 13:22:02 INFO  - com.openwave.jmeter.cqi.CQIWrapper: Caching 1-1 CQIWrapper Successfully saved document 
+2013/05/29 13:25:02 INFO  - jmeter.threads.JMeterThread: Thread finished: Caching 1-1 
+2013/05/29 13:25:02 INFO  - jmeter.engine.StandardJMeterEngine: Ending thread Caching 1-1 
+2013/05/29 13:25:02 INFO  - jmeter.engine.StandardJMeterEngine: Stopping test 
+2013/05/29 13:25:02 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
+2013/05/29 13:25:02 INFO  - jmeter.gui.util.JMeterMenuBar: setRunning(false,*local*) 
+2013/05/29 13:25:02 INFO  - jmeter.engine.StandardJMeterEngine: Test has ended 
