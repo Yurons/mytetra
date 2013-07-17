@@ -2,119 +2,192 @@
 <html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
 p, li { white-space: pre-wrap; }
 </style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-<p><span style="font-family:Sans Serif;"><span style="font-size:9pt;">Глава 5. <a href="http://www.linuxcenter.ru/lib/books/kostromin/gl_05_06.phtml">Оболочка bash Предыдущий раздел</a>	 Оглавление	Следующий раздел </span></span></p>
-<p>&nbsp;<p>5.6. Параметры и переменные. Окружение оболочки</p>
-<p>&nbsp;<p>Понятие параметра в оболочке bash подобно понятию переменной в обычных языках программирования. Именем (или идентификатором) параметра может быть слово, состоящее из алфавитных символов, цифр и знаков подчеркивания (только первый символ этого слова не может быть цифрой), а также число или один из следующих специальных символов: *, @, #, ?, - (дефис), $, !, 0, _ (подчеркивание).</p>
-<p>&nbsp;<p>Говорят, что параметр задан или установлен, если ему присвоено значение. Значением может быть и пустая строка. Чтобы вывести значение параметра, используют символ $ перед его именем. Так, команда</p>
-<p>&nbsp;<p>[user]$ echo name</p>
-<p>&nbsp;<p>выдаст на экран слово name, а команда</p>
-<p>&nbsp;<p>[user]$ echo $name</p>
-<p>&nbsp;<p>выдаст значение переменной name (если таковое, конечно, задано).</p>
-<p>5.6.1 Разновидности параметров</p>
-<p>&nbsp;<p>Параметры разделяются на три класса: позиционные параметры, специальные параметры (именами которых как раз и служат перечисленные только что специальные символы) и переменные оболочки.</p>
-<p>&nbsp;<p>Имена (идентификаторы) позиционных параметров состоят из одной или более цифр (только не из одиночного нуля). Значениями позиционных параметров являются аргументы, которые были заданы при запуске оболочки (первый аргумент является значением позиционного параметра 1, и т. д.). Изменить значение позиционного параметра можно с помощью встроенной команды set. Значения этих параметров изменяются также на время выполнения оболочкой одной из функций (об этом будет рассказано ниже, в разд. 5.8).</p>
-<p>&nbsp;<p>Специальные параметры являются шаблонами, замена (подстановка) которых производится следующим образом.</p>
-<p>&nbsp;<p>Таблица 5.2. Специальные параметры.</p>
-<p>Параметр	</p>
-<p>Правила замены</p>
-<p>&nbsp;<p>*	</p>
-<p>Заменяется позиционными параметрами, начиная с первого. Если замена производится внутри двойных кавычек, то этот параметр заменяется на одно единственное слово, составленное из всех позиционных параметров, разделенных первым символом специальной переменной IFS (о ней будет сказано ниже). То есть ``$*'' эквивалентно ``$1c$2c...'', где c — первый символ в значении переменной IFS. Если IFS присвоено пустое значение или ее значение не установлено, параметры разделяются пробелами</p>
-<p>&nbsp;<p>@	</p>
-<p>Заменяется позиционными параметрами, начиная с первого. Если замена производится внутри двойных кавычек, то каждый параметр заменяется отдельным словом. Так, `` $@'' эквивалентно ''$1'' ''$2'' ... Если позиционных параметров нет, то значение не присваивается (параметр @ просто удаляется)</p>
-<p>&nbsp;<p>#	</p>
-<p>Заменяется десятичным значением числа позиционных параметров</p>
-<p>&nbsp;<p>?	</p>
-<p>Заменяется статусом выхода последнего из выполнявшихся на переднем плане программных каналов</p>
-<p>&nbsp;<p>-</p>
-<p>&nbsp;<p>(дефис)	</p>
-<p>Заменяется текущим набором значений флагов, установленных с помощью встроенной команды set или при запуске самой оболочки</p>
-<p>&nbsp;<p>$	</p>
-<p>Заменяется идентификатором процесса (PID) оболочки</p>
-<p>&nbsp;<p>!	</p>
-<p>Заменяется идентификатором процесса (PID) последней из выполняющихся фоновых (асинхронно выполнявшихся) команд</p>
-<p>&nbsp;<p>0	</p>
-<p>Заменяется именем оболочки или запускаемого скрипта. Если bash запускается для выполнения командного файла, $0 равно имени этого файла. В противном случае это значение равно полному пути к оболочке</p>
-<p>&nbsp;<p>_</p>
-<p>&nbsp;<p>(подчеркивание)	</p>
-<p>Заменяется последним аргументом предыдущей из выполнявшихся команд (если это параметр или переменная, то подставляется ее значение)</p>
-<p>&nbsp;<p>&nbsp;<p>Специальные параметры, перечисленные в приведенной выше таблице, отличаются тем, что на них можно только ссылаться; присваивать им значения нельзя.</p>
-<p>&nbsp;<p>Переменная с точки зрения оболочки — это параметр, обозначаемый именем. Значения переменным присваиваются с помощью оператора следующего вида</p>
-<p>&nbsp;<p>[user]$ name=value</p>
-<p>&nbsp;<p>где name — имя переменной, а value — присваиваемое ей значение (может быть пустой строкой). Имя переменой может состоять только из цифр и букв и не может начинаться с цифры. Значением может быть любой текст. Если значение содержит специальные символы, то его надо взять в кавычки. Присвоенное значение этих кавычек не содержит, естественно. Если переменная задана, то ее можно удалить, используя встроенную команду оболочки unset.</p>
-<p>&nbsp;<p>Набор всех установленных переменных оболочки с присвоенными им значениями называется окружением (environment) или средой оболочки. Вы можете просмотреть его с помощью команды set без параметров (только, может быть, следует организовать конвейер &quot;set | less&quot;). В выводе этой команды все переменные окружения перечисляются в алфавитном порядке. Для того чтобы просмотреть значение одной конкретной переменной, можно вместо команды set (в выводе которой нужную переменную еще искать и искать) можно воспользоваться командой</p>
-<p>&nbsp;<p>[user]$ echo $name</p>
-<p>&nbsp;<p>(правда, в этом случае вы должны знать имя интересующей вас переменной).</p>
-<p>&nbsp;<p>Среди переменных, которые вы увидите в выводе команды set, встречаются очень интересные переменные. Обратите, например, внимание на переменную RANDOM. Если вы несколько раз подряд выполните команду</p>
-<p>&nbsp;<p>[user]$ echo $RANDOM</p>
-<p>&nbsp;<p>вы каждый раз будете получать новое значение. Дело в том, что эта переменная возвращает случайное целое из интервала 0 — 32 768.</p>
-<p>5.6.2 Приглашения оболочки</p>
-<p>&nbsp;<p>Одна из очень важных переменных имеет имя PS1. Эта переменная задает вид приглашения, которое bash выводит, когда ожидает ввода очередной команды пользователем. По умолчанию этой переменной присвоено значение &quot;\s-\v\$ &quot;. Вообще-то в bash существует четыре приглашения, которые используются в разных ситуациях. Переменная PS1 задает вид строки приглашения, которая выдается тогда, когда оболочка ждет ввода команды. Вторичное приглашение, задаваемое переменной PS2, появляется тогда, когда оболочка ожидает от пользователя ввода еще каких-то данных, необходимых для продолжения работы запущенной команды или программы. По умолчанию переменная PS2 имеет значение &quot;&gt;&quot;. Вы уже имели возможность видеть это приглашение, когда запускали команду cat для ввода данных с клавиатуры в файл. Другой пример — команда ftp, после запуска которой приглашение тоже принимает такой вид.</p>
-<p>&nbsp;<p>Приглашение, задаваемое переменной PS3, используется в команде select. Приглашение, задаваемое переменной PS4, выводится перед каждой командой, в то время, когда bash отслеживает процесс выполнения. Значение по умолчанию — &quot;+&quot;.</p>
-<p>&nbsp;<p>Если у вас есть такое желание, вы можете изменить вид переменных PS1 и PS2. При этом можно использовать как любые символы, вводимые с клавиатуры, так и некоторое число специальных символов, которые при формировании строки приглашения декодируются в соответствии с табл. 5.3 (приводим только некоторые из них, для примера; полный список см. в man-странице по утилите bash).</p>
-<p>&nbsp;<p>Таблица 5.3. Специальные символы для формирования приглашения</p>
-<p>Символ	</p>
-<p>Его значение</p>
-<p>&nbsp;<p>\a	</p>
-<p>Звуковой сигнал (ASCII-код 07)</p>
-<p>&nbsp;<p>\d	</p>
-<p>Дата в формате &quot;День, месяц, число&quot;, например, Срд, Окт, 17.</p>
-<p>&nbsp;<p>\h	</p>
-<p>Имя хоста (hostname) до первой точки</p>
-<p>&nbsp;<p>\H	</p>
-<p>Полное имя хоста </p>
-<p>&nbsp;<p>\t	</p>
-<p>Текущее время в 24-часовом формате: HH:MM:SS (часы:минуты:секунды)</p>
-<p>&nbsp;<p>\T	</p>
-<p>Текущее время в 12-часовом формате: HH:MM:SS</p>
-<p>&nbsp;<p>\@	</p>
-<p>Текущее время в 12-часовом формате am/pm</p>
-<p>&nbsp;<p>\u	</p>
-<p>Имя пользователя, запустившего оболочку</p>
-<p>&nbsp;<p>\w	</p>
-<p>Полное имя текущего рабочего каталога (начиная с корня)</p>
-<p>&nbsp;<p>\W	</p>
-<p>Текущий рабочий каталог (без указания пути)</p>
-<p>&nbsp;<p>\$	</p>
-<p>Символ #, если оболочка запущена суперпользователем, и символ $, если оболочка запущена обычным пользователем.</p>
-<p>&nbsp;<p>\nnn	</p>
-<p>Символ, имеющий восьмеричный код nnn</p>
-<p>&nbsp;<p>\n	</p>
-<p>Новая строка (перевод строки)</p>
-<p>&nbsp;<p>\s	</p>
-<p>Имя оболочки</p>
-<p>&nbsp;<p>\#	</p>
-<p>Текущий номер команды</p>
-<p>&nbsp;<p>\\	</p>
-<p>Обратный слэш (a backslash)</p>
-<p>&nbsp;<p>\[	</p>
-<p>Начало последовательности не печатаемых символов (этот символ может быть использован для того, чтобы включить в текст подсказки последовательность управляющих символов терминала)</p>
-<p>&nbsp;<p>\]	</p>
-<p>Конец последовательности не печатаемых символов</p>
-<p>&nbsp;<p>\!	</p>
-<p>Порядковый номер данной команды в истории команд</p>
-<p>&nbsp;<p>&nbsp;<p>Текущий номер команды (порядковый номер выполняемой команды в рамках текущей сессии) может отличаться от номера данной команды в списке истории команд, поскольку последний включает в себя команды, которые были сохранены в файле истории команд.</p>
-<p>&nbsp;<p>После того, как значение переменной, определяющей подсказку, прочитано оболочкой, в нем могут быть произведены подстановки в соответствии с правилами расширения параметров, подстановок в именах команд и арифметических выражениях, а также разбиения слов (word splitting). Об этих правилах будет рассказано чуть ниже, в разд. 5.7.</p>
-<p>&nbsp;<p>Например, после выполнения команды (поскольку в строке имеется пробел, кавычки обязательны)</p>
-<p>&nbsp;<p>[root]# PS1=&quot;[\u@\h \W]\$&quot;</p>
-<p>&nbsp;<p>в стандартном приглашении будет выводиться квадратная скобка, имя пользователя, символ @, имя компьютера, пробел, название текущего каталога (без указания пути), закрывающая квадратная скобка и символ $ (если в оболочке работает простой пользователь) или # (если оболочка запущена от имени пользователя root).</p>
-<p>5.6.3 Переменная PATH</p>
-<p>&nbsp;<p>Еще одна очень важная переменная имеет имя PATH.  Она задает перечень путей к каталогам, в которых bash осуществляет поиск файлов (в частности, файлов с командами) в тех случаях, когда полный путь к файлу не задан в командной строке. Отдельные каталоги в этом перечне разделяются двоеточиями. По умолчанию переменная PATH включает каталоги /usr/local/bin, /bin, /usr/bin, /usr/X11R6/bin, т. е. имеет вид:</p>
-<p>&nbsp;<p>/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:</p>
-<p>&nbsp;<p>Для того, чтобы добавить каталог в этот список, нужно выполнить следующую команду:</p>
-<p>&nbsp;<p>[root]# PATH=$PATH:new_path.</p>
-<p>&nbsp;<p>При осуществлении поиска оболочка просматривает каталоги именно в том порядке, как они перечислены в переменной PATH.</p>
-<p>&nbsp;<p>Отметим, что можно включить в этот список и текущий каталог, добавив в переменную PATH точку. Однако этого не рекомендуется делать по соображениям безопасности: злоумышленник может положить в общедоступный каталог команду, имя которой совпадает с одной из часто выполняемых суперпользователем команд, но выполняющую совершенно другие действия (особенно если текущий каталог стоит в начале перечня путей поиска).</p>
-<p>5.6.4 Переменная IFS</p>
-<p>&nbsp;<p>Эта переменная задает разделители полей (Internal Field Separator), которые используются при операции разделения слов при преобразованиях командной строки, выполняемых оболочкой перед тем, как запустить командную строку на исполнение. Значение этой переменной по умолчанию — &quot;&lt;Пробел&gt;&lt;Tab&gt;&lt;Символ_новой_строки&gt;&quot;.</p>
-<p>5.6.5 Текущий и домашний каталоги</p>
-<p>&nbsp;<p>Имя текущего каталога сохраняется в переменной окружения (с именем PWD), и значение этой переменной изменяется при каждом запуске программы cd (а также при смене текущего каталога любым другим способом, например, через Midnight Commander).</p>
-<p>&nbsp;<p>Аналогичным образом полное имя (с указанием пути) домашнего каталога пользователя, запустившего данный процесс, сохраняется в переменной HOME.</p>
-<p>5.6.6 Команда export</p>
-<p>&nbsp;<p>Когда оболочка запускает на выполнение какую-то программу или команду, она передает им часть переменных окружения. Для того, чтобы переменная окружения передавалась запускаемому из оболочки процессу, ее нужно задавать с помощью специальной команды export, т. е. вместо</p>
-<p>&nbsp;<p>[user]$ name=value</p>
-<p>&nbsp;<p>надо записать</p>
-<p>&nbsp;<p>[user]$ export name=value</p>
-<p>&nbsp;<p>В таком случае все запускаемые из оболочки программы (в том числе вторичные экземпляры самой оболочки) будут иметь доступ к заданным таким образом переменным, т. е. могут вызывать их значения по именам. </p>
-
-</p></body></html>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Глава 5. </span><a href="http://www.linuxcenter.ru/lib/books/kostromin/gl_05_06.phtml"><span style=" font-family:'Sans Serif'; font-size:9pt; text-decoration: underline; color:#0000ff;">Оболочка bash Предыдущий раздел</span></a><span style=" font-family:'Sans Serif'; font-size:9pt;">	 Оглавление	Следующий раздел </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6. Параметры и переменные. Окружение оболочки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Понятие параметра в оболочке bash подобно понятию переменной в обычных языках программирования. Именем (или идентификатором) параметра может быть слово, состоящее из алфавитных символов, цифр и знаков подчеркивания (только первый символ этого слова не может быть цифрой), а также число или один из следующих специальных символов: *, @, #, ?, - (дефис), $, !, 0, _ (подчеркивание).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Говорят, что параметр задан или установлен, если ему присвоено значение. Значением может быть и пустая строка. Чтобы вывести значение параметра, используют символ $ перед его именем. Так, команда</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ echo name</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">выдаст на экран слово name, а команда</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ echo $name</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">выдаст значение переменной name (если таковое, конечно, задано).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.1 Разновидности параметров</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Параметры разделяются на три класса: позиционные параметры, специальные параметры (именами которых как раз и служат перечисленные только что специальные символы) и переменные оболочки.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имена (идентификаторы) позиционных параметров состоят из одной или более цифр (только не из одиночного нуля). Значениями позиционных параметров являются аргументы, которые были заданы при запуске оболочки (первый аргумент является значением позиционного параметра 1, и т. д.). Изменить значение позиционного параметра можно с помощью встроенной команды set. Значения этих параметров изменяются также на время выполнения оболочкой одной из функций (об этом будет рассказано ниже, в разд. 5.8).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Специальные параметры являются шаблонами, замена (подстановка) которых производится следующим образом.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Таблица 5.2. Специальные параметры.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Параметр	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Правила замены</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">*	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется позиционными параметрами, начиная с первого. Если замена производится внутри двойных кавычек, то этот параметр заменяется на одно единственное слово, составленное из всех позиционных параметров, разделенных первым символом специальной переменной IFS (о ней будет сказано ниже). То есть ``$*'' эквивалентно ``$1c$2c...'', где c — первый символ в значении переменной IFS. Если IFS присвоено пустое значение или ее значение не установлено, параметры разделяются пробелами</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">@	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется позиционными параметрами, начиная с первого. Если замена производится внутри двойных кавычек, то каждый параметр заменяется отдельным словом. Так, `` $@'' эквивалентно ''$1'' ''$2'' ... Если позиционных параметров нет, то значение не присваивается (параметр @ просто удаляется)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">#	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется десятичным значением числа позиционных параметров</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">?	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется статусом выхода последнего из выполнявшихся на переднем плане программных каналов</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">(дефис)	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется текущим набором значений флагов, установленных с помощью встроенной команды set или при запуске самой оболочки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">$	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется идентификатором процесса (PID) оболочки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">!	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется идентификатором процесса (PID) последней из выполняющихся фоновых (асинхронно выполнявшихся) команд</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется именем оболочки или запускаемого скрипта. Если bash запускается для выполнения командного файла, $0 равно имени этого файла. В противном случае это значение равно полному пути к оболочке</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">_</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">(подчеркивание)	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Заменяется последним аргументом предыдущей из выполнявшихся команд (если это параметр или переменная, то подставляется ее значение)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Специальные параметры, перечисленные в приведенной выше таблице, отличаются тем, что на них можно только ссылаться; присваивать им значения нельзя.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Переменная с точки зрения оболочки — это параметр, обозначаемый именем. Значения переменным присваиваются с помощью оператора следующего вида</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ name=value</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">где name — имя переменной, а value — присваиваемое ей значение (может быть пустой строкой). Имя переменой может состоять только из цифр и букв и не может начинаться с цифры. Значением может быть любой текст. Если значение содержит специальные символы, то его надо взять в кавычки. Присвоенное значение этих кавычек не содержит, естественно. Если переменная задана, то ее можно удалить, используя встроенную команду оболочки unset.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Набор всех установленных переменных оболочки с присвоенными им значениями называется окружением (environment) или средой оболочки. Вы можете просмотреть его с помощью команды set без параметров (только, может быть, следует организовать конвейер &quot;set | less&quot;). В выводе этой команды все переменные окружения перечисляются в алфавитном порядке. Для того чтобы просмотреть значение одной конкретной переменной, можно вместо команды set (в выводе которой нужную переменную еще искать и искать) можно воспользоваться командой</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ echo $name</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">(правда, в этом случае вы должны знать имя интересующей вас переменной).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Среди переменных, которые вы увидите в выводе команды set, встречаются очень интересные переменные. Обратите, например, внимание на переменную RANDOM. Если вы несколько раз подряд выполните команду</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ echo $RANDOM</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">вы каждый раз будете получать новое значение. Дело в том, что эта переменная возвращает случайное целое из интервала 0 — 32 768.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.2 Приглашения оболочки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Одна из очень важных переменных имеет имя PS1. Эта переменная задает вид приглашения, которое bash выводит, когда ожидает ввода очередной команды пользователем. По умолчанию этой переменной присвоено значение &quot;\s-\v\$ &quot;. Вообще-то в bash существует четыре приглашения, которые используются в разных ситуациях. Переменная PS1 задает вид строки приглашения, которая выдается тогда, когда оболочка ждет ввода команды. Вторичное приглашение, задаваемое переменной PS2, появляется тогда, когда оболочка ожидает от пользователя ввода еще каких-то данных, необходимых для продолжения работы запущенной команды или программы. По умолчанию переменная PS2 имеет значение &quot;&gt;&quot;. Вы уже имели возможность видеть это приглашение, когда запускали команду cat для ввода данных с клавиатуры в файл. Другой пример — команда ftp, после запуска которой приглашение тоже принимает такой вид.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Приглашение, задаваемое переменной PS3, используется в команде select. Приглашение, задаваемое переменной PS4, выводится перед каждой командой, в то время, когда bash отслеживает процесс выполнения. Значение по умолчанию — &quot;+&quot;.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Если у вас есть такое желание, вы можете изменить вид переменных PS1 и PS2. При этом можно использовать как любые символы, вводимые с клавиатуры, так и некоторое число специальных символов, которые при формировании строки приглашения декодируются в соответствии с табл. 5.3 (приводим только некоторые из них, для примера; полный список см. в man-странице по утилите bash).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Таблица 5.3. Специальные символы для формирования приглашения</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Символ	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Его значение</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\a	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Звуковой сигнал (ASCII-код 07)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\d	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дата в формате &quot;День, месяц, число&quot;, например, Срд, Окт, 17.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\h	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имя хоста (hostname) до первой точки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\H	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Полное имя хоста </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\t	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущее время в 24-часовом формате: HH:MM:SS (часы:минуты:секунды)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\T	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущее время в 12-часовом формате: HH:MM:SS</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\@	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущее время в 12-часовом формате am/pm</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\u	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имя пользователя, запустившего оболочку</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\w	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Полное имя текущего рабочего каталога (начиная с корня)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\W	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущий рабочий каталог (без указания пути)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\$	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Символ #, если оболочка запущена суперпользователем, и символ $, если оболочка запущена обычным пользователем.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\nnn	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Символ, имеющий восьмеричный код nnn</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\n	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Новая строка (перевод строки)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\s	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имя оболочки</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\#	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущий номер команды</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\\	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Обратный слэш (a backslash)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\[	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Начало последовательности не печатаемых символов (этот символ может быть использован для того, чтобы включить в текст подсказки последовательность управляющих символов терминала)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\]	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конец последовательности не печатаемых символов</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">\!	</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Порядковый номер данной команды в истории команд</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Текущий номер команды (порядковый номер выполняемой команды в рамках текущей сессии) может отличаться от номера данной команды в списке истории команд, поскольку последний включает в себя команды, которые были сохранены в файле истории команд.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">После того, как значение переменной, определяющей подсказку, прочитано оболочкой, в нем могут быть произведены подстановки в соответствии с правилами расширения параметров, подстановок в именах команд и арифметических выражениях, а также разбиения слов (word splitting). Об этих правилах будет рассказано чуть ниже, в разд. 5.7.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Например, после выполнения команды (поскольку в строке имеется пробел, кавычки обязательны)</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[root]# PS1=&quot;[\u@\h \W]\$&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">в стандартном приглашении будет выводиться квадратная скобка, имя пользователя, символ @, имя компьютера, пробел, название текущего каталога (без указания пути), закрывающая квадратная скобка и символ $ (если в оболочке работает простой пользователь) или # (если оболочка запущена от имени пользователя root).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.3 Переменная PATH</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Еще одна очень важная переменная имеет имя PATH.  Она задает перечень путей к каталогам, в которых bash осуществляет поиск файлов (в частности, файлов с командами) в тех случаях, когда полный путь к файлу не задан в командной строке. Отдельные каталоги в этом перечне разделяются двоеточиями. По умолчанию переменная PATH включает каталоги /usr/local/bin, /bin, /usr/bin, /usr/X11R6/bin, т. е. имеет вид:</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Для того, чтобы добавить каталог в этот список, нужно выполнить следующую команду:</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[root]# PATH=$PATH:new_path.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">При осуществлении поиска оболочка просматривает каталоги именно в том порядке, как они перечислены в переменной PATH.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Отметим, что можно включить в этот список и текущий каталог, добавив в переменную PATH точку. Однако этого не рекомендуется делать по соображениям безопасности: злоумышленник может положить в общедоступный каталог команду, имя которой совпадает с одной из часто выполняемых суперпользователем команд, но выполняющую совершенно другие действия (особенно если текущий каталог стоит в начале перечня путей поиска).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.4 Переменная IFS</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Эта переменная задает разделители полей (Internal Field Separator), которые используются при операции разделения слов при преобразованиях командной строки, выполняемых оболочкой перед тем, как запустить командную строку на исполнение. Значение этой переменной по умолчанию — &quot;&lt;Пробел&gt;&lt;Tab&gt;&lt;Символ_новой_строки&gt;&quot;.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.5 Текущий и домашний каталоги</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имя текущего каталога сохраняется в переменной окружения (с именем PWD), и значение этой переменной изменяется при каждом запуске программы cd (а также при смене текущего каталога любым другим способом, например, через Midnight Commander).</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Аналогичным образом полное имя (с указанием пути) домашнего каталога пользователя, запустившего данный процесс, сохраняется в переменной HOME.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5.6.6 Команда export</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Когда оболочка запускает на выполнение какую-то программу или команду, она передает им часть переменных окружения. Для того, чтобы переменная окружения передавалась запускаемому из оболочки процессу, ее нужно задавать с помощью специальной команды export, т. е. вместо</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ name=value</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">надо записать</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[user]$ export name=value</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">В таком случае все запускаемые из оболочки программы (в том числе вторичные экземпляры самой оболочки) будут иметь доступ к заданным таким образом переменным, т. е. могут вызывать их значения по именам. </p></body></html>

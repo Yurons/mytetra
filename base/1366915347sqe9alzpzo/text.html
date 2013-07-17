@@ -2,77 +2,94 @@
 <html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
 p, li { white-space: pre-wrap; }
 </style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-<p>If/Else</p>
-<p>&nbsp;<p>&nbsp;<p> In order for a script to be very useful, you will need to be able to test the conditions of variables. Most programming and scripting languages have some sort of if/else expression and so does the bourne shell. Unlike most other languages, spaces are very important when using an if statement. Let's do a simple script that will ask a user for a password before allowing him to continue. This is obviously not how you would implement such security in a real system, but it will make a good example of using if and else statements. </p>
-<p>#!/bin/sh</p>
-<p># This is some secure program that uses security.</p>
-<p>&nbsp;<p>VALID_PASSWORD=&quot;secret&quot; #this is our password.</p>
-<p>&nbsp;<p>echo &quot;Please enter the password:&quot;</p>
-<p>read PASSWORD</p>
-<p>&nbsp;<p>if [ &quot;$PASSWORD&quot; == &quot;$VALID_PASSWORD&quot; ]; then</p>
-<p>	echo &quot;You have access!&quot;</p>
-<p>else</p>
-<p>	echo &quot;ACCESS DENIED!&quot;</p>
-<p>fi</p>
-<p>&nbsp;<p> Remember that the spacing is very important in the if statement. Notice that the termination of the if statement is fi. You will need to use the fi statement to terminate an if whether or not use use an else as well. You can also replace the &quot;==&quot; with &quot;!=&quot; to test if the variables are NOT equal. There are other tokens that you can put in place of the &quot;==&quot; for other types of tests. The following table shows the different expressions allowed. </p>
-<p>Comparisons:</p>
-<p>-eq	equal to</p>
-<p>-ne	not equal to</p>
-<p>-lt	less than</p>
-<p>-le	less than or equal to</p>
-<p>-gt	greater than</p>
-<p>-ge	greater than or equal to</p>
-<p>&nbsp;<p>&nbsp;<p>File Operations: </p>
-<p>-s	file exists and is not empty</p>
-<p>-f	file exists and is not a directory</p>
-<p>-d	directory exists</p>
-<p>-x	file is executable</p>
-<p>-w	file is writable</p>
-<p>-r	file is readable</p>
-<p>&nbsp;<p>&nbsp;<p>&nbsp;<p> Let's try using a couple of these in a script. This next script will ask for a user name, if there is not a file that exists with the name &quot;username_DAT&quot;, the script will prompt the user for their age, it will then make sure that they are old enough to use this program and then it will write their age to a file with the name &quot;username_DAT&quot;. If the file already exists, it will just display the age of the user. </p>
-<p>#!/bin/sh</p>
-<p>&nbsp;<p># Prompt for a user name...</p>
-<p>echo &quot;Please enter your name:&quot;</p>
-<p>read USERNAME</p>
-<p>&nbsp;<p># Check for the file.</p>
-<p>if [ -s ${USERNAME}_DAT ]; then</p>
-<p>        # Read the age from the file.</p>
-<p>        AGE=`cat ${USERNAME}_DAT`</p>
-<p>        echo &quot;You are $AGE years old!&quot;</p>
-<p>else</p>
-<p>        # Ask the user for his/her age</p>
-<p>        echo &quot;How old are you?&quot;</p>
-<p>        read AGE</p>
-<p>&nbsp;<p>	if [ &quot;$AGE&quot; -le 2 ]; then</p>
-<p>		echo &quot;You are too young!&quot;</p>
-<p>	else </p>
-<p>		if [ &quot;$AGE&quot; -ge 100 ]; then</p>
-<p>			echo &quot;You are too old!&quot;</p>
-<p>		else</p>
-<p>        		# Write the age to a new file.</p>
-<p>        		echo $AGE &gt; ${USERNAME}_DAT</p>
-<p>        	fi</p>
-<p>        fi</p>
-<p>fi</p>
-<p>&nbsp;<p> Run this program a couple of times. First run it and give it the user name of &quot;john&quot;. When it asks for an age, enter the age &quot;1&quot;. Notice that it will say that you are too you and then exit. Now run the program again with the name &quot;john&quot; and the age 200. This time the script will tell you that you are too old and exit. Now run the the script again with the name of &quot;john&quot;, enter the age 30. The script exits normally this time, the program created a file called &quot;john_DAT&quot; which contains the text &quot;30&quot;. Finally run the program one more time and give it the name &quot;john&quot;. This time it will not prompt you to enter an age, instead it will read the age from a file and say &quot;Your are 30 years old!&quot;. </p>
-<p>&nbsp;<p> We introduced something else new in this script. On line 10 of the file, we see the code: </p>
-<p>	AGE=`cat ${USERNAME}_DAT`</p>
-<p>&nbsp;<p> This is how you execute a command and put the text output from the command into a variable. The unix command cat reads the file named ${USERNAME}_DAT and outputs it to the console. Instead of putting it to the console in our script, we wrap the command with the character `, this puts the text into our variable AGE. </p>
-<p>&nbsp;<p> You can test multiple expressions at once by using the || (or) operator or the &amp;&amp; (and) operator. This can save you from writing extra code to nest if statements. The above code has a nested if statement where it checks if the age is greater than or equal to 100. This could be changed as well by using elif (else if). The structure of elif is the same as the structure of if, we will use it in an example below. In this example, we will check for certain age ranges. If you are less than 20 or greater than 50, you are out of the age range. If you are between 20 and 30 you are in your 20's and so on. </p>
-<p>#!/bin/sh</p>
-<p>&nbsp;<p># Prompt for a user name...</p>
-<p>echo &quot;Please enter your age:&quot;</p>
-<p>read AGE</p>
-<p>&nbsp;<p>if [ &quot;$AGE&quot; -lt 20 ] || [ &quot;$AGE&quot; -ge 50 ]; then</p>
-<p>	echo &quot;Sorry, you are out of the age range.&quot;</p>
-<p>elif [ &quot;$AGE&quot; -ge 20 ] &amp;&amp; [ &quot;$AGE&quot; -lt 30 ]; then </p>
-<p>	echo &quot;You are in your 20s&quot;</p>
-<p>elif [ &quot;$AGE&quot; -ge 30 ] &amp;&amp; [ &quot;$AGE&quot; -lt 40 ]; then </p>
-<p>	echo &quot;You are in your 30s&quot;</p>
-<p>elif [ &quot;$AGE&quot; -ge 40 ] &amp;&amp; [ &quot;$AGE&quot; -lt 50 ]; then </p>
-<p>	echo &quot;You are in your 40s&quot;</p>
-<p>fi</p>
-<p> </p>
-
-</p></body></html>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If/Else</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> In order for a script to be very useful, you will need to be able to test the conditions of variables. Most programming and scripting languages have some sort of if/else expression and so does the bourne shell. Unlike most other languages, spaces are very important when using an if statement. Let's do a simple script that will ask a user for a password before allowing him to continue. This is obviously not how you would implement such security in a real system, but it will make a good example of using if and else statements. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">#!/bin/sh</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"># This is some secure program that uses security.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">VALID_PASSWORD=&quot;secret&quot; #this is our password.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">echo &quot;Please enter the password:&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">read PASSWORD</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">if [ &quot;$PASSWORD&quot; == &quot;$VALID_PASSWORD&quot; ]; then</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;You have access!&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">else</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;ACCESS DENIED!&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">fi</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> Remember that the spacing is very important in the if statement. Notice that the termination of the if statement is fi. You will need to use the fi statement to terminate an if whether or not use use an else as well. You can also replace the &quot;==&quot; with &quot;!=&quot; to test if the variables are NOT equal. There are other tokens that you can put in place of the &quot;==&quot; for other types of tests. The following table shows the different expressions allowed. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Comparisons:</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-eq	equal to</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-ne	not equal to</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-lt	less than</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-le	less than or equal to</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-gt	greater than</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-ge	greater than or equal to</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">File Operations: </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-s	file exists and is not empty</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-f	file exists and is not a directory</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-d	directory exists</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-x	file is executable</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-w	file is writable</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">-r	file is readable</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> Let's try using a couple of these in a script. This next script will ask for a user name, if there is not a file that exists with the name &quot;username_DAT&quot;, the script will prompt the user for their age, it will then make sure that they are old enough to use this program and then it will write their age to a file with the name &quot;username_DAT&quot;. If the file already exists, it will just display the age of the user. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">#!/bin/sh</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"># Prompt for a user name...</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">echo &quot;Please enter your name:&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">read USERNAME</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"># Check for the file.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">if [ -s ${USERNAME}_DAT ]; then</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        # Read the age from the file.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        AGE=`cat ${USERNAME}_DAT`</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        echo &quot;You are $AGE years old!&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">else</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        # Ask the user for his/her age</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        echo &quot;How old are you?&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        read AGE</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	if [ &quot;$AGE&quot; -le 2 ]; then</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">		echo &quot;You are too young!&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	else </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">		if [ &quot;$AGE&quot; -ge 100 ]; then</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">			echo &quot;You are too old!&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">		else</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        		# Write the age to a new file.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        		echo $AGE &gt; ${USERNAME}_DAT</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        	fi</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">        fi</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">fi</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> Run this program a couple of times. First run it and give it the user name of &quot;john&quot;. When it asks for an age, enter the age &quot;1&quot;. Notice that it will say that you are too you and then exit. Now run the program again with the name &quot;john&quot; and the age 200. This time the script will tell you that you are too old and exit. Now run the the script again with the name of &quot;john&quot;, enter the age 30. The script exits normally this time, the program created a file called &quot;john_DAT&quot; which contains the text &quot;30&quot;. Finally run the program one more time and give it the name &quot;john&quot;. This time it will not prompt you to enter an age, instead it will read the age from a file and say &quot;Your are 30 years old!&quot;. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> We introduced something else new in this script. On line 10 of the file, we see the code: </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	AGE=`cat ${USERNAME}_DAT`</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> This is how you execute a command and put the text output from the command into a variable. The unix command cat reads the file named ${USERNAME}_DAT and outputs it to the console. Instead of putting it to the console in our script, we wrap the command with the character `, this puts the text into our variable AGE. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> You can test multiple expressions at once by using the || (or) operator or the &amp;&amp; (and) operator. This can save you from writing extra code to nest if statements. The above code has a nested if statement where it checks if the age is greater than or equal to 100. This could be changed as well by using elif (else if). The structure of elif is the same as the structure of if, we will use it in an example below. In this example, we will check for certain age ranges. If you are less than 20 or greater than 50, you are out of the age range. If you are between 20 and 30 you are in your 20's and so on. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">#!/bin/sh</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"># Prompt for a user name...</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">echo &quot;Please enter your age:&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">read AGE</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">if [ &quot;$AGE&quot; -lt 20 ] || [ &quot;$AGE&quot; -ge 50 ]; then</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;Sorry, you are out of the age range.&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">elif [ &quot;$AGE&quot; -ge 20 ] &amp;&amp; [ &quot;$AGE&quot; -lt 30 ]; then </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;You are in your 20s&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">elif [ &quot;$AGE&quot; -ge 30 ] &amp;&amp; [ &quot;$AGE&quot; -lt 40 ]; then </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;You are in your 30s&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">elif [ &quot;$AGE&quot; -ge 40 ] &amp;&amp; [ &quot;$AGE&quot; -lt 50 ]; then </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	echo &quot;You are in your 40s&quot;</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">fi</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p></body></html>

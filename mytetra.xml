@@ -76,6 +76,7 @@
        <record dir="13669153588fmhdwmda7" crypt="0" url="" tags="" author="" id="1366915358fbju3vmw1o" ctime="20130425214238" name="if/else" file="text.html"/>
        <record dir="1366915368681pj41l12" crypt="0" url="" tags="" author="" id="1366915368axvtzug15m" ctime="20130425214248" name="Оболочка bash Предыдущий раздел" file="text.html"/>
        <record dir="1366915378q0zmtegpf1" crypt="0" url="" tags="" author="" id="1366915378bj7cbx9im5" ctime="20130425214258" name="Часть 6: Структура If…then…else" file="text.html"/>
+       <record dir="1373291799uadz05lmft" crypt="0" url="" tags="" author="" id="1373291799oe7ij81c3p" ctime="20130708165639" name="Работа со строками в bash" file="text.html"/>
       </recordtable>
      </node>
      <node id="1366918026szdwcvi6ye" name="awk">
@@ -179,6 +180,7 @@
      <recordtable>
       <record dir="1366966434ezum8x04tl" crypt="1" url="" tags="" author="" id="1366966434dq9wx7qzfl" ctime="20130426115354" name="u2c/W0OnZmH1g5MLqHjE6NSfjcWPgEtH" file="text.html"/>
       <record dir="1366966434g11emltcuv" crypt="1" url="" tags="" author="" id="1366966434u8u5a22bmv" ctime="20130426115354" name="RCnB3qDJBVtlOu83ZIn9rl/iOao8uBVL2q3F6vX7xFyLyZUuZVUJTQ==" file="text.html"/>
+      <record dir="1372329817kkhgplst91" crypt="1" url="" tags="" author="" id="1372329817epmm7ng2mp" ctime="20130627134337" name="/h16LwS+LA7qe+rnUuEBEgEolRJkZT4KAPvKoVOZik4=" file="text.html"/>
      </recordtable>
      <node crypt="1" id="1366966434wf15byt1d8" name="2DD9nOtOPxKYfYCl50buQH5ZyDuMRByM">
       <recordtable>
@@ -228,11 +230,12 @@
          <record dir="1366966434xzqr58s3mj" crypt="1" url="" tags="" author="" id="1366966434wxqbwkyc73" ctime="20130426115354" name="oQfKs47LpfK9ExdST0sUSXbvjPwpfmfK1TDW/4JZeQc=" file="text.html"/>
          <record dir="1366966434zknphfav2p" crypt="1" url="" tags="" author="" id="13669664342z48qphztj" ctime="20130426115354" name="t4MNHSQU59dwCaSHbR9ojve5Nms3ljTWCh4YMt7BgJ8Qv5kVaudRRw==" file="text.html"/>
         </recordtable>
-        <node crypt="1" id="1366966434i5gpgd9f5h" name="DFfxg8ht1hr35u0KgMtY85LxcPl42tZp">
+        <node crypt="1" id="1366966434i5gpgd9f5h" name="grbqPl55z96iOL6ORDQMbaveLvPT06qA">
          <recordtable>
           <record dir="1366966434ykh1pegzqz" crypt="1" url="" tags="" author="" id="136696643448y9g5yd47" ctime="20130426115354" name="odSXWFekdXsPBDOqfLzYBb6y7JBB64XI" file="text.html"/>
           <record dir="1366966434x2ctrt61or" crypt="1" url="" tags="" author="" id="1366966434y2rf4ga0v0" ctime="20130426115354" name="yI8X3TkjNSodZ5QK65KWHTlpTBENOeaF" file="text.html"/>
           <record dir="1366966434f08ep4jnin" crypt="1" url="" tags="" author="" id="1366966434vvpnohgbik" ctime="20130426115354" name="vqxJEQhZ4flM/pdIId0pMsotgO5hMjN3" file="text.html"/>
+          <record dir="13727688418i8t6rjv5m" crypt="1" url="" tags="" author="" id="1372768841358fdkkb4j" ctime="20130702154041" name="V4fqDLB9yDbM+Bv4QioxZuBP3OR1GL14cSkW9mIFzRAMahPDxUaIjQ==" file="text.html"/>
          </recordtable>
         </node>
         <node crypt="1" id="13669664342wnab7qln2" name="UtD0z+er7dO5djRadr5Adgi0hSXPxd1rAbPaOhiN3sQ=">
@@ -260,6 +263,8 @@
           <record dir="137060074982ac34j5rt" crypt="1" url="" tags="" author="" id="1370600749888wy4zhrd" ctime="20130607132549" name="Bkgnthl3b68ap3CMaoEXw0vJ+8rPOUXP" file="text.html"/>
           <record dir="1371141068inrkz6ga61" crypt="1" url="" tags="" author="" id="1371141068qohol7rreq" ctime="20130613193108" name="yfukueWdKPfPgxrUqApABhrr5GSP4Wud" file="text.html"/>
           <record dir="137146765500lm1lv971" crypt="1" url="" tags="" author="" id="1371467655n0qk9gfa6z" ctime="20130617141415" name="ok8xOzeoFvpgerpfsBH0RXxARVv4bctr" file="text.html"/>
+          <record dir="1371725683wv0afm7cgm" crypt="1" url="" tags="" author="" id="1371725683uv5c550liy" ctime="20130620135443" name="Nbe0uUcHSrjJVaKwDly3SE1nDERkRTcZ" file="text.html"/>
+          <record dir="1372154133et7khz3eo8" crypt="1" url="" tags="" author="" id="1372154133xewkgr8sr4" ctime="20130625125533" name="axy7GN9LAmWykbi/Dl05DdG4fnhX0QCg" file="text.html"/>
          </recordtable>
         </node>
        </node>
@@ -279,6 +284,7 @@
         <record dir="1366966434tnhp1fc3ia" crypt="1" url="" tags="" author="" id="1366966434wtno7mi2m3" ctime="20130426115354" name="adwzSWdxfLKn/GwzslLV+YotiK/OTYUTtW+nE0dUWU4=" file="text.html"/>
         <record dir="13669664342uqn3ri72j" crypt="1" url="" tags="" author="" id="13669664340vnh04xd7v" ctime="20130426115354" name="IAENTrHVjhonoym6T0XctvYwSm7KhbWb3QAoaLSWemEbSnXKDclg86FTDifIyTym" file="text.html"/>
         <record dir="1369313452znfitk84ev" crypt="1" url="" tags="" author="" id="1369313452ptroe17tyo" ctime="20130523155052" name="nvJCqTSYFmDzASUU801Fx6+urp9h9X0T" file="text.html"/>
+        <record dir="1374059410swacwjnufc" crypt="1" url="" tags="" author="" id="1374059410wvbxfi8z1a" ctime="20130717141010" name="VyrLY5dTD85LXXY8VOrcJ8GozGhMdPBfqxICERbxbTY=" file="text.html"/>
        </recordtable>
       </node>
      </node>
@@ -353,6 +359,18 @@
     <recordtable>
      <record dir="1370845911sbkc03ieio" crypt="0" url="" tags="" author="" id="13708459114e157ffnyx" ctime="20130610093151" name="vpnc" file="text.html"/>
     </recordtable>
+   </node>
+   <node id="13721707798r8ppna393" name="Android">
+    <recordtable>
+     <record dir="13721708665o1teqwoam" crypt="0" url="" tags="" author="" id="13721708668gp4vf9l9e" ctime="20130625173426" name="Buildfile: build.xml does not exist!" file="text.html"/>
+    </recordtable>
+   </node>
+   <node id="1373875240wtq486tui3" name="Dev">
+    <node id="137387524911o7rfc0e6" name="java">
+     <recordtable>
+      <record dir="1373875307ope0b4xveo" crypt="0" url="" tags="" author="" id="137387530719rwww87ov" ctime="20130715110147" name="преобразование числа в строку" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
   </node>
  </content>
