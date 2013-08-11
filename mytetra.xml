@@ -77,6 +77,7 @@
        <record dir="1366915368681pj41l12" crypt="0" url="" tags="" author="" id="1366915368axvtzug15m" ctime="20130425214248" name="Оболочка bash Предыдущий раздел" file="text.html"/>
        <record dir="1366915378q0zmtegpf1" crypt="0" url="" tags="" author="" id="1366915378bj7cbx9im5" ctime="20130425214258" name="Часть 6: Структура If…then…else" file="text.html"/>
        <record dir="1373291799uadz05lmft" crypt="0" url="" tags="" author="" id="1373291799oe7ij81c3p" ctime="20130708165639" name="Работа со строками в bash" file="text.html"/>
+       <record dir="1375358635zmfw9hug3n" crypt="0" url="" tags="" author="" id="137535863547v7fr5wc0" ctime="20130801150355" name="How do I clear Bash's cache of paths to executables?" file="text.html"/>
       </recordtable>
      </node>
      <node id="1366918026szdwcvi6ye" name="awk">
@@ -236,6 +237,9 @@
           <record dir="1366966434x2ctrt61or" crypt="1" url="" tags="" author="" id="1366966434y2rf4ga0v0" ctime="20130426115354" name="yI8X3TkjNSodZ5QK65KWHTlpTBENOeaF" file="text.html"/>
           <record dir="1366966434f08ep4jnin" crypt="1" url="" tags="" author="" id="1366966434vvpnohgbik" ctime="20130426115354" name="vqxJEQhZ4flM/pdIId0pMsotgO5hMjN3" file="text.html"/>
           <record dir="13727688418i8t6rjv5m" crypt="1" url="" tags="" author="" id="1372768841358fdkkb4j" ctime="20130702154041" name="V4fqDLB9yDbM+Bv4QioxZuBP3OR1GL14cSkW9mIFzRAMahPDxUaIjQ==" file="text.html"/>
+          <record dir="1374090641a4rfcm6qv7" crypt="1" url="" tags="" author="" id="1374090641jlu8iqju1k" ctime="20130717225041" name="sxxGPD78O8i2Slidb+fyx4R33kzMJyYX" file="text.html"/>
+          <record dir="13747586464ntrtyrid3" crypt="1" url="" tags="" author="" id="13747586466i0bznesq9" ctime="20130725162406" name="JU6a+soA4MQCOGuEWLDVtodvPK+EZ/RvZvhpJX4Ki6w=" file="text.html"/>
+          <record dir="1375079749ddvkxeul94" crypt="1" url="" tags="" author="" id="137507974938xvsx1a38" ctime="20130729093549" name="/oBL+Pvj0sxHW56ooKQa183TvYr1sg9GDcCFVDMzVYo=" file="text.html"/>
          </recordtable>
         </node>
         <node crypt="1" id="13669664342wnab7qln2" name="UtD0z+er7dO5djRadr5Adgi0hSXPxd1rAbPaOhiN3sQ=">
@@ -265,6 +269,8 @@
           <record dir="137146765500lm1lv971" crypt="1" url="" tags="" author="" id="1371467655n0qk9gfa6z" ctime="20130617141415" name="ok8xOzeoFvpgerpfsBH0RXxARVv4bctr" file="text.html"/>
           <record dir="1371725683wv0afm7cgm" crypt="1" url="" tags="" author="" id="1371725683uv5c550liy" ctime="20130620135443" name="Nbe0uUcHSrjJVaKwDly3SE1nDERkRTcZ" file="text.html"/>
           <record dir="1372154133et7khz3eo8" crypt="1" url="" tags="" author="" id="1372154133xewkgr8sr4" ctime="20130625125533" name="axy7GN9LAmWykbi/Dl05DdG4fnhX0QCg" file="text.html"/>
+          <record dir="1374484566ri5s695f0a" crypt="1" url="" tags="" author="" id="1374484566j2l469adm1" ctime="20130722121606" name="uSp5Vi469JDE1Ib5DmXpuATH5Pwgj/62S/IAhuq+y2U=" file="text.html"/>
+          <record dir="1375954207oa3nib9lk1" crypt="1" url="" tags="" author="" id="1375954207j9lldt3pgl" ctime="20130808123007" name="ah6LYH1llZMgO/uTJlYu8I5azBztMRyUWDbcNdhmqKaXBDD+WtgphA==" file="text.html"/>
          </recordtable>
         </node>
        </node>
