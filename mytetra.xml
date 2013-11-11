@@ -62,6 +62,7 @@
      <record dir="1368780207eqwigiwwsd" crypt="0" url="" tags="" author="" id="1368780207te5gnvqwpe" ctime="20130517114327" name="hibernate" file="text.html"/>
      <record dir="1371568476sb3svxe5av" crypt="0" url="" tags="" author="" id="1371568476bn9flwvj0x" ctime="20130618181436" name="How can I validate a video file from a script?" file="text.html"/>
      <record dir="13769172151yub7714ml" crypt="0" url="" tags="" author="" id="137691721560kwidl5my" ctime="20130819160015" name="Mplayer screensaver" file="text.html"/>
+     <record dir="1377457515bfuyptc2o2" crypt="0" url="" tags="" author="" id="1377457515izz1qyptu2" ctime="20130825220515" name="Mplayer with Xfce screensaver" file="text.html"/>
     </recordtable>
     <node id="13669152748anunf3w27" name="Console">
      <recordtable>
@@ -70,6 +71,7 @@
       <record dir="1366915321x2jytwqzpj" crypt="0" url="" tags="" author="" id="136691532103kazn0i5z" ctime="20130425214201" name="Sed" file="text.html"/>
       <record dir="1366915395sh8f9jsz1e" crypt="0" url="" tags="" author="" id="1366915395klb6u90r7h" ctime="20130425214315" name="grep" file="text.html"/>
       <record dir="1366915406gyzs491k08" crypt="0" url="" tags="" author="" id="1366915406izwnmkn91t" ctime="20130425214326" name="sed" file="text.html"/>
+      <record dir="13784811816xt3rugz7a" crypt="0" url="" tags="" author="" id="137848118140kxak5rsb" ctime="20130906182621" name="Uniq string in file " file="text.html"/>
      </recordtable>
      <node id="1366915335kth37afdp4" name="bash">
       <recordtable>
@@ -100,6 +102,7 @@
       <record dir="1366916425vpnnk582mj" crypt="0" url="" tags="" author="" id="1366916425kaeqbtvs1o" ctime="20130425220025" name="links" file="text.html"/>
       <record dir="13669164360m7ucinob4" crypt="0" url="" tags="" author="" id="1366916436cbi9rd7vqm" ctime="20130425220036" name="Squid Proxy WARNING! Your cache is running out of filedescriptors error and solution" file="text.html"/>
       <record dir="1368041348a52fi3187y" crypt="0" url="" tags="" author="" id="1368041348oa0noyvs1g" ctime="20130508222908" name="too many 'squid-internal-periodic/store_digest'" file="text.html"/>
+      <record dir="13800059731eccxc2xxd" crypt="0" url="" tags="" author="" id="1380005973f0ce5xqsfd" ctime="20130924095933" name="Настраиваем squid " file="text.html"/>
      </recordtable>
     </node>
     <node id="13669164536isec4cf83" name="SNMP">
@@ -184,6 +187,7 @@
       <record dir="1366966434ezum8x04tl" crypt="1" url="" tags="" author="" id="1366966434dq9wx7qzfl" ctime="20130426115354" name="u2c/W0OnZmH1g5MLqHjE6NSfjcWPgEtH" file="text.html"/>
       <record dir="1366966434g11emltcuv" crypt="1" url="" tags="" author="" id="1366966434u8u5a22bmv" ctime="20130426115354" name="RCnB3qDJBVtlOu83ZIn9rl/iOao8uBVL2q3F6vX7xFyLyZUuZVUJTQ==" file="text.html"/>
       <record dir="1372329817kkhgplst91" crypt="1" url="" tags="" author="" id="1372329817epmm7ng2mp" ctime="20130627134337" name="/h16LwS+LA7qe+rnUuEBEgEolRJkZT4KAPvKoVOZik4=" file="text.html"/>
+      <record dir="1377602513gruct6fdu3" crypt="1" url="" tags="" author="" id="1377602513xtc5qof98p" ctime="20130827142153" name="rHn3ehukpjuC6gOk4VvFUpvHXYOGk66D+DSGs51cgQme1LUZKFoBJYdJXzO9YmHN5+15txutWSrX0vpCWDFM2BRl2gDWitCF" file="text.html"/>
      </recordtable>
      <node crypt="1" id="1366966434wf15byt1d8" name="2DD9nOtOPxKYfYCl50buQH5ZyDuMRByM">
       <recordtable>
@@ -220,6 +224,16 @@
        <recordtable>
         <record dir="1366966434t0hz2smvvp" crypt="1" url="" tags="" author="" id="1366966434vqah2avhr6" ctime="20130426115354" name="nSQFMShAIX8BKJDdcQOcU836xxPHA8xL90Dx/0R6udO14fM67oqvqQ==" file="text.html"/>
         <record dir="136696643405ue7xppxb" crypt="1" url="" tags="" author="" id="1366966434d7came389e" ctime="20130426115354" name="Gc9LxmxvzJ57zabdDCrSNfie0UQU6xC/" file="text.html"/>
+        <record dir="1377592969ww9ukjn4ne" crypt="1" url="" tags="" author="" id="1377592969hsqf09clri" ctime="20130827114249" name="gQl5Py/8QTAF8WqMyNuMUBE8kDt1xWsX4FDKjXpe3kM0MwtOFZcJcJPH8D2NaUZC" file="text.html"/>
+        <record dir="1377798057wy8gs82v83" crypt="1" url="" tags="" author="" id="13777980578nvis07ncu" ctime="20130829204057" name="Qzijcznhfzw8EmROfVY5vNE5Pf4UlvLN" file="text.html"/>
+        <record dir="137820466947fmxnckew" crypt="1" url="" tags="" author="" id="1378204669yz4z9ovv7h" ctime="20130903133749" name="UVvmR0rUGWxfB89rsdWwsoAr0O/WSvKqGUDrsnX9pmI=" file="text.html"/>
+        <record dir="1378738919r8koz11x6h" crypt="1" url="" tags="" author="" id="13787389196ikx0s2y9u" ctime="20130909180159" name="CHgMKK6cemlo0n2dutCj7/WvDpgzdEJU" file="text.html"/>
+        <record dir="1378912231tp9w9is6oz" crypt="1" url="" tags="" author="" id="1378912231iy777o328n" ctime="20130911181031" name="9X4xO2AKyWBvTZIXUCty6Fx/is/SmXu1" file="text.html"/>
+        <record dir="137898149415zqn82xq9" crypt="1" url="" tags="" author="" id="13789814941lchad0yll" ctime="20130912132454" name="ZzSn9fkLmaiC3MZdBw/MeY+9FTWNKdGO" file="text.html"/>
+        <record dir="13800465672mywto397m" crypt="1" url="" tags="" author="" id="1380046567ei6xpi94x3" ctime="20130924211607" name="SRbrHZbWw6yn7S3qjaez4hys4NrA4WzD" file="text.html"/>
+        <record dir="1380270861vuf23757lz" crypt="1" url="" tags="" author="" id="13802708614cobntjksc" ctime="20130927113421" name="PV3n06ff+frISHLLZ5SD5l3LqMJGH7TzBuVRT1L734E=" file="text.html"/>
+        <record dir="1380624309mt25z0nb34" crypt="1" url="" tags="" author="" id="1380624309a4ce3o80xi" ctime="20131001134509" name="S/2RNU9rcqwdR4t1YhiIhtQsPRW7Ch44I0uTf+sZ9TJV8+Tc44DBjg==" file="text.html"/>
+        <record dir="1380714024bz7mzuvyjt" crypt="1" url="" tags="" author="" id="1380714024zb762yib7k" ctime="20131002144024" name="hGCeWuKfCsxe6Xo5G9Zct9IMdZ9FKaA9" file="text.html"/>
        </recordtable>
        <node crypt="1" id="1366966434xl4oi7ed4l" name="zBDm0qbLdTq04IAl5NhxvjVBNK3LtR6K">
         <recordtable>
@@ -280,12 +294,42 @@
          </recordtable>
         </node>
        </node>
-       <node crypt="1" id="1377170974qapl4xotls" name="TYwTrQrvEbijKYpdMNatnXj3pF7+nA+LGwGuFtoeEtpuA9RkuXbJBw=="/>
+       <node crypt="1" id="1377170974qapl4xotls" name="TYwTrQrvEbijKYpdMNatnXj3pF7+nA+LGwGuFtoeEtpuA9RkuXbJBw==">
+        <recordtable>
+         <record dir="1381334871qldff96t66" crypt="1" url="" tags="" author="" id="1381334871g8x405y2bc" ctime="20131009190751" name="EWayMyJbmSkn21Guw3FrWROlpSbluu9r" file="text.html"/>
+         <record dir="13818364005766hqsyx1" crypt="1" url="" tags="" author="" id="1381836400hth0qd6bsx" ctime="20131015142640" name="NUSEazMq/xE6iA/MpPACtzlGMZ8QpdJz" file="text.html"/>
+         <record dir="1383048357g6uz2ph1rd" crypt="1" url="" tags="" author="" id="1383048357wwndh3u6o6" ctime="20131029150557" name="ZCze/g3IZot0ovkxJWzKwDroUkTsD1h/yfuRdNLh4Qo=" file="text.html"/>
+         <record dir="1383049119iy1nykgfma" crypt="1" url="" tags="" author="" id="138304911944nxqure79" ctime="20131029151839" name="TmSupTq0/b8Akx/x+Yr878/WwWRnAItd" file="text.html"/>
+        </recordtable>
+       </node>
        <node crypt="1" id="13772526021yqcwpeinm" name="Ubzmkf/kQyYXrK4yrfZ5yP2DedbBbrxfdmU+tQMwfE8=">
         <recordtable>
          <record dir="1377252617ra7j9m4g3o" crypt="1" url="" tags="" author="" id="13772526172cc7fpmxt2" ctime="20130823131017" name="RWx3GlAKlWMHs9/dZvjoYlx8Coxrt2jF" file="text.html"/>
          <record dir="1377263822bqntbh3xms" crypt="1" url="" tags="" author="" id="1377263822um1zst7sbn" ctime="20130823161702" name="EduZY7N3gQJJC+NaxcTxZYnEWAxNZDmM" file="text.html"/>
+         <record dir="1377885885bzpu663lq7" crypt="1" url="" tags="" author="" id="1377885885esxoh6udwh" ctime="20130830210445" name="k07Y9jIQyPstYNsFwF4jIFNALeAbic9dS0kwPlNLmw58wgPO+GfgtQ==" file="text.html"/>
+         <record dir="1378479508i0c1c7vf24" crypt="1" url="" tags="" author="" id="1378479508qipyhdyg7y" ctime="20130906175828" name="sKw3X/MgcAemwQJYWCwAaJDINL1ZUqi0ENd7aKbUeEs=" file="text.html"/>
+         <record dir="1379063561yt0a1c38wy" crypt="1" url="" tags="" author="" id="1379063561shguhk9k6b" ctime="20130913121241" name="aoabofUGmP5h7kthpuatxpvqA91+jpM9Gg6Bo40NRGU=" file="text.html"/>
+         <record dir="13797508263nio7sykdq" crypt="1" url="" tags="" author="" id="1379750826bktoe9mam3" ctime="20130921110706" name="Qpcj9u3k/jsQnGO6mat+N7OkY7FGu1MV" file="text.html"/>
+         <record dir="1380220049xe2k2v9p06" crypt="1" url="" tags="" author="" id="1380220049cb1ylk4fci" ctime="20130926212729" name="msdQHfRJ+Wj3BsFN9EODuWvzAoTv9BKmSO07rf6PXrY=" file="text.html"/>
+         <record dir="1380832008cvzyctmu1u" crypt="1" url="" tags="" author="" id="1380832008wgirqrzdl9" ctime="20131003232648" name="b9jvyDGpu1mBJx/64e+ktwX1psSHlpGt" file="text.html"/>
         </recordtable>
+       </node>
+       <node crypt="1" id="1378805446wtib7xfm48" name="AqwEX5jOYh7vM4IJ6axP4m7d9R9wmzai">
+        <recordtable>
+         <record dir="1378805455u0aoamjswu" crypt="1" url="" tags="" author="" id="1378805455qpybgzpwtl" ctime="20130910123055" name="M7z1GGUrazPo+aM6BsTpdAMpZN+Afbxk" file="text.html"/>
+         <record dir="1379339893wfl4obz2r2" crypt="1" url="" tags="" author="" id="1379339893zi5jvcwewm" ctime="20130916165813" name="5JcSGqU8VASmGrtNuE7YlrLjfs+0MRQc" file="text.html"/>
+         <record dir="138022340036t8l47dx4" crypt="1" url="" tags="" author="" id="1380223400b1kd20d1tt" ctime="20130926222320" name="mzGkM+IUecfBr5ldKjQptUxB7DUdtY+J" file="text.html"/>
+         <record dir="13805610078111mkpob1" crypt="1" url="" tags="" author="" id="1380561007edb6zhnkca" ctime="20130930201007" name="9zPaiNSTjbHRozT5uWuCpBFeSLjrdAwt" file="text.html"/>
+         <record dir="1383912232h3jplbdc3o" crypt="1" url="" tags="" author="" id="13839122321k4shg7x0w" ctime="20131108150352" name="ZPeuXJJ+Dks4pYMbcGTov47LV8vjo1f6" file="text.html"/>
+        </recordtable>
+       </node>
+       <node crypt="1" id="1383742781la1filuw5u" name="N4H1KKoJSF1AzomhM6wwvVrxwXIblv+l">
+        <node crypt="1" id="1383742793k5ou6jdrdp" name="DA8sjgVVOA5wFloh7bjdoAJVktLkkCSq">
+         <recordtable>
+          <record dir="138374285392owna9wqw" crypt="1" url="" tags="" author="" id="13837428531nnmyv0bj0" ctime="20131106160053" name="FesnSyEnU+Fo9SU+tEI16Lys/qzQwGaTqN99a94qAj0=" file="text.html"/>
+          <record dir="1383759725aams5a2ov6" crypt="1" url="" tags="" author="" id="13837597255107q210i1" ctime="20131106204205" name="CyhTYow/umZAH4rQ1OEKiL4NSK5W9KCieh0HWIx2hDI=" file="text.html"/>
+         </recordtable>
+        </node>
        </node>
       </node>
       <node crypt="1" id="1366966434ebj1imab0o" name="KSGNe/J0VY0wFUoTVXkJVlil/7340+bK">
@@ -304,6 +348,8 @@
         <record dir="13669664342uqn3ri72j" crypt="1" url="" tags="" author="" id="13669664340vnh04xd7v" ctime="20130426115354" name="IAENTrHVjhonoym6T0XctvYwSm7KhbWb3QAoaLSWemEbSnXKDclg86FTDifIyTym" file="text.html"/>
         <record dir="1369313452znfitk84ev" crypt="1" url="" tags="" author="" id="1369313452ptroe17tyo" ctime="20130523155052" name="nvJCqTSYFmDzASUU801Fx6+urp9h9X0T" file="text.html"/>
         <record dir="1374059410swacwjnufc" crypt="1" url="" tags="" author="" id="1374059410wvbxfi8z1a" ctime="20130717141010" name="VyrLY5dTD85LXXY8VOrcJ8GozGhMdPBfqxICERbxbTY=" file="text.html"/>
+        <record dir="137993874784zb1ebloo" crypt="1" url="" tags="" author="" id="1379938747a14mygy0pl" ctime="20130923151907" name="yvE/uSvj7OFi6IEe7YZPB/4jUgYdYEvHvEH8RWCXQldp8Ms7yHY1qw==" file="text.html"/>
+        <record dir="1380287583cccg8vuhsq" crypt="1" url="" tags="" author="" id="13802875839yu9yi5g1x" ctime="20130927161303" name="wxDJrZhvDKjwVOLUuPSJKLBD3kQ0c86CY36xXPqfw+Nwjdf+JoLKLA==" file="text.html"/>
        </recordtable>
       </node>
      </node>
@@ -387,11 +433,6 @@
    <node id="1370845861mj74pjpyzq" name="memorize">
     <recordtable>
      <record dir="1370845911sbkc03ieio" crypt="0" url="" tags="" author="" id="13708459114e157ffnyx" ctime="20130610093151" name="vpnc" file="text.html"/>
-    </recordtable>
-   </node>
-   <node id="13721707798r8ppna393" name="Android">
-    <recordtable>
-     <record dir="13721708665o1teqwoam" crypt="0" url="" tags="" author="" id="13721708668gp4vf9l9e" ctime="20130625173426" name="Buildfile: build.xml does not exist!" file="text.html"/>
     </recordtable>
    </node>
    <node id="1373875240wtq486tui3" name="Dev">
