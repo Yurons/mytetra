@@ -82,6 +82,7 @@
       <record dir="1394116995hmv5vyb5xl" crypt="0" url="" tags="" author="" id="1394116995wiv29xyo3k" ctime="20140306174315" name="base64 --decode" file="text.html"/>
       <record dir="1394607736zfti15u1te" crypt="0" url="" tags="" author="" id="1394607736x7be61rbgw" ctime="20140312100216" name="Копирование с правами" file="text.html"/>
       <record dir="1395128609x5nvmfy2kf" crypt="0" url="" tags="" author="" id="1395128609xhnqosjwqm" ctime="20140318104329" name="Copy your ssh public key to a server from a machine " file="text.html"/>
+      <record dir="14101887856zpukap3gs" crypt="0" url="" tags="" author="" id="1410188785ot57hl9dlk" ctime="20140908180625" name="ssh is reading the rest of your standard input." file="text.html"/>
      </recordtable>
      <node id="1366915335kth37afdp4" name="bash">
       <recordtable>
@@ -236,6 +237,7 @@
        <record dir="1388147616oy75zaa19q" crypt="1" url="" tags="" author="" id="13881476169ugtn8wxlu" ctime="20131227153336" name="gqAC0GhSZfbr2lRi4W9iCQLz6gJ3mXZl" file="text.html"/>
        <record dir="1401444562pcwg7xqcw3" crypt="1" url="" tags="" author="" id="1401444562axnwzruk7u" ctime="20140530130922" name="hZTqLw+K6Jek5OalLdMCDDQJcQh82ODA" file="text.html"/>
        <record dir="1402570126qomegyk2gm" crypt="1" url="" tags="" author="" id="14025701261qi19trgza" ctime="20140612134846" name="ESEyuQavMdYU8rJLB3/cZ/zFxJHr14bl" file="text.html"/>
+       <record dir="1413442483z01ox7jjy9" crypt="1" url="" tags="" author="" id="1413442483nf5kobs7ot" ctime="20141016095443" name="Q+0KxAc66+MPvF1yBMCWgV0WgrZcHcXj" file="text.html"/>
       </recordtable>
       <node crypt="1" id="1366966434j8g5jqz15h" name="ov57fXmL+4c+lG4qtZbbrFDSDzXIg63xRObDApHS4Kg=">
        <recordtable>
@@ -374,6 +376,9 @@
          <record dir="1406798268jlpn39ivy8" crypt="1" url="" tags="" author="" id="1406798268kstw1lm5ry" ctime="20140731121748" name="SwTlzRowcXeDlFOwD7/6GJj4VjrjKd93" file="text.html"/>
          <record dir="1407936835ind32nh8pg" crypt="1" url="" tags="" author="" id="1407936835hxxf9o64bo" ctime="20140813163355" name="MlkdQ4OBB6PtuVCbfaifxJheENKTBtvaMwrL6MsYbMo=" file="text.html"/>
          <record dir="1408630524m1w5tq4k7o" crypt="1" url="" tags="" author="" id="14086305243lyr1ldmyy" ctime="20140821171524" name="XWZ/GjVaqCFTQYAqwWgIvrEh/QgZpaLL5HSTunCKQjo=" file="text.html"/>
+         <record dir="14131815487y273ccj9e" crypt="1" url="" tags="" author="" id="1413181548qsv12oi257" ctime="20141013092548" name="ESghGSKsjE6CtpRVpMzMXiLbSyrC9G879rmmpjUPRYI=" file="text.html"/>
+         <record dir="1413183356ha7jus5ouw" crypt="1" url="" tags="" author="" id="1413183356cejrau2asv" ctime="20141013095556" name="PqfufqXLgm657rJUgCdcngG9/Kj/p94h" file="text.html"/>
+         <record dir="1413963849obnhf5g219" crypt="1" url="" tags="" author="" id="14139638496ycvxbmttz" ctime="20141022104409" name="QOSCQdbNgJOXkGae0rl2O5NxiNdWeqPEe8aDqFpNB/M=" file="text.html"/>
         </recordtable>
        </node>
       </node>
@@ -418,6 +423,8 @@
         <record dir="1374059410swacwjnufc" crypt="1" url="" tags="" author="" id="1374059410wvbxfi8z1a" ctime="20130717141010" name="VyrLY5dTD85LXXY8VOrcJ8GozGhMdPBfqxICERbxbTY=" file="text.html"/>
         <record dir="137993874784zb1ebloo" crypt="1" url="" tags="" author="" id="1379938747a14mygy0pl" ctime="20130923151907" name="yvE/uSvj7OFi6IEe7YZPB/4jUgYdYEvHvEH8RWCXQldp8Ms7yHY1qw==" file="text.html"/>
         <record dir="1380287583cccg8vuhsq" crypt="1" url="" tags="" author="" id="13802875839yu9yi5g1x" ctime="20130927161303" name="wxDJrZhvDKjwVOLUuPSJKLBD3kQ0c86CY36xXPqfw+Nwjdf+JoLKLA==" file="text.html"/>
+        <record dir="1412940528d0n1vrl21y" crypt="1" url="" tags="" author="" id="1412940528bymvc3dehg" ctime="20141010142848" name="UuKJilnQ0yEAg9IVlUPEnuXcvppusMoLYb8asq/1t8I=" file="text.html"/>
+        <record dir="1413889828igyquoaop9" crypt="1" url="" tags="" author="" id="1413889828pn74i0jxl1" ctime="20141021141028" name="PzJV75LBCNmo0w/DJ9xgkEzt1hHHlHc5rcNQ9uGNakTMtb7w1Iy/KNHNZbRcyGYI" file="text.html"/>
        </recordtable>
       </node>
       <node crypt="1" id="14025703562rwe35wfmh" name="700fCubAXdI7pUjhDg9N0FODGrHVfxlB">
