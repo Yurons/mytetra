@@ -9,7 +9,6 @@
      <record dir="1366901421cls7u2bswt" crypt="0" url="" tags="" author="" id="1366901421uaz45lfjsq" ctime="20130425175021" name="Twite" file="text.html"/>
      <record dir="1366901436zpv3ugydo5" crypt="0" url="" tags="" author="" id="1366901436dul2ghq5tc" ctime="20130425175036" name="Расписание" file="text.html"/>
      <record dir="13669014554yt6eackjo" crypt="0" url="" tags="" author="" id="1366901455xwnu4jtz4r" ctime="20130425175055" name="Сколько слов необходимо знать?" file="text.html"/>
-     <record dir="141804185459cbg7vkii" crypt="0" url="" tags="" author="" id="14180418540ul9wagajt" ctime="20141208153054" name="Предлоги времени в английском языке (таблица)" file="text.html"/>
     </recordtable>
    </node>
    <node id="1366901496lnde9s4ls3" name="VirtualBox">
@@ -65,7 +64,6 @@
      <record dir="1398158632lgknpzqw5i" crypt="0" url="" tags="" author="" id="1398158632hoaoxe68fg" ctime="20140422122352" name="Route " file="text.html"/>
      <record dir="1406120256keou1uppbs" crypt="0" url="" tags="" author="" id="1406120256i20vvtzzqz" ctime="20140723155736" name="tshark decode unstandart tcp port" file="text.html"/>
      <record dir="1406300329ypewzb6pfn" crypt="0" url="" tags="" author="" id="14063003295bt7f4c499" ctime="20140725175849" name="Netem -  Network Emulation " file="text.html"/>
-     <record dir="1416833276ulty8tkqkn" crypt="0" url="" tags="" author="" id="1416833276e0b86kiylb" ctime="20141124154756" name="How can a process intercept stdout and stderr of another process on Linux?" file="text.html"/>
     </recordtable>
     <node id="13669152748anunf3w27" name="Console">
      <recordtable>
@@ -405,8 +403,6 @@
         <record dir="14081280565lvdkxykqk" crypt="1" url="" tags="" author="" id="1408128056ls3xqzzws1" ctime="20140815214056" name="CgyJ3Ec0U6kS+UlkOd1vOXMnTh5C25ZI" file="text.html"/>
         <record dir="1408542711owokiuqyk8" crypt="1" url="" tags="" author="" id="140854271174t62ax2d3" ctime="20140820165151" name="H9/WCv05dZUENqpUOeJOZ+7NKN5Cq7YmY1+XNCTE17w=" file="text.html"/>
         <record dir="14163805040628sro9c2" crypt="1" url="" tags="" author="" id="1416380504ffsyr6xf76" ctime="20141119100144" name="UkM1U0lNUAOcutdXmUr0oeFZkfAS/1WLkb8N6LGKkagJlcDNoLpa7Umbmh8a4vVi" file="text.html"/>
-        <record dir="1416821285dbvvhbiekz" crypt="1" url="" tags="" author="" id="1416821285ftx8hpgeta" ctime="20141124122805" name="UkM1U0lNUAM2y3i276jh+k+lxszFlY/vtBUNrmRczTFt3MGE8l8JH6JO9shjeU9Czn85wxRuoSE=" file="text.html"/>
-        <record dir="1419081197v1109wsyzi" crypt="1" url="" tags="" author="" id="1419081197qf08pr4hhm" ctime="20141220161317" name="UkM1U0lNUAOaYTD16IQNqZOeZgUXPte8EpKRyWJwbvn/nxQ6DwOAF3byUBbpW6Cb9UpmGEC6rEA=" file="text.html"/>
        </recordtable>
       </node>
       <node crypt="1" id="1366966434ebj1imab0o" name="KSGNe/J0VY0wFUoTVXkJVlil/7340+bK">
