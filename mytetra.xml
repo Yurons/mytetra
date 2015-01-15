@@ -96,6 +96,7 @@
        <record dir="1375358635zmfw9hug3n" crypt="0" url="" tags="" author="" id="137535863547v7fr5wc0" ctime="20130801150355" name="How do I clear Bash's cache of paths to executables?" file="text.html"/>
        <record dir="137717268569mrtokyw8" crypt="0" url="" tags="" author="" id="13771726854775dohjv3" ctime="20130822145805" name="How to assign a heredoc value to a variable in Bash?" file="text.html"/>
        <record dir="1397040357vhj6mo0gky" crypt="0" url="http://unix.stackexchange.com/questions/83473/get-my-country-by-ip-in-bash" tags="" author="" id="13970403575r3sqtag8m" ctime="20140409134557" name="Get my country by IP in bash" file="text.html"/>
+       <record dir="142123952324hhlyda57" crypt="0" url="" tags="" author="" id="14212395235hsbvfwyo3" ctime="20150114154523" name="randomly shuffling files in bash" file="text.html"/>
       </recordtable>
      </node>
      <node id="1366918026szdwcvi6ye" name="awk">
