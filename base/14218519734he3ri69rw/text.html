@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="question"></a><a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#"><span style=" text-decoration: underline; color:#0000ff;">f</span></a><span style=" text-decoration: underline; color:#0000ff;">avorite</span> </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">159</span> </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">What are your best tips for debugging Python? </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Please don't just list a particular debugger without saying what it can actually do. </p>
+<p style=" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:large; font-weight:600;">Related</span> </p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/questions/299704"><span style=" text-decoration: underline; color:#0000ff;">What are good ways to make my Python code run first time?</span></a> - This discusses minimizing errors </li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/questions/tagged/python"><span style=" text-decoration: underline; color:#0000ff;">python</span></a> <a href="http://stackoverflow.com/questions/tagged/debugging"><span style=" text-decoration: underline; color:#0000ff;">debugging</span></a> </p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-1623039"></a><a href="http://stackoverflow.com/q/1623039"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/posts/1623039/revisions"><span style=" text-decoration: underline; color:#0000ff;">edited Sep 24 '14 at 8:43</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-1623039"></a><a href="http://stackoverflow.com/posts/1623039/revisions"><span style=" text-decoration: underline; color:#0000ff;">7</span></a><span style=" text-decoration: underline; color:#0000ff;"> revs, 5 users 56%</span><a href="http://stackoverflow.com/posts/1623039/revisions"><span style=" text-decoration: underline; color:#0000ff;"><br /></span></a><a href="http://stackoverflow.com/users/165495"><span style=" text-decoration: underline; color:#0000ff;">Casebash</span></a> </p></td></tr></table></td></tr>
+<tr>
+<td colspan="2">
+<p style=" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:x-large; font-weight:600;">locked by </span><a href="http://stackoverflow.com/users/19679/brad-larson"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">Brad Larson</span></a><span style=" font-size:x-large; font-weight:600;">♦ Oct 5 '14 at 15:59 </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This question exists because it has historical significance, but <span style=" font-weight:600;">it is not considered a good, on-topic question for this site</span>, so please do not use it as evidence that you can ask similar questions here. This question and its answers are frozen and cannot be changed. More info: <a href="http://stackoverflow.com/help"><span style=" text-decoration: underline; color:#0000ff;">help center</span></a>. </p>
+<p style=" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:x-large; font-weight:600;">closed as too broad by </span><a href="http://stackoverflow.com/users/2235132/devnull"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">devnull</span></a><span style=" font-size:x-large; font-weight:600;">, </span><a href="http://stackoverflow.com/users/623518/chris"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">Chris</span></a><span style=" font-size:x-large; font-weight:600;">, </span><a href="http://stackoverflow.com/users/968969/tony-hopkinson"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">Tony Hopkinson</span></a><span style=" font-size:x-large; font-weight:600;">, </span><a href="http://stackoverflow.com/users/839601/gnat"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">gnat</span></a><span style=" font-size:x-large; font-weight:600;">, </span><a href="http://stackoverflow.com/users/528405/nsfyn55"><span style=" font-size:x-large; font-weight:600; text-decoration: underline; color:#0000ff;">nsfyn55</span></a><span style=" font-size:x-large; font-weight:600;"> May 31 '14 at 19:31 </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">There are either too many possible answers, or good answers would be too long for this format. Please add details to narrow the answer set or to isolate an issue that can be answered in a few paragraphs.If this question can be reworded to fit the rules in the <a href="http://stackoverflow.com/help/closed-questions"><span style=" text-decoration: underline; color:#0000ff;">help center</span></a>, please <a href="http://stackoverflow.com/posts/1623039/edit"><span style=" text-decoration: underline; color:#0000ff;">edit the question</span></a>. </p></td></tr>
+<tr>
+<td></td>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-1623039"></a>   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="https://gist.github.com/rduplain/4983839"><span style=" text-decoration: underline; color:#0000ff;">gist.github.com/rduplain/4983839</span></a> –  <a href="http://stackoverflow.com/users/1243926/osa"><span style=" text-decoration: underline; color:#0000ff;">osa</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment40866327_1623039"><span style=" text-decoration: underline; color:#0000ff;">Sep 28 '14 at 2:29</span></a> </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-1623039"></a>comments disabled on deleted / locked posts / reviews </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answers"></a><span style=" font-size:x-large; font-weight:600;">1</span><span style=" font-size:x-large; font-weight:600;">8 Answers </span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="tabs"></a><a href="http://stackoverflow.com/questions/1623039/python-debugging-tips?answertab=active#tab-top"><span style=" text-decoration: underline; color:#0000ff;">a</span></a><span style=" text-decoration: underline; color:#0000ff;">ctive</span> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips?answertab=oldest#tab-top"><span style=" text-decoration: underline; color:#0000ff;">oldest</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips?answertab=votes#tab-top"><span style=" text-decoration: underline; color:#0000ff;">votes</span></a> </p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-1623085"></a>139 accepted </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://docs.python.org/library/pdb.html"><span style=" font-weight:600; text-decoration: underline; color:#0000ff;">PDB</span></a> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">You can use the pdb module, insert <span style=" font-family:'Courier New,courier';">pdb.set_trace()</span> anywhere and it will function as a breakpoint. </p>
+<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">&gt;&gt;&gt; import pdb</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">&gt;&gt;&gt; a=&quot;a string&quot;</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">&gt;&gt;&gt; pdb.set_trace()</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">--Return--</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">&gt; &lt;stdin&gt;(1)&lt;module&gt;()-&gt;None</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">(Pdb) p a</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">'a string'</span></p>
+<p style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">(Pdb) </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">To continue execution use <span style=" font-family:'Courier New,courier';">c</span> (or <span style=" font-family:'Courier New,courier';">cont</span> or <span style=" font-family:'Courier New,courier';">continue</span>). </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">It is possible to execute arbitrary Python expressions using pdb. For example, if you find a mistake, you can correct the code, then type a type expression to have the same effect in the running code </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ipdb is a version of pdb for <a href="http://en.wikipedia.org/wiki/IPython"><span style=" text-decoration: underline; color:#0000ff;">IPython</span></a>. It allows the use of pdb with all the IPython features including tab completion. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">It is also possible to <a href="http://code.activestate.com/recipes/65287/"><span style=" text-decoration: underline; color:#0000ff;">set pdb to automatically run</span></a> on an uncaught exception. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://bashdb.sourceforge.net/pydb/"><span style=" text-decoration: underline; color:#0000ff;">Pydb</span></a> was written to be an enhanced version of Pdb. Benefits? </p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-1623085"></a><a href="http://stackoverflow.com/a/1623085"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/posts/1623085/revisions"><span style=" text-decoration: underline; color:#0000ff;">edited Feb 4 '10 at 14:57</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-1623085"></a><a href="http://stackoverflow.com/posts/1623085/revisions"><span style=" text-decoration: underline; color:#0000ff;">8</span></a><span style=" text-decoration: underline; color:#0000ff;"> revs, 4 users 48%</span><a href="http://stackoverflow.com/posts/1623085/revisions"><span style=" text-decoration: underline; color:#0000ff;"><br /></span></a><a href="http://stackoverflow.com/users/131527"><span style=" text-decoration: underline; color:#0000ff;">ghostdog74</span></a> </p></td></tr></table></td></tr>
+<tr>
+<td></td>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-1623085"></a>   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Here is an article on using pdb: <a href="http://sontek.net/debugging-python-with-pdb"><span style=" text-decoration: underline; color:#0000ff;">sontek.net/debugging-python-with-pdb</span></a> –  <a href="http://stackoverflow.com/users/17176/sontek"><span style=" text-decoration: underline; color:#0000ff;">sontek</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment4347844_1623085"><span style=" text-decoration: underline; color:#0000ff;">Oct 29 '10 at 5:28</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Personally, I like <a href="http://pypi.python.org/pypi/ipdb"><span style=" text-decoration: underline; color:#0000ff;">ipdb</span></a> better. –  <a href="http://stackoverflow.com/users/232794/sardathrion"><span style=" text-decoration: underline; color:#0000ff;">Sardathrion</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment18303698_1623085"><span style=" text-decoration: underline; color:#0000ff;">Nov 15 '12 at 13:51</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1 </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Apparently there's a rewrite of pydb called <a href="http://code.google.com/p/pydbgr/"><span style=" text-decoration: underline; color:#0000ff;">pydbgr</span></a> –  <a href="http://stackoverflow.com/users/198348/ehtesh-choudhury"><span style=" text-decoration: underline; color:#0000ff;">Ehtesh Choudhury</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment23863266_1623085"><span style=" text-decoration: underline; color:#0000ff;">May 17 '13 at 4:13</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SublimeText has a great plugin to add python breakpoints to code: <a href="https://sublime.wbond.net/packages/Python%20Breakpoints"><span style=" text-decoration: underline; color:#0000ff;">sublime.wbond.net/packages/Python%20Breakpoints</span></a> –  <a href="http://stackoverflow.com/users/304209/denis-golomazov"><span style=" text-decoration: underline; color:#0000ff;">Denis Golomazov</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment39996508_1623085"><span style=" text-decoration: underline; color:#0000ff;">Sep 1 '14 at 10:56</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If you are developing a web application, add a view for <span style=" font-family:'Courier New,courier';">myserver.com/pdb</span> in debug mode that simply does <span style=" font-family:'Courier New,courier';">import pdb; pdb.set_trace()</span>. If you are using Flask/Werkzeug that has an interactive debugger, you can also have a view that just does <span style=" font-family:'Courier New,courier';">assert False</span>. –  <a href="http://stackoverflow.com/users/1243926/osa"><span style=" text-decoration: underline; color:#0000ff;">osa</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment40866348_1623085"><span style=" text-decoration: underline; color:#0000ff;">Sep 28 '14 at 2:32</span></a> </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-1623085"></a>add a comment </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6Njg0Mjk4LCJkaSI6IjBhZTFhNGY1MTBhMDQ2ZDk4ZWEwNzgzNTc2YTZiNGVkIiwiZG0iOjEsImZjIjo3MDg0NTIsImZsIjo0MzE3ODAsImlwIjoiMjEzLjE4NC4yNDEuNDUiLCJrdyI6InB5dGhvbixkZWJ1Z2dpbmciLCJudyI6MjIsInBjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cDovL3d3dy5nb29nbGUuYnkvdXJsP3NhPXQmcmN0PWomcT0mZXNyYz1zJnNvdXJjZT13ZWImY2Q9NSZ2ZWQ9MENEZ1FGakFFJnVybD1odHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vcXVlc3Rpb25zLzE2MjMwMzkvcHl0aG9uLWRlYnVnZ2luZy10aXBzJmVpPVZuZV9WTjJkQWNHeVVyVGNnWkFNJnVzZz1BRlFqQ05FZW8tUUx0ZzFDNEpGanRRSXBfdmFlcEo3VWxBJmJ2bT1idi44MzgyOTU0MixkLmQyNCIsInN0Ijo4Mjc3LCJ1ayI6InVlMS02NzA5OGUyNGMxMjI0NmNiYWFhNDViOGIxZDhiMDcyNCIsInpuIjo0NCwidHMiOjE0MjE4MzQwODMyMTgsImJmIjp0cnVlfQ&amp;s=K168XZ5Lp1u4LciUUhp4QJ-5X8o" width="-2" height="-2" /><a name="adzerk1608282934"></a> </p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-6418428"></a>78 </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://pypi.python.org/pypi/pudb"><span style=" text-decoration: underline; color:#0000ff;">http://pypi.python.org/pypi/pudb</span></a>, a full-screen, console-based Python debugger. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;">Its goal is to provide all the niceties of modern GUI-based debuggers in a more lightweight and keyboard-friendly package. PuDB allows you to debug code right where you write and test it – in a terminal. If you've worked with the excellent (but nowadays ancient) DOS-based Turbo Pascal or C tools, PuDB's UI might look familiar. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="http://i.stack.imgur.com/fZiaP.png" /> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Nice for debugging standalone scripts, just run </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">python -m pudb.run my-script.py </span></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-6418428"></a><a href="http://stackoverflow.com/a/6418428"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">answered <a href="http://stackoverflow.com/posts/6418428/revisions"><span style=" text-decoration: underline; color:#0000ff;">Jun 20 '11 at 22:46</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-6418428"></a><a href="http://stackoverflow.com/posts/6418428/revisions"><span style=" text-decoration: underline; color:#0000ff;">m</span></a><span style=" text-decoration: underline; color:#0000ff;">iku </span></p></td></tr></table></td></tr>
+<tr>
+<td></td>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-6418428"></a>8 </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Wow, that is freakin' sweet! –  <a href="http://stackoverflow.com/users/416467/kindall"><span style=" text-decoration: underline; color:#0000ff;">kindall</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment7529577_6418428"><span style=" text-decoration: underline; color:#0000ff;">Jun 20 '11 at 23:07</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2 </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This just made my day! Great find. –  <a href="http://stackoverflow.com/users/790387/burhan-khalid"><span style=" text-decoration: underline; color:#0000ff;">Burhan Khalid</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment30619100_6418428"><span style=" text-decoration: underline; color:#0000ff;">Dec 10 '13 at 5:23</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Install with <span style=" font-family:'Courier New,courier';">pip install pudb</span> –  <a href="http://stackoverflow.com/users/2038264/congusbongus"><span style=" text-decoration: underline; color:#0000ff;">congusbongus</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment38963951_6418428"><span style=" text-decoration: underline; color:#0000ff;">Jul 31 '14 at 1:27</span></a> </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-6418428"></a>add a comment </p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-1624037"></a>40 </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If you are using pdb, you can define aliases for shortcuts. I use these: </p>
+<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Ned's .pdbrc</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Print a dictionary, sorted. %1 is the dict, %2 is the prefix for the names.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias p_ for k in sorted(%1.keys()): print &quot;%s%-15s= %-80.80s&quot; % (&quot;%2&quot;,k,repr(%1[k]))</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Print the instance variables of a thing.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias pi p_ %1.__dict__ %1.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Print the instance variables of self.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias ps pi self</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Print the locals.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias pl p_ locals() local:</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Next and list, and step and list.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias nl n;;l</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias sl s;;l</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';"># Short cuts for walking up and down the stack</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias uu u;;u</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias uuu u;;u;;u</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias uuuu u;;u;;u;;u</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias uuuuu u;;u;;u;;u;;u</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias dd d;;d</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias ddd d;;d;;d</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias dddd d;;d;;d;;d</span></p>
+<p style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">alias ddddd d;;d;;d;;d;;d </span></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-1624037"></a><a href="http://stackoverflow.com/a/1624037"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">answered <a href="http://stackoverflow.com/posts/1624037/revisions"><span style=" text-decoration: underline; color:#0000ff;">Oct 26 '09 at 10:16</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-1624037"></a><a href="http://stackoverflow.com/posts/1624037/revisions"><span style=" text-decoration: underline; color:#0000ff;">N</span></a><span style=" text-decoration: underline; color:#0000ff;">ed Batchelder </span></p></td></tr></table></td></tr>
+<tr>
+<td></td>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-1624037"></a>   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">How do you define these alias? –  <a href="http://stackoverflow.com/users/165495/casebash"><span style=" text-decoration: underline; color:#0000ff;">Casebash</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment1491793_1624037"><span style=" text-decoration: underline; color:#0000ff;">Oct 26 '09 at 10:55</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Wow, that could be incredibly powerful –  <a href="http://stackoverflow.com/users/165495/casebash"><span style=" text-decoration: underline; color:#0000ff;">Casebash</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment1491804_1624037"><span style=" text-decoration: underline; color:#0000ff;">Oct 26 '09 at 10:55</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">9 </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Put this stuff in ~/.pdbrc –  <a href="http://stackoverflow.com/users/14343/ned-batchelder"><span style=" text-decoration: underline; color:#0000ff;">Ned Batchelder</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment1493229_1624037"><span style=" text-decoration: underline; color:#0000ff;">Oct 26 '09 at 15:25</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">on windows you can put it in ~/_ipython/ipythonrc.ini –  <a href="http://stackoverflow.com/users/51115/fastmultiplication"><span style=" text-decoration: underline; color:#0000ff;">fastmultiplication</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment3514314_1624037"><span style=" text-decoration: underline; color:#0000ff;">Aug 1 '10 at 5:34</span></a> </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-1624037"></a>add a comment </p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-1623243"></a>33 </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Logging</span> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Python already has an excellent <a href="http://docs.python.org/library/logging.html"><span style=" text-decoration: underline; color:#0000ff;">built-in logging module</span></a>. You may want to use the <a href="http://web.archive.org/web/20120819135307/http://aymanh.com/python-debugging-techniques"><span style=" text-decoration: underline; color:#0000ff;">logging template here</span></a>. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">The logging module lets you specify a level of importance; during debugging you can log everything, while during normal operation you might only log critical things. You can switch things off and on. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Most people just use basic print statements to debug, and then remove the print statements. It's better to leave them in, but disable them; then, when you have another bug, you can just re-enable everything and look your logs over. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This can be the best possible way to debug programs that need to do things quickly, such as networking programs that need to respond before the other end of the network connection times out and goes away. You might not have much time to single-step a debugger; but you can just let your code run, and log everything, then pore over the logs and figure out what's really happening. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">EDIT: The original URL for the templates was: <a href="http://aymanh.com/python-debugging-techniques"><span style=" text-decoration: underline; color:#0000ff;">http://aymanh.com/python-debugging-techniques</span></a> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This page is missing so I replaced it with a reference to the snapshot saved at archive.org: <a href="http://web.archive.org/web/20120819135307/http://aymanh.com/python-debugging-techniques"><span style=" text-decoration: underline; color:#0000ff;">http://web.archive.org/web/20120819135307/http://aymanh.com/python-debugging-techniques</span></a> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">In case it disappears again, here are the templates I mentioned. This is code taken from the blog; I didn't write it. </p>
+<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">import logging</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">import optparse</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">LOGGING_LEVELS = {'critical': logging.CRITICAL,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                  'error': logging.ERROR,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                  'warning': logging.WARNING,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                  'info': logging.INFO,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                  'debug': logging.DEBUG}</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">def main():</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  parser = optparse.OptionParser()</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  parser.add_option('-l', '--logging-level', help='Logging level')</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  parser.add_option('-f', '--logging-file', help='Logging file name')</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  (options, args) = parser.parse_args()</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  logging_level = LOGGING_LEVELS.get(options.logging_level, logging.NOTSET)</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  logging.basicConfig(level=logging_level, filename=options.logging_file,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                      format='%(asctime)s %(levelname)s: %(message)s',</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">                      datefmt='%Y-%m-%d %H:%M:%S')</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  # Your program goes here.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  # You can access command-line arguments using the args variable.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier New,courier';"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">if __name__ == '__main__':</span></p>
+<p style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">  main() </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">And here is his explanation of how to use the above. Again, I don't get the credit for this: </p>
+<hr />
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">By default, the logging module prints critical, error and warning messages. To change this so that all levels are printed, use: </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">$ ./your-program.py --logging=debug </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">To send log messages to a file called debug.log, use: </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">$ ./your-program.py --logging-level=debug --logging-file=debug.log </span></p>
+<hr />
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-1623243"></a><a href="http://stackoverflow.com/a/1623243"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/posts/1623243/revisions"><span style=" text-decoration: underline; color:#0000ff;">edited May 1 '13 at 5:24</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-1623243"></a><a href="http://stackoverflow.com/posts/1623243/revisions"><span style=" text-decoration: underline; color:#0000ff;">4</span></a><span style=" text-decoration: underline; color:#0000ff;"> revs, 2 users 91%</span><a href="http://stackoverflow.com/posts/1623243/revisions"><span style=" text-decoration: underline; color:#0000ff;"><br /></span></a><a href="http://stackoverflow.com/users/166949"><span style=" text-decoration: underline; color:#0000ff;">steveha</span></a> </p></td></tr></table></td></tr>
+<tr>
+<td></td>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-1623243"></a>1 </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">The problem with logging module is that it heavily breaks with Unicode and various workarounds are needed to have it working within an internationalized applications. Though, this is still the best logging solution for Python. –  <a href="http://stackoverflow.com/users/260897/jacek-konieczny"><span style=" text-decoration: underline; color:#0000ff;">Jacek Konieczny</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment2313219_1623243"><span style=" text-decoration: underline; color:#0000ff;">Feb 26 '10 at 12:15</span></a> </p></td></tr>
+<tr>
+<td>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">   </p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">  </p></td></tr></table></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">The link &quot;logging template here&quot; is dead. Please update. –  <a href="http://stackoverflow.com/users/1158367/yohann"><span style=" text-decoration: underline; color:#0000ff;">Yohann</span></a> <a href="http://stackoverflow.com/questions/1623039/python-debugging-tips#comment22063018_1623243"><span style=" text-decoration: underline; color:#0000ff;">Mar 22 '13 at 8:56</span></a> </p></td></tr></table>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-1623243"></a>add a comment </p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-1623095"></a>20 </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">It is possible to print what <a href="http://www.dalkescientific.com/writings/diary/archive/2005/04/20/tracing_python_code.html"><span style=" text-decoration: underline; color:#0000ff;">Python lines are executed</span></a> (thanks Geo!). This has any number of applications, for example, you could modify it to check when particular functions are called or add something like ## make it only track particular lines. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">code.interact takes you into a interactive console </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier New,courier';">import code; code.interact(local=locals()) </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If you want to be able to easily access your console history look at: &quot;<a href="http://norvig.com/python-iaq.html"><span style=" text-decoration: underline; color:#0000ff;">Can I have a history mechanism like in the shell?</span></a>&quot; (will have to look down for it). </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Auto-complete can be enabled for the <a href="http://stackoverflow.com/questions/101268/hidden-features-of-python/168270#168270"><span style=" text-decoration: underline; color:#0000ff;">interpreter</span></a>. </p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="link-post-1623095"></a><a href="http://stackoverflow.com/a/1623095"><span style=" text-decoration: underline; color:#0000ff;">s</span></a><span style=" text-decoration: underline; color:#0000ff;">hare</span> </p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://stackoverflow.com/posts/1623095/revisions"><span style=" text-decoration: underline; color:#0000ff;">edited Feb 26 '10 at 9:20</span></a> </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></td>
+<td>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">community wiki </p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="right" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="history-1623095"></a><a href="http://stackoverflow.com/posts/1623095/revisions"><span style=" text-decoration: underline; color:#0000ff;">4</span></a><span style=" text-decoration: underline; color:#0000ff;"> revs</span><a href="http://stackoverflow.com/posts/1623095/revisions"><span style=" text-decoration: underline; color:#0000ff;"><br /></span></a><a href="http://stackoverflow.com/users/165495"><span style=" text-decoration: underline; color:#0000ff;">Casebash</span></a> </p></td></tr></table></td></tr>
+<tr>
+<td></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="comments-link-1623095"></a>add a comment </p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a name="answer-1623090"></a>19 </p></td>
+<td>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ipdb is like pdb, with the awesomeness of ipython. </p></td></tr></table></body></html>

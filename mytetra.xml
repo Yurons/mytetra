@@ -67,6 +67,7 @@
      <record dir="1406120256keou1uppbs" crypt="0" url="" tags="" author="" id="1406120256i20vvtzzqz" ctime="20140723155736" name="tshark decode unstandart tcp port" file="text.html"/>
      <record dir="1406300329ypewzb6pfn" crypt="0" url="" tags="" author="" id="14063003295bt7f4c499" ctime="20140725175849" name="Netem -  Network Emulation " file="text.html"/>
      <record dir="1416833276ulty8tkqkn" crypt="0" url="" tags="" author="" id="1416833276e0b86kiylb" ctime="20141124154756" name="How can a process intercept stdout and stderr of another process on Linux?" file="text.html"/>
+     <record dir="14218516766l6ifaknzz" crypt="0" url="" tags="nc,console" author="" id="1421851676nxvxzppq17" ctime="20150121174756" name="How to find which ports are blocked" file="text.html"/>
     </recordtable>
     <node id="13669152748anunf3w27" name="Console">
      <recordtable>
@@ -166,11 +167,14 @@
        <record dir="140654586779o3ldeigl" crypt="0" url="" tags="" author="" id="1406545867ebefmb6oh0" ctime="20140728141107" name="How to enable or disable services?" file="text.html"/>
       </recordtable>
      </node>
+     <node id="1422011800ckuhycr9hh" name="Gentoo">
+      <recordtable>
+       <record dir="1422011844cql67jyzsf" crypt="0" url="https://bugs.gentoo.org/show_bug.cgi?id=411091" tags="" author="" id="1422011844ww5q8upnm1" ctime="20150123141724" name="qt-webkit and chromium build dependacy issue" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node id="13669190608h3l1ao80c" name="DNS">
      <recordtable>
-      <record dir="136691909187u55wt7bi" crypt="0" url="" tags="" author="" id="136691909118ejsyc0z3" ctime="20130425224451" name="resolv.conf" file="text.html"/>
-      <record dir="13669190919r8sbod1s2" crypt="0" url="" tags="" author="" id="1366919091ronna72ixl" ctime="20130425224451" name="dig" file="text.html"/>
       <record dir="1366919091athym8mfpe" crypt="0" url="" tags="" author="" id="1366919091hg2kjtslrp" ctime="20130425224451" name="dnsmasq how-to" file="text.html"/>
       <record dir="1366919102i1d6qihgia" crypt="0" url="" tags="" author="" id="136691910233bdey8lfa" ctime="20130425224502" name="dnsmasq" file="text.html"/>
      </recordtable>
@@ -189,6 +193,11 @@
       <record dir="13694845546g2nzejxyl" crypt="0" url="" tags="" author="" id="1369484554yhzoixwwbp" ctime="20130525152234" name="Ограничение скорости в Ubuntu " file="text.html"/>
      </recordtable>
     </node>
+    <node id="1421851870fhza4n1ta3" name="Python">
+     <recordtable>
+      <record dir="14218519734he3ri69rw" crypt="0" url="" tags="" author="" id="1421851973cc814bgsuz" ctime="20150121175253" name="python-debugging-tips" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node id="1366919672xprmjs1y1p" name="Internet">
     <recordtable>
@@ -202,6 +211,7 @@
    <node id="136691971089yyxl3w6b" name="Git">
     <recordtable>
      <record dir="1366919720nug1semcqs" crypt="0" url="" tags="" author="" id="1366919720n4aol3a53y" ctime="20130425225520" name="link" file="text.html"/>
+     <record dir="1421404471tftc10vuu2" crypt="0" url="" tags="git" author="" id="1421404471x9b4r083is" ctime="20150116133431" name="Restore a deleted file in a Git repo" file="text.html"/>
     </recordtable>
    </node>
    <node id="13669197310zgh0ob201" name="Nout">
@@ -345,6 +355,7 @@
          <record dir="1414407002p6cxai9v5p" crypt="1" url="" tags="" author="" id="1414407002dlikknikp5" ctime="20141027135002" name="UkM1U0lNUANSDDXSWCDd45+ueoxMyqFB0yndBiRtrXeD7LTdS70KG+V89JqYgN6dz/OWxptYBu/MFQswk7oQKWQok+QKc07cJiC+o10THUI=" file="text.html"/>
          <record dir="1420016629tefb1knq0n" crypt="1" url="" tags="" author="" id="142001662918pl5itt2q" ctime="20141231120349" name="UkM1U0lNUAOgZf1P43KfjT1zd+0nhsbiJywzSyFgXZZ5FZJrba7LmO4AJsCBqji/" file="text.html"/>
          <record dir="1420448919i1wzsvhs7y" crypt="1" url="" tags="" author="" id="14204489196gldkuyhbm" ctime="20150105120839" name="UkM1U0lNUAMzdqvQsyqP8+m6qkthdkEHnUtQj25bmrjiwHoE9RJkX5XUoRPg2PNe" file="text.html"/>
+         <record dir="1421925609kofo41dgh0" crypt="1" url="" tags="" author="" id="1421925609et7tjiw7gs" ctime="20150122142009" name="UkM1U0lNUAMfwoQoVCEF0neYjlAGCvtA8v5QJMMv4F8yzEqHmpN67K3FLHAJ7un/K/H8dZc7iYw=" file="text.html"/>
         </recordtable>
        </node>
        <node crypt="1" id="13772526021yqcwpeinm" name="Ubzmkf/kQyYXrK4yrfZ5yP2DedbBbrxfdmU+tQMwfE8=">

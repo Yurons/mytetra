@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:7px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;"><a href="http://superuser.com/questions/584397/how-to-find-which-ports-are-blocked"><span style=" font-family:'Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif'; font-size:xx-large; font-weight:600; text-decoration: underline; color:#444444; background-color:#000000;">How to find which ports are blocked</span></a></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:7px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif'; font-size:xx-large; font-weight:600; text-decoration: underline; color:#444444; background-color:#ffffff;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If I just scan port 5900 from A I get</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">nc -v -w 1 B -z 5900</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /><span style=" font-family:'Arial,Liberation Sans,DejaVu Sans,sans-serif'; font-size:15px; color:#000000; background-color:#ffffff;">If you have a mean router in between which answers TCP requests instead of dropping them, you can find out by binding to all ports </span>(warning, you could run out of system resources doing this! Maybe try with ~1000 ports at a time):</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">for i in {1..65535} ; do nc -l $i &amp; done</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
