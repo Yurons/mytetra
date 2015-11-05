@@ -100,16 +100,20 @@
        <record dir="137717268569mrtokyw8" crypt="0" url="" tags="" author="" id="13771726854775dohjv3" ctime="20130822145805" name="How to assign a heredoc value to a variable in Bash?" file="text.html"/>
        <record dir="1397040357vhj6mo0gky" crypt="0" url="http://unix.stackexchange.com/questions/83473/get-my-country-by-ip-in-bash" tags="" author="" id="13970403575r3sqtag8m" ctime="20140409134557" name="Get my country by IP in bash" file="text.html"/>
        <record dir="142123952324hhlyda57" crypt="0" url="" tags="" author="" id="14212395235hsbvfwyo3" ctime="20150114154523" name="randomly shuffling files in bash" file="text.html"/>
+       <record dir="144014453656is4125d5" crypt="0" url="" tags="" author="" id="1440144536mc7f47fhkl" ctime="20150821110856" name="How to assign a heredoc value to a variable in Bash" file="text.html"/>
+       <record dir="1440144668xem4trs8oc" crypt="0" url="" tags="" author="" id="144014466897e9osqcy2" ctime="20150821111108" name="Check if an array contains a value" file="text.html"/>
+       <record dir="1440424772hpbe7dr0lb" crypt="0" url="" tags="" author="" id="1440424772sunfjbzlix" ctime="20150824165932" name="Select a random item from an array" file="text.html"/>
       </recordtable>
      </node>
      <node id="1366918026szdwcvi6ye" name="awk">
       <recordtable>
-       <record dir="13669180399nmmkyxi4b" crypt="0" url="" tags="" author="" id="1366918039wt379t8x5i" ctime="20130425222719" name="10.9. Регулярные выражения" file="text.html"/>
-       <record dir="1366918050etkh09ro6c" crypt="0" url="" tags="" author="" id="1366918050ni9q543mkh" ctime="20130425222730" name="Awk в примерах" file="text.html"/>
-       <record dir="1395151219s2lmn1sbhv" crypt="0" url="" tags="" author="" id="13951512190ce350fmer" ctime="20140318170019" name="awk. Короткие примеры" file="text.html"/>
+       <record dir="13669180399nmmkyxi4b" crypt="0" url="" tags="awk" author="" id="1366918039wt379t8x5i" ctime="20130425222719" name="10.9. Регулярные выражения" file="text.html"/>
+       <record dir="1366918050etkh09ro6c" crypt="0" url="" tags="awk" author="" id="1366918050ni9q543mkh" ctime="20130425222730" name="Awk в примерах" file="text.html"/>
+       <record dir="1395151219s2lmn1sbhv" crypt="0" url="" tags="awk" author="" id="13951512190ce350fmer" ctime="20140318170019" name="awk. Короткие примеры" file="text.html"/>
        <record dir="1397913962uhmawq4fl0" crypt="0" url="http://zavelos.ru/forum/22-Udalit-stolbets-iz-tekstovogo-fayla" tags="awk" author="" id="1397913962c0pcz4s7s2" ctime="20140419162602" name="Удалить столбец из текстового файла" file="text.html"/>
-       <record dir="1398079000f8hhx8qwwm" crypt="0" url="" tags="" author="" id="1398079000vuzhfhopr5" ctime="20140421141640" name="Awk Greater Than Less Than" file="text.html"/>
-       <record dir="1398242585dz2camwfo7" crypt="0" url="" tags="" author="" id="1398242585qq3552iyjk" ctime="20140423114305" name="'uniq' by column" file="text.html"/>
+       <record dir="1398079000f8hhx8qwwm" crypt="0" url="" tags="awk" author="" id="1398079000vuzhfhopr5" ctime="20140421141640" name="Awk Greater Than Less Than" file="text.html"/>
+       <record dir="1398242585dz2camwfo7" crypt="0" url="" tags="awk" author="" id="1398242585qq3552iyjk" ctime="20140423114305" name="'uniq' by column" file="text.html"/>
+       <record dir="1442564360i0ay0xs6nt" crypt="0" url="" tags="awk" author="" id="1442564360usl0b8wgap" ctime="20150918111920" name="How to print odd numbered fields from a text file using awk in Unix?" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -172,6 +176,8 @@
      <node id="1422011800ckuhycr9hh" name="Gentoo">
       <recordtable>
        <record dir="1422011844cql67jyzsf" crypt="0" url="https://bugs.gentoo.org/show_bug.cgi?id=411091" tags="" author="" id="1422011844ww5q8upnm1" ctime="20150123141724" name="qt-webkit and chromium build dependacy issue" file="text.html"/>
+       <record dir="1431703701941v6roydk" crypt="0" url="" tags="Gentoo" author="" id="1431703701s5cqcy54sg" ctime="20150515182821" name="Using the Android SDK on Gentoo" file="text.html"/>
+       <record dir="1438326379q1zvud5v4f" crypt="0" url="" tags="" author="" id="1438326379p598tmv9f0" ctime="20150731100619" name="Notes" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -225,6 +231,7 @@
     <recordtable>
      <record dir="13669197472j9igp6rsn" crypt="0" url="" tags="" author="" id="1366919747s2qdnyzsw6" ctime="20130425225547" name="How to reduce power consumption" file="text.html"/>
      <record dir="136691975536it0l7zt3" crypt="0" url="" tags="" author="" id="136691975569brbipj1i" ctime="20130425225555" name="Улучшаем энергосбережение на мобильных устройствах с OS Linux." file="text.html"/>
+     <record dir="1441612280rnk835iqyq" crypt="0" url="" tags="" author="" id="14416122800gzd8xnlis" ctime="20150907105120" name="my commands" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="1" id="1366966419njtnnwndpt" name="bnsWLStfvxUQDyJ+yivs9gsxCtJespGl">
@@ -235,6 +242,7 @@
       <record dir="1377602513gruct6fdu3" crypt="1" url="" tags="" author="" id="1377602513xtc5qof98p" ctime="20130827142153" name="rHn3ehukpjuC6gOk4VvFUpvHXYOGk66D+DSGs51cgQme1LUZKFoBJYdJXzO9YmHN5+15txutWSrX0vpCWDFM2BRl2gDWitCF" file="text.html"/>
       <record dir="1393936641fmk4r4z826" crypt="1" url="" tags="" author="" id="13939366415a8v7wu6ow" ctime="20140304153721" name="nUea1MLGSIAapft1J76Cz5/N4gOeXBuq" file="text.html"/>
       <record dir="14206999836cep450352" crypt="1" url="" tags="" author="" id="1420699983nl7240sm0y" ctime="20150108095303" name="UkM1U0lNUAOacwmsWxIFrOGor5yBARpLqsr3apCGil52AgnJLbpocqvokrmH7dBV9E1tplrZdgg=" file="text.html"/>
+      <record dir="1441284742urby9atfma" crypt="1" url="" tags="" author="" id="1441284742w5twhyv18u" ctime="20150903155222" name="UkM1U0lNUAPKkRGRuHsheKH0PA+AWxCTWfB12BI1XvFvhozqurD/hrdSSK7LHL2eljz2N35aGiE=" file="text.html"/>
      </recordtable>
      <node crypt="1" id="1366966434wf15byt1d8" name="2DD9nOtOPxKYfYCl50buQH5ZyDuMRByM">
       <recordtable>
@@ -256,6 +264,8 @@
        <record dir="1371647150dofyg5vvjw" crypt="1" url="" tags="" author="" id="1371647150aqbk86no8g" ctime="20130619160550" name="u9ROrEZBSL8gAiUyUFj4FuG8iwy9pgZFjlkrytOvTua1+jj339glnQ==" file="text.html"/>
        <record dir="1388147616oy75zaa19q" crypt="1" url="" tags="" author="" id="13881476169ugtn8wxlu" ctime="20131227153336" name="gqAC0GhSZfbr2lRi4W9iCQLz6gJ3mXZl" file="text.html"/>
        <record dir="1401444562pcwg7xqcw3" crypt="1" url="" tags="" author="" id="1401444562axnwzruk7u" ctime="20140530130922" name="hZTqLw+K6Jek5OalLdMCDDQJcQh82ODA" file="text.html"/>
+       <record dir="1442993585wzl04lc4dw" crypt="1" url="" tags="" author="" id="1442993585k1yba9ju9o" ctime="20150923103305" name="UkM1U0lNUAMTIKEENe4EhBdu/kY4Gz9vbqnHoc3ycoh3pZgfR6Pqqj83/52i0pNkjtMzqgX/Trk=" file="text.html"/>
+       <record dir="1443532105hwnbu503le" crypt="1" url="" tags="" author="" id="1443532105da9zwdba18" ctime="20150929160825" name="UkM1U0lNUAOzJJeGaPtNtPu2vxN+t6hs/PPOvAPN25S0u4vutDsE4K8k/1OF/Bq9" file="text.html"/>
       </recordtable>
       <node crypt="1" id="1366966434j8g5jqz15h" name="ov57fXmL+4c+lG4qtZbbrFDSDzXIg63xRObDApHS4Kg=">
        <recordtable>
@@ -370,6 +380,10 @@
          <record dir="1427371351f522ppb2p4" crypt="1" url="" tags="" author="" id="1427371351kv96mqreir" ctime="20150326150231" name="UkM1U0lNUAMAk5HqzoM+8aFCv7F0+SwNVdlNWaM/L7Rk+hDTivyEs/5g/sJPH3y7UghksF4nz9wiIDMG+zl90w==" file="text.html"/>
          <record dir="1429171442ukhct18j5x" crypt="1" url="" tags="" author="" id="1429171442deprarxyrp" ctime="20150416110402" name="UkM1U0lNUAOtX77eaxp2FxwAiDynn7nOAph22z1Wg8VDeE8CsJCgz0LC0pJ+euX9cI41ksChwns=" file="text.html"/>
          <record dir="14292821637s2w9sm6ef" crypt="1" url="" tags="" author="" id="1429282163lgzjgo73la" ctime="20150417174923" name="UkM1U0lNUAP9jg3hklGIODnTWAsgsFMGSRF1EOEXEzIAmiHKZbTIeW2zGzFUgvKYHlCseZg2Cxo+bMyWOz/4/A==" file="text.html"/>
+         <record dir="1437732962153816mr6b" crypt="1" url="" tags="" author="" id="1437732962qo676z8tn5" ctime="20150724131602" name="UkM1U0lNUAM7PuyhSqMF/KKBLVpRNXJG2y7RZ2ifGRRDIYNAhmOduOx36yAb13Ej" file="text.html"/>
+         <record dir="14393698067g7w7wi0ct" crypt="1" url="" tags="" author="" id="1439369806t3n67q77v2" ctime="20150812115646" name="UkM1U0lNUAObNowEMp2j9qB2kDa9woqv4LxGCC7stQ7pE/fjC8ViJwvbDDA2PC0m" file="text.html"/>
+         <record dir="1442995579on1tvlk4qc" crypt="1" url="" tags="" author="" id="14429955793mug9m370t" ctime="20150923110620" name="UkM1U0lNUAPeLE3wdvzv8kU0yrqHK3E6B+YPZDUJ+0N5A4oTLMtfqhxGb4DCXLlG6mnteo11rtk=" file="text.html"/>
+         <record dir="1443098561yhahzbj7zx" crypt="1" url="" tags="" author="" id="14430985617mvqd6f9n2" ctime="20150924154241" name="UkM1U0lNUAOZZYC+lCtNumThPT4Gw1UhlT/vcEqMjPl5B7N/gD+wP8t9LXFxmdmc" file="text.html"/>
         </recordtable>
        </node>
        <node crypt="1" id="13772526021yqcwpeinm" name="Ubzmkf/kQyYXrK4yrfZ5yP2DedbBbrxfdmU+tQMwfE8=">
@@ -393,6 +407,11 @@
          <record dir="1383912232h3jplbdc3o" crypt="1" url="" tags="" author="" id="13839122321k4shg7x0w" ctime="20131108150352" name="ZPeuXJJ+Dks4pYMbcGTov47LV8vjo1f6" file="text.html"/>
          <record dir="1419853969335g3qqg92" crypt="1" url="" tags="" author="" id="1419853969l0zx43wfbr" ctime="20141229145249" name="UkM1U0lNUAPdIlOIqF8jTJhOC3W9PiF20goItRjuq9SyarAhtTKRoujb8HeSaTx8" file="text.html"/>
          <record dir="1430748638p563updguo" crypt="1" url="" tags="" author="" id="143074863803fbjwwpzf" ctime="20150504171038" name="UkM1U0lNUAMLBDBYj7gUvh3qGQtzblOj3mQK7yIivhxTeFMHgziW8f5i9Z+POcFBusIGmvDfjx9ABkXUb1xyhQ==" file="text.html"/>
+         <record dir="14327202033o394yy56x" crypt="1" url="" tags="" author="" id="14327202032tj8tdq36y" ctime="20150527125003" name="UkM1U0lNUAO5E6FDKej4a0eQarqCsB3yCXiNTVP9MT48dc7bnUs5YlVFl58ukAap" file="text.html"/>
+         <record dir="1432732979hv9yqj1iyl" crypt="1" url="" tags="" author="" id="1432732979ugsg2d2wey" ctime="20150527162259" name="UkM1U0lNUAOdGSrGabK+JjbCYc0vnJ5j653T4D/vkNBFg8qK/6rBIRMuYxgTOPeV" file="text.html"/>
+         <record dir="14339251945ckm7kxtut" crypt="1" url="" tags="" author="" id="14339251948bt1pe02h9" ctime="20150610113314" name="UkM1U0lNUAP5RIVIWlwl+DIWm1xcMVMntfWhkwGbw2nOUseCEXJB5RFQ09Tx3CElcryr/CCl8J0=" file="text.html"/>
+         <record dir="1434646269xp9pec7cek" crypt="1" url="" tags="" author="" id="14346462696dy9gw5thu" ctime="20150618195109" name="UkM1U0lNUANrD1EucYeLQ0Xow50Kj17WIzpUsjAAGRpW2EIcvU7n6BXQDyxxbrp3+MUCMD9I0yE=" file="text.html"/>
+         <record dir="14364508581g925geb5u" crypt="1" url="" tags="" author="" id="1436450858cy7umid85e" ctime="20150709170738" name="UkM1U0lNUANrW2uZ19g+AP0eDTpH+vBTOfhqeYW9gXnU9peq6AqlSJTMJUwCc/zVa8UtWem0XUE=" file="text.html"/>
         </recordtable>
        </node>
        <node crypt="1" id="1383742781la1filuw5u" name="N4H1KKoJSF1AzomhM6wwvVrxwXIblv+l">
@@ -412,6 +431,8 @@
          <record dir="14131815487y273ccj9e" crypt="1" url="" tags="" author="" id="1413181548qsv12oi257" ctime="20141013092548" name="ESghGSKsjE6CtpRVpMzMXiLbSyrC9G879rmmpjUPRYI=" file="text.html"/>
          <record dir="1413183356ha7jus5ouw" crypt="1" url="" tags="" author="" id="1413183356cejrau2asv" ctime="20141013095556" name="PqfufqXLgm657rJUgCdcngG9/Kj/p94h" file="text.html"/>
          <record dir="1413963849obnhf5g219" crypt="1" url="" tags="" author="" id="14139638496ycvxbmttz" ctime="20141022104409" name="QOSCQdbNgJOXkGae0rl2O5NxiNdWeqPEe8aDqFpNB/M=" file="text.html"/>
+         <record dir="1433840729p6jew87x17" crypt="1" url="" tags="" author="" id="1433840729a0ityl4uq5" ctime="20150609120529" name="UkM1U0lNUAPl54ujiUb77d2BI79eoL78uOuh/UjwGJCQtUDUeZK+PQX2IX6J4ynv" file="text.html"/>
+         <record dir="144439722601zeklecgj" crypt="1" url="" tags="" author="" id="1444397226auf8tnu51p" ctime="20151009162706" name="UkM1U0lNUAP+4Ze3rqXG2Q1qsCsdiUnqOp6lWohbjHvvenBtAHjVVszstEQWy7wqmN/QYNt5KVuaLIayOTSEfg==" file="text.html"/>
         </recordtable>
        </node>
        <node crypt="1" id="1419927846yun1rddzdq" name="UkM1U0lNUAMoxqfkpKxtvj4l4dBS8pUuGFVrCGDRH/iapGGlv9t5HYPdH9T85Kg3">
@@ -451,6 +472,9 @@
         <record dir="1416821285dbvvhbiekz" crypt="1" url="" tags="" author="" id="1416821285ftx8hpgeta" ctime="20141124122805" name="UkM1U0lNUAM2y3i276jh+k+lxszFlY/vtBUNrmRczTFt3MGE8l8JH6JO9shjeU9Czn85wxRuoSE=" file="text.html"/>
         <record dir="1423737544z0chjfxwuq" crypt="1" url="" tags="UkM1U0lNUAOqkP0SiBopK2MVrBlt7OtiFqTpFqLp6w3FdYkD6Fo80XSxGGrWC9hF" author="" id="1423737544wz6g4tjlha" ctime="20150212133904" name="UkM1U0lNUAM6aPgcF6PsK/yC8dX+rPm+DwUyf6zH6usRpg6aIj0wEqDrrANb2My0ABdxLOs6XRmohXYN3kDGv7hrq0TwbQtIX2IliFYhDLO19fJlgqHx/N8d1pRpiufGZyypGKlo5gk=" file="text.html"/>
         <record dir="14264948264bpzyvvgeg" crypt="1" url="" tags="" author="" id="1426494826aelvpvfjgd" ctime="20150316113346" name="UkM1U0lNUAPjrnTtZIg0BitoiEC3eiglAQW+Ec+rMEv7x9gMkQIUalWpd2PPPptYA1VnPYd2ygM=" file="text.html"/>
+        <record dir="1438077377blhd6utd73" crypt="1" url="" tags="" author="" id="1438077377ien0siz9c9" ctime="20150728125617" name="UkM1U0lNUAP2H9ihDg0h+2YKP3BOKzw0vrkGe5+bBH7FwhnI35w4eCO1viwqOpH8" file="text.html"/>
+        <record dir="1443440187olomw58lc2" crypt="1" url="" tags="" author="" id="144344018786lbk2uutc" ctime="20150928143627" name="UkM1U0lNUANOVPJnMAUNbYF3ttKn+jOXBN3gqipajVVDVQ5fTYYpNdPn09/IcOER" file="text.html"/>
+        <record dir="1445418313i9p7svtob9" crypt="1" url="" tags="UkM1U0lNUAP5ee9lqsxZQ8/pCHlskcSvN3cVFB+cz8OkzQMVHPTNu6l2KbdwzZ4k" author="" id="1445418313amqlexpao8" ctime="20151021120513" name="UkM1U0lNUAPIbDHd9Jm/IT5Qjq5bwTYnxKEYHsMLIBsjMI9UvZiciAnsxZCKSr9P" file="text.html"/>
        </recordtable>
       </node>
       <node crypt="1" id="1366966434ebj1imab0o" name="KSGNe/J0VY0wFUoTVXkJVlil/7340+bK">
@@ -544,6 +568,9 @@
     </node>
     <node crypt="1" id="1376902078ixmu4jkaxi" name="qcFBysH5P/GSnt+VFnDYg6RQvfFcutur">
      <node crypt="1" id="1376902372j0eb5ddnuo" name="24RvVQTS97vy9Ye8BcbZk4ARSX+vGTNS">
+      <recordtable>
+       <record dir="1442401833bboi0x8w2p" crypt="1" url="" tags="" author="" id="14424018335u0s6uq2jc" ctime="20150916141033" name="UkM1U0lNUANVfd45Ks+JCQUfWkIakL3Eqd8ZEEWcwtvySauBInzjoY3PmA8Zq3Wlp8gzNV+K0YPlgNZYBRAbyAQLZI2RdsTqdIA0ZI/DJT/30SgP46/85Q==" file="text.html"/>
+      </recordtable>
       <node crypt="1" id="1376902409yjheey385y" name="HhrIQav12pyBBE7/EIqw81UXGbfpcKgp">
        <recordtable>
         <record dir="1376903574d9gsykw6e8" crypt="1" url="" tags="" author="" id="1376903574vp4soc4g3f" ctime="20130819121254" name="C76TUjXJfSkVSHSvLUV8lJGSLlJThM9JdSK2FbZbMOG28Rw05Vc68eF+3rWuhD8b" file="text.html"/>
@@ -599,6 +626,11 @@
      </recordtable>
     </node>
    </node>
+  </node>
+  <node id="1438358759zlgnw01t7w" name="Media">
+   <recordtable>
+    <record dir="143835881561l2ox25rp" crypt="0" url="" tags="" author="" id="14383588151irhggg1zt" ctime="20150731190655" name="GLOSSARY for MPEG DASH" file="text.html"/>
+   </recordtable>
   </node>
  </content>
 </root>
