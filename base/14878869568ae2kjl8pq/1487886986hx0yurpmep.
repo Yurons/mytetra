@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>Quick HOWTO : Ch04 : Simple Network Troubleshooting - Linux Home Networking</title>
+<meta name="generator" content="MediaWiki 1.25.3" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/wiki/opensearch_desc.php" title="Linux Home Networking (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://www.linuxhomenetworking.com/wiki/api.php?action=rsd" />
+<link rel="alternate" hreflang="x-default" href="/wiki/index.php/Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-nd/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="Linux Home Networking Atom feed" href="/wiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="http://www.linuxhomenetworking.com/wiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.monobook.styles&amp;only=styles&amp;skin=monobook&amp;*" />
+<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]--><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="http://www.linuxhomenetworking.com/wiki/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=monobook&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: lhn_wiki-ofw_:resourceloader:filter:minify-css:7:971ea7d15e478c3059ce7bb4b001d816 */</style>
+<script src="http://www.linuxhomenetworking.com/wiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=monobook&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting","wgTitle":"Quick HOWTO : Ch04 : Simple Network Troubleshooting","wgCurRevisionId":4282,"wgRevisionId":4282,"wgArticleId":1287,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting","wgRelevantArticleId":1287,"wgIsProbablyEditable":false,"wgRestrictionEdit":["sysop"],"wgRestrictionMove":["sysop"]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});
+/* cache key: lhn_wiki-ofw_:resourceloader:filter:minify-js:7:a5c52c063dc436c1ca7c9f456936a5e9 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Quick_HOWTO_Ch04_Simple_Network_Troubleshooting skin-monobook action-view">
+<!-- LinuxHomeNetworking Start -->
+<link rel="stylesheet" type="text/css" media="all" href="http://www.linuxhomenetworking.com/wiki/lhn/misc/style.css" />
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1003443/300x250-LHN-Home-A', [300, 250], 'div-gpt-ad-1351902611589-0').addService(googletag.pubads());
+googletag.defineSlot('/1003443/300x250-LHN-Home-B', [300, 250], 'div-gpt-ad-1351902611589-1').addService(googletag.pubads());
+googletag.defineSlot('/1003443/300x250-LHN-Home-C', [300, 250], 'div-gpt-ad-1351902611589-2').addService(googletag.pubads());
+googletag.defineSlot('/1003443/728x90', [728, 90], 'div-gpt-ad-1351902611589-3').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+        <div id="lhn-wrapper">
+        <!-- Banner in Adsense -->
+
+<table style="text-align: left; width: 100%; margin-left: auto; margin-right: auto;" border="0">
+<tr>
+<td style="vertical-align: middle; text-align: center;">
+
+
+<!-- 728x90 -->
+<div id='div-gpt-ad-1351902611589-3' style='width:728px; height:90px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351902611589-3'); });
+</script>
+</div>
+
+
+</td>
+<td
+style="vertical-align: middle; width: 235px; text-align: center;">
+
+<a
+href="http://www.linuxhomenetworking.com/lhn/purchase"><img
+style="border: 0px solid ; width: 235px; height: 90px;" alt=""
+src="http://www.linuxhomenetworking.com/lhn/images/buypdf-235x90-20101211.gif"></a>
+
+</td>
+</tr>
+</table>
+        <header id="branding" role="banner">
+     <a href="http://www.linuxhomenetworking.com/">
+	<img src="http://www.linuxhomenetworking.com/wp-content/uploads/2012/05/logo-1000x80-20120505.gif" width="1000" height="80" alt="" />
+     </a>
+
+<div class="only-search with-image">
+<table border="0" bgcolor="#222222" width="100%">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+<nav id="access" role="navigation">
+    <div class="menu">
+        <ul>
+            <li class="current_page_item"><a href="http://www.linuxhomenetworking.com/" title="Home">Home</a></li>
+            <li class="page_item page-item-22"><a href="http://www.linuxhomenetworking.com/purchase-pdfs/">Purchase PDFs</a>
+                <ul class='children'>
+                    <li class="page_item page-item-24"><a href="http://www.linuxhomenetworking.com/purchase-pdfs/faq/">FAQ</a></li>
+                </ul>
+            </li>
+            <li class="page_item page-item-12"><a href="http://www.linuxhomenetworking.com/about/">About</a>
+                <ul class='children'>
+                    <li class="page_item page-item-26"><a href="http://www.linuxhomenetworking.com/about/contact/">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav><!-- #access -->
+
+</header><!-- #branding -->
+        <!-- Two Columns Start -->
+<table style="text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">
+        <div id="globalWrapper-guest">
+        <div id="column-content-guest"><div id="content-guest" class="mw-body-primary" role="main">
+<!-- LinuxHomeNetworking Stop -->
+
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">Quick HOWTO : Ch04 : Simple Network Troubleshooting</h1>
+
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From Linux Home Networking</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Sources_of_Network_Slowness"><span class="tocnumber">1.1</span> <span class="toctext">Sources of Network Slowness</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Sources_of_a_Lack_of_Connectivity"><span class="tocnumber">1.2</span> <span class="toctext">Sources of a Lack of Connectivity</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Doing_Basic_Cable_and_Link_Tests"><span class="tocnumber">1.3</span> <span class="toctext">Doing Basic Cable and Link Tests</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Testing_Your_NIC"><span class="tocnumber">2</span> <span class="toctext">Testing Your NIC</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Viewing_Your_Activated_Interfaces"><span class="tocnumber">2.1</span> <span class="toctext">Viewing Your Activated Interfaces</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Viewing_All_Interfaces"><span class="tocnumber">2.2</span> <span class="toctext">Viewing All Interfaces</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="#DHCP_Considerations"><span class="tocnumber">2.2.1</span> <span class="toctext">DHCP Considerations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="#Testing_Link_Status_from_the_Command_Line"><span class="tocnumber">2.3</span> <span class="toctext">Testing Link Status from the Command Line</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="#Link_Status_Output_from_mii-tool"><span class="tocnumber">2.3.1</span> <span class="toctext">Link Status Output from mii-tool</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Link_Status_Output_from_ethtool"><span class="tocnumber">2.3.2</span> <span class="toctext">Link Status Output from ethtool</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-12"><a href="#Viewing_NIC_Errors"><span class="tocnumber">2.4</span> <span class="toctext">Viewing NIC Errors</span></a>
+<ul>
+<li class="toclevel-3 tocsection-13"><a href="#Ifconfig_Error_Output"><span class="tocnumber">2.4.1</span> <span class="toctext">Ifconfig Error Output</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="#ethtool_Error_Output"><span class="tocnumber">2.4.2</span> <span class="toctext">ethtool Error Output</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-15"><a href="#netstat_Error_Output"><span class="tocnumber">2.5</span> <span class="toctext">netstat Error Output</span></a>
+<ul>
+<li class="toclevel-3 tocsection-16"><a href="#Possible_Causes_of_Ethernet_Errors"><span class="tocnumber">2.5.1</span> <span class="toctext">Possible Causes of Ethernet Errors</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#How_to_See_MAC_Addresses"><span class="tocnumber">3</span> <span class="toctext">How to See MAC Addresses</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Using_ping_to_Test_Network_Connectivity"><span class="tocnumber">4</span> <span class="toctext">Using ping to Test Network Connectivity</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#Using_telnet_to_Test_Network_Connectivity"><span class="tocnumber">5</span> <span class="toctext">Using telnet to Test Network Connectivity</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#Linux_telnet_Troubleshooting"><span class="tocnumber">5.1</span> <span class="toctext">Linux telnet Troubleshooting</span></a>
+<ul>
+<li class="toclevel-3 tocsection-21"><a href="#Successful_Connection"><span class="tocnumber">5.1.1</span> <span class="toctext">Successful Connection</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#Connection_Refused_Messages"><span class="tocnumber">5.1.2</span> <span class="toctext">Connection Refused Messages</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#telnet_Timeout_or_Hanging"><span class="tocnumber">5.1.3</span> <span class="toctext">telnet Timeout or Hanging</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-24"><a href="#telnet_Troubleshooting_Using_Windows"><span class="tocnumber">5.2</span> <span class="toctext">telnet Troubleshooting Using Windows</span></a>
+<ul>
+<li class="toclevel-3 tocsection-25"><a href="#Screen_Goes_Blank_-_Successful_Connection"><span class="tocnumber">5.2.1</span> <span class="toctext">Screen Goes Blank - Successful Connection</span></a></li>
+<li class="toclevel-3 tocsection-26"><a href="#.22Connect_Failed.22_Messages"><span class="tocnumber">5.2.2</span> <span class="toctext">"Connect Failed" Messages</span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="#telnet_Timeout_or_Hanging_2"><span class="tocnumber">5.2.3</span> <span class="toctext">telnet Timeout or Hanging</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-28"><a href="#Testing_Web_sites_with_the_curl_and_wget_Utilities"><span class="tocnumber">6</span> <span class="toctext">Testing Web sites with the curl and wget Utilities</span></a>
+<ul>
+<li class="toclevel-2 tocsection-29"><a href="#Using_curl"><span class="tocnumber">6.1</span> <span class="toctext">Using curl</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#Using_wget"><span class="tocnumber">6.2</span> <span class="toctext">Using wget</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-31"><a href="#The_netstat_Command"><span class="tocnumber">7</span> <span class="toctext">The netstat Command</span></a></li>
+<li class="toclevel-1 tocsection-32"><a href="#The_Linux_iptables_Firewall"><span class="tocnumber">8</span> <span class="toctext">The Linux iptables Firewall</span></a>
+<ul>
+<li class="toclevel-2 tocsection-33"><a href="#How_to_Configure_iptables_Rules"><span class="tocnumber">8.1</span> <span class="toctext">How to Configure iptables Rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-34"><a href="#Using_traceroute_to_Test_Connectivity"><span class="tocnumber">9</span> <span class="toctext">Using traceroute to Test Connectivity</span></a>
+<ul>
+<li class="toclevel-2 tocsection-35"><a href="#Sample_traceroute_Output"><span class="tocnumber">9.1</span> <span class="toctext">Sample traceroute Output</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="#Possible_traceroute_Messages"><span class="tocnumber">9.2</span> <span class="toctext">Possible traceroute Messages</span></a>
+<ul>
+<li class="toclevel-3 tocsection-37"><a href="#Table_4-1:_traceroute_Return_Code_Symbols"><span class="tocnumber">9.2.1</span> <span class="toctext">Table 4-1: traceroute Return Code Symbols</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-38"><a href="#traceroute_Time_Exceeded_False_Alarms"><span class="tocnumber">9.3</span> <span class="toctext">traceroute Time Exceeded False Alarms</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="#traceroute_Internet_Slowness_False_Alarm"><span class="tocnumber">9.4</span> <span class="toctext">traceroute Internet Slowness False Alarm</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="#traceroute_Dies_At_The_Router_Just_Before_The_Server"><span class="tocnumber">9.5</span> <span class="toctext">traceroute Dies At The Router Just Before The Server</span></a></li>
+<li class="toclevel-2 tocsection-41"><a href="#Always_Get_a_Bidirectional_traceroute"><span class="tocnumber">9.6</span> <span class="toctext">Always Get a Bidirectional traceroute</span></a></li>
+<li class="toclevel-2 tocsection-42"><a href="#ping_and_traceroute_Troubleshooting_Example"><span class="tocnumber">9.7</span> <span class="toctext">ping and traceroute Troubleshooting Example</span></a></li>
+<li class="toclevel-2 tocsection-43"><a href="#traceroute_Web_sites"><span class="tocnumber">9.8</span> <span class="toctext">traceroute Web sites</span></a></li>
+<li class="toclevel-2 tocsection-44"><a href="#Possible_Reasons_For_Failed_Traceroutes"><span class="tocnumber">9.9</span> <span class="toctext">Possible Reasons For Failed Traceroutes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-45"><a href="#Using_MTR_To_Detect_Network_Congestion"><span class="tocnumber">10</span> <span class="toctext">Using MTR To Detect Network Congestion</span></a></li>
+<li class="toclevel-1 tocsection-46"><a href="#Viewing_Packet_Flows_with_tcpdump"><span class="tocnumber">11</span> <span class="toctext">Viewing Packet Flows with tcpdump</span></a>
+<ul>
+<li class="toclevel-2 tocsection-47"><a href="#Table_4-2_:_Possible_TCPdump_Switches"><span class="tocnumber">11.1</span> <span class="toctext">Table 4-2&#160;: Possible TCPdump Switches</span></a></li>
+<li class="toclevel-2 tocsection-48"><a href="#Table_4-3_:_Useful_tcpdump_Expressions"><span class="tocnumber">11.2</span> <span class="toctext">Table 4-3&#160;: Useful tcpdump Expressions</span></a></li>
+<li class="toclevel-2 tocsection-49"><a href="#Analyzing_tcpdump_files"><span class="tocnumber">11.3</span> <span class="toctext">Analyzing tcpdump files</span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="#Common_Problems_with_tcpdump"><span class="tocnumber">11.4</span> <span class="toctext">Common Problems with tcpdump</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-51"><a href="#Viewing_Packet_Flows_with_tshark"><span class="tocnumber">12</span> <span class="toctext">Viewing Packet Flows with tshark</span></a>
+<ul>
+<li class="toclevel-2 tocsection-52"><a href="#Table_4-4_:_Possible_tshark_Switches"><span class="tocnumber">12.1</span> <span class="toctext">Table 4-4&#160;: Possible tshark Switches</span></a></li>
+<li class="toclevel-2 tocsection-53"><a href="#Table_4-5_:_Useful_tshark_Expressions"><span class="tocnumber">12.2</span> <span class="toctext">Table 4-5&#160;: Useful tshark Expressions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-54"><a href="#Basic_DNS_Troubleshooting"><span class="tocnumber">13</span> <span class="toctext">Basic DNS Troubleshooting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-55"><a href="#Using_nslookup_to_Test_DNS"><span class="tocnumber">13.1</span> <span class="toctext">Using nslookup to Test DNS</span></a>
+<ul>
+<li class="toclevel-3 tocsection-56"><a href="#Using_nslookup_to_Check_Your_Web_site_Name"><span class="tocnumber">13.1.1</span> <span class="toctext">Using nslookup to Check Your Web site Name</span></a></li>
+<li class="toclevel-3 tocsection-57"><a href="#Using_nslookup_To_Check_Your_IP_Address"><span class="tocnumber">13.1.2</span> <span class="toctext">Using nslookup To Check Your IP Address</span></a></li>
+<li class="toclevel-3 tocsection-58"><a href="#Using_nslookup_to_Query_a_Specific_DNS_Server"><span class="tocnumber">13.1.3</span> <span class="toctext">Using nslookup to Query a Specific DNS Server</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-59"><a href="#Using_the_host_Command_to_Test_DNS"><span class="tocnumber">13.2</span> <span class="toctext">Using the host Command to Test DNS</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-60"><a href="#Using_nmap"><span class="tocnumber">14</span> <span class="toctext">Using nmap</span></a>
+<ul>
+<li class="toclevel-2 tocsection-61"><a href="#Table_4-6_Commonly_Used_NMAP_Options"><span class="tocnumber">14.1</span> <span class="toctext">Table 4-6 Commonly Used NMAP Options</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-62"><a href="#Using_netcat_to_Test_Network_Bandwidth"><span class="tocnumber">15</span> <span class="toctext">Using netcat to Test Network Bandwidth</span></a></li>
+<li class="toclevel-1 tocsection-63"><a href="#Determining_the_Source_of_an_Attack"><span class="tocnumber">16</span> <span class="toctext">Determining the Source of an Attack</span></a></li>
+<li class="toclevel-1 tocsection-64"><a href="#Who_Has_Used_My_System.3F"><span class="tocnumber">17</span> <span class="toctext">Who Has Used My System?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-65"><a href="#The_last_Command"><span class="tocnumber">17.1</span> <span class="toctext">The last Command</span></a></li>
+<li class="toclevel-2 tocsection-66"><a href="#The_who_Command"><span class="tocnumber">17.2</span> <span class="toctext">The who Command</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-67"><a href="#Conclusion"><span class="tocnumber">18</span> <span class="toctext">Conclusion</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>You will eventually find yourself trying to fix a network related problem which usually appears in one of two forms. The first is slow response times from the remote server, and the second is a complete lack of connectivity. These symptoms can be caused by:
+</p>
+<h2><span class="mw-headline" id="Sources_of_Network_Slowness">Sources of Network Slowness</span></h2>
+<ul><li> NIC duplex and speed incompatibilities</li>
+<li> Network congestion</li>
+<li> Poor routing</li>
+<li> Bad cabling</li>
+<li> Electrical interference</li>
+<li> An overloaded server at the remote end of the connection</li>
+<li> Misconfigured DNS (Covered in Chapter 18, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch18_:_Configuring_DNS" title="Quick HOWTO : Ch18 : Configuring DNS">Configuring DNS</a>" and Chapter 19, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch19_:_Dynamic_DNS" title="Quick HOWTO : Ch19 : Dynamic DNS">Dynamic DNS</a>")</li></ul>
+<h2><span class="mw-headline" id="Sources_of_a_Lack_of_Connectivity">Sources of a Lack of Connectivity</span></h2>
+<p>All sources of slowness can become so severe that connectivity is lost. Additional sources of disconnections are:
+</p>
+<ul><li> Power failures</li>
+<li> The remote server or an application on the remote server being shut down.</li></ul>
+<p>We discuss how to isolate these problems and more in the following sections.
+</p>
+<h2><span class="mw-headline" id="Doing_Basic_Cable_and_Link_Tests">Doing Basic Cable and Link Tests</span></h2>
+<p>Your server won't be able to communicate with any other device on your network unless the NIC's "link" light is on. This indicates that the connection between your server and the switch/router is functioning correctly.
+</p><p>In most cases a lack of link is due to the wrong cable type being used. As described in Chapter 2, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch02_:_Introduction_to_Networking" title="Quick HOWTO : Ch02 : Introduction to Networking">Introduction to Networking</a>", there are two types of Ethernet cables crossover and straight-through. Always make sure you are using the correct type.
+</p><p>Other sources of link failure include:
+</p>
+<ul><li> The cables are bad.</li>
+<li> The switch or router to which the server is connected is powered down.</li>
+<li> The cables aren't plugged in properly.</li></ul>
+<p>If you have an extensive network, investment in a battery-operated cable tester for basic connectivity testing is invaluable. More sophisticated models in the market will be able to tell you the approximate location of a cable break and whether an Ethernet cable is too long to be used.
+</p>
+<h1><span class="mw-headline" id="Testing_Your_NIC">Testing Your NIC</span></h1>
+<p>It is always a good practice in troubleshooting to be versed in monitoring the status of your NIC card from the command line. The following sections introduce a few commands that will be useful.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Viewing_Your_Activated_Interfaces">Viewing Your Activated Interfaces</span></h2>
+<p>The ifconfig command without any arguments gives you all the active interfaces on your system. Interfaces will not appear if they are shut down:
+</p>
+<pre>[root@bigboy tmp]# ifconfig
+</pre>
+<p><b>Note:</b> Interfaces will appear if they are activated, but have no link. We'll soon discuss how to determine the link status using commands.
+</p>
+<h2><span class="mw-headline" id="Viewing_All_Interfaces">Viewing All Interfaces</span></h2>
+<p>The ifconfig -a command provides all the network interfaces, whether they are functional or not. Interfaces that are shut down by the systems administrator or are nonfunctional will not show an IP address line and the word UP will not show in the second line of the output. This can be seen in the next examples:
+</p>
+<ul><li> Shut Down Interface</li></ul>
+<pre>wlan0   Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
+        BROADCAST MULTICAST  MTU:1500  Metric:1
+        RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:2287 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:100
+        RX bytes:180948 (176.7 Kb)  TX bytes:166377 (162.4 Kb)
+        Interrupt:10 Memory:c88b5000-c88b6000
+</pre>
+<p><br />
+</p>
+<ul><li> Active Interface</li></ul>
+<pre>wlan0    Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
+         inet addr:216.10.119.243  Bcast:216.10.119.255
+         UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+         RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
+         TX packets:2295 errors:0 dropped:0 overruns:0 carrier:0
+         collisions:0 txqueuelen:100
+         RX bytes:180948 (176.7 Kb)  TX bytes:166521 (162.6 Kb)
+         Interrupt:10 Memory:c88b5000-c88b6000
+</pre>
+<h3><span class="mw-headline" id="DHCP_Considerations">DHCP Considerations</span></h3>
+<p>DHCP clients automatically give their NICs and IP address starting with 169.254.x.x until they can make contact with their DHCP server. When contact is made they reconfigure their IP addresses to the values provided by the DHC server. 
+An interface with a 169.254.x.x address signifies a failure to communicate with the DHCP server. Check your cabling, routing and DHCP server configuration to rectify such a problem.
+</p>
+<h2><span class="mw-headline" id="Testing_Link_Status_from_the_Command_Line">Testing Link Status from the Command Line</span></h2>
+<p>Both the mii-tool and ethtool commands command will provide reports on the link status and duplex settings for supported NICs.
+</p><p>When used without any switches, the mii-tool gives a very brief report. Use it with the -v switch because it provides more information on the supported autonegotiation speeds of the NIC and this can be useful in troubleshooting speed and duplex issues.
+</p><p>The ethtool command provides much more information than mii-tool and should be your command of choice, especially because mii-tool will be soon deprecated in Linux. In both of the following examples the NICs are operating at 100Mbps, full duplex and the link is ok.
+</p><p><br /> 
+</p>
+<h3><span class="mw-headline" id="Link_Status_Output_from_mii-tool">Link Status Output from mii-tool</span></h3>
+<pre>[root@bigboy tmp]# mii-tool -v
+
+eth0: 100 Mbit, full duplex, link ok
+  product info: Intel 82555 rev 4
+  basic mode:   100 Mbit, full duplex
+  basic status: link ok
+  capabilities: 100baseTx-FD 100baseTx-HD 10baseT-FD 10baseT-HD
+  advertising:  100baseTx-FD 100baseTx-HD 10baseT-FD 10baseT-HD flow-control
+  link partner: 100baseTx-HD
+
+[root@bigboy tmp]#
+</pre>
+<h3><span class="mw-headline" id="Link_Status_Output_from_ethtool">Link Status Output from ethtool</span></h3>
+<pre>[root@bigboy tmp]# ethtool eth0
+
+Settings for eth0:
+        Supported ports: [ TP MII ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+        Supports auto-negotiation: Yes
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+        Advertised auto-negotiation: No
+        Speed: 100Mb/s
+        Duplex: Full
+        Port: MII
+        PHYAD: 1
+        Transceiver: internal
+        Auto-negotiation: off
+        Supports Wake-on: g
+        Wake-on: g
+        Current message level: 0x00000007 (7)
+        Link detected: yes
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Viewing_NIC_Errors">Viewing NIC Errors</span></h2>
+<p>Errors are a common symptom of slow connectivity due to poor configuration or excessive bandwidth utilization. They should always be corrected whenever possible. Error rates in excess of 0.5% can result in noticeable sluggishness.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Ifconfig_Error_Output">Ifconfig Error Output</span></h3>
+<p>The ifconfig command also shows the number of overrun, carrier, dropped packet and frame errors.
+</p><p><br />
+</p>
+<pre>wlan0     Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2287 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:100
+          RX bytes:180948 (176.7 Kb)  TX bytes:166377 (162.4 Kb)
+          Interrupt:10 Memory:c88b5000-c88b6000
+</pre>
+<h3><span class="mw-headline" id="ethtool_Error_Output">ethtool Error Output</span></h3>
+<p>The ethtool command can provide a much more detailed report when used with the -S switch.
+</p>
+<pre>[root@probe-001 root]# ethtool -S eth0
+NIC statistics:
+     rx_packets: 1669993
+     tx_packets: 627631
+     rx_bytes: 361714034
+     tx_bytes: 88228145
+     rx_errors: 0
+     tx_errors: 0
+     rx_dropped: 0
+     tx_dropped: 0
+     multicast: 0
+     collisions: 0
+     rx_length_errors: 0
+     rx_over_errors: 0
+     rx_crc_errors: 0
+     rx_frame_errors: 0
+     rx_fifo_errors: 0
+     rx_missed_errors: 0
+     tx_aborted_errors: 0
+     tx_carrier_errors: 0
+     tx_fifo_errors: 0
+     tx_heartbeat_errors: 0
+     tx_window_errors: 0
+     tx_deferred: 0
+     tx_single_collisions: 0
+     tx_multi_collisions: 0
+     tx_flow_control_pause: 0
+     rx_flow_control_pause: 0
+     rx_flow_control_unsupported: 0
+     tx_tco_packets: 0
+     rx_tco_packets: 0
+[root@probe-001 root]#
+</pre>
+<h2><span class="mw-headline" id="netstat_Error_Output">netstat Error Output</span></h2>
+<p>The netstat command is very versatile and can provide a limited report when used with the -i switch. This is useful for systems where mii-tool or ethtool are not available.
+</p>
+<pre>[root@bigboy tmp]# netstat -i
+Kernel Interface table
+Iface       MTU Met    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0       1500   0 18976655      2      0      0 21343152    142      0      3 BMRU
+eth1       1500   0   855154      0      0      0 15196620      0      0      0 BMRU
+lo        16436   0  1784272      0      0      0  1784272      0      0      0 LRU
+[root@bigboy tmp]#
+</pre>
+<h3><span class="mw-headline" id="Possible_Causes_of_Ethernet_Errors">Possible Causes of Ethernet Errors</span></h3>
+<p><b>Collisions:</b> Signifies when the NIC card detects itself and another server on the LAN attempting data transmissions at the same time. Collisions can be expected as a normal part of Ethernet operation and are typically below 0.1% of all frames sent. Higher error rates are likely to be caused by faulty NIC cards or poorly terminated cables.
+</p><p><b>Single Collisions:</b> The Ethernet frame went through after only one collision
+</p><p><b>Multiple Collisions:</b> The NIC had to attempt multiple times before successfully sending the frame due to collisions.
+</p><p><b>CRC Errors:</b>  Frames were sent but were corrupted in transit. The presence of CRC errors, but not many collisions usually is an indication of electrical noise. Make sure that you are using the correct type of cable, that the cabling is undamaged and that the connectors are securely fastened.
+</p><p><b>Frame Errors:</b> An incorrect CRC and a non-integer number of bytes are received. This is usually the result of collisions or a bad Ethernet device.
+</p><p><b>FIFO and Overrun Errors:</b> The number of times that the NIC was unable of handing data to its memory buffers because the data rate the capabilities of the hardware. This is usually a sign of excessive traffic.
+</p><p><b>Length Errors:</b> The received frame length was less than or exceeded the Ethernet standard. This is most frequently due to incompatible duplex settings.
+</p><p><b>Carrier Errors:</b>  Errors are caused by the NIC card losing its link connection to the hub or switch. Check for faulty cabling or faulty interfaces on the NIC and networking equipment.
+</p>
+<h1><span class="mw-headline" id="How_to_See_MAC_Addresses">How to See MAC Addresses</span></h1>
+<p>There are times when you lose connectivity with another server that is directly connected to your local network. Taking a look at the ARP table of the server from which you are troubleshooting will help determine whether the remote server's NIC is responding to any type of traffic from your Linux box. Lack of communication at this level may mean:
+</p>
+<ol><li> Either server might be disconnected from the network.</li>
+<li> There might be bad network cabling.</li>
+<li> A NIC might be disabled or the remote server might be shut down</li>
+<li> The remote server might be running firewall software such as iptables or the Windows XP built in firewall. Typically in this case, you can see the MAC address, the server is running the correct software, but the desired communication doesn't appear to be occurring to the client on the same network.</li></ol>
+<p>Here is a description of the commands you may use to determine ARP values:
+</p>
+<ul><li> The ifconfig -a command shows you both the NIC's MAC address and the associated IP addresses of the server that you are currently logged in to. Here you can see the wlan0 interface has two IP addresses 192.168.1.100 and 192.168.1.99 tied to the NIC hardware MAC address of 00:06:25:09:6A:B5</li></ul>
+<pre>[root@bigboy tmp]# ifconfig -a
+
+wlan0 Link encap:Ethernet HWaddr 00:06:25:09:6A:B5
+inet addr:192.168.1.100 Bcast:192.168.1.255 Mask:255.255.255.0
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+RX packets:47379 errors:0 dropped:0 overruns:0 frame:0
+TX packets:107900 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:100
+RX bytes:4676853 (4.4 Mb) TX bytes:43209032 (41.2 Mb)
+Interrupt:11 Memory:c887a000-c887b000
+
+wlan0:0 Link encap:Ethernet HWaddr 00:06:25:09:6A:B5
+inet addr:192.168.1.99 Bcast:192.168.1.255 Mask:255.255.255.0
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+Interrupt:11 Memory:c887a000-c887b000 
+
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<ul><li> The arp -a command will show you the MAC addresses in your server's ARP table and all the other servers on the directly connected network. Here we see we have some form of connectivity with the router at address 192.168.1.1</li></ul>
+<pre> [root@bigboy tmp]# arp -a
+bigboypix (192.168.1.1) at 00:09:E8:9C:FD:AB [ether] on wlan0
+? (192.168.1.101) at 00:06:25:09:6A:D7 [ether] on wlan0
+[root@bigboy tmp]#
+
+</pre>
+<dl><dd><b>Note:</b> Make sure the IP addresses listed in the ARP table match those of servers expected to be on your network. If they don't, your server might be plugged into the wrong switch or router port.</dd></dl>
+<dl><dd>You should also check the ARP table of the remote server to see whether it is populated with acceptable values.</dd></dl>
+<h1><span class="mw-headline" id="Using_ping_to_Test_Network_Connectivity">Using ping to Test Network Connectivity</span></h1>
+<p>Whether or not your troublesome server is connected to your local network it is always a good practice to force a response from it.
+</p><p>One of the most common methods used to test connectivity across multiple networks is the ping command. ping sends ICMP echo packets that request a corresponding ICMP echo-reply response from the device at the target address. Because most servers will respond to a ping query it becomes a very handy tool. A lack of response could be due to:
+</p>
+<ol><li> A server with that IP address doesn't exist</li>
+<li> The server has been configured not to respond to pings</li>
+<li> A firewall or router along the network path is blocking ICMP traffic</li>
+<li> You have incorrect routing. Check the routes and subnet masks on both the local and remote servers and all routers in between. A classic symptom of bad routes on a server is the ability to ping servers only on your local network and nowhere else. Use traceroute to ensure you're taking the correct path.</li>
+<li> Either the source or destination device having an incorrect IP address or subnet mask.</li></ol>
+<p>There are a variety of ICMP response codes which can help in further troubleshooting. See Appendix I, "<a href="/wiki/index.php/Quick_HOWTO_:_Ap01_:_Miscellaneous_Linux_Topics" title="Quick HOWTO : Ap01 : Miscellaneous Linux Topics">Miscellaneous Linux Topics</a>", for a full listing of them.
+</p><p>The Linux ping command will send continuous pings, once a second, until stopped with a Ctrl-C. Here is an example of a successful ping to the server bigboy at 192.168.1.100
+</p><p><br /> 
+</p>
+<pre>[root@smallfry tmp]# ping 192.168.1.101
+
+PING 192.168.1.101 (192.168.1.101) from 192.168.1.100&#160;: 56(84) bytes of data.
+64 bytes from 192.168.1.101: icmp_seq=1 ttl=128 time=3.95 ms
+64 bytes from 192.168.1.101: icmp_seq=2 ttl=128 time=7.07 ms
+64 bytes from 192.168.1.101: icmp_seq=3 ttl=128 time=4.46 ms
+64 bytes from 192.168.1.101: icmp_seq=4 ttl=128 time=4.31 ms
+
+--- 192.168.1.101 ping statistics ---
+4 packets transmitted, 4 received, 0% loss, time 3026ms
+rtt min/avg/max/mdev = 3.950/4.948/7.072/1.242 ms
+
+[root@smallfry tmp]#
+</pre>
+<p>You may get a "Destination Host Unreachable" message. There message is caused by your router or server knowing that the target IP address is part of a valid network, but is getting no response from the target server. There are a number of reasons for this:
+</p><p><br />
+<i>If you are trying to ping a host on a directly connected network:</i>
+</p>
+<ol><li>The client or server might be down, or disconnected for the network.</li>
+<li>Your NIC might not have the correct duplex settings; you may verify this with the mii-tool command.</li>
+<li>You might have the incorrect type of cable connecting your Linux box to the network. There are two basic types, straight through and crossover.</li>
+<li>In the case of a wireless network, your SSID or encryption keys might be incorrect.</li></ol>
+<p><br />
+<i>If you are trying to ping a host on remote network:</i>
+</p><p>The network device doesn't have a route in its routing table to the destination network and sends an ICMP reply type 3 which triggers the message. The resulting message might be Destination Host Unreachable or Destination Network Unreachable.
+</p>
+<pre>[root@smallfry tmp]# ping 192.168.1.105
+PING 192.168.1.105 (192.168.1.105) from 192.168.1.100&#160;: 56(84) bytes of data.
+From 192.168.1.100 icmp_seq=1 Destination Host Unreachable
+From 192.168.1.100 icmp_seq=2 Destination Host Unreachable
+From 192.168.1.100 icmp_seq=3 Destination Host Unreachable
+From 192.168.1.100 icmp_seq=4 Destination Host Unreachable
+From 192.168.1.100 icmp_seq=5 Destination Host Unreachable
+From 192.168.1.100 icmp_seq=6 Destination Host Unreachable
+--- 192.168.1.105 ping statistics ---
+8 packets transmitted, 0 received, +6 errors, 100% loss, time 7021ms, pipe 3
+[root@smallfry tmp]#
+</pre>
+<h1><span class="mw-headline" id="Using_telnet_to_Test_Network_Connectivity">Using telnet to Test Network Connectivity</span></h1>
+<p>An easy way to tell if a remote server is listening on a specific TCP port is to use the telnet command. By default, telnet will try to connect on TCP port 23, but you can specify other TCP ports by typing them in after the target IP address. HTTP uses TCP port 80, HTTPS uses port 443.
+</p><p>Here is an example of testing server 192.168.1.102 on the TCP port 22 reserved for SSH:
+</p>
+<pre>[root@bigboy tmp]# telnet 192.168.1.102 22
+</pre>
+<p>When using telnet troubleshooting, here are some useful guidelines to follow that will help to isolate the source of the problem:
+</p>
+<ul><li> Test connectivity from the remote PC or server.</li>
+<li> Test connectivity on the server itself. Try making the connection to the loopback address as well as the NIC IP address. If the server is running a firewall package such as the Linux iptables software, all loopback connectivity is allowed, but connectivity to desired TCP ports on the NIC interface might be blocked sometimes. Further discussion of the Linux iptables package is covered in a later section.</li>
+<li> Test connectivity from another server on the same network as the target server. This helps to eliminate the influence of any firewalls protecting the entire network from outside.</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Linux_telnet_Troubleshooting">Linux telnet Troubleshooting</span></h2>
+<p>The following sections the use of telnet troubleshooting from a Linux box.
+</p><p><b>Note:</b> Always remember that many Linux servers have the iptables firewall package installed by default. This is often the cause of many connectivity problems and the firewall rules should be correctly updated. In some cases where the network is already protected by a firewall, iptables might be safely turned off. You can use the /etc/init.d/iptables status command on the target server to determine whether iptables is running.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Successful_Connection">Successful Connection</span></h3>
+<p>With Linux a successful telnet connection is always greeted by a Connected to message like the one seen below when trying to test connectivity to server 192.168.1.102 on the SSH port (TCP 22).
+</p>
+<pre>[root@bigboy tmp]# telnet 192.168.1.102 22
+Trying 192.168.1.102...
+Connected to 192.168.1.102. 
+Escape character is '^]'.
+SSH-1.99-OpenSSH_3.4p1
+^]
+telnet&gt; quit
+Connection closed.
+[root@ bigboy tmp]#
+</pre>
+<p>To break out of the connection you have to press the Ctrl and ] keys simultaneously, not the usual Ctrl-C.
+</p><p><b>Note:</b> In many cases you can successfully connect on the remote server on the desired TCP port, yet the application doesn't appear to work. This is usually caused by there being correct network connectivity but a poorly configured application.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Connection_Refused_Messages">Connection Refused Messages</span></h3>
+<p>You will get a connection refused message for one of the following reasons:
+</p>
+<ul><li> The application you are trying to test hasn't been started on the remote server.</li>
+<li>There is a firewall blocking and rejecting the connection attempt</li></ul>
+<p>Here is some sample output:
+</p>
+<pre>[root@bigboy tmp]# telnet 192.168.1.100 22
+Trying 192.168.1.100...
+telnet: connect to address 192.168.1.100: Connection refused
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="telnet_Timeout_or_Hanging">telnet Timeout or Hanging</span></h3>
+<p>The telnet command will abort the attempted connection after waiting a predetermined time for a response. This is called a timeout. In some cases, telnet won't abort, but will just wait indefinitely. This is also known as hanging.  These symptoms can be caused by the one of the following reasons:
+</p>
+<ul><li> The remote server doesn't exist on the destination network. It could be turned off.</li>
+<li> A firewall could be blocking and not rejecting the connection attempt, causing it to timeout instead of being quickly refused.</li></ul>
+<pre>[root@bigboy tmp]# telnet 216.10.100.12 22
+Trying 216.10.100.12...
+telnet: connect to address 216.10.100.12: Connection timed out
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="telnet_Troubleshooting_Using_Windows">telnet Troubleshooting Using Windows</span></h2>
+<p>Sometimes you have to troubleshoot Linux servers from a Windows PC. The telnet commands are the same, but the results are different. Go to the command line and type the same telnet command as you would in Linux.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Screen_Goes_Blank_-_Successful_Connection">Screen Goes Blank - Successful Connection</span></h3>
+<p>If there is connectivity, your command prompt screen will go blank. Using the Ctrl-C key sequence enables you to exit the telnet attempt.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id=".22Connect_Failed.22_Messages">"Connect Failed" Messages</span></h3>
+<p>The Connect failed messages are the equivalent of the Linux Connection refused messages explained above and are caused for the same reasons.
+</p>
+<pre>C:\&gt;telnet 172.16.1.102 256
+Connecting To 172.16.1.102...Could not open connection to the host, on port 256:
+Connect failed
+C:\&gt;
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="telnet_Timeout_or_Hanging_2">telnet Timeout or Hanging</span></h3>
+<p>As explained previously, if there is no connectivity, the session will appear to hang or timeout. This is usually caused by the target server being turned off or by a firewall blocking the connection.
+</p>
+<pre>C:\&gt;telnet 216.10.100.12 22
+Connecting To 216.10.100.12...
+</pre>
+<h1><span class="mw-headline" id="Testing_Web_sites_with_the_curl_and_wget_Utilities">Testing Web sites with the curl and wget Utilities</span></h1>
+<p>Testing a Web site's performance using a Web browser alone is sometimes insufficient to get a good idea of the source of slow Web server performance. Many useful HTTP error codes are often not displayed by browsers making troubleshooting difficult. A much better combination of tools is to use telnet to test your site's TCP port 80 response time in conjunction with data from the Linux curl and wget HTTP utilities.
+</p><p>Rapid TCP response times, but slow curl and wget response times usually point, not to a network issue, but to slowness in the configuration of the Web server or any supporting application or database servers it may use to generate the Web page.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Using_curl">Using curl</span></h2>
+<p>The curl utility acts like a text based Web browser in which you can select to see either the header or complete body of a Web page's HTML code displayed on your screen.
+</p><p>A good start is to use the curl command with the -I flag to view just the Web page's header and HTTP status code. By not using the -I command you will see all the Web page's HTML code displayed on the screen. Either method can provide a good idea of your server's performance.
+</p>
+<pre>[root@ bigboy tmp]# curl -I www.linuxhomenetworking.com
+HTTP/1.1 200 OK
+Date: Tue, 19 Oct 2004 05:11:22 GMT
+Server: Apache/2.0.51 (Fedora)
+Accept-Ranges: bytes
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Content-Type: text/html; charset=UTF-8
+[root@bigboy tmp]#
+</pre>
+<p>In this case the Web server appears to be working correctly because it returns a 200 OK code. Please refer to Chapter 20, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch20_:_The_Apache_Web_Server" title="Quick HOWTO : Ch20 : The Apache Web Server">The Apache Web Server</a>", for a more complete listing of possibilities.
+</p>
+<h2><span class="mw-headline" id="Using_wget">Using wget</span></h2>
+<p>You can use wget to recursively download a Web site's Web pages, including the entire directory structure of the Web site, to a local directory.
+</p><p>By not using recursion, and activating the timestamping feature (the -N switch), you view not only the HTML content of the Web site's index page in your local directory, but also the download speed, file size and precise start and stop times for the download. This can be very helpful in providing a simple way to obtain snapshots of your server's performance.
+</p><p><br /> 
+</p>
+<pre>[root@bigboy tmp]# wget -N www.linuxhomenetworking.com
+--23:07:22--  <a class="external free" href="http://www.linuxhomenetworking.com/">http://www.linuxhomenetworking.com/</a>
+           =&gt; `index.html'
+Resolving www.linuxhomenetworking.com... done.
+Connecting to www.linuxhomenetworking.com[65.115.71.34]:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Last-modified header missing -- time-stamps turned off.
+--23:07:22--  <a class="external free" href="http://www.linuxhomenetworking.com/">http://www.linuxhomenetworking.com/</a>
+           =&gt; `index.html'
+Connecting to www.linuxhomenetworking.com[65.115.71.34]:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+ 
+   [   &lt;=&gt;                                         ] 122,150      279.36K/s
+
+23:07:22 (279.36 KB/s) - `index.html' saved [122150]
+[root@bigboy tmp]#
+</pre>
+<h1><span class="mw-headline" id="The_netstat_Command">The netstat Command</span></h1>
+<p>Like curl and wget, netstat can be very useful in helping to determine the source of problems. Using netstat, with the -an option lists all the TCP ports on which your Linux server is listening including all the active network connections to and from your server. This can be very helpful in determining whether slowness is due to high traffic volumes:
+</p>
+<pre>[root@bigboy tmp]# netstat -an
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN
+tcp        0      0&#160;:::80                  &#160;:::*                    LISTEN
+tcp        0   1124&#160;::ffff:65.115.71.34:80&#160;::ffff:24.4.97.110:2955  ESTABLISHED
+...
+...
+...
+[root@bigboy tmp]#
+</pre>
+<p>Most TCP connections create permanent connections, HTTP is different because the connections are shut down on their own after a pre defined inactive timeout or time_wait period on the Web server. It is therefore a good idea to focus on these types of short-lived connections too. You can determine the number of established and time_wait TCP connections on your server by using the netstat command filtered by the grep and egrep commands, with the number of matches being counted by the wc command which, in this case shows 14 connections.
+</p>
+<pre>[root@bigboy tmp]# netstat -an | grep tcp | egrep -i 'established|time_wait' | wc -l
+14
+[root@bigboy tmp]#
+</pre>
+<h1><span class="mw-headline" id="The_Linux_iptables_Firewall">The Linux iptables Firewall</span></h1>
+<p>An unexpected source of server connectivity issues for brand new servers is frequently the iptables firewall. This is installed by default under Fedora and RedHat and usually allows only a limited range of traffic. You may want to try stopping iptables while you troubleshoot.
+</p><p>Managing iptables is easy to do, but the procedure differs between Linux distributions. Here are some things to keep in mind.
+</p>
+<ul><li>Firstly, different Linux distributions use different daemon management systems. Each system has its own set of commands to do similar operations. The most commonly used daemon management systems are SysV and Systemd.</li>
+<li>Secondly, the daemon name needs to be known. In the case of iptables the name is iptables.</li></ul>
+<p>Armed with this information you can know how to:
+</p>
+<ul><li>Start your daemons automatically on booting</li>
+<li>Stop, start and restart them later on during troubleshooting or when a configuration file change needs to be applied.</li></ul>
+<p>For more details on this, please take a look at the "Managing Daemons" section of  Chapter 6 "<a href="/wiki/index.php/Quick_HOWTO_:_Ch06_:_Installing_Linux_Software" title="Quick HOWTO : Ch06 : Installing Linux Software">Installing Linux Software</a>"
+</p>
+<h2><span class="mw-headline" id="How_to_Configure_iptables_Rules">How to Configure iptables Rules</span></h2>
+<p>Stopping iptables may not be a good permanent solution especially if your network isn't protected by a firewall. You can read more about configuring iptables from Chapter 14, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables" title="Quick HOWTO : Ch14 : Linux Firewalls Using iptables">Linux Firewalls Using iptables</a>".
+</p>
+<h1><span class="mw-headline" id="Using_traceroute_to_Test_Connectivity">Using traceroute to Test Connectivity</span></h1>
+<p>Another tool for network troubleshooting is the traceroute command. It gives a listing of all the router hops between your server and the target server. This helps you verify that routing over the networks in between is correct.
+</p><p>The traceroute command works by sending a UDP packet destined to the target with a TTL of 0. The first router on the route recognizes that the TTL has already been exceeded and discards or drops the packet, but also sends an ICMP time exceeded message back to the source. The traceroute program records the IP address of the router that sent the message and knows that that is the first hop on the path to the final destination. The traceroute program tries again, with a TTL of 1. The first hop, sees nothing wrong with the packet, decrements the TTL to 0 as expected, and forwards the packet to the second hop on the path. Router 2, sees the TTL of 0, drops the packet and replies with an ICMP time exceeded message. traceroute now knows the IP address of the second router. This continues around and around until the final destination is reached.
+</p>
+<dl><dd> <b>Note:</b> In Linux the traceroute command is traceroute. In Windows it is tracert.</dd></dl>
+<dl><dd> <b>Note:</b> You will receive traceroute responses only from functioning devices. If a device responds it is less likely to be the source of your problems.</dd></dl>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Sample_traceroute_Output">Sample traceroute Output</span></h2>
+<p>Here is a sample output for a query to 144.232.20.158. Notice that all the hop times are under 50 milliseconds (ms) which is acceptable.
+</p>
+<pre>[root@bigboy tmp]# traceroute -I 144.232.20.158
+
+traceroute to 144.232.20.158 (144.232.20.158), 30 hops max, 38 byte packets
+1 adsl-67-120-221-110.dsl.sntc01.pacbell.net (67.120.221.110) 14.408 ms 14.064 ms 13.111 ms
+2 dist3-vlan50.sntc01.pbi.net (63.203.35.67) 13.018 ms 12.887 ms 13.146 ms
+3 bb1-g1-0.sntc01.pbi.net (63.203.35.17) 12.854 ms 13.035 ms 13.745 ms
+4 bb2-p11-0.snfc21.pbi.net (64.161.124.246) 16.260 ms 15.618 ms 15.663 ms
+5 bb1-p14-0.snfc21.pbi.net (64.161.124.53) 15.897 ms 15.785 ms 17.164 ms
+6 sl-gw11-sj-3-0.sprintlink.net (144.228.44.49) 14.443 ms 16.279 ms 15.189 ms
+7 sl-bb25-sj-6-1.sprintlink.net (144.232.3.133) 16.185 ms 15.857 ms 15.423 ms
+8 sl-bb23-ana-6-0.sprintlink.net (144.232.20.158) 27.482 ms 26.306 ms 26.487 ms
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Possible_traceroute_Messages">Possible traceroute Messages</span></h2>
+<p>There are a number of possible message codes traceroute can give, these are listed in Table 4-1.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Table_4-1:_traceroute_Return_Code_Symbols">Table 4-1: traceroute Return Code Symbols</span></h3>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> Traceroute Symbol
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>***
+</td>
+<td>
+<p>Expected 5 second response time exceeded. Could be caused by:
+</p>
+<ul><li> A router on the path not sending back the ICMP "time exceeded" messages</li>
+<li> A router or firewall in the path blocking the ICMP "time exceeded" messages</li>
+<li> The target IP address not responding</li></ul>
+</td></tr>
+<tr valign="top">
+<td>!H,&#160;!N, or&#160;!P
+</td>
+<td>Host, network or protocol unreachable
+</td></tr>
+<tr valign="top">
+<td>!X or&#160;!A
+</td>
+<td>Communication administratively prohibited. A router Access Control List (ACL) or firewall is in the way
+</td></tr>
+<tr valign="top">
+<td>!S
+</td>
+<td>Source route failed. Source routing attempts to force traceroute to use a certain path. Failure might be due to a router security setting
+</td></tr>
+</table>
+<h2><span class="mw-headline" id="traceroute_Time_Exceeded_False_Alarms">traceroute Time Exceeded False Alarms</span></h2>
+<p>If there is no response within a 5-second timeout interval an asterisk (*) is printed for that probe as seen in the following example.
+</p>
+<pre>[root@bigboy tmp]# traceroute 144.232.20.158
+traceroute to 144.232.20.158 (144.232.20.158), 30 hops max, 38 byte packets
+1 adsl-67-120-221-110.dsl.sntc01.pacbell.net (67.120.221.110) 14.304 ms 14.019 ms 16.120 ms
+2 dist3-vlan50.sntc01.pbi.net (63.203.35.67) 12.971 ms 14.000 ms 14.627 ms
+3 bb1-g1-0.sntc01.pbi.net (63.203.35.17) 15.521 ms 12.860 ms 13.179 ms
+4 bb2-p11-0.snfc21.pbi.net (64.161.124.246) 13.991 ms 15.842 ms 15.728 ms
+5 bb1-p14-0.snfc21.pbi.net (64.161.124.53) 16.133 ms 15.510 ms 15.909 ms
+6 sl-gw11-sj-3-0.sprintlink.net (144.228.44.49) 16.510 ms 17.469 ms 18.116 ms
+7 sl-bb25-sj-6-1.sprintlink.net (144.232.3.133) 16.212 ms 14.274 ms 15.926 ms
+8 * * *
+9 * * *
+[root@bigboy tmp]#
+</pre>
+<p>Some devices will prevent traceroute packets directed at their interfaces, but will allow ICMP packets. Using traceroute with a -I flag forces traceroute to use ICMP packets that may go through. In this case the * * *, status messages disappear:
+</p>
+<pre>[root@bigboy tmp]# traceroute -I 144.232.20.158
+traceroute to 144.232.20.158 (144.232.20.158), 30 hops max, 38 byte packets
+1 adsl-67-120-221-110.dsl.sntc01.pacbell.net (67.120.221.110) 14.408 ms 14.064 ms 13.111 ms
+2 dist3-vlan50.sntc01.pbi.net (63.203.35.67) 13.018 ms 12.887 ms 13.146 ms
+3 bb1-g1-0.sntc01.pbi.net (63.203.35.17) 12.854 ms 13.035 ms 13.745 ms
+4 bb2-p11-0.snfc21.pbi.net (64.161.124.246) 16.260 ms 15.618 ms 15.663 ms
+5 bb1-p14-0.snfc21.pbi.net (64.161.124.53) 15.897 ms 15.785 ms 17.164 ms
+6 sl-gw11-sj-3-0.sprintlink.net (144.228.44.49) 14.443 ms 16.279 ms 15.189 ms
+7 sl-bb25-sj-6-1.sprintlink.net (144.232.3.133) 16.185 ms 15.857 ms 15.423 ms
+8 sl-bb23-ana-6-0.sprintlink.net (144.232.20.158) 27.482 ms 26.306 ms 26.487 ms
+[root@bigboy tmp]#
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="traceroute_Internet_Slowness_False_Alarm">traceroute Internet Slowness False Alarm</span></h2>
+<p>The following traceroute gives the impression that a Web site at 80.40.118.227 might be slow because there is congestion along the way at hops 6 and 7 where the response time is over 200ms:
+</p>
+<pre>C:\&gt;tracert 80.40.118.227
+  1     1 ms     2 ms     1 ms  66.134.200.97
+  2    43 ms    15 ms    44 ms  172.31.255.253
+  3    15 ms    16 ms     8 ms  192.168.21.65
+  4    26 ms    13 ms    16 ms  64.200.150.193
+  5    38 ms    12 ms    14 ms  64.200.151.229
+  6   239 ms   255 ms   253 ms  64.200.149.14
+  7   254 ms   252 ms   252 ms  64.200.150.110
+  8    24 ms    20 ms    20 ms  192.174.250.34
+  9    91 ms    89 ms    60 ms  192.174.47.6
+ 10    17 ms    20 ms    20 ms  80.40.96.12
+ 11    30 ms    16 ms    23 ms  80.40.118.227
+Trace complete.
+C:\&gt;
+</pre>
+<p>This indicates only that the devices on hops 6 and 7 were slow to respond with ICMP TTL exceeded messages, but not and indication of congestion, latency, or packet loss. If any of those conditions existed all points past the problematic link would show high latency.
+</p><p>Many Internet routing devices give very low priority to traffic related to traceroute in favor of revenue generating traffic.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="traceroute_Dies_At_The_Router_Just_Before_The_Server">traceroute Dies At The Router Just Before The Server</span></h2>
+<p>In this case the last device to respond to the traceroute just happens to be the router that acts as the default gateway of the server. The problem is not with the router, but with the server. Remember, you will only receive traceroute responses from functioning devices.
+</p><p>Possible causes of this problem include the following:
+</p>
+<ul><li> A server has a bad default gateway</li>
+<li> The server is running some type of firewall software that blocks traceroute</li>
+<li> The server is shut down, or disconnected from the network, or it has an incorrectly configured NIC.</li></ul>
+<pre>C:\&gt;tracert 80.40.100.18
+
+Tracing route to 80.40.100.18 over a maximum of 30 hops
+ 1    33 ms    49 ms    28 ms  192.168.1.1
+ 2    33 ms    49 ms    28 ms  65.14.65.19
+ 3    33 ms    32 ms    32 ms  81.25.68.252
+ 4    47 ms    32 ms    31 ms  80.40.97.1
+ 5    29 ms    28 ms    32 ms  80.40.96.114
+ 6     *        *        *     Request timed out.
+ 7  ^C
+C:\&gt;
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Always_Get_a_Bidirectional_traceroute">Always Get a Bidirectional traceroute</span></h2>
+<p>It is always best to get a traceroute from the source IP to the target IP and also from the target IP to the source IP. This is because the packet's return path from the target is sometimes not the same as the path taken to get there. A high traceroute time equates to the round trip time for both the initial traceroute query to each hop and the response of each hop.
+</p><p>Here is an example of one such case, using disguised IP addresses and provider names. There was once a routing issue between telecommunications carriers FastNet and SlowNet. When a user at IP address 40.16.106.32 did a traceroute to 64.25.175.200, a problem seemed to appear at the 10th. hop with OtherNet. However, when a user at 64.25.175.200 did a traceroute to 40.16.106.32, latency showed up at hop 7 with the return path being very different.
+</p><p>In this case, the real traffic congestion was occurring where FastNet handed off traffic to SlowNet in the second trace. The latency appeared to be caused at hop 10 on the first trace not because that hop was slow, but because that was the first hop at which the return packet traveled back to the source via the congested route. Remember, traceroute gives the packet round trip time.
+</p><p>Trace route to 40.16.106.32 from 64.25.175.200
+</p><p><br />
+</p>
+<pre>1  0    ms 0    ms 0    [64.25.175.200]
+2  0    ms 0    ms 0    [64.25.175.253]
+3  0    ms 0    ms 0    border-from-40-tesser.boulder.co.coop.net [207.174.144.169]
+4  0    ms 0    ms 0    [64.25.128.126]
+5  0    ms 0    ms 0    p3-0.dnvtco1-cr3.othernet.net [4.25.26.53]
+6  0    ms 0    ms 0    p2-1.dnvtco1-br1.othernet.net [4.24.11.25]
+7  0    ms 0    ms 0    p15-0.dnvtco1-br2.othernet.net [4.24.11.38]
+8  30   ms 30   ms 30   p15-0.snjpca1-br2.othernet.net [4.0.6.225]
+9  30   ms 30   ms 30   p1-0.snjpca1-cr4.othernet.net [4.24.9.150]
+10 1252 ms 1212 ms 1202 h0.webhostinc2.othernet.net [4.24.236.38]
+11 1252 ms 1212 ms 1192 [40.16.96.11]
+12 1262 ms 1212 ms 1192 [40.16.96.162]
+13 1102 ms 1091 ms 1092 [40.16.106.32]
+</pre>
+<p>Trace route to 64.25.175.200 from 40.16.106.32
+</p>
+<pre>1  1    ms 1    ms 1    ms [40.16.106.3]
+2  1    ms 1    ms 1    ms [40.16.96.161]
+3  2    ms 1    ms 1    ms [40.16.96.2]
+4  1    ms 1    ms 1    ms [40.16.96.65]
+5  2    ms 2    ms 1    ms border8.p4-2.webh02-1.sfj.fastnet.net [216.52.19.77]
+6  2    ms 1    ms 1    ms core1.ge0-1-net2.sfj.fastnet.net [216.52.0.65]
+7  993  ms 961  ms 999  ms sjo-edge-03.inet.slownet.net [208.46.223.33]
+8  1009 ms 1008 ms 971  ms sjo-core-01.inet.slownet.net [205.171.22.29]
+9  985  ms 947  ms 983  ms svl-core-03.inet.slownet.net [205.171.5.97]
+10 1028 ms 1010 ms 953  ms [205.171.205.30]
+11 989  ms 988  ms 985  ms p4-3.paix-bi1.othernet.net [4.2.49.13]
+12 1002 ms 1001 ms 973  ms p6-0.snjpca1-br1.othernet.net [4.24.7.61]
+13 1031 ms 989  ms 978  ms p9-0.snjpca1-br2.othernet.net [4.24.9.130]
+14 1031 ms 1017 ms 1017 ms p3-0.dnvtco1-br2.othernet.net [4.0.6.226]
+15 1027 ms 1025 ms 1023 ms p15-0.dnvtco1-br1.othernet.net [4.24.11.37]
+16 1045 ms 1037 ms 1050 ms p1-0.dnvtco1-cr3.othernet.net [4.24.11.26]
+17 1030 ms 1020 ms 1045 ms p0-0.cointcorp.othernet.net [4.25.26.54]
+18 1038 ms 1031 ms 1045 ms gw234.boulder.co.coop.net [64.25.128.99]
+19 1050 ms 1094 ms 1034 ms [64.25.175.253]
+20 1050 ms 1094 ms 1034 ms [64.25.175.200]
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="ping_and_traceroute_Troubleshooting_Example">ping and traceroute Troubleshooting Example</span></h2>
+<p>In this example, a ping to 186.9.17.153 gave a TTL timeout message. Ping TTLs will usually timeout only if there is a routing loop in which the packet bounces between two routers on the way to the target. Each bounce causes the TTL to decrease by a count of 1 until the TTL reaches 0 at which point you get the timeout.
+</p><p>The routing loop was confirmed by the traceroute in which the packet was proven to be bouncing between routers at 186.40.64.94 and 186.40.64.93:
+</p>
+<pre>G:\&gt;ping 186.9.17.153
+
+Pinging 186.9.17.153 with 32 bytes of data:
+
+Reply from 186.40.64.94: TTL expired in transit.
+Reply from 186.40.64.94: TTL expired in transit.
+Reply from 186.40.64.94: TTL expired in transit.
+Reply from 186.40.64.94: TTL expired in transit.
+
+Ping statistics for 186.9.17.153:
+  Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum =  0ms, Average =  0ms
+
+G:\&gt;tracert 186.9.17.153
+
+Tracing route to lostserver.confusion.net [186.9.17.153]
+
+over a maximum of 30 hops:
+ 1   &lt;10 ms   &lt;10 ms   &lt;10 ms  186.217.33.1
+ 2    60 ms    70 ms    60 ms  rtr-2.confusion.net [186.40.64.94]
+ 3    70 ms    71 ms    70 ms  rtr-1.confusion.net [186.40.64.93]
+ 4    60 ms    70 ms    60 ms  rtr-2.confusion.net [186.40.64.94]
+ 5    70 ms    70 ms    70 ms  rtr-1.confusion.net [186.40.64.93]
+ 6    60 ms    70 ms    61 ms  rtr-2.confusion.net [186.40.64.94]
+ 7    70 ms    70 ms    70 ms  rtr-1.confusion.net [186.40.64.93]
+ 8    60 ms    70 ms    60 ms  rtr-2.confusion.net [186.40.64.94]
+ 9    70 ms    70 ms    70 ms  rtr-1.confusion.net [186.40.64.93]
+...
+...
+...
+Trace complete.
+G:\&gt;
+</pre>
+<p>This problem was solved by resetting the routing process on both routers. The problem was initially triggered by an unstable network link that caused frequent routing recalculations. The constant activity eventually corrupted the routing tables of one of the routers.
+</p>
+<h2><span class="mw-headline" id="traceroute_Web_sites">traceroute Web sites</span></h2>
+<p>Many ISPs will provide their subscribers with the facility to do a traceroute from purpose built servers called looking glasses. A simple web search for the phrase Internet looking glass will provide a long list of alternatives. Doing a traceroute form a variety of locations can help identify whether the problem is with the ISP of your Web server or the ISP used at home/work to provide you with Internet access. A more convenient way of doing this is to use a site like traceroute.org which provides a list of looking glasses sorted by country.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Possible_Reasons_For_Failed_Traceroutes">Possible Reasons For Failed Traceroutes</span></h2>
+<p>A traceroute can fail to reach its intended destination for a number of reasons, including the following:
+</p>
+<ul><li> traceroute packets are being blocked or rejected by a router in the path. The router immediately after the last visible one is usually the culprit. It's usually good to check the routing table and/or other status of this next hop device.</li>
+<li> The target server doesn't exist on the network. It could be disconnected or turned off. (!H or&#160;!N messages might be produced.)</li>
+<li> The network on which you expect the target host to reside doesn't exist in the routing table of one of the routers in the path. (!H or&#160;!N messages might be produced.)</li>
+<li> You may have a typographical error in the IP address of the target server</li>
+<li> You may have a routing loop in which packets bounce between two routers and never get to the intended destination.</li>
+<li> The packets don't have a proper return path to your server. The last visible hop being the last hop in which the packets return correctly. The router immediately after the last visible one is the one at which the routing changes. It's usually good to do the following:
+<ul><li> Log on to the last visible router.</li>
+<li> Look at the routing table to determine what the next hop is to your intended traceroute target.</li>
+<li> Log on to this next hop router.</li>
+<li> Do a traceroute from this router to your intended target server.</li>
+<li> <b>If this works:</b> Routing to the target server is OK. Do a traceroute back to your source server. The traceroute will probably fail at the bad router on the return path.</li>
+<li> <b>If it doesn't work:</b> Test the routing table and/or other status of all the hops between it and your intended target.</li></ul></li></ul>
+<p><b>Note:</b> If there is nothing blocking your traceroute traffic, then the last visible router of an incomplete trace is either the last good router on the path, or the last router that has a valid return path to the server issuing the traceroute.
+</p>
+<h1><span class="mw-headline" id="Using_MTR_To_Detect_Network_Congestion">Using MTR To Detect Network Congestion</span></h1>
+<p>Matt's Traceoute is an application you can use to do a repeated traceroute in real time; it dynamically shows the round-trip time to reach each hop along the traceroute path. The constant updates enable you not only to visually determine which hops are slow, but also to determine when they appear to be slow. It is a good tool to use whenever you suspect there is some intermittent network congestion.
+</p><p>You type in the word mtr followed by the target IP address to get output similar to the following:
+</p>
+<pre>[root@bigboy tmp]# mtr 192.168.25.26
+
+                   Matt's traceroute  [v0.52]
+
+Bigboy                                            Fri Feb 20 17:19:17 2004
+Keys:  D - Display mode    R - Restart statistics    Q - Quit
+                                      Packets               Pings
+Hostname                          &#160;%Loss  Rcv  Snt  Last Best  Avg  Worst
+  1. 192.168.1.1                       0%    17   17    32   10   15     32
+  2. 192.168.2.254                     0%    17   17    12   11   18     41
+  3. 192.168.3.15                      0%    17   17    23   14   18     25
+  4. 192.168.18.35                     0%    16   16    24   23   29     42
+  5. 192.168.25.26                     0%    16   16    23   21   26     37
+^C
+[root@bigboy tmp]#
+</pre>
+<p><br /> 
+One of the nice features of MTR is that it gives you the best, worst and average roundtrip times in milliseconds for the probe packets between each hop along the way to the final destination. The advantage of this is that you can let MTR run for an extended period of time, acting as a constant monitor of communication path quality. The constant refreshing of the screen also enables you to instantaneously spot transient changes in quality fairly easily, making it much more convenient than a regular traceroute.
+</p><p>MTR is automatically installed as part of Fedora Linux. If MTR isn't installed on your system, you can download the RPM software installation package from many of the Fedora download sites. The installation of RPMs is covered in Chapter 6, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch06_:_Installing_Linux_Software" title="Quick HOWTO : Ch06 : Installing Linux Software">Installing Linux Software</a>". There is even a free Windows version called WinMTR.
+</p>
+<h1><span class="mw-headline" id="Viewing_Packet_Flows_with_tcpdump">Viewing Packet Flows with tcpdump</span></h1>
+<p>The tcpdump command is one of the most popular packages for viewing the flow of packets through your Linux box's NIC card. It is installed by default on RedHat/Fedora Linux and has very simple syntax, especially if you are doing simpler types of troubleshooting.
+</p><p>One of the most common uses of tcpdump is to determine whether you are getting basic two-way communication. Lack of communication could be due to the following:
+</p>
+<ul><li> Bad routing</li>
+<li> Faulty cables, interfaces of devices in the packet flow</li>
+<li> The server not listening on the port because the software isn't installed or started</li>
+<li> A network device in the packet path is blocking traffic; common culprits are firewalls, routers with access control lists and even your Linux box running iptables.</li></ul>
+<p>Analyzing tcpdump in much greater detail is beyond the scope of this section.
+</p><p>Like most Linux commands, tcpdump uses command-line switches to modify the output. Some of the more useful command-line switches are listed in Table 4-2.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Table_4-2_:_Possible_TCPdump_Switches">Table 4-2&#160;: Possible TCPdump Switches</span></h2>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> tcpdump command switch
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>
+<pre>-c
+</pre>
+</td>
+<td> Stop after viewing <i>count</i> packets.
+</td></tr>
+<tr>
+<td>
+<pre>-i
+</pre>
+</td>
+<td>Listen on <i>interface</i>. If this is not specified, then the command will use the lowest numbered interface that is UP
+</td></tr>
+<tr>
+<td>
+<pre>-w
+</pre>
+</td>
+<td>Dump the output to a specially formatted TCPdump dump file
+</td></tr>
+<tr>
+<td>
+<pre>-C
+</pre>
+</td>
+<td>Specifies the size the dump file must reach before a new one with a numeric extension is created.
+</td></tr>
+<tr>
+<td>
+<pre>-t
+</pre>
+</td>
+<td>Don't print a timestamp at the beginning of each line
+</td></tr>
+</table>
+<p>You can also add expressions after all the command-line switches. These act as filters to limit the volume of data presented on the screen. You can also use keywords such as and or or between expressions to further fine-tune your selection criteria. Some useful expressions are listed in Table 4-3.
+</p>
+<h2><span class="mw-headline" id="Table_4-3_:_Useful_tcpdump_Expressions">Table 4-3&#160;: Useful tcpdump Expressions</span></h2>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> tcpdump command expression
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>host host-address
+</td>
+<td>View packets from the IP address host-address
+</td></tr>
+<tr>
+<td>icmp
+</td>
+<td>View icmp packets
+</td></tr>
+<tr>
+<td>tcp port port-number
+</td>
+<td>View TCP packets with packets with either a  source or destination TCP port of port-number
+</td></tr>
+<tr>
+<td>udp port port-number
+</td>
+<td>View UDP packets with either a  source or destination UDP port of port-number
+</td></tr>
+</table>
+<p>The following is an example of tcpdump being used to view ICMP ping packets going through interface wlan0:
+</p>
+<pre>[root@bigboy tmp]# tcpdump -i wlan0 icmp
+tcpdump: listening on wlan0
+21:48:58.927091 smallfry &gt; bigboy.my-site.com: icmp: echo request (DF)
+21:48:58.927510 bigboy.my-site.com &gt; smallfry: icmp: echo reply
+21:48:58.928257 smallfry &gt; bigboy.my-site.com: icmp: echo request (DF)
+21:48:58.928365 bigboy.my-site.com &gt; smallfry: icmp: echo reply
+21:48:58.943926 smallfry &gt; bigboy.my-site.com: icmp: echo request (DF)
+21:48:58.944034 bigboy.my-site.com &gt; smallfry: icmp: echo reply
+21:48:58.962244 bigboy.my-site.com &gt; smallfry: icmp: echo reply
+21:48:58.963966 bigboy.my-site.com &gt; smallfry: icmp: echo reply
+21:48:58.968556 bigboy.my-site.com &gt; smallfry: icmp: echo reply 
+
+9 packets received by filter
+0 packets dropped by kernel
+[root@bigboy tmp]# 
+</pre>
+<p>In this example:
+</p>
+<ul><li> The first column of data is a packet timestamp.</li>
+<li> The second column of data shows the packet source and then the destination IP address or server name of the packet.</li>
+<li> The third column shows the packet type.</li>
+<li> Two-way communication is occurring as each echo gets an echo reply.</li></ul>
+<p>The following example shows tcpdump being used to view packets on interface wlan0 to/from host 192.168.1.102 on TCP port 22 with no timestamps in the output (-t switch).
+</p>
+<pre>[root@bigboy tmp]# tcpdump -i wlan0 -t host 192.168.1.102 and tcp port 22
+
+tcpdump: listening on wlan0
+smallfry.32938 &gt; bigboy.my-site.com.ssh: S 2013297020:2013297020(0) win 5840 &lt;mss    1460,sackOK,timestamp 75227931 0,nop,wscale 0&gt; (DF) [tos 0x10]
+bigboy.my-site.com.ssh &gt; smallfry.32938: R 0:0(0) ack 2013297021 win 0 (DF) [tos 0x10] 
+smallfry.32938 &gt; bigboy.my-site.com.ssh: S 2013297020:2013297020(0) win 5840 &lt;mss  1460,sackOK,timestamp 75227931 0,nop,wscale 0&gt; (DF) [tos 0x10] 
+bigboy.my-site.com.ssh &gt; smallfry.32938: R 0:0(0) ack 1 win 0 (DF) [tos 0x10] 
+smallfry.32938 &gt; bigboy.my-site.com.ssh: S 2013297020:2013297020(0) win 5840 &lt;mss 1460,sackOK,timestamp 75227931 0,nop,wscale 0&gt; (DF) [tos 0x10] 
+7 packets received by filter
+0 packets dropped by kernel
+[root@bigboy tmp]# 
+</pre>
+<p>In this example:
+</p>
+<ul><li> The first column of data shows the packet source and then the destination IP address or server name of the packet</li>
+<li> The second column shows the TCP flags within the packet</li>
+<li> The client named bigboy is using port 32938 to communicate with the server named smallfry on the TCP SSH port 22.</li>
+<li> Two way communication is occurring</li></ul>
+<h2><span class="mw-headline" id="Analyzing_tcpdump_files">Analyzing tcpdump files</span></h2>
+<p>By using the -w filename option you can send the entire Ethernet frame, not just a brief IP information that normally goes to the screen, to a file. This can then be analyzed by graphical analysis tools such as Wireshark, which is available in both Windows and Linux, with customized filters, colorization of packet records based on criteria deemed interesting, and the capability of automatically highlighting certain error conditions such as data retransmissions:
+</p>
+<pre>tcpdump -i eth1 -w /tmp/packets.dump tcp port 22
+</pre>
+<p>Covering Wireshark is beyond the scope of this book but that shouldn't discourage you from using it. The application is part of the Fedora RPM suite, and a Windows version is also available.
+</p>
+<h2><span class="mw-headline" id="Common_Problems_with_tcpdump">Common Problems with tcpdump</span></h2>
+<p>By default tcpdump will attempt to determine the DNS names of all the IP addresses it sees while logging data. This can slow down tcpdump so much that it appears not to be working at all. The -n switch stops DNS name lookups and will make tcpdump work more reliably.
+</p><p>The following are examples of how the -n switch affects the output:
+</p><p><b>Without the -n switch</b>
+</p>
+<pre>[root@bigboy tmp]# tcpdump -i eth1 tcp port 22
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth1, link-type EN10MB (Ethernet), capture size 96 bytes
+02:24:34.818398 IP 192-168-1-242.my-site.com.1753 &gt; bigboy-100.my-site.com.ssh: . ack 318574223 win 65471
+02:24:34.818478 IP bigboy-100.my-site.com.ssh &gt; 192-168-1-242.my-site.com.1753: P 1:165(164) ack 0 win 6432
+02:24:35.019042 IP 192-168-1-242.my-site.com.1753 &gt; bigboy-100.my-site.com.ssh: . ack 165 win 65307
+02:24:35.019118 IP bigboy-100.my-site.com.ssh &gt; 192-168-1-242.my-site.com.1753: P 165:401(236) ack 0 win 6432
+02:24:35.176299 IP 192-168-1-242.my-site.com.1753 &gt; bigboy-100.my-site.com.ssh: P 0:20(20) ack 401 win 65071
+02:24:35.176337 IP bigboy-100.my-site.com.ssh &gt; 192-168-1-242.my-site.com.1753: P 401:629(228) ack 20 win 6432
+
+6 packets captured
+7 packets received by filter
+0 packets dropped by kernel
+[root@bigboy tmp]#
+</pre>
+<p><br />
+<b>With the -n switch</b>
+</p><p><br /> 
+</p>
+<pre>[root@bigboy tmp]# tcpdump -i eth1 -n tcp port 22
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth1, link-type EN10MB (Ethernet), capture size 96 bytes
+02:25:53.068511 IP 192.168.1.242.1753 &gt; 192.168.1.100.ssh: . ack 318576011 win 65163
+02:25:53.068606 IP 192.168.1.100.ssh &gt; 192.168.1.242.1753: P 1:165(164) ack 0 win 6432
+02:25:53.269152 IP 192.168.1.242.1753 &gt; 192.168.1.100.ssh: . ack 165 win 64999
+02:25:53.269205 IP 192.168.1.100.ssh &gt; 192.168.1.242.1753: P 165:353(188) ack 0 win 6432
+02:25:53.408556 IP 192.168.1.242.1753 &gt; 192.168.1.100.ssh: P 0:20(20) ack 353 win 64811
+02:25:53.408589 IP 192.168.1.100.ssh &gt; 192.168.1.242.1753: P 353:541(188) ack 20 win 6432
+
+6 packets captured
+7 packets received by filter
+0 packets dropped by kernel
+[root@bigboy tmp]#
+</pre>
+<h1><span class="mw-headline" id="Viewing_Packet_Flows_with_tshark">Viewing Packet Flows with tshark</span></h1>
+<p>The tshark program is of the Fedora Linux wireshark RPM. It used to be called tethereal and came as part of the tethereal package, and many texts refer to it by its old name.
+</p><p>The tshark command-line options and screen output mimic that of tcpdump in many ways but tshark has a number of advantages.
+</p><p>The tshark command has the ability of dumping data to a file like tcpdump and creating new files with new filename extensions when a size limit has been reached. It can additionally limit the total number of files created before overwriting the first one in the queue, which is also known as a ring buffer.
+</p><p>The tshark screen output is also more intuitive to read, though the dump file format is identical to tcpdump.
+</p><p>Table 4-4 and Table 4-5 show some popular command switches and expressions that can be used with tshark.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Table_4-4_:_Possible_tshark_Switches">Table 4-4&#160;: Possible tshark Switches</span></h2>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> tshark command switch
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>
+<pre>-c
+</pre>
+</td>
+<td> Stop after viewing <i>count</i> packets.
+</td></tr>
+<tr>
+<td>
+<pre>-i
+</pre>
+</td>
+<td>Listen on <i>interface</i>. If this is not specified, then the command will use the lowest numbered interface that is UP
+</td></tr>
+<tr>
+<td>
+<pre>-w
+</pre>
+</td>
+<td>Dump the output to a specially formatted TCPdump dump file
+</td></tr>
+<tr>
+<td>
+<pre>-C
+</pre>
+</td>
+<td>Specifies the size the dump file must reach before a new one with a numeric extension is created.
+</td></tr>
+<tr>
+<td>
+<pre>-b
+</pre>
+</td>
+<td>The size of the ring buffer when the -C switch is selected.
+</td></tr>
+</table>
+<h2><span class="mw-headline" id="Table_4-5_:_Useful_tshark_Expressions">Table 4-5&#160;: Useful tshark Expressions</span></h2>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> tshark command expression
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>host host-address
+</td>
+<td>View packets from the IP address host-address
+</td></tr>
+<tr>
+<td>icmp
+</td>
+<td>View icmp packets
+</td></tr>
+<tr>
+<td>tcp port port-number
+</td>
+<td>View TCP packets with packets with either a  source or destination TCP port of port-number
+</td></tr>
+<tr>
+<td>udp port port-number
+</td>
+<td>View UDP packets with either a  source or destination UDP port of port-number
+</td></tr>
+</table>
+<p>In the next example we're trying to observe an HTTP (TCP port 80) packet flow between server smallfry at address 192.168.1.102 and bigboy at IP address 192.168.1.100. The tshark output groups the IP addresses and TCP ports together and then provides the TCP flags, followed by the sequence numbering. It may not be apparent on this page, but the formatting lines up in neat columns on your screen, making analysis much easier. Also notice how the command line mimics that of tcpdump.
+</p>
+<pre>[root@smallfry tmp]# tshark -i eth0 tcp port 80 and host 192.168.1.100
+Capturing on eth0
+  0.000000 192.168.1.102 -&gt; 192.168.1.100 TCP 1442 &gt; http [SYN] Seq=3325831828 Ack=0 Win=5840 Len=0
+  0.000157 192.168.1.100 -&gt; 192.168.1.102 TCP http &gt; 1442 [SYN, ACK] Seq=3291904936 Ack=3325831829 Win=5792 Len=0
+  0.000223 192.168.1.102 -&gt; 192.168.1.100 TCP 1442 &gt; http [ACK] Seq=3325831829 Ack=3291904937 Win=5840 Len=0
+  2.602804 192.168.1.102 -&gt; 192.168.1.100 TCP 1442 &gt; http [FIN, ACK] Seq=3325831829 Ack=3291904937 Win=5840 Len=0
+  2.603211 192.168.1.100 -&gt; 192.168.1.102 TCP http &gt; 1442 [ACK] Seq=3291904937 Ack=3325831830 Win=46 Len=0
+  2.603356 192.168.1.100 -&gt; 192.168.1.102 TCP http &gt; 1442 [FIN, ACK] Seq=3291904937 Ack=3325831830 Win=46 Len=0
+  2.603398 192.168.1.102 -&gt; 192.168.1.100 TCP 1442 &gt; http [ACK] Seq=3325831830 Ack=3291904938 Win=5840 Len=0
+[root@smallfry tmp]#
+</pre>
+<p>Covering Wireshark is beyond the scope of this book but that shouldn't discourage you from using it. The application is part of the Fedora RPM suite and a Windows version is also available.
+</p>
+<h1><span class="mw-headline" id="Basic_DNS_Troubleshooting">Basic DNS Troubleshooting</span></h1>
+<p>Sometimes the source of problems can be due to misconfigured DNS rather than poor network connectivity. As mentioned before, DNS is the system that helps map an IP address to your Web site's domain name and your site may suddenly become unavailable if the mapping is incorrect.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Using_nslookup_to_Test_DNS">Using nslookup to Test DNS</span></h2>
+<p>The nslookup command can be used to get the associated IP address for your domain and vice versa. The nslookup command is very easy to use; you just need to type the command followed by the IP address or Web site name you want to query.
+</p><p>The command actually queries your DNS server for a response, which is then displayed on the screen. Failures can be caused by your server not having the correct value set in the /etc/resolv.conf file as explained in Chapter 18, "<a href="/wiki/index.php/Quick_HOWTO_:_Ch18_:_Configuring_DNS" title="Quick HOWTO : Ch18 : Configuring DNS">Configuring DNS</a>", poor connectivity to your DNS server, or an incorrect configuration on the DNS server.
+</p>
+<h3><span class="mw-headline" id="Using_nslookup_to_Check_Your_Web_site_Name">Using nslookup to Check Your Web site Name</span></h3>
+<p>Here we see nslookup returning the IP address 216.151.193.92 for the site www.linuxhomenetworking.com.
+</p>
+<pre>[root@bigboy tmp]# nslookup www.linuxhomenetworking.com
+...
+...
+Name:   www.linuxhomenetworking.com
+Address: 216.151.193.92
+
+[root@bigboy tmp]#
+</pre>
+<h3><span class="mw-headline" id="Using_nslookup_To_Check_Your_IP_Address">Using nslookup To Check Your IP Address</span></h3>
+<p>The nslookup command can operate in the opposite way in which a query against the address 216.151.193.92 returns the Web site named www.linuxhomenetworking.com:
+</p>
+<pre>[root@bigboy tmp]# nslookup 216.151.193.92
+...
+...
+Non-authoritative answer:
+92.193.151.216.in-addr.arpa     name = extra193-92.myisp.net.
+ 
+Authoritative answers can be found from:
+193.151.216.in-addr.arpa        nameserver = dns1.myisp.net.
+193.151.216.in-addr.arpa        nameserver = dns2.myisp.net.
+dns1.myisp.net   internet address = 216.151.192.1
+
+[root@bigboy tmp]#
+</pre>
+<h3><span class="mw-headline" id="Using_nslookup_to_Query_a_Specific_DNS_Server">Using nslookup to Query a Specific DNS Server</span></h3>
+<p>Sometimes you might want to test the DNS mapping against a specific DNS server, this can be achieved by adding the DNS server's IP address immediately after the IP address of the Web site name you intend to query.
+</p>
+<pre>[root@bigboy tmp]# nslookup www.linuxhomenetworking.com 68.87.96.3
+...
+...
+Server:         68.87.96.3
+Address:        68.87.96.3#53
+ 
+Name:   www.linuxhomenetworking.com
+Address: 216.151.193.92
+ 
+[root@bigboy tmp]#
+</pre>
+<p><b>Note:</b> The nslookup command will probably be removed from future releases of Linux, but can still be used with Windows. The Linux host command can be used as a good replacement.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Using_the_host_Command_to_Test_DNS">Using the host Command to Test DNS</span></h2>
+<p>More recent versions of Linux have started to use the host command for basic DNS testing. Fortunately syntax is identical to that of nslookup and the resulting output is very similar.
+</p>
+<pre>[root@bigboy tmp]# host 216.151.193.92
+92.193.151.216.in-addr.arpa domain name pointer extra193-92.myisp.net.
+[root@bigboy tmp]#
+
+[root@bigboy tmp]# host www.linuxhomenetworking.com
+www.linuxhomenetworking.com has address 216.151.193.92
+[root@bigboy tmp]#
+
+[root@zippy root]# host www.linuxhomenetworking.com 68.87.96.3
+Using domain server:
+Name: 68.87.96.3
+Address: 68.87.96.3#53
+Aliases:
+
+www.linuxhomenetworking.com has address 65.115.71.34
+[root@zippy root]#
+</pre>
+<h1><span class="mw-headline" id="Using_nmap">Using nmap</span></h1>
+<p>You can use nmap to determine all the TCP/IP ports on which a remote server is listening. It isn't usually an important tool in the home environment, but it can be used in a corporate environment to detect vulnerabilities in your network, such as servers running unauthorized network applications. It is a favorite tool of malicious surfers and therefore should be used to test external as well as internal servers under your control.
+</p><p>Whenever you are in doubt, you can get a list of available nmap options by just entering the command without arguments at the command prompt.
+</p>
+<pre>[root@bigboy tmp]# nmap
+
+Nmap V. 3.00 Usage: nmap [Scan Type(s)] [Options] &lt;host or net list&gt;
+Some Common Scan Types ('*' options require root privileges)
+* -sS TCP SYN stealth port scan (default if privileged (root))
+  -sT TCP connect() port scan (default for unprivileged users)
+* -sU UDP port scan
+  -sP ping scan (Find any reachable machines)
+...
+...
+[root@bigboy tmp]#
+</pre>
+<p>Some of the more common nmap options are listed in Table 4-6, but you should also refer to the nmap man pages for full descriptions of them all.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Table_4-6_Commonly_Used_NMAP_Options">Table 4-6 Commonly Used NMAP Options</span></h2>
+<table border="1" cellpadding="5" cellspacing="0" align="center">
+
+<tr>
+<th style="background:#008000; color:white"> Argument
+</th>
+<th style="background:#008000; color:white"> Description
+</th></tr>
+<tr valign="top">
+<td>
+<pre>-P0
+</pre>
+</td>
+<td>Nmap first attempts to ping a host before scanning it. If the server is being protected from ping queries, then you can use this option to force it to scan anyway.
+</td></tr>
+<tr>
+<td>
+<pre>-T
+</pre>
+</td>
+<td>Defines the timing between the packets set during a port scan. Some firewalls can detect the arrival of too many non-standard packets within a predetermined time frame. This option can be used to send them from 60 seconds apart with a value of "5" also known as insane mode to 0.3 seconds with a value of "0" in paranoid mode.
+</td></tr>
+<tr>
+<td>
+<pre>-O
+</pre>
+</td>
+<td>This will try to detect the operating system of the remote server based on known responses to various types of packets.
+</td></tr>
+<tr>
+<td>
+<pre>-p
+</pre>
+</td>
+<td> Lists the TCP/IP port range to scan.
+</td></tr>
+<tr>
+<td>
+<pre>-s
+</pre>
+</td>
+<td>Defines a variety of scan methods that use either packets that comply with the TCP/IP standard or are in violation of it.
+</td></tr>
+</table>
+<p>Here is an example of us trying to do a scan using valid TCP connections (-sT) in the extremely slow "insane" mode (-T 5) from ports 1 to 5000.
+</p>
+<pre>[root@bigboy tmp]# nmap -sT -T 5 -p 1-5000 192.168.1.153
+  
+Starting nmap V. 3.00 ( www.insecure.org/nmap/ )
+Interesting ports on whoknows.my-site-int.com (192.168.1.153):
+(The 4981 ports scanned but not shown below are in state: closed)
+Port       State       Service
+21/tcp     open        ftp
+25/tcp     open        smtp
+139/tcp    open        netbios-ssn
+199/tcp    open        smux
+2105/tcp   open        eklogin
+2301/tcp   open        compaqdiag
+3300/tcp   open        unknown
+ 
+Nmap run completed -- 1 IP address (1 host up) scanned in 8 seconds
+[root@bigboy tmp]#
+</pre>
+<p>Full coverage of the possibilities on nmap as a security scanning tool are beyond the scope of this book, but you should go the extra mile and purchase a text specifically on Linux security to help protect you against attempts at malicious security breaches.
+</p>
+<h1><span class="mw-headline" id="Using_netcat_to_Test_Network_Bandwidth">Using netcat to Test Network Bandwidth</span></h1>
+<p>Most Linux distributions contain the netcat or nc packages which can be used to create a TCP socket over which you can transfer data. The syntax can also vary between distributions so you should refer to your system's man pages if you have any questions.
+</p><p>The netcat server can be easily created with the -l switch that signifies the program should listen, and not talk. The desired TCP port then follows. In this case the server is listening on TCP port 7777.
+</p>
+<pre>[root@smallfry tmp]# nc -l 7777
+</pre>
+<p>The netcat client only needs to specify the server's IP address followed by server's the TCP listener port. 
+</p>
+<pre>[root@bigboy ~]# nc 192.168.2.50 7777
+</pre>
+<p>Any text typed to the console screen of the client;
+</p>
+<pre>[root@bigboy ~]# nc 192.168.2.50 7777
+This is a test of the NetCat program!
+[root@bigboy ~]#
+</pre>
+<p>will also be visible on the server's console.
+</p>
+<pre>[root@smallfry tmp]# nc -l 7777
+This is a test of the NetCat program!
+[root@smallfry tmp]#
+</pre>
+<p>If you want to transfer a file, you only need to use some simple command line redirection. In this case, the server will output all data it receives on port 7777 to a file called FC-6-i386-disc1.iso, and the client pipes the output of the cat command to the netcat client that points to our server. 
+</p>
+<pre>[root@smallfry tmp]# nc -l 7777 &gt; FC-6-i386-disc1.iso
+
+[root@bigboy ~]# cat /tmp/FC-6-i386-disc1.iso | nc 192.168.2.50 7777
+</pre>
+<p>All Linux systems have a black hole file named /dev/null which automatically discards any data written to it. If you want to test file transfers without filling your disk storage, or having the server's disk I/O be a bottleneck, then use this as your output file instead.
+</p>
+<pre>[root@smallfry tmp]# nc -l 7777 &gt; /dev/null
+</pre>
+<p>All Linux systems also have a have a continuous random data source located at /dev/random. Instead of using a file in your tests, you can use this instead for a data stream or infinite duration.
+</p>
+<pre>[root@bigboy ~]# cat /dev/random | nc 192.168.2.50 7777
+</pre>
+<p>The netcat program is a good bandwidth tester as it can dominate the capacity of your NIC. Unfortunately, it doesn't provide data transfer statistics, you will have to use some other tool such as MRTG, covered in Chapter 22 "<a href="/wiki/index.php/Quick_HOWTO_:_Ch22_:_Monitoring_Server_Performance" title="Quick HOWTO : Ch22 : Monitoring Server Performance"> Monitoring Server Performance</a>", to give that information.
+</p>
+<h1><span class="mw-headline" id="Determining_the_Source_of_an_Attack">Determining the Source of an Attack</span></h1>
+<p>Sometimes you realize that your system is under a denial-of-service type attack. This could be either malicious or simply someone rapidly downloading all the pages of your Web site with the Linux wget command. Symptoms include a large numbers of established connections when viewed with the netstat command or an excessive number of entries in your firewall or Web server logs.
+</p><p>Sometimes the attack isn't in the form of a constant bombardment that your server can't handle, but of the type that you can't handle, such as e-mail SPAM. ISPs are usually very sensitive to complaints about SPAM, but though you may have the IP address, a traceroute won't provide any contact information for the ISP.
+</p><p>Sometimes DNS lookups aren't enough to determine who owns an offending IP address. You need another tool.
+</p><p>One of the better ones to use is the whois command. Use it with an IP address or DNS domain as its sole argument and it will provide you with all the administrative information you need to start your hunt. Here is an example for the yahoo.com domain:
+</p><p><br /> 
+</p>
+<pre>[root@bigboy tmp]# whois yahoo.com
+...
+...
+    Administrative Contact:
+        Domain Administrator
+        (NIC-1382062)
+        Yahoo! Inc.
+        701 First Avenue
+        Sunnyvale
+        CA
+        94089
+        US
+        domainadmin@yahoo-inc.com
+        +1.4083493300
+        Fax- +1.4083493301
+...
+...
+[root@bigboy tmp]#
+</pre>
+<h1><span class="mw-headline" id="Who_Has_Used_My_System.3F">Who Has Used My System?</span></h1>
+<p>It is always important to know who has logged into your Linux box. This isn't just to help track the activities of malicious users, but mostly to figure out who made the mistake that crashed the system or blew up Apache with a typographical error in the httpd.conf file.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="The_last_Command">The last Command</span></h2>
+<p>The most common command to determine who has logged into your system is last which lists the last users who logged into the system. Here are some examples:
+</p>
+<pre>[root@bigboy tmp]# last -100
+root     pts/0        reggae.my-site.co Thu Jun 19 09:26   still logged in
+root     pts/0        reggae.my-site.co Wed Jun 18 01:07 - 09:26 (1+08:18)
+reboot   system boot   2.4.18-14         Wed Jun 18 01:07         (1+08:21)
+root     pts/0        reggae.my-site.co Tue Jun 17 21:57 - down   (03:07)
+root     pts/0        reggae.my-site.co Mon Jun 16 07:24 - 00:35  (17:10)
+wtmp begins Sun Jun 15 16:29:18 2003
+[root@bigboy tmp]#
+</pre>
+<p>In this example someone from reggae.my-site.com logged into bigboy as user root. I generally prefer not to give out the root password and let all the systems administrators log in with their own individual logins. They can then get root privileges by using sudo. This makes it easier to track down individuals rather than groups of users.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="The_who_Command">The who Command</span></h2>
+<p>The who command is used to see who is currently logged in to your computer. Here we see a user logged as root from server reggae.my-site.com.
+</p>
+<pre>[root@bigboy tmp]# who
+root     pts/0        Jun 19 09:26 (reggae.my-site.com)
+[root@bigboy tmp]#
+</pre>
+<h1><span class="mw-headline" id="Conclusion">Conclusion</span></h1>
+<p>One of the greatest sources of frustration for any systems administrator is to try to isolate whether poor server performance is due to a network issue or problems with an application or database. The worry can be amplified especially as network instability is often under the control of network engineers who need evidence pointing to problems in their domain of expertise before they will be convinced to act.
+</p><p>These tips should help provide you with a definitive answer by enabling you to isolate the source of most network problems and helping you make their resolution much faster.
+</p><p>The next chapter builds on this new knowledge and expands your troubleshooting skills to include the reading of Linux error log files to assist in the diagnosis of unexpected Linux application behavior.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.137 seconds
+Real time usage: 0.139 seconds
+Preprocessor visited node count: 266/1000000
+Preprocessor generated node count: 272/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key lhn_wiki-ofw_:pcache:idhash:1287-0!*!0!!en!*!* and timestamp 20160402202307 and revision id 4282
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://www.linuxhomenetworking.com/wiki/index.php?title=Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting&amp;oldid=4282">http://www.linuxhomenetworking.com/wiki/index.php?title=Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting&amp;oldid=4282</a>"</div>
+					<div id='catlinks' class='catlinks catlinks-allhidden'></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+
+<!-- LinuxHomeNetworking Start -->
+<!-- LinuxHomeNetworking Stop -->
+
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://creativecommons.org/licenses/by-nc-nd/2.5/"><img src="http://creativecommons.org/images/public/somerights20.png" alt="Attribution-NonCommercial-NoDerivs 2.5 " width="88" height="31" /></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="//www.mediawiki.org/"><img src="/wiki/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/wiki/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /wiki/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> This page was last modified on 22 July 2012, at 01:32.</li>
+									<li id="copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-nd/2.5/">Attribution-NonCommercial-NoDerivs 2.5 </a> unless otherwise noted.</li>
+									<li id="privacy"><a href="/wiki/index.php/Linux_Home_Networking:Privacy_policy" title="Linux Home Networking:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="/wiki/index.php/Linux_Home_Networking:About" title="Linux Home Networking:About">About Linux Home Networking</a></li>
+									<li id="disclaimer"><a href="/wiki/index.php/Linux_Home_Networking:General_disclaimer" title="Linux Home Networking:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+
+<!-- LinuxHomeNetworking Start -->
+        <!-- Two Columns Middle -->
+</td><td style="vertical-align: top; width: 350px;">
+        
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_preferred_1"></a>
+<a class="addthis_button_preferred_2"></a>
+<a class="addthis_button_google_plusone" g:plusone:count="false"></a>
+<a class="addthis_button_compact"></a>
+<a class="addthis_counter addthis_bubble_style"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=linuxhomenetworking"></script>
+<!-- AddThis Button END -->
+
+
+
+<div class="only-search with-image">
+<!-- Adsense Search -->
+  <form action="http://www.linuxhomenetworking.com/search/"id="cse-search-box">
+      <input name="cx" value="partner-pub-0304295028260795:bg0yrb-4i70" type="hidden">
+      <input name="cof" value="FORID:10" type="hidden">
+      <input name="ie" value="ISO-8859-1" type="hidden">
+      <input name="q" size="30" type="text">
+      <input name="sa" value="Search" type="submit">
+  </form>
+</div>
+                
+<br>
+
+<!-- 300x250-LHN-Home-A -->
+<div id='div-gpt-ad-1351902611589-0' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351902611589-0'); });
+</script>
+</div>
+
+<br>
+
+<!-- 300x250-LHN-Home-B -->
+<div id='div-gpt-ad-1351902611589-1' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351902611589-1'); });
+</script>
+</div>
+
+<br>
+
+<!-- 300x250-LHN-Home-C -->
+<div id='div-gpt-ad-1351902611589-2' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351902611589-2'); });
+</script>
+</div>
+
+<br>
+        <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+cellspacing="2">
+<tbody>
+<tr>
+<td
+style="vertical-align: top; background-color: rgb(4, 132, 68); text-align: center;"><span
+style="color: white;"><font size="2"><b>Other
+Linux Home Networking Topics</b></font></span></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<font size="2">
+<ul>
+<li><a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch02_:_Introduction_to_Networking">Introduction
+to Networking</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch03_:_Linux_Networking">Linux
+Networking</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch04_:_Simple_Network_Troubleshooting">Simple
+Network Troubleshooting</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch05_:_Troubleshooting_Linux_with_syslog">Troubleshooting
+Linux with Syslog</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch06_:_Installing_Linux_Software">Installing
+Linux Software</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch07_:_The_Linux_Boot_Process">The
+Linux Boot Process</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch08_:_Configuring_the_DHCP_Server">Configuring
+the DHCP Server</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch09_:_Linux_Users_and_Sudo">Linux
+Users and sudo</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch10_:_Windows,_Linux,_and_Samba">Windows,
+Linux and Samba</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch11_:_Sharing_Resources_Using_Samba">Sharing
+Resources with Samba</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch12_:_Samba_Security_and_Troubleshooting">Samba
+Security and Troubleshooting</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch13_:_Linux_Wireless_Networking">Linux
+Wireless Networking</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables">Linux
+Firewalls Using iptables</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch15_:_Linux_FTP_Server_Setup">Linux
+FTP Server Setup</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch16_:_Telnet,_TFTP,_and_xinetd">Telnet,
+TFTP and xinetd</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch17_:_Secure_Remote_Logins_and_File_Copying">Secure
+Remote Logins and File Copying</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch18_:_Configuring_DNS">Configuring
+DNS</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch19_:_Dynamic_DNS">Dynamic
+DNS</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch20_:_The_Apache_Web_Server">The
+Apache Web Server</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch21_:_Configuring_Linux_Mail_Servers">Configuring
+Linux Mail Servers</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch22_:_Monitoring_Server_Performance">Monitoring
+Server Performance</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch23_:_Advanced_MRTG_for_Linux">Advanced
+MRTG For Linux</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch24_:_The_NTP_Server">The
+NTP Server</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch25_:_Network-Based_Linux_Installation">Network-Based
+Linux Installation</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch26_:_Linux_Software_RAID">Linux
+Software RAID</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch27_:_Expanding_Disk_Capacity">Expanding
+Disk Capacity</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch28_:_Managing_Disk_Usage_with_Quotas">Managing
+Disk Usage with Quotas</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch29_:_Remote_Disk_Access_with_NFS">Remote
+Disk Access with NFS</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch30_:_Configuring_NIS">Configuring
+NIS</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch31_:_Centralized_Logins_Using_LDAP_and_RADIUS">Centralized
+Logins Using LDAP and RADIUS</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch32_:_Controlling_Web_Access_with_Squid">Controlling
+Web Access with Squid</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch33_:_Modifying_the_Kernel_to_Improve_Performance">Modifying
+the Kernel to Improve Performance</a></li>
+<li> <a
+href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch34_:_Basic_MySQL_Configuration">Basic
+MySQL Configuration</a> </li>
+</ul>
+</font>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+        <!-- Two Columns Stop  -->
+</td></tr></tbody></table>
+        <!-- Google Analytics - Start - LinuxHomeNetworking -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-332450-9']);
+  _gaq.push(['_setDomainName', '.linuxhomenetworking.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Google Analytics - Stop - LinuxHomeNetworking -->
+        </div> <!-- lhn-wrapper -->
+<!-- LinuxHomeNetworking Stop -->
+
+		<script>if(window.jQuery)jQuery.ready();</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"],null,true);
+}</script>
+<script>if(window.mw){
+document.write("\u003Cscript src=\"http://www.linuxhomenetworking.com/wiki/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=site\u0026amp;only=scripts\u0026amp;skin=monobook\u0026amp;*\"\u003E\u003C/script\u003E");
+}</script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":319});
+}</script></body><!-- Cached 20160402202307 -->
+</html>

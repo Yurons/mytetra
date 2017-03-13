@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+
+<title>filesystems - df in linux not showing correct free space after file removal - Server Fault</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/serverfault/img/favicon.ico?v=b7dd95e61b8b">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/serverfault/img/apple-touch-icon.png?v=6c3100d858bb">
+    <link rel="search" type="application/opensearchdescription+xml" title="Server Fault" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ServerFault" />
+    <meta name="twitter:domain" content="serverfault.com"/>
+    <meta property="og:type" content="website" />
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/serverfault/img/apple-touch-icon@2.png?v=9b1f48ae296b" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="df in linux not showing correct free space after file removal" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have file servers which are used to store files. Files might reside there for a week, or for a year. Unfortunately, when I remove files from the server, df command doesn&#39;t reflect the freed up sp..." />
+    <meta property="og:url" content="http://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal"/>
+    <link rel="canonical" href="http://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal" />
+
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.sstatic.net/Js/stub.en.js?v=7d68d6c74065"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/serverfault/all.css?v=753f2e98e619">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;df in linux not showing correct free space after file removal&#39;" href="/feeds/question/232525">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:6,shownCommentCount:5,highlightColor:'#F3F1D9',backgroundColor:'#FFF',questionId:232525});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('2', '232525');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', false); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.ready(function () {
+                        StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('2');
+                StackExchange.realtime.subscribeToTopBarNotifications('2');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1487779743,"routeName":"Questions/Show","site":{"name":"Server Fault","description":"Q&A for system and network administrators","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LcDNwYAAAAAAG_X1rC8kTtLBP6XS2Ym1N0n9kSY","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":2,"enableInsertDocLinkDialog":false,"enableSocialMediaInSharePopup":true},"user":{"fkey":"51e13450cf6ccd35991fdfce4452a231","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"ab":{"question_show_tweaks":{"v":"altern_unansw_cta","g":1}}},"realtime":{"newest":true,"active":true,"tagged":true,"staleDisconnectIntervalInHours":0,"workerIframeDomain":"https://cdn.sstatic.net"},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableImgurHttps":true},"comments":{},"userProfile":{},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"analytics":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"snippets":{"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a4ca2e6d8d21","js/moderator.en.js":"807bb02152f9","js/full-anon.en.js":"7e9258bda6c4","js/full.en.js":"acbf4d6ab0ac","js/wmd.en.js":"c3fc061ac14a","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"617589bf91c4","js/help.en.js":"f9152eb55343","js/tageditor.en.js":"248fce004255","js/tageditornew.en.js":"344fa5ca8207","js/inline-tag-editing.en.js":"2ddfa79492e7","js/revisions.en.js":"2faaeaae2529","js/review.en.js":"462a465dcd0f","js/tagsuggestions.en.js":"91ec144ebee0","js/post-validation.en.js":"8ac414d53d2a","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"ea2a16fb221f","js/keyboard-shortcuts.en.js":"568fc2f0f4bb","js/external-editor.en.js":"cb487078c372","js/adops.en.js":"9a6a7812a212"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="//serverfault.com">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="http://blog.serverfault.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+                    <a href="http://chat.stackexchange.com?tab=site&amp;host=serverfault.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+    <a href="//serverfault.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="2"
+       data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-serverfault" title="Server Fault"></div>
+        Server Fault
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="http://meta.serverfault.com"
+       class="site-link js-gps-track"
+       data-id="78"
+       data-gps-track="site.switch({ target_site:78, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-serverfaultmeta" title="Meta Server Fault"></div>
+        Meta Server Fault
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://serverfault.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://serverfault.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="//stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="http://stackoverflow.blog" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+        </div>
+
+        <div class="network-items">
+                <a href="//stackexchange.com"
+                   class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+                   data-gps-track="site_switcher.show"
+                   title="A list of all 165 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="#"
+       class="topbar-icon icon-inbox yes-hover js-inbox-button"
+       title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#"
+       class="topbar-icon icon-achievements yes-hover js-achievements-button "
+       data-unread-class=""
+       title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://serverfault.com/users/signup?ssrc=head&returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal" class="login-link" rel="nofollow">sign up</a>
+                                <a href="https://serverfault.com/users/login?ssrc=head&returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal" class="login-link" rel="nofollow">log in</a>
+
+                            <a href="/tour">tour</a>
+        <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="//meta.serverfault.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                        <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+            <div id="header">
+                <br class="cbt">
+                <div id="hlogo">
+                    <a href="/" >
+                        Server Fault
+                    </a>
+                </div>
+                <div id="hmenus">
+                        <div class="nav mainnavs">
+                            <ul>
+                                    <li class="youarehere">
+        <a id="nav-questions"
+           href="/questions"
+           class="js-gps-track" 
+           data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">
+        Questions
+        </a>
+    </li>
+
+                                                                    <li>
+        <a id="nav-tags"
+           href="/tags"
+           class="js-gps-track" 
+           data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">
+        Tags
+        </a>
+    </li>
+
+                                    <li>
+        <a id="nav-users"
+           href="/users"
+           class="js-gps-track" 
+           data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">
+        Users
+        </a>
+    </li>
+
+                                    <li>
+        <a id="nav-badges"
+           href="/help/badges"
+           class="js-gps-track" 
+           data-gps-track="top_nav.click({is_current:false, location:2, destination:4})">
+        Badges
+        </a>
+    </li>
+
+    <li>
+        <a id="nav-unanswered"
+           href="/unanswered"
+           class="js-gps-track" 
+           data-gps-track="top_nav.click({is_current:false, location:2, destination:5})">
+        Unanswered
+        </a>
+    </li>
+                            </ul>
+                        </div>
+                    <div class="nav askquestion">
+                        <ul>
+                            <li>
+                                <a id="nav-askquestion"   href="/questions/ask"  >Ask Question</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+
+
+        <div id="content">
+
+
+
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/serverfault/img/apple-touch-icon.png?v=6c3100d858bb">
+
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Server Fault is a question and answer site for system and network administrators. Join them; it only takes a minute:
+            <br />
+            <br />
+            <a href="/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Here&#39;s how it works:</b>
+            <ol id="hiw">
+                <li id="q">
+                    Anybody can ask a question
+                </li>
+                <li id="an">
+                    Anybody can answer
+                </li>
+                <li id="b">
+                    The best answers are voted up and rise to the top
+                </li>
+            </ol>
+        </div>
+    <div style="clear: both"></div>
+    </div>
+</div><script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal" class="question-hyperlink">df in linux not showing correct free space after file removal</a></h1>
+
+            
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="232525"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8278,"adzerk1371460882",4).setZone(49); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1371460882"></div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="232525">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">58</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>22</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have file servers which are used to store files. Files might reside there for a week, or for a year. Unfortunately, when I remove files from the server, <code>df</code> command doesn't reflect the freed up space. So eventually, the server gets filled up (<code>df</code> shows 99%), and my script doesn't send any more files there, except there might be a few dozen GB of free space on there. </p>
+
+<p>I got <code>noatime</code> flag on the mounted partitions if that makes any difference. </p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/linux" class="post-tag" title="show questions tagged &#39;linux&#39;" rel="tag">linux</a> <a href="/questions/tagged/filesystems" class="post-tag" title="show questions tagged &#39;filesystems&#39;" rel="tag">filesystems</a> <a href="/questions/tagged/disk-space-utilization" class="post-tag" title="show questions tagged &#39;disk-space-utilization&#39;" rel="tag">disk-space-utilization</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/232525" title="short permalink to this question" class="short-link" id="link-post-232525">share</a><span class="lsep">|</span><a href="/posts/232525/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/232525/revisions" title="show all edits to this post">edited <span title="2016-02-16 09:44:10Z" class="relativetime">Feb 16 '16 at 9:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/318678/aminah-nuraini"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/gRzDP.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/318678/aminah-nuraini">Aminah Nuraini</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">201</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2011-02-08 07:36:47Z" class="relativetime">Feb 8 '11 at 7:36</span>
+    </div>
+    <div class="user-gravatar32">
+        <span class="anonymous-gravatar"></span>
+    </div>
+    <div class="user-details">
+        user11350
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-232525" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-209827" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Is this happening on a single partition or on all partitions?</span>
+                    &ndash;&nbsp;<a href="/users/58024/khaled"
+                       title="25,666 reputation"
+                       class="comment-user">Khaled</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 07:40:06Z" class="relativetime-clean">Feb 8 '11 at 7:40</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-209832" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Well, its happening on my main data partition, which is the only one I care about, since I only write/remove files onto it.</span>
+		            &ndash;&nbsp;<span class="comment-user">user11350</span>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:09:25Z" class="relativetime-clean">Feb 8 '11 at 8:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-209849" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Please enlighten me with the solution, or a link to one.</span>
+		            &ndash;&nbsp;<span class="comment-user">user11350</span>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:51:33Z" class="relativetime-clean">Feb 8 '11 at 8:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-210085" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What filesystem(s)?  DF does a stat of the superblock, it may be that your filesystem is not updating the sb inode.  Have you tried flushing cache?</span>
+                    &ndash;&nbsp;<a href="/users/63724/beans"
+                       title="1,027 reputation"
+                       class="comment-user">beans</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 17:32:44Z" class="relativetime-clean">Feb 8 '11 at 17:32</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-210124" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Using ext4. How do you flush caches?</span>
+		            &ndash;&nbsp;<span class="comment-user">user11350</span>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 18:22:40Z" class="relativetime-clean">Feb 8 '11 at 18:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-232525" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display:none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="232526"></a>
+<div id="answer-232526" class="answer accepted-answer" data-answerid="232526"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="232526">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">103</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Deleting the filename doesn't actually delete the file. Some other process is holding the file open, causing it to not be deleted; restart or kill that process to release the file.</p>
+
+<p>Use </p>
+
+<pre><code>lsof +L1
+</code></pre>
+
+<p>to find out which process is using a deleted (unlinked) file.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/232526" title="short permalink to this answer" class="short-link" id="link-post-232526">share</a><span class="lsep">|</span><a href="/posts/232526/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/232526/revisions" title="show all edits to this post">edited <span title="2016-02-26 11:54:23Z" class="relativetime">Feb 26 '16 at 11:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/65750/tombart"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bf2a7f4d71e1d892ce564fe4bd81193f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/65750/tombart">Tombart</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">766</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="28 bronze badges"><span class="badge3"></span><span class="badgecount">28</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-02-08 07:48:53Z" class="relativetime">Feb 8 '11 at 7:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/7360/ignacio-vazquez-abrams"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2343ae368d3241278581ce6c87f62a25?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/7360/ignacio-vazquez-abrams">Ignacio Vazquez-Abrams</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 34,480" dir="ltr">34.5k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="47 silver badges"><span class="badge2"></span><span class="badgecount">47</span></span><span title="64 bronze badges"><span class="badge3"></span><span class="badgecount">64</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-232526" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="4"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-209831" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Files that are removed were not accessed in over a month, and the only process that accesses them is nginx, so its doubtful.</span>
+		            &ndash;&nbsp;<span class="comment-user">user11350</span>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:08:53Z" class="relativetime-clean">Feb 8 '11 at 8:08</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-209833" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">31</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1. Also, &quot;lsof +L1&quot;  will tell you which program is holding the files open.</span>
+                    &ndash;&nbsp;<a href="/users/30525/pehrs"
+                       title="7,440 reputation"
+                       class="comment-user">pehrs</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:10:36Z" class="relativetime-clean">Feb 8 '11 at 8:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-209834" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">as root run &quot;lsof -n | grep file,&quot; you&#39;d be surprised at how long files can stick around due to processes keeping them open for whatever reason. If all else fails, reboot, I feel bad suggesting it but it will definitely make sure nothing is holding on to the file. Per pehrs, lsof +L1 is probably the better way to go.</span>
+                    &ndash;&nbsp;<a href="/users/23306/scottz"
+                       title="377 reputation"
+                       class="comment-user">ScottZ</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:11:32Z" class="relativetime-clean">Feb 8 '11 at 8:11</span></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-209838" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">That returns a single file, which is being encoded with ffmpeg.</span>
+		            &ndash;&nbsp;<span class="comment-user">user11350</span>
+                <span class="comment-date" dir="ltr"><span title="2011-02-08 08:16:40Z" class="relativetime-clean">Feb 8 '11 at 8:16</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-694491" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You just saved me! Deleted a 93G log file and didn&#39;t get the space back and couldn&#39;t work out why. Thanks.</span>
+                    &ndash;&nbsp;<a href="/users/212840/luke-cousins"
+                       title="191 reputation"
+                       class="comment-user">Luke Cousins</a>
+                <span class="comment-date" dir="ltr"><span title="2014-04-16 14:14:41Z" class="relativetime-clean">Apr 16 '14 at 14:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-232526" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>4</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8278,"adzerk502858210",4).setZone(51); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk502858210"></div>
+  
+<a name="573830"></a>
+<div id="answer-573830" class="answer" data-answerid="573830"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="573830">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>as Ignacio mentions, deleting the file won't free the space until you delete the processes that have open handles against that file.</p>
+
+<p>Nevertheless, you can reclaim the space without killing the processes. All you need to do is to remove the file descriptors.</p>
+
+<p>First execute lsof | grep deleted to identify the process holding the file</p>
+
+<pre><code>[hudson@opsynxvm0055 log]$ /usr/sbin/lsof |grep deleted
+java       8859   hudson    1w      REG              253,0 3662503356    7578206 /crucible/data/current/var/log/fisheye.out (deleted)
+</code></pre>
+
+<p>Then execute: </p>
+
+<pre><code>cd /proc/PID/fd
+</code></pre>
+
+<p>then </p>
+
+<pre><code>[hudson@opsynxvm0055 fd]$ ls -l |grep deleted
+total 0
+l-wx------ 1 hudson devel 64 Feb  7 11:48 1 -&gt; /crucible/data/current/var/log/fisheye.out (deleted)
+</code></pre>
+
+<p>The "1" will be the file descriptor. Now type "> FD" to reclaim that space</p>
+
+<pre><code>&gt; 1
+</code></pre>
+
+<p>You might need to repeat the operation if there are other processes holding the file.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/573830" title="short permalink to this answer" class="short-link" id="link-post-573830">share</a><span class="lsep">|</span><a href="/posts/573830/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/573830/revisions" title="show all edits to this post">edited <span title="2014-05-19 00:11:18Z" class="relativetime">May 19 '14 at 0:11</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-02-07 01:24:27Z" class="relativetime">Feb 7 '14 at 1:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/208462/adri%c3%a1n-deccico"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bb1fe27b4d67373bf14915ea91dc0ea5?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/208462/adri%c3%a1n-deccico">Adri&#225;n Deccico</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">223</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-573830" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-871208" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">what does the <code>&gt; FD</code> do?</span>
+                    &ndash;&nbsp;<a href="/users/173137/pred"
+                       title="160 reputation"
+                       class="comment-user">Pred</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-06 13:19:06Z" class="relativetime-clean">Jul 6 '15 at 13:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-873493" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">it removes the file descriptor</span>
+                    &ndash;&nbsp;<a href="/users/208462/adri%c3%a1n-deccico"
+                       title="223 reputation"
+                       class="comment-user">Adri&#225;n Deccico</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-13 01:12:17Z" class="relativetime-clean">Jul 13 '15 at 1:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-919117" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">does this <code>&gt;</code> command have a name? i had to switch from zsh to bash in order to be able to use it. Is it possible to run it on zsh?</span>
+                    &ndash;&nbsp;<a href="/users/254173/ariera"
+                       title="131 reputation"
+                       class="comment-user">ariera</a>
+                <span class="comment-date" dir="ltr"><span title="2015-11-13 17:35:09Z" class="relativetime-clean">Nov 13 '15 at 17:35</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-573830" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="232567"></a>
+<div id="answer-232567" class="answer" data-answerid="232567"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="232567">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>One possibility is that the file(s) you deleted have more references in the filesystem. If you've created hardlinks, several filenames will point to the same data, and the data (the actual contents) won't be marked as free/usable until all references to it has been removed. Before you delete files, either stat them (Entry named Links) or do ls -l on them (should be the second column).</p>
+
+<p>If it does turn out that the files are referenced elsewhere, I guess you'll have to ls -i the file(s) to find the inode-number, and then do a find with -inum &lt;inode-number&gt; to find the other references to that file (you probably also want to use -mount to stay within the same filesystem as well).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/232567" title="short permalink to this answer" class="short-link" id="link-post-232567">share</a><span class="lsep">|</span><a href="/posts/232567/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-02-08 10:01:50Z" class="relativetime">Feb 8 '11 at 10:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3002/kjetil-joergensen"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2bae3c263c08381581ca8a22e16ccb8d?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3002/kjetil-joergensen">Kjetil Joergensen</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,184</span><span title="19 silver badges"><span class="badge2"></span><span class="badgecount">19</span></span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-232567" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-232567" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="232568"></a>
+<div id="answer-232568" class="answer" data-answerid="232568"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="232568">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The other answers are correct: If you delete a file, and space does not get freed, it's usually either because the file is still kept open, or there are other hardlinks to it.</p>
+
+<p>To help in troubleshooting, use a tool that tells you where the drive space is being spent: You can use <code>du</code> to get an overview of where space is going. Even better, use a graphical tool like <a href="http://xdiskusage.sourceforge.net/" rel="nofollow noreferrer">xdiskusage</a> (there are many like this) to hunt down the culprit. xdiskusage and friends let you drill down into the biggest space hogs to find where space is going.</p>
+
+<p>That way, you'll quickly find files that still occupy space because of a second hardlink. It will also show space occupied by deleted, but open files (as (permission denied), I believe, since it cannot read the file name).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/232568" title="short permalink to this answer" class="short-link" id="link-post-232568">share</a><span class="lsep">|</span><a href="/posts/232568/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-02-08 10:11:56Z" class="relativetime">Feb 8 '11 at 10:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2439/sleske"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/6c2dd6a39d3f38f1bb47a8c1fe8325e2?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2439/sleske">sleske</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">7,370</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="18 silver badges"><span class="badge2"></span><span class="badgecount">18</span></span><span title="36 bronze badges"><span class="badge3"></span><span class="badgecount">36</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-232568" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-232568" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="490757"></a>
+<div id="answer-490757" class="answer" data-answerid="490757"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="490757">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Since I know a ton of you are doing this for redhat in <code>/var</code> and gzipping files expecting the FS to shrink, but instead it grows, just make sure you service syslog restart. and </p>
+
+<pre><code>lsof -v file
+</code></pre>
+
+<p>would show you this anyhow.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/490757" title="short permalink to this answer" class="short-link" id="link-post-490757">share</a><span class="lsep">|</span><a href="/posts/490757/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/490757/revisions" title="show all edits to this post">edited <span title="2017-02-06 18:01:08Z" class="relativetime">Feb 6 at 18:01</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/390090/j1088099-mvrht-com"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/75af47f4c8aeaacff0fbf2096c1f8e75?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/390090/j1088099-mvrht-com"> j1088099.mvrht.com.</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">10</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-03-23 15:02:51Z" class="relativetime">Mar 23 '13 at 15:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/166115/user1802263"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a07fd573b6c473148f497d46d5143dd4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/166115/user1802263">user1802263</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">19</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-490757" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-548384" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This doesn&#39;t really add much; the accepted answer covered the logic behind that in 2001. When you have 50 rep, use comments if you want to add qualifiers to the existing answers.</span>
+                    &ndash;&nbsp;<a href="/users/152073/andrew-b"
+                       title="19,887 reputation"
+                       class="comment-user">Andrew B</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-23 17:34:47Z" class="relativetime-clean">Mar 23 '13 at 17:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-490757" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="408488"></a>
+<div id="answer-408488" class="answer" data-answerid="408488"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="408488">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>One more option: The disk might be full due to a process that is continuously creating data: logs, cores and the like. It is possible that space is actually being freed but is immediately filled up. I have actually seen such a case. <code>df</code> in this case simply doesn't give the hole picture. Use <code>du</code> to learn more.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/408488" title="short permalink to this answer" class="short-link" id="link-post-408488">share</a><span class="lsep">|</span><a href="/posts/408488/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-07-17 12:01:41Z" class="relativetime">Jul 17 '12 at 12:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/18106/chen-levy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/21369d30fe2c6c976ffe735f2fd0ee91?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/18106/chen-levy">Chen Levy</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">151</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-408488" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-408488" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="469548"></a>
+<div id="answer-469548" class="answer" data-answerid="469548"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="469548">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I`m using EXT2, FSCK helped me in this situation. Try shudown -F now , after some restarts and fscks, I see half used space. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/469548" title="short permalink to this answer" class="short-link" id="link-post-469548">share</a><span class="lsep">|</span><a href="/posts/469548/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-01-16 09:00:01Z" class="relativetime">Jan 16 '13 at 9:00</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/154655/marcellus"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/130be75275825d09f2051fe2ba6b5d7e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/154655/marcellus">Marcellus</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-469548" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-517864" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Dear Marcellus, your solution is encompassed by the accepted answer; and sometimes you don&#39;t want to do a reboot if you are not forced to...</span>
+                    &ndash;&nbsp;<a href="/users/140016/deer-hunter"
+                       title="882 reputation"
+                       class="comment-user">Deer Hunter</a>
+                <span class="comment-date" dir="ltr"><span title="2013-01-16 09:31:01Z" class="relativetime-clean">Jan 16 '13 at 9:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-469548" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="757426"></a>
+<div id="answer-757426" class="answer" data-answerid="757426"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="757426">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The file is still locked by the process opening it. To free up space, do these steps:</p>
+
+<ol>
+<li><p>Run <code>sudo lsof | grep deleted</code> and see which process is holding the file. Example result:</p>
+
+<pre><code>$ sudo lsof | grep deleted
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF      NODE NAME
+cron     1623 root    5u   REG   0,21        0 395919638 /tmp/tmpfPagTZ4 (deleted)
+</code></pre></li>
+<li><p>Kill the process using <code>sudo kill -9 {PID}</code>. In above sample, the PID is 1623.</p>
+
+<pre><code>$ sudo kill -9 1623
+</code></pre></li>
+<li><p>Run <code>df</code> to check if space is already freed up. If it's still full, maybe you need to wait a few seconds and check again.</p></li>
+</ol>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/757426" title="short permalink to this answer" class="short-link" id="link-post-757426">share</a><span class="lsep">|</span><a href="/posts/757426/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-02-16 05:31:50Z" class="relativetime">Feb 16 '16 at 5:31</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/318678/aminah-nuraini"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/gRzDP.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/318678/aminah-nuraini">Aminah Nuraini</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">201</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-757426" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-757426" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/232525/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="232525" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+        
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="51e13450cf6ccd35991fdfce4452a231">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?ssrc=question_page&returnurl=http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fserverfault.com%2fquestions%2f232525%2fdf-in-linux-not-showing-correct-free-space-after-file-removal%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' name='privacy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' name='tos' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2011-02-08 07:36:47Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>118723 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2017-02-06 18:01:08Z">15 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://stackoverflow.blog/2017/02/Stack-Overflow-Podcast-101-Matt-Mullenweg-on-Open-Source-Blogs-and-Beyonce/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://stackoverflow.blog/2017/02/Stack-Overflow-Podcast-101-Matt-Mullenweg-on-Open-Source-Blogs-and-Beyonce/" class="question-hyperlink">Stack Overflow Podcast #101 - Matt Mullenweg on Open Source, Blogs, and Beyonc&#233;</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8278,"adzerk707687754",[5,17,2221]).setZone(50); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk707687754"></div>
+            <div id="hireme"></div>
+        <script>
+window.clc_request = 'AgMQnx49W9QIAAAAAE2MAwADAAAAAgAAAAAqAAAAfGxpbnV4fGZpbGVzeXN0ZW1zfGRpc2stc3BhY2UtdXRpbGl6YXRpb258APjHiW-Q7F2xuAQ';
+;(function(n){var t,u,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(n.allowed[0]!=="*"&&n.allowed.indexOf(location.hostname)===-1)return;if(t=window,t.clc=t.clc||{},u=t.clc_request||t.clcfl_request,u||console.warn("clc_request missing"),t.clc.init=t.clc.init||[],t.clc.init.push(function(n){return n.load()}),t.clc.options){for(r in t.clc.options)n[r]=t.clc.options[r];t.clc.options=n}else t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(f){console.error("[clc] Error in loader:",f)}}).call(null, {"azw":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","blog.codinghorror.com","talent.stackoverflow.com"],"h":"clc.stackoverflow.com","u":"https://clc.stackoverflow.com/markup.js","lib":"https://cdn.sstatic.net/clc/clc.min.js?v=bd570ea4a858"});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="/q/607010" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/607010/ubuntu-server-cannot-write-to-no-space-left-on-device?noredirect=1" class="question-hyperlink">Ubuntu server Cannot write to &#39;&#39; (No space left on device)</a>
+</div>
+<div class="spacer">
+	<a href="/q/812533" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/812533/clamav-used-all-my-server-space?noredirect=1" class="question-hyperlink">clamav used all my server space</a>
+</div>
+<div class="spacer">
+	<a href="/q/773651" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/773651/where-is-my-disk-space-being-used-in-debian-5-please-advise?noredirect=1" class="question-hyperlink">where is my disk space being used in Debian 5?, please advise</a>
+</div>
+<div class="spacer">
+	<a href="/q/229454" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">10</div>
+	</a>
+	<a href="/questions/229454/after-deleting-a-large-file-how-long-does-it-take-df-to-pick-up-the-change?noredirect=1" class="question-hyperlink">After deleting a large file, how long does it take `df` to pick up the change?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer"><a href="/q/20776" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">7</div></a><a href="/questions/20776/determine-the-free-file-space-in-linux" class="question-hyperlink">Determine the free file space in Linux</a></div><div class="spacer"><a href="/q/93088" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">7</div></a><a href="/questions/93088/thoughts-on-linux-server-file-system-layout" class="question-hyperlink">Thoughts on Linux server file system layout</a></div><div class="spacer"><a href="/q/337602" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">13</div></a><a href="/questions/337602/best-way-to-prevent-the-root-system-filling-up-when-a-mount-fails" class="question-hyperlink">Best way to prevent the root system filling up when a mount fails?</a></div><div class="spacer"><a href="/q/413373" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">3</div></a><a href="/questions/413373/linux-disk-usage-analyser-that-acts-like-symlinks-are-real-files" class="question-hyperlink">Linux disk usage analyser that acts like symlinks are real files</a></div><div class="spacer"><a href="/q/535658" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">4</div></a><a href="/questions/535658/next-gen-filesystems-disk-space-usage-log" class="question-hyperlink">Next-gen filesystems: disk space usage log?</a></div><div class="spacer"><a href="/q/573114" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="/questions/573114/log-file-filled-disked-removed-log-file-and-disk-still-full" class="question-hyperlink">Log file filled disked. Removed log file and disk still full</a></div><div class="spacer"><a href="/q/732331" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="/questions/732331/gearman-writing-too-many-open-files-into-the-log-disk-space-issues" class="question-hyperlink">Gearman writing &ldquo;Too many open files&rdquo; into the log. Disk space issues</a></div><div class="spacer"><a href="/q/739110" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="/questions/739110/keep-a-minimum-free-space-on-rsync-destination" class="question-hyperlink">keep a minimum free space on rsync-destination</a></div><div class="spacer"><a href="/q/767717" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="/questions/767717/df-h-shows-100-usage-but-sizes-dont-add-up" class="question-hyperlink">df -h shows 100% usage but sizes don&#39;t add up</a></div><div class="spacer"><a href="/q/807227" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="/questions/807227/how-to-remove-file-handle-from-mysql-after-dropping-1tb-mysql-table-to-free-disk" class="question-hyperlink">How to remove file handle from MySql after Dropping 1TB Mysql Table to free disk space?</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="http://outdoors.stackexchange.com/questions/15348/how-to-temporarily-mark-a-trail" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to temporarily mark a trail?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/834145/raid-5-hard-disk-corruption" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Raid 5 Hard disk corruption
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/85225/bicycle-purist-required-to-travel-for-work" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bicycle purist required to travel for work
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/71897/why-would-patent-terms-be-extended-to-centuries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would Patent Terms be extended to centuries?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/35638/why-did-columbus-cross-the-mid-atlantic-instead-of-exploring-from-greenland" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did Columbus cross the mid-Atlantic instead of exploring from Greenland?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/886092/an-actual-solution-to-disable-touchpad-while-typing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    An actual solution to disable touchpad while typing?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/288046/can-i-use-a-slightly-bigger-or-smaller-ouput-capacitor-in-an-audio-amplifier" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I use a slightly bigger or smaller ouput capacitor in an audio amplifier?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-sharepoint" title="SharePoint Stack Exchange"></div><a href="http://sharepoint.stackexchange.com/questions/208835/sharepoint-showing-unexisting-build-number-after-patching" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:232 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    SharePoint showing unexisting build number after patching
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-alcohol" title="Beer, Wine &amp; Spirits Stack Exchange"></div><a href="http://alcohol.stackexchange.com/questions/6561/what-is-the-strongest-drink-in-the-world" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:532 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the strongest drink in the world?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/355133/numbering-equations-differently-before-sections-start-within-chapter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Numbering equations differently before sections start within chapter
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/71879/quantum-based-ai-getting-around-isaac-asimovs-three-laws-of-robotics" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Quantum Based AI getting around Isaac Asimov&#39;s &quot;Three Laws of Robotics&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/71724/can-we-build-a-world-in-1-000-years" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can we build a world in 1,000 years?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/153105/who-are-these-han-solo-actors" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Who are these &quot;Han Solo&quot; actors?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/374852/onomatopoeia-for-disgust" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Onomatopoeia for disgust
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-literature" title="Literature Stack Exchange"></div><a href="http://literature.stackexchange.com/questions/1737/has-copy-protection-ever-been-used-in-physical-books" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:668 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Has copy protection ever been used in physical books?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/76412/why-does-warren-buffett-say-his-fund-performance-relatively-is-likely-to-be-be" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does Warren Buffett say his fund performance, relatively, is likely to be better in a bear market than in a bull market?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/110912/calculate-exponents-bit-by-bit" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Calculate Exponents bit by bit
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/85409/how-can-i-stop-my-colleagues-excluding-me-from-socialising-after-showing-my-spor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I stop my colleagues excluding me from socialising after showing my sporting skills?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/110708/an-abundance-of-integers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    An abundance of integers!
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/42384788/should-we-always-specify-id-attribute-in-html" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should we always specify ID attribute in HTML?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/49348/help-my-animals-have-gone-missing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help! My animals have gone missing
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/85434/is-it-possible-to-write-two-separate-masters-theses" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to write two separate Master&#39;s theses?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/120222/flee-from-vs-flee" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Flee from vs flee
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/49350/lifespan-puzzle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Lifespan puzzle
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/232525" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/232525/ivc/0b9c');});
+</script>
+<noscript>
+    <div><img src="/posts/232525/ivc/0b9c" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.serverfault.com?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com?tab=site&host=serverfault.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.serverfault.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="//softwareengineering.stackexchange.com" title="professionals, academics, and students working within the systems development life cycle who care about creating, delivering, and maintaining software responsibly">Software Engineering</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                        <li><a href="//crypto.stackexchange.com" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//codereview.stackexchange.com" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="//magento.stackexchange.com" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="//dsp.stackexchange.com" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="//raspberrypi.stackexchange.com" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="//codegolf.stackexchange.com" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//music.stackexchange.com" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//ell.stackexchange.com" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="//japanese.stackexchange.com" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="//anime.stackexchange.com" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="//mechanics.stackexchange.com" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="//cs.stackexchange.com" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="//philosophy.stackexchange.com" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo &#169; 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.2.22.25210
+            </div>
+                </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Server Fault works best with JavaScript enabled<img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                ados_setKeywords('linux,filesystems,disk-space-utilization');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-2');
+                ga('set', 'dimension2', '|linux|filesystems|disk-space-utilization|');
+                ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    </body>
+</html>
